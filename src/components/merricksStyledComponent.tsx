@@ -14,7 +14,7 @@ const Yolo = styled.div`
 `;
 
 const Thing = () => {
-  return <Yolo>Styled components installed</Yolo>;
+  return <Yolo>Deploy preview</Yolo>;
 };
 
 export default Thing;
