@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Thing from '../components/MerricksStyledComponent';
+import Thing from '../components/MerricksDemoThing';
 
 const Home: NextPage = () => (
   <div>
