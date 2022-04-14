@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Thing from '../components/MerricksDemoThing';
+import Image from 'next/image';
 
 const Test: NextPage = () => (
   <div>
@@ -12,6 +13,7 @@ const Test: NextPage = () => (
 
     <main>
       <span>test page</span>
+      <Image src="/nodem.png" alt="me" width="500" height="500" />
     </main>
   </div>
 );
