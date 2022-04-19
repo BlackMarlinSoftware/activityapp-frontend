@@ -1,4 +1,6 @@
-export const data: any = {
+import { Data } from './types';
+
+export const data: Data = {
   activities: [
     {
       id: 1,
