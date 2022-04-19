@@ -1,4 +1,4 @@
-import { Data } from './types';
+import { CategoryName, Data } from './types';
 
 export const data: Data = {
   activities: [
@@ -16,14 +16,17 @@ export const data: Data = {
         name: 'Archery UK Ltd.',
       },
       category: {
-        name: 'Archery',
+        name: CategoryName['Field archery'],
         parent_category: {
-          name: 'Sports',
+          name: CategoryName.Archery,
+          parent_category: {
+            name: CategoryName.Sports,
+          },
         },
       },
       age_ranges: [
         {
-          name: 'Teenagers',
+          name: '14-17 years',
         },
         {
           name: 'Adults',
@@ -55,11 +58,11 @@ export const data: Data = {
       },
       accessibility: [
         {
-          name: 'Wheelchair Accessible',
+          name: 'Wheelchair User',
           details: 'Entrance via ramp is available. Specialised bows and quivers are on-site for wheelchair users.',
         },
         {
-          name: 'Deaf Friendly',
+          name: 'Hearing Loss',
           details:
             'All of our instructors have RNID basic training. Josh is fluent in BSL and leads the courses on Wednesdays.',
         },
