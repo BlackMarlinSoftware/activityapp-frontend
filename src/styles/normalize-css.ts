@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 export default css`
   /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
   html {
-    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
   }
   body {
@@ -12,18 +11,10 @@ export default css`
   main {
     display: block;
   }
-  h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-  }
   hr {
     box-sizing: content-box;
     height: 0;
     overflow: visible;
-  }
-  pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
   }
   a {
     background-color: transparent;
@@ -48,16 +39,8 @@ export default css`
   }
   sub,
   sup {
-    font-size: 75%;
-    line-height: 0;
     position: relative;
     vertical-align: baseline;
-  }
-  sub {
-    bottom: -0.25em;
-  }
-  sup {
-    top: -0.5em;
   }
   img {
     border-style: none;
