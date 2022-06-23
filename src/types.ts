@@ -1,8 +1,9 @@
 export enum CategoryName {
   // Top-level categories
   'Sports',
-  'Social activities',
-  'Creative activities',
+  'Social',
+  'Creative',
+  'Relaxing',
   // Mid-level categories
   'Acrobatic sports',
   'Air sports',
@@ -193,12 +194,13 @@ export interface Host {
   name: string;
 }
 
-export interface AgeRange {
-  name: 'Babies' | '2-5 years' | '5-10 years' | '10-14 years' | '14-17 years' | 'Adults' | 'Seniors';
-}
-
 export interface Amenity {
   name: string;
+}
+
+export interface AgeRange {
+  from: number | null;
+  to: number | null;
 }
 
 export interface Location {
@@ -220,18 +222,22 @@ export interface Media {
   caption: string | null;
 }
 
+export type Intensity = 1 | 2 | 3 | 4 | 5;
+export type ExperienceLevel = 1 | 2 | 3 | 4 | 5;
+
 export interface Activity {
   id: number;
   name: string;
   description: string;
-  default_max_group_size: number;
   referral_url: string | null;
   referral_phone: string | null;
   referral_email: string | null;
-  default_intensity: number;
+  default_max_group_size: number;
+  default_experience_level: ExperienceLevel | null;
+  default_intensity: Intensity | null;
+  default_age_range: AgeRange;
   host: Host;
-  category: Category;
-  age_ranges: AgeRange[];
+  categories: Category[];
   location: Location;
   accessibility: Accessibility[];
   media: Media[];

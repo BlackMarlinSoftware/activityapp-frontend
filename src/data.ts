@@ -7,34 +7,27 @@ export const data: Data = {
       name: 'Brockwell Park Archery Afternoon',
       description:
         'Come along for a whole afternoon of archery in the park. Try modern equipment as well as replicas of medieval designs.',
-      default_max_group_size: 15,
       referral_url: 'https://brockwellarchery.com/book',
       referral_phone: null,
       referral_email: null,
+      default_max_group_size: 15,
       default_intensity: 3,
+      default_experience_level: 2,
       host: {
         name: 'Archery UK Ltd.',
       },
-      category: {
-        name: CategoryName['Field archery'],
-        parent_category: {
-          name: CategoryName.Archery,
+      categories: [
+        {
+          name: CategoryName['Field archery'],
           parent_category: {
-            name: CategoryName.Sports,
+            name: CategoryName.Archery,
+            parent_category: {
+              name: CategoryName.Sports,
+            },
           },
         },
-      },
-      age_ranges: [
-        {
-          name: '14-17 years',
-        },
-        {
-          name: 'Adults',
-        },
-        {
-          name: 'Seniors',
-        },
       ],
+      default_age_range: { from: 14, to: null },
       location: {
         name: 'Brockwell Park Ranges',
         address: null,
