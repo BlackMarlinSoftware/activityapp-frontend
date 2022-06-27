@@ -186,64 +186,74 @@ export enum CategoryName {
 }
 
 export interface Category {
-  name: CategoryName;
+  name?: CategoryName;
   parent_category?: Category;
 }
 
 export interface Host {
-  name: string;
+  name?: string;
+  logo?: string | null;
 }
 
 export interface Amenity {
-  name: string;
+  name?: string;
 }
 
 export interface AgeRange {
-  from: number | null;
-  to: number | null;
+  from?: number | null;
+  to?: number | null;
 }
 
 export interface Location {
-  name: string;
-  address: string | null;
-  postcode: string | null;
-  lat_long: string;
-  outdoors: boolean;
-  amenities: Amenity[];
+  name?: string;
+  address?: string | null;
+  postcode?: string | null;
+  lat_long?: string | null;
+  outdoors?: boolean;
+  amenities?: Amenity[];
+  directions?: string | null;
 }
 
 export interface Accessibility {
-  name: 'Wheelchair User' | 'Hearing Loss' | 'Visual Impairment' | 'Motor Skills' | 'Learning Disability';
-  details: string;
+  name?: 'Wheelchair User' | 'Hearing Loss' | 'Visual Impairment' | 'Motor Skills' | 'Learning Disability';
+  details?: string;
 }
 
 export interface Media {
-  url: string;
-  caption: string | null;
+  url?: string;
+  caption?: string | null;
 }
 
-export type Intensity = 1 | 2 | 3 | 4 | 5;
-export type ExperienceLevel = 1 | 2 | 3 | 4 | 5;
+export interface PhysicalIntensity {
+  min?: number | null;
+  max?: number | null;
+}
+
+export interface Prerequisite {
+  name?: string;
+  description?: string | null;
+  activity?: Activity;
+}
 
 export interface Activity {
-  id: number;
-  name: string;
-  description: string;
-  referral_url: string | null;
-  referral_phone: string | null;
-  referral_email: string | null;
-  booking_required: boolean;
-  default_max_group_size: number;
-  default_experience_level: ExperienceLevel | null;
-  default_intensity: Intensity | null;
-  default_age_range: AgeRange;
-  host: Host;
-  categories: Category[];
-  location: Location;
-  accessibility: Accessibility[];
-  media: Media[];
+  id?: number;
+  name?: string;
+  description?: string;
+  referral_url?: string | null;
+  referral_phone?: string | null;
+  referral_email?: string | null;
+  booking_required?: boolean;
+  max_group_size?: number | null;
+  prerequisites?: Prerequisite[];
+  physical_intensity?: PhysicalIntensity;
+  age_range?: AgeRange;
+  host?: Host;
+  categories?: Category[];
+  location?: Location;
+  accessibility?: Accessibility[];
+  media?: Media[];
 }
 
 export interface Data {
-  activities: Activity[];
+  activities?: Activity[];
 }
