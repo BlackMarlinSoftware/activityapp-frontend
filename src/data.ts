@@ -10,6 +10,7 @@ export const data: Data = {
       referral_url: 'https://brockwellarchery.com/book',
       referral_phone: null,
       referral_email: null,
+      booking_required: true,
       default_max_group_size: 15,
       default_intensity: 3,
       default_experience_level: 2,

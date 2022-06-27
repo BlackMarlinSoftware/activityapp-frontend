@@ -232,6 +232,7 @@ export interface Activity {
   referral_url: string | null;
   referral_phone: string | null;
   referral_email: string | null;
+  booking_required: boolean;
   default_max_group_size: number;
   default_experience_level: ExperienceLevel | null;
   default_intensity: Intensity | null;
