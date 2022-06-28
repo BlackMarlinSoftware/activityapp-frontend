@@ -110,7 +110,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Velodrome,
+          name: CategoryName.Kickboxing,
         },
       ],
       age_min: 14,
