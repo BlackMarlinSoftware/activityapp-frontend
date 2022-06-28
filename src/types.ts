@@ -192,23 +192,19 @@ export interface Category {
 
 export interface Host {
   name?: string;
-  logo?: string | null;
+  logo_url?: string | null;
 }
 
 export interface Amenity {
   name?: string;
 }
 
-export interface AgeRange {
-  from?: number | null;
-  to?: number | null;
-}
-
 export interface Location {
   name?: string;
   address?: string | null;
   postcode?: string | null;
-  lat_long?: string | null;
+  lat?: string;
+  long?: string;
   outdoors?: boolean;
   amenities?: Amenity[];
   directions?: string | null;
@@ -224,10 +220,7 @@ export interface Media {
   caption?: string | null;
 }
 
-export interface PhysicalIntensity {
-  min?: number | null;
-  max?: number | null;
-}
+export type PhysicalIntensity = number | null;
 
 export interface Prerequisite {
   name?: string;
@@ -243,10 +236,13 @@ export interface Activity {
   referral_phone?: string | null;
   referral_email?: string | null;
   booking_required?: boolean;
-  max_group_size?: number | null;
   prerequisites?: Prerequisite[];
-  physical_intensity?: PhysicalIntensity;
-  age_range?: AgeRange;
+  group_size_min?: number | null;
+  group_size_max?: number | null;
+  physical_intensity_min?: PhysicalIntensity;
+  physical_intensity_max?: PhysicalIntensity;
+  age_min?: number | null;
+  age_max?: number | null;
   host?: Host;
   categories?: Category[];
   location?: Location;
