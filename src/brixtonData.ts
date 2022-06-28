@@ -7,7 +7,7 @@ export const brixtonData: Data = {
       name: 'Vinyasa Flow Yoga',
       description:
         'Switch off, tune in and find your flow in this popular Vinyasa practice, focusing on syncing breath to movement in a flow designed to build heat, endurance, flexibility and strength. Our sun salutations (surya namaskar) are open to all levels and all are welcome. Expect options to suit your practice whether you want to challenge yourself or take it easy. All this wrapped into 45 minutes, enough time to get your yoga fix in. Open level.',
-      referral_url: 'https://www.moreyoga.co.uk/gb/brixton/schedule-list',
+      referral_url: 'https://www.moreyoga.co.uk/timetables/',
       referral_phone: null,
       referral_email: null,
       booking_required: true,
