@@ -1,4 +1,3 @@
-// <script>0</script>
 import Document, { DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
