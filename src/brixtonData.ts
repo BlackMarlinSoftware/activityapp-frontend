@@ -61,7 +61,7 @@ export const brixtonData: Data = {
           name: 'Velodrome Training Accreditation',
           description:
             'Our Training Accreditation is designed to ensure that all riders meet the required skill level to ensure they can safely participate in our  Intermediate and Race Training sessions (14yrs+)',
-          activity: { id: 1 },
+          activity: { id: '57b9aff3019542daafd4777ef18d5fe6' },
         },
       ],
       host: {
@@ -217,7 +217,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'flow_dance_oval.jpeg',
+          url: 'flow_dance_ballroom.jpeg',
           caption: null,
         },
       ],
