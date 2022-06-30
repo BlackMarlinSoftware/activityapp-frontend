@@ -37,6 +37,7 @@ export enum CategoryName {
   'Weightlifting',
   'Motor sports',
   'Model making',
+  'Sightseeing',
   // Individual activity categories
   'Breakdancing',
   'Cheerleading',
@@ -183,6 +184,9 @@ export enum CategoryName {
   'Pilates',
   'Cinema',
   'Zoo',
+  'Bootcamp',
+  'Softplay',
+  'PaintYourOwnPottery',
 }
 
 export interface Category {
