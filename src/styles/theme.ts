@@ -97,4 +97,6 @@ const theme = {
   },
 };
 
+export const spacing = theme.scale.spacing;
+
 export default theme;
