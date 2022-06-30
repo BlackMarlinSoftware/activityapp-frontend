@@ -3,7 +3,7 @@ import { CategoryName, Data } from './types';
 export const brixtonData: Data = {
   activities: [
     {
-      id: 2,
+      id: '57b9aff3019542daafd4777ef18d5fe6',
       name: 'Vinyasa Flow Yoga',
       description:
         'Switch off, tune in and find your flow in this popular Vinyasa practice, focusing on syncing breath to movement in a flow designed to build heat, endurance, flexibility and strength. Our sun salutations (surya namaskar) are open to all levels and all are welcome. Expect options to suit your practice whether you want to challenge yourself or take it easy. All this wrapped into 45 minutes, enough time to get your yoga fix in. Open level.',
@@ -38,13 +38,13 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'more_yoga_brixton',
+          url: 'more_yoga_brixton.jpeg',
           caption: 'The studio',
         },
       ],
     },
     {
-      id: 3,
+      id: '1fb8768801da46dfb158132864da99d1',
       name: 'Velodrome Training (Intermediate)',
       description:
         'After successfully completing our Training Accreditation riders aged 14yrs+ are able to access Adult Intermediate Training, Adult Sprint Training and Race Training sessions. Intermediate Training focuses on working hard with other riders. Race Training is all about skills, tactics and learning how to race safely and successfully. Sprint training focuses on preparing riders for short, fast, sprint events, working on the skills and physicality required for this discipline. We recommended that riders regularly attend these training sessions before attempting their Race Accreditation.',
@@ -61,7 +61,7 @@ export const brixtonData: Data = {
           name: 'Velodrome Training Accreditation',
           description:
             'Our Training Accreditation is designed to ensure that all riders meet the required skill level to ensure they can safely participate in our  Intermediate and Race Training sessions (14yrs+)',
-          activity: { id: 1 },
+          activity: { id: '57b9aff3019542daafd4777ef18d5fe6' },
         },
       ],
       host: {
@@ -86,13 +86,13 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'herne_hill_velodrome_intermediate_training',
+          url: 'herne_hill_velodrome_intermediate_training.jpeg',
           caption: null,
         },
       ],
     },
     {
-      id: 4,
+      id: 'df9dc45089ef407b8a950e332070dcc8',
       name: 'Chinese Kickboxing (Sanda) Class',
       description:
         'Sessions taught by British Sanda Champion Joshua Villar. Learn how to fight and compete in a high octane and explosive martial art. Be pushed to your physical limit. Sanda blends the traditions of Kung Fu with modern Kickboxing, creating a fast paced, dynamic combat sport. Work with us and we’ll give you everything you need to achieve your physical goals and unlock your inner grit. Start your Sanda journey today.',
@@ -127,13 +127,13 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'wushu_sanda',
+          url: 'wushu_sanda.jpeg',
           caption: null,
         },
       ],
     },
     {
-      id: 5,
+      id: 'b8bfa4ff6c3e46b0b5703256dcfbbecd',
       name: 'Social Chess',
       description:
         "You can play casual chess at Streatham Library every Tuesday throughout the year. We meet in the Mark Bennett Community Centre from 4.30 to 7.30 pm and players of all ages and abilities are welcome, including beginners. We ask that children under 10 are accompanied by an adult. There is nothing to pay and you don't have to be a member of Streatham & Brixton Chess Club to participate. Strong players often drop by for a few games of blitz chess and several of our Tuesday afternoon regulars also play for our league teams. Members of the informal library chess group also have the opportunity to take part in more organized events, such as club rapidplays.",
@@ -168,13 +168,13 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'chess_streatham_library',
+          url: 'chess_streatham_library.jpeg',
           caption: null,
         },
       ],
     },
     {
-      id: 6,
+      id: 'da4afecc657f4347a8e113f60aa66545',
       name: 'Ballroom and Latin for Beginners',
       description:
         'We take 2 dances every 3 weeks spending 30min on a Ballroom and 30min on a Latin dance each time. Week 1 - learn the rhythms and basics, week 2 - revise and learn new steps, week 3 - revise and practice. Over a period of 12 weeks you will learn the basics of 8 Ballroom & Latin dances and acquire the most important couple dancing skills of leading and following. Our friendly and professional teachers are fully qualified and have tons of experience to make sure you feel comfortable from lesson one. We can guarantee that you will be dancing gracefully by the end of this program!',
@@ -217,13 +217,13 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'flow_dance_oval',
+          url: 'flow_dance_ballroom.jpeg',
           caption: null,
         },
       ],
     },
     {
-      id: 7,
+      id: '08739a4bb630427e9dec7b105113d8eb',
       name: 'Brockwell parkrun',
       description:
         "A free, fun, and friendly weekly 5k community event. Walk, jog, run, volunteer or spectate - it's up to you!",
@@ -260,7 +260,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'brockwell_parkrun',
+          url: 'brockwell_parkrun.jpeg',
           caption: null,
         },
       ],

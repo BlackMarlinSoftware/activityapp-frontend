@@ -229,7 +229,7 @@ export interface Prerequisite {
 }
 
 export interface Activity {
-  id?: number;
+  id?: string;
   name?: string;
   description?: string;
   referral_url?: string | null;
