@@ -203,7 +203,10 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.PaintYourOwnPottery,
+          name: CategoryName['Painting and drawing'],
+        },
+        {
+          name: CategoryName.Pottery,
         },
       ],
       age_min: null,

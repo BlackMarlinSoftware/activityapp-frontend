@@ -186,7 +186,6 @@ export enum CategoryName {
   'Zoo',
   'Bootcamp',
   'Softplay',
-  'PaintYourOwnPottery',
 }
 
 export interface Category {
