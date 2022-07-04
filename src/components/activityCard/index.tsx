@@ -20,16 +20,6 @@ const ActivityCard = ({ activity }: activityCardProps): JSX.Element => {
         <h6>{activity.location?.address}</h6>
         <p>{activity.description}</p>
         <h6>Operated by {activity.host?.name}</h6>
-
-        {activity.categories?.map(({ name }) => {
-          const CategoryIcon = name ? allCategoryIcons[name] : NoIcon;
-          return (
-            <div key={name} style={{ display: 'flex' }}>
-              <CategoryIcon />
-              <p>{name}</p>
-            </div>
-          );
-        })}
       </ContentContainer>
     </ActivityContainer>
   );
