@@ -2,7 +2,7 @@ import { CategoryLevel1, CategoryLevel2, CategoryLevel3 } from '../../types';
 
 import NoIcon from './activity-icons/NoIcon';
 import Cycling from './activity-icons/Cycling';
-import Active from './activity-icons/Active';
+import Active from './activity-icons/Lightning';
 import Football from './activity-icons/Football';
 import People from './activity-icons/People';
 import Spa from './activity-icons/Spa';

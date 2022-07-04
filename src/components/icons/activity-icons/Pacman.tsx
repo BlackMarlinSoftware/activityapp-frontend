@@ -3,8 +3,8 @@ import withSvgColour from '../withSvgColour';
 const Icon = (): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
     <g fill="currentColor">
-      <circle cx="8" cy="2" r="2"></circle>
-      <path d="M14.9,3.553a1,1,0,0,0-1.342-.448L9.764,5H2A1,1,0,0,0,2,7H5v3.764L3.105,14.553a1,1,0,0,0,1.79.894L6.618,12H9v3a1,1,0,0,0,2,0V6.618l3.447-1.723A1,1,0,0,0,14.9,3.553Z"></path>
+      <circle cx="14.5" cy="8" r="1.5" data-color="color-2"></circle>
+      <path d="M15.174,4.436,14.923,4a8,8,0,1,0,0,7.994l.251-.433L9,8ZM8.5,4.5a1,1,0,1,1,1,1A1,1,0,0,1,8.5,4.5Z"></path>
     </g>
   </svg>
 );
