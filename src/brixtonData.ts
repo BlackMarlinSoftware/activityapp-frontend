@@ -21,7 +21,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Yoga,
+          name: 'Yoga',
         },
       ],
       age_min: 16,
@@ -69,7 +69,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Velodrome,
+          name: 'Velodrome',
         },
       ],
       age_min: 14,
@@ -110,7 +110,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Kickboxing,
+          name: 'Kickboxing',
         },
       ],
       age_min: 14,
@@ -151,7 +151,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Chess,
+          name: 'Chess',
         },
       ],
       age_min: null,
@@ -192,13 +192,13 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName['Ballroom dancing'],
+          name: 'Ballroom dancing',
         },
         {
-          name: CategoryName['Latin dancing'],
+          name: 'Latin dancing',
         },
         {
-          name: CategoryName['Salsa dancing'],
+          name: 'Salsa dancing',
         },
       ],
       age_min: null,
@@ -241,7 +241,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName['5K run'],
+          name: '5K run',
         },
       ],
       age_min: null,

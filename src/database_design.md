@@ -6,7 +6,6 @@
 
 - `id` _number_
 - `name` _string_
-- `parent_category_id` _foreign key_
 
 ### `activities`
 
@@ -77,6 +76,11 @@
 - `name` _string_
 
 ## Link tables
+
+### `categories_x_parent_categories`
+
+- `category_id` _foreign key_
+- `parent_category_id` _foreign key_
 
 ### `activities_x_categories`
 

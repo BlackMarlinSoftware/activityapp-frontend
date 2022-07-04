@@ -23,7 +23,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Yoga,
+          name: 'Yoga',
         },
       ],
       age_min: 16,
@@ -63,7 +63,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Chess,
+          name: 'Chess',
         },
       ],
       age_min: 16,
@@ -116,7 +116,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Bootcamp,
+          name: 'Bootcamp',
         },
       ],
       age_min: 16,
@@ -157,7 +157,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Softplay,
+          name: 'Softplay',
         },
       ],
       age_min: 1,
@@ -203,10 +203,10 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName['Painting and drawing'],
+          name: 'Painting and drawing',
         },
         {
-          name: CategoryName.Pottery,
+          name: 'Pottery',
         },
       ],
       age_min: null,
@@ -247,7 +247,7 @@ export const brixtonData: Data = {
       },
       categories: [
         {
-          name: CategoryName.Sightseeing,
+          name: 'Sightseeing',
         },
       ],
       age_min: null,
