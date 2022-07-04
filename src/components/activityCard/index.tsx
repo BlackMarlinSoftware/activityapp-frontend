@@ -1,7 +1,5 @@
 import { Activity } from '../../types';
 import { ActivityContainer, ImageContainer, ContentContainer, Image } from './styles';
-import { allCategoryIcons } from '../icons/index';
-import NoIcon from '../icons/activity-icons/NoIcon';
 
 interface activityCardProps {
   activity: Activity;
@@ -17,7 +15,7 @@ const ActivityCard = ({ activity }: activityCardProps): JSX.Element => {
       </ImageContainer>
       <ContentContainer>
         <h5>{activity.name}</h5>
-        <h6>{activity.location?.address}</h6>
+        <h6>{activity.location?.name}</h6>
         <p>{activity.description}</p>
         <h6>Operated by {activity.host?.name}</h6>
       </ContentContainer>
