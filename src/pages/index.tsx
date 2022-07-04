@@ -13,7 +13,9 @@ const Home: NextPage = () => (
 
     <main>
       <h1>Activities</h1>
-      {brixtonData.activities?.map((activity) => <ActivityCard activity={activity} key={activity.id} />)}
+      {brixtonData.activities?.map((activity) => (
+        <ActivityCard activity={activity} key={activity.id} />
+      ))}
     </main>
   </div>
 );
