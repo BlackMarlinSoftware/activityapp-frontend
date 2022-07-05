@@ -1,6 +1,6 @@
 import { CategoryName, Data } from './types';
 
-export const brixtonData: Data = {
+export const reigateData: Data = {
   activities: [
     {
       id: '57b458c4-dc6e-49b9-aeeb-88967fba8c2c',
@@ -40,7 +40,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: '57b458c4-dc6e-49b9-aeeb-88967fba8c2c/1.jpeg',
+          url: '1.jpeg',
           caption: 'The studio',
         },
       ],
@@ -80,7 +80,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: '4fe009ce-dd01-46f4-b4b8-e82022a053d3/chess-playing-hand.jpeg',
+          url: 'chess-playing-hand.jpeg',
           caption: 'Chess game',
         },
       ],
@@ -133,7 +133,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: 'e3fdd079-c25c-43ad-8427-767fbec0c679/IMG_20220514_142916.jpeg',
+          url: 'IMG_20220514_142916.jpeg',
           caption: 'Priory Park',
         },
       ],
@@ -174,7 +174,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: '32251b0c-2f3f-4283-9bad-99728df1d710/wkGalleryImage7-5f4fdd394e72d43e7b25d56f0241c65f.jpeg',
+          url: 'wkGalleryImage7-5f4fdd394e72d43e7b25d56f0241c65f.jpeg',
           caption: 'Softplay',
         },
       ],
@@ -223,7 +223,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: '6ca30134-cce5-4605-8bdb-92669180c7b9/Screenshot 2022-06-30 at 21.28.00.png',
+          url: 'Screenshot 2022-06-30 at 21.28.00.png',
           caption: 'Pottery',
         },
       ],
@@ -264,7 +264,7 @@ export const brixtonData: Data = {
       accessibility: [],
       media: [
         {
-          url: '4c72fc94-9935-443a-bf9f-d3ef02bba919/Barons-Cave-scaled-e1599588485386.jpeg',
+          url: 'Barons-Cave-scaled-e1599588485386.jpeg',
           caption: 'Caves',
         },
       ],
