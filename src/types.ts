@@ -208,8 +208,8 @@ export interface Location {
   name?: string;
   address?: string | null;
   postcode?: string | null;
-  lat?: string;
-  long?: string;
+  lat?: number;
+  long?: number;
   outdoors?: boolean;
   amenities?: Amenity[];
   directions?: string | null;

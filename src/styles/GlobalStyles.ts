@@ -7,6 +7,11 @@ const GlobalStyles = createGlobalStyle`
   ${normalizeCSS};
   ${inter};
   ${typography};
+  
+  // General global things:
+  .mapboxgl-control-container {
+    display: none;
+  }
 `;
 
 export default GlobalStyles;
