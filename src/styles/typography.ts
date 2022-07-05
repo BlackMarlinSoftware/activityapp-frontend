@@ -11,7 +11,6 @@ export default css`
     font-family: sans-serif;
     font-size: 1rem;
     line-height: 1.5rem;
-    max-width: 560px;
     margin: auto;
   }
   h1,
