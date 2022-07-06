@@ -5,7 +5,7 @@ export const Button = styled.button.attrs({ type: 'button' })`
   display: flex;
   margin-right: ${spacing['3']};
   border: 0;
-  padding: ${spacing['1']};
+  padding: ${spacing['2']};
   border-radius: 100%;
   color: ${theme.colors.supporting.red['7']};
   
