@@ -1,6 +1,4 @@
 import { Activity } from '../../types';
-import { allCategoryIcons } from '../icons';
-import NoIcon from '../icons/activity-icons/NoIcon';
 import { ActivityContainer, ImageContainer, ContentContainer, Image } from './styles';
 
 interface activityCardProps {
