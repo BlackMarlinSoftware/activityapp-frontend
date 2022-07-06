@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   background-color: white;
   padding: ${spacing['5']};
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Logo = styled.div`
@@ -20,4 +21,5 @@ export const Menu = styled.div`
 
 export const Shortcuts = styled.div`
   display: flex;
+  align-items: center;
 `;
