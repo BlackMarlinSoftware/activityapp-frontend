@@ -1,26 +1,31 @@
 import { Activity } from '../../types';
-import { allCategoryIcons } from '../icons';
-import NoIcon from '../icons/activity-icons/NoIcon';
-import { ActivityContainer, ImageContainer, ContentContainer, Image } from './styles';
+import { ActivityContainer, ActivityDetails, Description, ActivityImage } from './styles';
+import theme from '../../styles/theme';
 
-interface activityCardProps {
+interface Props {
   activity: Activity;
 }
 
-const ActivityCard = ({ activity }: activityCardProps): JSX.Element => {
+const ActivityCard = ({ activity }: Props): JSX.Element => {
   return (
     <ActivityContainer>
-      <ImageContainer>
-        {activity.media?.length && (
-          <Image src={`/images/${activity.id}/${activity.media[0].url}`} alt={activity.media[0].caption ?? ''} />
-        )}
-      </ImageContainer>
-      <ContentContainer>
-        <h5>{activity.name}</h5>
-        <h6>{activity.location?.name}</h6>
-        <p>{activity.description}</p>
-        <h6>Operated by {activity.host?.name}</h6>
-      </ContentContainer>
+      <div>
+        <ActivityImage
+          src={`/images/${activity.id}/${activity.media[0].url}`}
+          alt={activity.media[0].caption || undefined}
+          layout="responsive"
+          objectFit="cover"
+          width={theme.scale.spacing[12]}
+          height={theme.scale.spacing[11]}
+        />
+      </div>
+
+      <ActivityDetails>
+        <h3>{activity.name}</h3>
+        <h4>{activity.location?.name}</h4>
+        <Description>{activity.description}</Description>
+        <h4>Operated by {activity.host?.name}</h4>
+      </ActivityDetails>
     </ActivityContainer>
   );
 };

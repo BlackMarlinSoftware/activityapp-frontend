@@ -252,7 +252,7 @@ export interface Activity {
   categories?: Category[];
   location?: Location;
   accessibility?: Accessibility[];
-  media?: Media[];
+  media: Media[];
 }
 
 export interface Data {

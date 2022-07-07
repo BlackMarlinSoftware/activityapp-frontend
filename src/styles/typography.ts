@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import theme from './theme';
 
 export default css`
   html,
@@ -44,14 +45,7 @@ export default css`
     line-height: 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: 0rem;
-  }
-  h5,
-  .h5 {
-    font-family: Inter, sans-serif;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0rem;
+    color: ${theme.colors.neutral['6']};
   }
   p,
   ul,
