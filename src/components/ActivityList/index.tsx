@@ -1,13 +1,13 @@
 import { Data } from '../../types';
 import ActivityCard from '../ActivityCard';
-import { ActivityRows } from './styles';
+import { ActivityRows, ListArea } from './styles';
 
 interface Props {
   data: Data;
 }
 
 const ActivityList = ({ data }: Props): JSX.Element => (
-  <div>
+  <ListArea>
     <h4>{data.activities?.length} cycling activities in Brixton, London</h4>
 
     <ActivityRows>
@@ -15,7 +15,7 @@ const ActivityList = ({ data }: Props): JSX.Element => (
         <ActivityCard activity={activity} key={activity.id} />
       ))}
     </ActivityRows>
-  </div>
+  </ListArea>
 );
 
 export default ActivityList;
