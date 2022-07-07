@@ -10,6 +10,13 @@ export const ActivityContainer = styled.div`
 
 export const ActivityDetails = styled.div`
   padding: ${spacing[2]} 0;
+
+  p,
+  h4,
+  h5 {
+    margin-top: 0;
+    margin-bottom: ${spacing[2]};
+  }
 `;
 
 export const Description = styled.p`

@@ -21,10 +21,9 @@ const ActivityCard = ({ activity }: Props): JSX.Element => {
       </div>
 
       <ActivityDetails>
-        <h3>{activity.name}</h3>
-        <h4>{activity.location?.name}</h4>
+        <h4>{activity.name}</h4>
+        <h5>{activity.location?.name}</h5>
         <Description>{activity.description}</Description>
-        <h4>Operated by {activity.host?.name}</h4>
       </ActivityDetails>
     </ActivityContainer>
   );
