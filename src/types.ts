@@ -250,7 +250,7 @@ export interface Activity {
   age_max?: number | null;
   host?: Host;
   categories?: Category[];
-  location?: Location;
+  location: Location;
   accessibility?: Accessibility[];
   media: Media[];
 }

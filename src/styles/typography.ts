@@ -17,6 +17,8 @@ export default css`
   p {
     font-size: 0.875rem;
     line-height: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
   }
   h1,
   .h1 {
@@ -61,7 +63,6 @@ export default css`
     margin-bottom: 0rem;
     color: ${theme.colors.neutral[6]};
   }
-  p,
   ul,
   ol,
   pre,
