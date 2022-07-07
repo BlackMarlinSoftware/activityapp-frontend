@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { brixtonData } from '../brixtonData';
-import ActivityCard from '../components/ActivityCard';
+import ActivityList from '../components/ActivityList';
 
 const Home: NextPage = () => (
   <div>
@@ -12,9 +12,7 @@ const Home: NextPage = () => (
     </Head>
 
     <main>
-      {brixtonData.activities?.map((activity) => (
-        <ActivityCard activity={activity} key={activity.id} />
-      ))}
+      <ActivityList data={brixtonData} />
     </main>
   </div>
 );
