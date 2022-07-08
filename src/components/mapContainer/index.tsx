@@ -1,7 +1,7 @@
 import { Container } from './styles';
 import Map, { Marker, Popup } from 'react-map-gl';
 import { Data } from '../../types';
-import ActivityCardMap from '../ActivityCardMap';
+import ActivityCardMap from '../ActivityCardMap2';
 
 interface mapContainerProps {
   data: Data;
