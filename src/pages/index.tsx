@@ -8,10 +8,9 @@ import { ACTIVITIES } from '../queries/activities.query';
 
 interface Props {
   activities: Activity[];
-  error?: ApolloError;
 }
 
-const Home: NextPage<Props> = ({ activities, error }) => (
+const Home: NextPage<Props> = ({ activities }) => (
   <div>
     <Head>
       <title>Activities App</title>
@@ -20,7 +19,6 @@ const Home: NextPage<Props> = ({ activities, error }) => (
     </Head>
 
     <main>
-      {error && <p>{error.message}</p>}
       <ActivityList activities={activities} />
     </main>
   </div>
@@ -28,15 +26,14 @@ const Home: NextPage<Props> = ({ activities, error }) => (
 
 export default Home;
 
-export async function getServerSideProps() {
-  const { data, error } = await client.query({
+export async function getServerSideProps(): Promise<{ props: Props }> {
+  const { data } = await client.query({
     query: ACTIVITIES,
   });
 
   return {
     props: {
       activities: data.activities,
-      error,
     },
   };
 }
