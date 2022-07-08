@@ -2,11 +2,11 @@ import { Activity } from '../../types';
 import { ActivityContainer, ContentContainer, ImageContainer } from './styles';
 import Image from 'next/image';
 
-interface activityCardMapProps {
+interface Props {
   activity: Activity;
 }
 
-const ActivityCardMap = ({ activity }: activityCardMapProps): JSX.Element => {
+const ActivityCardMap = ({ activity }: Props): JSX.Element => {
   return (
     <ActivityContainer>
       <ImageContainer>
