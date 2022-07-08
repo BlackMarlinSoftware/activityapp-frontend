@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import MapContainer from '../components/MapContainer';
+import MapContainer from '../components/MapContainer2';
 import Head from 'next/head';
 import { brixtonData } from '../brixtonData';
 import styled from 'styled-components';
