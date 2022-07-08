@@ -6,7 +6,7 @@ interface Props {
   activity: Activity;
 }
 
-const ActivityListItem = ({ activity }: Props): JSX.Element => {
+const ActivityCard = ({ activity }: Props): JSX.Element => {
   return (
     <ActivityContainer>
       <div>
@@ -29,4 +29,4 @@ const ActivityListItem = ({ activity }: Props): JSX.Element => {
   );
 };
 
-export default ActivityListItem;
+export default ActivityCard;

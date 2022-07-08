@@ -1,5 +1,5 @@
 import { Data } from '../../types';
-import ActivityListItem from '../ActivityListItem';
+import ActivityCard from '../ActivityCard';
 import { ActivityRows, ListArea } from './styles';
 
 interface Props {
@@ -12,7 +12,7 @@ const ActivityList = ({ data }: Props): JSX.Element => (
 
     <ActivityRows>
       {data.activities?.map((activity) => (
-        <ActivityListItem activity={activity} key={activity.id} />
+        <ActivityCard activity={activity} key={activity.id} />
       ))}
     </ActivityRows>
   </ListArea>
