@@ -1,0 +1,16 @@
+overwrite: true
+schema: 'schema.json'
+documents: 'src/queries/*.ts'
+generates:
+  src/generated/graphql.tsx:
+    config:
+      scalars:
+        numeric: number
+        uuid: string
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'

@@ -1,9 +1,9 @@
-import { Activity } from '../../types';
+import { ActivitiesQuery } from '../../generated/graphql';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, ListArea } from './styles';
 
 interface Props {
-  activities: Activity[];
+  activities: ActivitiesQuery['activities'];
 }
 
 const ActivityList = ({ activities }: Props): JSX.Element => (

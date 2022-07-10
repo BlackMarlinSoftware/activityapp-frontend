@@ -1,19 +1,21 @@
-import { Activity } from '../../types';
+import { ActivitiesQuery } from '../../generated/graphql';
 import { ActivityContainer, ContentContainer, ImageContainer } from './styles';
 import Image from 'next/image';
 
 interface Props {
-  activity: Activity;
+  activity: ActivitiesQuery['activities'][0];
 }
 
 const ActivityCardMap = ({ activity }: Props): JSX.Element => {
+  const firstImage = activity.activities_x_media[0];
+
   return (
     <ActivityContainer>
       <ImageContainer>
-        {activity.media?.length && (
+        {firstImage && (
           <Image
-            src={`/images/${activity.id}/${activity.media[0].url}`}
-            alt={activity.media[0].caption ?? ''}
+            src={`/images/${activity.id}/${firstImage.media.path}`}
+            alt={firstImage.media.caption ?? ''}
             layout="responsive"
             width={100}
             height={100}

@@ -1,10 +1,10 @@
 import { Container } from './styles';
 import Map, { Marker } from 'react-map-gl';
-import { Activity } from '../../types';
+import { ActivitiesQuery } from '../../generated/graphql';
 import ActivityCardMap from '../ActivityCardMap';
 
 interface Props {
-  activities: Activity[];
+  activities: ActivitiesQuery['activities'];
 }
 
 const MapContainer = ({ activities }: Props): JSX.Element => (

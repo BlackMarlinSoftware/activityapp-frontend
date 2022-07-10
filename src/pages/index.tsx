@@ -1,13 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import ActivityList from '../components/ActivityList';
 import client from '../apollo-client';
-import { Activity } from '../types';
+import { ActivitiesQuery } from '../generated/graphql';
 import { ACTIVITIES } from '../queries/activities.query';
 
 interface Props {
-  activities: Activity[];
+  activities: ActivitiesQuery['activities'];
 }
 
 const Home: NextPage<Props> = ({ activities }) => (
@@ -27,7 +26,7 @@ const Home: NextPage<Props> = ({ activities }) => (
 export default Home;
 
 export async function getServerSideProps(): Promise<{ props: Props }> {
-  const { data } = await client.query({
+  const { data } = await client.query<ActivitiesQuery>({
     query: ACTIVITIES,
   });
 

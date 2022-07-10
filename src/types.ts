@@ -190,71 +190,71 @@ export type CategoryLevel3 =
 
 export type CategoryName = CategoryLevel1 | CategoryLevel2 | CategoryLevel3;
 
-export interface Category {
-  name?: CategoryName;
-  parent_categories?: Category[];
-}
+// export interface Category {
+//   name?: CategoryName;
+//   parent_categories?: Category[];
+// }
 
-export interface Host {
-  name?: string;
-  logo_url?: string | null;
-}
+// export interface Host {
+//   name?: string;
+//   logo_url?: string | null;
+// }
 
-export interface Amenity {
-  name?: string;
-}
+// export interface Amenity {
+//   name?: string;
+// }
 
-export interface Location {
-  name?: string;
-  address?: string | null;
-  postcode?: string | null;
-  lat?: number;
-  long?: number;
-  outdoors?: boolean;
-  amenities?: Amenity[];
-  directions?: string | null;
-}
+// export interface Location {
+//   name?: string;
+//   address?: string | null;
+//   postcode?: string | null;
+//   lat?: number;
+//   long?: number;
+//   outdoors?: boolean;
+//   amenities?: Amenity[];
+//   directions?: string | null;
+// }
 
-export interface Accessibility {
-  name?: 'Wheelchair User' | 'Hearing Loss' | 'Visual Impairment' | 'Motor Skills' | 'Learning Disability';
-  details?: string;
-}
+// export interface Accessibility {
+//   name?: 'Wheelchair User' | 'Hearing Loss' | 'Visual Impairment' | 'Motor Skills' | 'Learning Disability';
+//   details?: string;
+// }
 
-export interface Media {
-  url?: string;
-  caption?: string | null;
-}
+// export interface Media {
+//   url?: string;
+//   caption?: string | null;
+// }
 
-export type PhysicalIntensity = number | null;
+// export type PhysicalIntensity = number | null;
 
-export interface Prerequisite {
-  name?: string;
-  description?: string | null;
-  activity?: Activity;
-}
+// export interface Prerequisite {
+//   name?: string;
+//   description?: string | null;
+//   activity?: Activity;
+// }
 
-export interface Activity {
-  id?: string;
-  name?: string;
-  description?: string;
-  referral_url?: string | null;
-  referral_phone?: string | null;
-  referral_email?: string | null;
-  booking_required?: boolean;
-  prerequisites?: Prerequisite[];
-  group_size_min?: number | null;
-  group_size_max?: number | null;
-  physical_intensity_min?: PhysicalIntensity;
-  physical_intensity_max?: PhysicalIntensity;
-  age_min?: number | null;
-  age_max?: number | null;
-  host?: Host;
-  categories?: Category[];
-  location: Location;
-  accessibility?: Accessibility[];
-  media: Media[];
-}
+// export interface Activity {
+//   id?: string;
+//   name?: string;
+//   description?: string;
+//   referral_url?: string | null;
+//   referral_phone?: string | null;
+//   referral_email?: string | null;
+//   booking_required?: boolean;
+//   prerequisites?: Prerequisite[];
+//   group_size_min?: number | null;
+//   group_size_max?: number | null;
+//   physical_intensity_min?: PhysicalIntensity;
+//   physical_intensity_max?: PhysicalIntensity;
+//   age_min?: number | null;
+//   age_max?: number | null;
+//   host?: Host;
+//   categories?: Category[];
+//   location: Location;
+//   accessibility?: Accessibility[];
+//   media: Media[];
+// }
 
-export interface Data {
-  activities?: Activity[];
-}
+// export interface Data {
+//   activities?: Activity[];
+// }
