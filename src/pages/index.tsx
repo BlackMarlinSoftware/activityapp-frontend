@@ -28,6 +28,7 @@ export default Home;
 export async function getServerSideProps(): Promise<{ props: Props }> {
   const { data } = await client.query<ActivitiesQuery>({
     query: ACTIVITIES,
+    fetchPolicy: 'no-cache',
   });
 
   return {
