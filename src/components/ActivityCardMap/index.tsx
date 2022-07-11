@@ -31,6 +31,7 @@ const ActivityCardMap = ({ activity }: activityCardMapProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   console.log(isOpen);
+
   return (
     <>
       {activity && activity.media && activity.media.length > 0 ? (
@@ -76,6 +77,7 @@ const ActivityCardMap = ({ activity }: activityCardMapProps): JSX.Element => {
               </PopoverCard>
             )}
           >
+            {/*// @ts-ignore*/}
             <Pin open={isOpen}>
               <ActivityIcon colour={isOpen ? 'white' : 'black'}></ActivityIcon>
             </Pin>
