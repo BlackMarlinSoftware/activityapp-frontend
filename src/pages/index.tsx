@@ -9,6 +9,7 @@ import styled from 'styled-components';
 export const ActivityContainer = styled.div`
   background-color: white;
   width: 700px;
+  max-height: 100%;
 `;
 
 const Home: NextPage = () => (

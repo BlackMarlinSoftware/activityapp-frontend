@@ -12,4 +12,12 @@ export const Container = styled.div`
 export const List = styled.div`
   width: 50%;
   background-color: white;
+  max-height: 100%;
+  overflow: auto;
+`;
+
+export const ActivityContainer = styled.div`
+  background-color: white;
+  width: 100%;
+  max-height: 100%;
 `;
