@@ -1,21 +1,19 @@
 import { Container } from './styles';
 import Map, { Marker, Popup } from 'react-map-gl';
 import { Data } from '../../types';
-import ActivityCardMap from '../activityCardMap';
+import {ViewState} from 'react-map-gl/dist/esm/types/external';
+import ActivityCardMap from '../ActivityCardMap';
 
 interface mapContainerProps {
   data: Data;
+  initialViewState: Partial<ViewState>;
 }
 
-const MapContainer = ({ data }: mapContainerProps): JSX.Element => {
+const MapContainer = ({ data, initialViewState }: mapContainerProps): JSX.Element => {
   return (
     <Container>
-      <Map
-        initialViewState={{
-          latitude: 51.4542506,
-          longitude: -0.1166653,
-          zoom: 14,
-        }}
+      {data && initialViewState && <Map
+        initialViewState={{...initialViewState, zoom: 14}}
         style={{ width: '100%', height: '100%' }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
@@ -34,7 +32,7 @@ const MapContainer = ({ data }: mapContainerProps): JSX.Element => {
             )}
           </>
         ))}
-      </Map>
+      </Map>}
     </Container>
   );
 };

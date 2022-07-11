@@ -1,3 +1,7 @@
+import {reigateData} from './reigateData';
+import {brixtonData} from './brixtonData';
+import {ViewState} from 'react-map-gl/dist/esm/types/external';
+
 export type CategoryLevel1 = 'Active' | 'Social' | 'Creative' | 'Leisure' | 'Educational' | 'Other';
 
 export type CategoryLevel2 =
@@ -250,11 +254,32 @@ export interface Activity {
   age_max?: number | null;
   host?: Host;
   categories?: Category[];
-  location?: Location;
+  location: Location;
   accessibility?: Accessibility[];
-  media?: Media[];
+  media: Media[];
 }
 
 export interface Data {
   activities?: Activity[];
+}
+
+export enum LOCATIONS {
+  BRIXTON = 'Brixton',
+  REIGATE = 'Reigate'
+}
+
+export const dataSelection: Record<string, Data> = {
+  [LOCATIONS.REIGATE]: reigateData,
+  [LOCATIONS.BRIXTON]: brixtonData
+}
+
+export const initialViewStateSelection: Record<string, Partial<ViewState>> = {
+  [LOCATIONS.REIGATE]: {
+    latitude: 51.2362084,
+    longitude: -0.2066982,
+  },
+  [LOCATIONS.BRIXTON]: {
+    latitude: 51.4542506,
+    longitude: -0.1166653,
+  }
 }

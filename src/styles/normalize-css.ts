@@ -9,7 +9,6 @@ export default css`
 
   body {
     margin: 0;
-    background-color: #e8e8e9;
   }
 
   main {

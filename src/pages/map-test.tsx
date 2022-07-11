@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
-import MapContainer from '../components/mapContainer';
+import MapContainer from '../components/MapContainer';
 import Head from 'next/head';
 import { brixtonData } from '../brixtonData';
 import styled from 'styled-components';
+import {initialViewStateSelection, LOCATIONS} from '../types';
 
 export const Container = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ const MapTest: NextPage = () => (
       <ThrowawayExample>
         <div>main content</div>
       </ThrowawayExample>
-      <MapContainer data={brixtonData} />
+      <MapContainer data={brixtonData} initialViewState={initialViewStateSelection[LOCATIONS.BRIXTON]} />
     </Container>
   </div>
 );
