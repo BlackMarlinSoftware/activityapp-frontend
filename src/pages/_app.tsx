@@ -3,10 +3,10 @@ import GlobalStyles from '../styles/GlobalStyles';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <>
       <GlobalStyles />
       <Component {...pageProps} />
-    </div>
+    </>
   );
 }
 
