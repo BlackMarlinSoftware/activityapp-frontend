@@ -1,10 +1,10 @@
 import {NextPage} from 'next';
 import {useRouter} from 'next/router';
-import Header from '../../components/header';
-import MapContainer from '../../components/mapContainer';
+import Header from '../../components/Header';
+import MapContainer from '../../components/MapContainer';
 import {Container, List, ActivityContainer} from './styles';
-import ActivityCard from '../../components/activityCardLegacy';
 import {dataSelection, initialViewStateSelection, LOCATIONS} from '../../types';
+import ActivityCard from '../../components/ActivityCard';
 
 const ListingPage: NextPage = () => {
   const router = useRouter();

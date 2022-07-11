@@ -6,6 +6,7 @@
 
 - `id` _number_
 - `name` _string_
+- `level` _number_
 
 ### `activities`
 
