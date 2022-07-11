@@ -27,9 +27,9 @@ const MapContainer = ({ data }: mapContainerProps): JSX.Element => {
                 key={activity.id}
                 latitude={activity.location.lat}
                 longitude={activity.location.long}
-                anchor="top"
+                anchor="center"
               >
-                <ActivityCardMap activity={activity} />
+                <ActivityCardMap key={activity.id} activity={activity} />
               </Marker>
             )}
           </>
