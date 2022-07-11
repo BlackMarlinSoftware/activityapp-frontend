@@ -14,12 +14,12 @@ import {
   FavoriteContainer,
   CloseContainer,
 } from './styles';
-import { allCategoryIcons } from '../icons';
+import { allCategoryIcons } from '../Icon';
 import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
-import FavoriteOutline from '../icons/genericIcons/FavoriteOutline';
-import X from '../icons/genericIcons/X';
+import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
+import X from '../Icon/genericIcons/X';
 
 interface activityCardMapProps {
   activity: Activity;
