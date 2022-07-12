@@ -63,6 +63,15 @@ export default css`
     margin-bottom: 0rem;
     color: ${theme.colors.neutral[6]};
   }
+  h6,
+  .h6 {
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+  }
+  p,
   ul,
   ol,
   pre,
@@ -111,5 +120,8 @@ export default css`
   sub {
     font-family: Inter, sans-serif;
     bottom: -0.25em;
+  }
+  span {
+    font-family: Inter, sans-serif;
   }
 `;

@@ -1,15 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import ActivityList from '../components/ActivityList';
-import client from '../apollo-client';
-import { ActivitiesQuery } from '../generated/graphql';
-import { ACTIVITIES } from '../queries/activities.query';
+import { LOCATIONS } from '../types';
+import Link from 'next/link';
 
-interface Props {
-  activities: ActivitiesQuery['activities'];
-}
-
-const Home: NextPage<Props> = ({ activities }) => (
+const Home: NextPage = () => (
   <div>
     <Head>
       <title>Activities App</title>
@@ -18,22 +12,16 @@ const Home: NextPage<Props> = ({ activities }) => (
     </Head>
 
     <main>
-      <ActivityList activities={activities} />
+      <h1>Locations</h1>
+      {Object.values(LOCATIONS).map((location) => (
+        <div key={location}>
+          <Link href={`/location/${location}`}>
+            <a>{location}</a>
+          </Link>
+        </div>
+      ))}
     </main>
   </div>
 );
 
 export default Home;
-
-export async function getServerSideProps(): Promise<{ props: Props }> {
-  const { data } = await client.query<ActivitiesQuery>({
-    query: ACTIVITIES,
-    fetchPolicy: 'no-cache',
-  });
-
-  return {
-    props: {
-      activities: data.activities,
-    },
-  };
-}

@@ -1,63 +1,113 @@
 import styled from 'styled-components';
 import theme, { spacing } from '../../styles/theme';
 
-export const ActivityContainer = styled.div`
-  width: ${spacing['11']};
-  max-height: 66px;
-  background-color: white;
-  border-color: black;
-  border-width: 3px;
-  border-radius: ${spacing['4']};
-  padding: ${spacing['2']};
-  margin-bottom: ${spacing['4']};
-  display: flex;
-  flex-direction: row;
+export const imageContainerWidth = '300px';
+export const imageContainerHeight = '170px';
+export const cardBorderRadius = '20px';
 
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    top: 72px;
-    width: 0;
-    height: 0;
-    border: 20px solid transparent;
-    transform: rotate(225deg);
-    border-top-color: white;
-    border-bottom: 0;
-    border-left: 0;
-    margin-left: -10px;
-    margin-bottom: -20px;
-  }
+export const ActivityContainer = styled.div`
+  cursor: pointer;
+`;
+
+export const PopoverCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: ${cardBorderRadius};
+  width: 300px;
+  height: 250px;
+  background-color: white;
+  margin-bottom: ${spacing[3]};
 `;
 
 export const ImageContainer = styled.div`
-  flex: 1.2;
+  width: ${imageContainerWidth};
+  height: ${imageContainerHeight};
+  max-height: 150px;
 `;
 
-export const ContentContainer = styled.div`
-  flex: 2;
-  padding-left: ${spacing['4']};
-  padding-bottom: ${spacing['2']};
-
+export const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${spacing[3]};
+  margin-top: ${spacing[4]};
   h5,
   h6 {
     margin: 0;
   }
+`;
 
-  h6 {
-    color: ${theme.colors.neutral['6']};
-    display: inline-block;
-    align-self: flex-end;
-  }
-
+export const ActivityTitle = styled.div`
   p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    font-size: 10pt;
-    line-height: 14pt;
-    margin: 0;
+    font-weight: 700;
+    margin-bottom: 0px;
   }
+`;
+export const ActivityDescription = styled.div`
+  p {
+    font-weight: normal;
+    font-size: 0.75rem;
+    color: ${theme.colors.supporting.grey[5]};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0px;
+  }
+`;
+
+export const ActivityOperator = styled.div`
+  p {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: ${theme.colors.supporting.grey[5]};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  span {
+    font-weight: normal;
+    font-size: 0.75rem;
+    color: ${theme.colors.supporting.grey[5]};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;
+
+export const Pin = styled.div`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: ${(props: any) => (props.open ? 'black' : 'white')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 3px 6px 11px -6px rgba(0, 0, 0, 0.75);
+
+  :hover {
+    height: 35px;
+    width: 35px;
+    transition: all 0.2s ease-in-out;
+  }
+`;
+
+export const FavoriteContainer = styled.div`
+  position: absolute;
+  top: 11px;
+  right: 14px;
+  z-index: 1;
+`;
+
+export const CloseContainer = styled.div`
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
 `;

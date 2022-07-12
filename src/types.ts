@@ -1,3 +1,6 @@
+import { ViewState } from 'react-map-gl/dist/esm/types/external';
+import { ActivitiesQuery } from './generated/graphql';
+
 export type CategoryLevel1 = 'Active' | 'Social' | 'Creative' | 'Leisure' | 'Educational' | 'Other';
 
 export type CategoryLevel2 =
@@ -258,3 +261,19 @@ export type CategoryName = CategoryLevel1 | CategoryLevel2 | CategoryLevel3;
 // export interface Data {
 //   activities?: Activity[];
 // }
+
+export enum LOCATIONS {
+  BRIXTON = 'Brixton',
+  REIGATE = 'Reigate',
+}
+
+export const initialViewStateSelection: Record<string, Partial<ViewState>> = {
+  [LOCATIONS.REIGATE]: {
+    latitude: 51.2362084,
+    longitude: -0.2066982,
+  },
+  [LOCATIONS.BRIXTON]: {
+    latitude: 51.4542506,
+    longitude: -0.1166653,
+  },
+};
