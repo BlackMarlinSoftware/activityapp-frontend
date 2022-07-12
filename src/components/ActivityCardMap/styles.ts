@@ -73,7 +73,7 @@ export const ActivityOperator = styled.div`
   }
 `;
 
-export const Pin = styled.div`
+export const Pin = styled.div<{ open: boolean }>`
   height: 30px;
   width: 30px;
   border-radius: 50%;

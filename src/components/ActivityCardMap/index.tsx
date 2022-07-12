@@ -14,7 +14,7 @@ import {
   FavoriteContainer,
   CloseContainer,
 } from './styles';
-import { allCategoryIcons } from '../Icon';
+import Icon from '../Icon';
 import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -26,8 +26,8 @@ interface Props {
 }
 
 const ActivityCardMap = ({ activity }: Props): JSX.Element => {
-  // @ts-ignore
-  const { [activity.categories[0].name]: ActivityIcon } = allCategoryIcons;
+  const categoryName = activity.activities_x_categories[0].category.name;
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -75,9 +75,8 @@ const ActivityCardMap = ({ activity }: Props): JSX.Element => {
             </PopoverCard>
           )}
         >
-          {/*// @ts-ignore*/}
           <Pin open={isOpen}>
-            <ActivityIcon colour={isOpen ? 'white' : 'black'}></ActivityIcon>
+            <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
           </Pin>
         </Popover>
       </ActivityContainer>
