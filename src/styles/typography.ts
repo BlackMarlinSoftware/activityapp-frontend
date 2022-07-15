@@ -71,7 +71,6 @@ export default css`
     margin-top: 1.5rem;
     margin-bottom: 0rem;
   }
-  p,
   ul,
   ol,
   pre,

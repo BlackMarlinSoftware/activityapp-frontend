@@ -27,7 +27,7 @@ export const Popover = ({ children, render, placement, isOpenSetter }: Props) =>
   // useeffect
   useEffect(() => {
     isOpenSetter(open);
-  }, [open]);
+  }, [open, isOpenSetter]);
 
   const { x, y, reference, floating, strategy, context } = useFloating({
     open,

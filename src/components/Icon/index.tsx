@@ -70,6 +70,7 @@ import TheaterMask from './activityIcons/TheaterMask';
 import Cinema from './activityIcons/Cinema';
 import PawPrint from './activityIcons/PawPrint';
 import Baby from './activityIcons/Baby';
+import withSvgColour from './withSvgColour';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -274,6 +275,24 @@ const categoryLevel3Icons: CategoryLevel3Icons = {
   Softplay: Baby,
 };
 
-const allCategoryIcons = { ...categoryLevel1Icons, ...categoryLevel2Icons, ...categoryLevel3Icons };
+const iconMap: Record<string, React.FC> = {
+  ...categoryLevel1Icons,
+  ...categoryLevel2Icons,
+  ...categoryLevel3Icons,
+};
 
-export { categoryLevel1Icons, categoryLevel2Icons, categoryLevel3Icons, allCategoryIcons };
+interface Props {
+  icon: string;
+  colour: string;
+}
+
+const Icon = ({ icon, colour }: Props) => {
+  const matchingIcon = Object.keys(iconMap).find((iconKey) => iconKey === icon);
+  if (matchingIcon) {
+    const IconComponent = withSvgColour(iconMap[matchingIcon]);
+    return <IconComponent colour={colour} />;
+  }
+  return <NoIcon colour={colour} />;
+};
+
+export default Icon;

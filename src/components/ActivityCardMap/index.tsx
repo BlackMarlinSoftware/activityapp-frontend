@@ -1,4 +1,4 @@
-import { Activity } from '../../types';
+import { ActivitiesQuery } from '../../generated/graphql';
 import {
   ActivityContainer,
   PopoverCard,
@@ -14,78 +14,72 @@ import {
   FavoriteContainer,
   CloseContainer,
 } from './styles';
-import { allCategoryIcons } from '../Icon';
+import Icon from '../Icon';
 import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import X from '../Icon/genericIcons/X';
 
-interface activityCardMapProps {
-  activity: Activity;
+interface Props {
+  activity: ActivitiesQuery['activities'][0];
 }
 
-const ActivityCardMap = ({ activity }: activityCardMapProps): JSX.Element => {
-  // @ts-ignore
-  const { [activity?.categories[0].name]: ActivityIcon } = allCategoryIcons;
-  const [isOpen, setIsOpen] = useState(false);
+const ActivityCardMap = ({ activity }: Props): JSX.Element => {
+  const categoryName = activity.activities_x_categories[0].category.name;
 
-  console.log(isOpen);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {activity && activity.media && activity.media.length > 0 ? (
-        <ActivityContainer>
-          <Popover
-            placement="top"
-            isOpenSetter={setIsOpen}
-            render={({ close, labelId, descriptionId }) => (
-              <PopoverCard>
-                <ImageContainer>
-                  <FavoriteContainer>
-                    <FavoriteOutline />
-                  </FavoriteContainer>
+      <ActivityContainer>
+        <Popover
+          placement="top"
+          isOpenSetter={setIsOpen}
+          render={({ close, labelId, descriptionId }) => (
+            <PopoverCard>
+              <ImageContainer>
+                <FavoriteContainer>
+                  <FavoriteOutline />
+                </FavoriteContainer>
 
-                  <CloseContainer>
-                    <X colour="hsl(0,0%,90%)" />
-                  </CloseContainer>
+                <CloseContainer>
+                  <X colour="hsl(0,0%,90%)" />
+                </CloseContainer>
 
-                  {activity?.media && activity?.media?.length > 0 ? (
-                    <Image
-                      style={{ borderTopLeftRadius: cardBorderRadius, borderTopRightRadius: cardBorderRadius }}
-                      objectFit="cover"
-                      objectPosition="center"
-                      width={imageContainerWidth}
-                      height={imageContainerHeight}
-                      src={`/images/${activity.id}/${activity.media[0].url}`}
-                    />
-                  ) : null}
-                </ImageContainer>
-                <DetailsContainer>
-                  <ActivityTitle>
-                    <p>{activity.name}</p>
-                  </ActivityTitle>
-                  <ActivityDescription>
-                    <p>{activity.description}</p>
-                  </ActivityDescription>
-                  <ActivityOperator>
-                    <p>
-                      Operated by: <span>{activity.host?.name}</span>
-                    </p>
-                  </ActivityOperator>
-                </DetailsContainer>
-              </PopoverCard>
-            )}
-          >
-            {/*// @ts-ignore*/}
-            <Pin open={isOpen}>
-              <ActivityIcon colour={isOpen ? 'white' : 'black'}></ActivityIcon>
-            </Pin>
-          </Popover>
-        </ActivityContainer>
-      ) : (
-        <span>Error, required activity attributes not present</span>
-      )}
+                {activity.activities_x_media.length > 0 ? (
+                  <Image
+                    src={`/images/${activity.id}/${activity.activities_x_media[0].media.path}`}
+                    alt={activity.activities_x_media[0].media.caption || 'Activity image'}
+                    style={{ borderTopLeftRadius: cardBorderRadius, borderTopRightRadius: cardBorderRadius }}
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={imageContainerWidth}
+                    height={imageContainerHeight}
+                  />
+                ) : null}
+              </ImageContainer>
+              <DetailsContainer>
+                <ActivityTitle>
+                  <p>{activity.name}</p>
+                </ActivityTitle>
+                <ActivityDescription>
+                  <p>{activity.description}</p>
+                </ActivityDescription>
+                <ActivityOperator>
+                  <p>
+                    Operated by: <span>{activity.host.name}</span>
+                  </p>
+                </ActivityOperator>
+              </DetailsContainer>
+            </PopoverCard>
+          )}
+        >
+          <Pin open={isOpen}>
+            <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
+          </Pin>
+        </Popover>
+      </ActivityContainer>
     </>
   );
 };

@@ -6,6 +6,7 @@ export const ActivityContainer = styled.div`
   display: grid;
   grid-template-columns: ${spacing[12]} 1fr;
   grid-gap: ${spacing[4]};
+  margin-bottom: ${spacing[6]};
 `;
 
 export const ActivityDetails = styled.div`

@@ -110,5 +110,6 @@ const theme = {
 };
 
 export const spacing = theme.scale.spacing;
+export const colors = theme.colors;
 
 export default theme;

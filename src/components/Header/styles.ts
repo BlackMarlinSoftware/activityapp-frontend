@@ -1,19 +1,16 @@
 import styled from 'styled-components';
-import { spacing } from '../../styles/theme';
+import { spacing, colors } from '../../styles/theme';
 
 export const HeaderContainer = styled.div`
   display: flex;
+  box-sizing: border-box;
   flex-direction: row;
   background-color: white;
-  padding: ${spacing['5']};
+  padding: 0 ${spacing[6]};
   justify-content: space-between;
   align-items: center;
-  height: ${spacing['5']};
-`;
-
-export const Logo = styled.div`
-  display: flex;
-  font-weight: bold;
+  box-shadow: ${colors.neutral[10]} 0px 1px 1px;
+  z-index: 1;
 `;
 
 export const Menu = styled.div`
