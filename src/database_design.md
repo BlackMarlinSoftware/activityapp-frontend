@@ -118,3 +118,13 @@
 
 - `activity_id`
 - `session_id`
+
+## Functions
+
+```
+CREATE FUNCTION locations_in_radius(location_lat numeric, location_long numeric, radius integer) RETURNS SETOF locations AS $$
+  SELECT *
+  FROM locations
+  WHERE ST_DWithin(ST_MakePoint(location_long, location_lat)::geography, ST_MakePoint(long, lat)::geography, radius)
+$$ LANGUAGE SQL STABLE;
+```
