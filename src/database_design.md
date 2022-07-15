@@ -121,10 +121,28 @@
 
 ## Functions
 
-```
+```sql
 CREATE FUNCTION locations_in_radius(location_lat numeric, location_long numeric, radius integer) RETURNS SETOF locations AS $$
   SELECT *
   FROM locations
   WHERE ST_DWithin(ST_MakePoint(location_long, location_lat)::geography, ST_MakePoint(long, lat)::geography, radius)
 $$ LANGUAGE SQL STABLE;
 ```
+
+Joe plan for location based searching:
+
+Start with queries to find locations within a given radius with nested activities
+
+Global Apollo variables `latitudeQuery`, `longitudeQuery`, `zoomQuery`
+
+These should be set once on load by the component that calls the query, based on the URL as a default.
+
+These variables should also be what's used for the initial MapBox positioning and Apollo `useQuery` calls post-server-side-render. (Also SSR `client.query`?)
+
+Then use the MapBox event listeners for `map.on('zoomend', handleZoomEnd)` and `map.on('moveend', handleMoveEnd)`
+
+These should each have their own handler function, which triggers two actions: Update the global Apollo variables (lat/long or zoom) and update the URL query params for the user to copy/paste if they wish.
+
+When the global variables are updated, a final action is taken: calculate the necessary radius in metres based on the MapBox https://docs.mapbox.com/help/glossary/zoom-level/ reference table, given the current latitude, the current zoom level, and the size of the map window in pixels.
+
+Finally, this radius is given to the Apollo `useQuery` as one of the variables for filtering locations/activities.
