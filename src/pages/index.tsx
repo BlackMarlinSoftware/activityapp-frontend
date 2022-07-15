@@ -4,15 +4,15 @@ import Link from 'next/link';
 import { ViewState } from 'react-map-gl';
 
 export const locationViewStates: Record<string, Partial<ViewState>> = {
-  Reigate: {
-    latitude: 51.2362084,
-    longitude: -0.2066982,
-    zoom: 14,
-  },
   Brixton: {
     latitude: 51.4542506,
     longitude: -0.1166653,
     zoom: 13,
+  },
+  Reigate: {
+    latitude: 51.2362084,
+    longitude: -0.2066982,
+    zoom: 14,
   },
 };
 
