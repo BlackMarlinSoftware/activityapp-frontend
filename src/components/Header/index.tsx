@@ -6,7 +6,7 @@ import Bars from '../Icon/genericIcons/Bars';
 const Header = (): JSX.Element => (
   <HeaderContainer>
     <h2>Logo</h2>
-    <Menu>Categories</Menu>
+    <Menu>Categories list TODO</Menu>
     <Shortcuts>
       <HeartButton />
       <Bars colour={theme.colors.primary['5']} />

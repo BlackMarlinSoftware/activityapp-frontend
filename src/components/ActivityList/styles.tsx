@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { colors } from '../../styles/theme';
+import theme, { spacing, colors } from '../../styles/theme';
 
 export const Container = styled.div`
   min-height: 0;
@@ -8,9 +8,10 @@ export const Container = styled.div`
 `;
 
 export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
-  padding: ${theme.scale.spacing[6]};
+  padding: ${spacing[6]};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 1;
   box-shadow: ${({ borderBottom }) => (borderBottom ? `${colors.neutral[10]} 0px 1px 1px;` : 'none')};
 
@@ -19,10 +20,15 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
   }
 `;
 
+export const FilterTEMP = styled.h4`
+  padding: ${spacing[1]} ${spacing[4]};
+  border: 1px solid ${colors.neutral[9]};
+  border-radius: ${spacing[2]};
+`;
+
 export const ActivityRows = styled.div`
   display: flex;
   flex-direction: column;
-  grid-gap: ${theme.scale.spacing[6]};
   padding: 0 ${theme.scale.spacing[6]};
   overflow-y: scroll;
 `;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ActivitiesQuery } from '../../generated/graphql';
 import ActivityCard from '../ActivityCard';
-import { ActivityRows, Container, ResultsSummary } from './styles';
+import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
 
 interface Props {
   activities: ActivitiesQuery['activities'];
@@ -21,8 +21,8 @@ const ActivityList = ({ activities }: Props): JSX.Element => {
   return (
     <Container>
       <ResultsSummary borderBottom={borderBottom}>
-        <h4>{activities?.length} cycling activities in Brixton, London</h4>
-        <h4>Filter TODO</h4>
+        <h4>{activities?.length} category-name activities</h4>
+        <FilterTEMP>Filter</FilterTEMP>
       </ResultsSummary>
 
       <ActivityRows onScroll={handleListScroll}>
