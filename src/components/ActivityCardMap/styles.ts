@@ -31,7 +31,8 @@ export const DetailsContainer = styled.div`
   padding: ${spacing[3]};
   margin-top: ${spacing[4]};
   h5,
-  h6 {
+  h6,
+  p {
     margin: 0;
   }
 `;
@@ -50,7 +51,6 @@ export const ActivityDescription = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 0px;
   }
 `;
 

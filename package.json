@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier:do": "yarn prettier --write .",
     "prettier:check": "yarn prettier --check .",
-    "generate:schema": "apollo schema:download --endpoint https://jmg-activities.hasura.app/v1/graphql --header 'X-Hasura-Admin-Secret: R8Cm3uc63qEH7Vi65UBZYDbCJc58S0XRib2jLzIvmI4ctp8MgHT9riFZiJVQZEhO'",
+    "generate:schema": "echo This script requires HASURA_ADMIN_KEY to be set. It is currently: $HASURA_ADMIN_KEY && apollo schema:download --endpoint https://jmg-activities.hasura.app/v1/graphql --header \"X-Hasura-Admin-Secret: $HASURA_ADMIN_KEY\"",
     "generate:types": "yarn generate:schema && graphql-codegen --config codegen.yml"
   },
   "dependencies": {
