@@ -29,5 +29,5 @@ export const Description = styled.p`
 `;
 
 export const ActivityImage = styled(Image)`
-  border-radius: ${spacing[4]};
+  border-radius: ${spacing[3]};
 `;

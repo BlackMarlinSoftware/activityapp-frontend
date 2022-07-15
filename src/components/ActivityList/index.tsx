@@ -21,7 +21,7 @@ const ActivityList = ({ activities }: Props): JSX.Element => {
   return (
     <Container>
       <ResultsSummary borderBottom={borderBottom}>
-        <h4>{activities?.length} category-name activities</h4>
+        <h4>{activities?.length} activities</h4>
         <FilterTEMP>Filter</FilterTEMP>
       </ResultsSummary>
 
