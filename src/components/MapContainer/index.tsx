@@ -1,4 +1,3 @@
-import { Container } from './styles';
 import Map, { Marker } from 'react-map-gl';
 import { ViewState } from 'react-map-gl/dist/esm/types/external';
 import ActivityCardMap from '../ActivityCardMap';
@@ -11,7 +10,7 @@ interface Props {
 
 const MapContainer = ({ activities, initialViewState }: Props): JSX.Element => {
   return (
-    <Container>
+    <>
       {initialViewState && (
         <Map
           initialViewState={initialViewState}
@@ -31,7 +30,7 @@ const MapContainer = ({ activities, initialViewState }: Props): JSX.Element => {
           ))}
         </Map>
       )}
-    </Container>
+    </>
   );
 };
 

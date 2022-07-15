@@ -80,7 +80,6 @@ const ActivityCardMap = ({ activity }: Props): JSX.Element => {
           </Pin>
         </Popover>
       </ActivityContainer>
-      )
     </>
   );
 };

@@ -12,7 +12,7 @@ export const locationViewStates: Record<string, Partial<ViewState>> = {
   Brixton: {
     latitude: 51.4542506,
     longitude: -0.1166653,
-    zoom: 14,
+    zoom: 13,
   },
 };
 

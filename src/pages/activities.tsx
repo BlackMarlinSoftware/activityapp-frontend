@@ -10,11 +10,15 @@ import { ActivitiesQuery } from '../generated/graphql';
 import { ViewState } from 'react-map-gl';
 import ActivityList from '../components/ActivityList';
 
+const PageContainer = styled.div`
+  height: 100vh;
+`;
+
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
   width: 100%;
-  height: calc(100vh - ${spacing['8']});
+  height: 100%;
+  grid-template-columns: ${spacing[15]} 1fr;
 `;
 
 interface Props {
@@ -33,13 +37,13 @@ const ActivitiesPage: NextPage<Props> = ({ activities }) => {
     };
 
     return (
-      <>
+      <PageContainer>
         <Header />
         <Container>
           <ActivityList activities={activities} />
           <MapContainer activities={activities} initialViewState={initialViewState} />
         </Container>
-      </>
+      </PageContainer>
     );
   }
 
