@@ -1,11 +1,11 @@
-import { HeaderContainer, Logo, Menu, Shortcuts } from './styles';
+import { HeaderContainer, Menu, Shortcuts } from './styles';
 import theme from '../../styles/theme';
 import HeartButton from '../uiComponents/heartButton';
 import Bars from '../Icon/genericIcons/Bars';
 
 const Header = (): JSX.Element => (
   <HeaderContainer>
-    <Logo>App</Logo>
+    <h2>Logo</h2>
     <Menu>Categories</Menu>
     <Shortcuts>
       <HeartButton />

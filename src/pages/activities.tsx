@@ -12,12 +12,13 @@ import ActivityList from '../components/ActivityList';
 
 const PageContainer = styled.div`
   height: 100vh;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: ${spacing[9]} calc(100vh - ${spacing[9]});
 `;
 
 const Container = styled.div`
   display: grid;
-  width: 100%;
-  height: 100%;
   grid-template-columns: ${spacing[15]} 1fr;
 `;
 
