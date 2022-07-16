@@ -1,7 +1,7 @@
 import Map, { Marker } from 'react-map-gl';
 import { ViewState } from 'react-map-gl/dist/esm/types/external';
 import ActivityCardMap from '../ActivityCardMap';
-import { currentFocusedActivityId } from '../../reactiveVars/map';
+import { currentFocusedActivityId, currentMapState } from '../../reactiveVars/map';
 import { useReactiveVar } from '@apollo/client';
 import { Activities, Activity } from '../../types';
 
@@ -18,6 +18,13 @@ const MapContainer = ({ activities, initialViewState }: Props): JSX.Element => {
       {initialViewState && (
         <Map
           initialViewState={initialViewState}
+          onMove={(evt) => {
+            currentMapState({
+              longitude: evt.viewState.longitude,
+              latitude: evt.viewState.latitude,
+              zoom: evt.viewState.zoom,
+            });
+          }}
           style={{ width: '100%', height: '100%' }}
           mapStyle="mapbox://styles/mapbox/streets-v9"
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
