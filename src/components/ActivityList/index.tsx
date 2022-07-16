@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ActivitiesQuery } from '../../generated/graphql';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
+import { Activities } from '../../types';
 
 interface Props {
-  activities: ActivitiesQuery['activities'];
+  activities: Activities;
 }
 
 const ActivityList = ({ activities }: Props): JSX.Element => {

@@ -1,3 +1,5 @@
+import { ActivitiesQuery } from './generated/graphql';
+
 export type CategoryLevel1 = 'Active' | 'Social' | 'Creative' | 'Leisure' | 'Educational' | 'Other';
 
 export type CategoryLevel2 =
@@ -189,3 +191,6 @@ export type CategoryLevel3 =
   | 'Softplay';
 
 export type CategoryName = CategoryLevel1 | CategoryLevel2 | CategoryLevel3;
+
+export type Activity = ActivitiesQuery['activities'][0];
+export type Activities = ActivitiesQuery['activities'];

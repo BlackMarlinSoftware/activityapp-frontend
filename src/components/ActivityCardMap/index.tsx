@@ -20,12 +20,14 @@ import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import X from '../Icon/genericIcons/X';
+import { Activity } from '../../types';
 
 interface Props {
-  activity: ActivitiesQuery['activities'][0];
+  activity: Activity;
+  focused: boolean;
 }
 
-const ActivityCardMap = ({ activity }: Props): JSX.Element => {
+const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
   const categoryName = activity.activities_x_categories[0].category.name;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +37,7 @@ const ActivityCardMap = ({ activity }: Props): JSX.Element => {
       <ActivityContainer>
         <Popover
           placement="top"
+          activityId={activity.id}
           isOpenSetter={setIsOpen}
           render={({ close, labelId, descriptionId }) => (
             <PopoverCard>
@@ -43,7 +46,7 @@ const ActivityCardMap = ({ activity }: Props): JSX.Element => {
                   <FavoriteOutline />
                 </FavoriteContainer>
 
-                <CloseContainer>
+                <CloseContainer onClick={close}>
                   <X colour="hsl(0,0%,90%)" />
                 </CloseContainer>
 
@@ -75,7 +78,7 @@ const ActivityCardMap = ({ activity }: Props): JSX.Element => {
             </PopoverCard>
           )}
         >
-          <Pin open={isOpen}>
+          <Pin open={isOpen || focused}>
             <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
           </Pin>
         </Popover>

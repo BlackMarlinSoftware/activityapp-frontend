@@ -74,8 +74,8 @@ export const ActivityOperator = styled.div`
 `;
 
 export const Pin = styled.div<{ open: boolean }>`
-  height: 30px;
-  width: 30px;
+  width: ${(props: any) => (props.open ? '35px' : '30px')};
+  height: ${(props: any) => (props.open ? '35px' : '30px')};
   border-radius: 50%;
   background-color: ${(props: any) => (props.open ? 'black' : 'white')};
   display: flex;
