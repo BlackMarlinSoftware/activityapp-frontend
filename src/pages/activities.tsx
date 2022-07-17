@@ -9,6 +9,7 @@ import { spacing } from '../styles/theme';
 import { ActivitiesQuery } from '../generated/graphql';
 import { ViewState } from 'react-map-gl';
 import ActivityList from '../components/ActivityList';
+import { Activities } from '../types';
 
 const PageContainer = styled.div`
   height: 100vh;
@@ -23,7 +24,7 @@ const Container = styled.div`
 `;
 
 interface Props {
-  activities: ActivitiesQuery['activities'];
+  activities: Activities;
 }
 
 const ActivitiesPage: NextPage<Props> = ({ activities }) => {
