@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Header from '../components/Header';
 import client from '../apollo-client';
-import { ACTIVITIES } from '../queries/activities.query';
+import { LOCATIONS_ACTIVITIES_IN_RADIUS } from '../queries/locationActivities.query';
 import MapContainer from '../components/MapContainer';
 import styled from 'styled-components';
 import { spacing } from '../styles/theme';
-import { ActivitiesQuery } from '../generated/graphql';
+import { LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables } from '../generated/graphql';
 import ActivityList from '../components/ActivityList';
 import { Activities } from '../types';
 import { currentMapState, MapCoords } from '../reactiveVars/map';
@@ -62,14 +62,15 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
 
     currentMapState(initialMapCoords);
 
-    const { data } = await client.query<ActivitiesQuery>({
-      query: ACTIVITIES,
+    const { data } = await client.query<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>({
+      query: LOCATIONS_ACTIVITIES_IN_RADIUS,
       fetchPolicy: 'no-cache',
+      variables: initialMapCoords,
     });
 
     return {
       props: {
-        initialActivities: data.activities,
+        initialActivities: data.locations_in_radius,
         initialMapCoords: initialMapCoords,
       },
     };
