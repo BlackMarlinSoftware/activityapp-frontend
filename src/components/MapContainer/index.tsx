@@ -4,10 +4,10 @@ import ActivityCardMap from '../ActivityCardMap';
 import { currentFocusedLocationId, currentMapState, MapCoords } from '../../reactiveVars/map';
 import { useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { LocationsActivitiesInRadiusQuery } from '../../generated/graphql';
+import { Location } from '../../types';
 
 interface Props {
-  locations: LocationsActivitiesInRadiusQuery['locations_in_radius'];
+  locations: Location[];
   initialViewState: Partial<ViewState>;
 }
 

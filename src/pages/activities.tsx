@@ -1,17 +1,14 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Header from '../components/Header';
 import client from '../apollo-client';
-import { LOCATIONS_ACTIVITIES_IN_RADIUS } from '../queries/locationActivities.query';
+import { LOCATIONS_IN_RADIUS } from '../queries/locationActivities.query';
 import MapContainer from '../components/MapContainer';
 import styled from 'styled-components';
 import { spacing } from '../styles/theme';
-import {
-  ActivityDataFragment,
-  LocationsActivitiesInRadiusQuery,
-  LocationsActivitiesInRadiusQueryVariables,
-} from '../generated/graphql';
+import { ActivityDataFragment, LocationsInRadiusQuery, LocationsInRadiusQueryVariables } from '../generated/graphql';
 import ActivityList from '../components/ActivityList';
-import { currentMapState, MapCoords } from '../reactiveVars/map';
+import { MapCoords } from '../reactiveVars/map';
+import { Activity, Location } from '../types';
 
 const PageContainer = styled.div`
   height: 100vh;
@@ -26,8 +23,8 @@ const Container = styled.div`
 `;
 
 interface Props {
-  initialLocations?: LocationsActivitiesInRadiusQuery['locations_in_radius'];
-  initialActivities?: ActivityDataFragment[];
+  initialLocations?: Location[];
+  initialActivities?: Activity[];
   initialMapCoords?: MapCoords;
 }
 
@@ -64,12 +61,12 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
       zoom: Number(zoom),
     };
 
-    currentMapState(initialMapCoords);
+    // currentMapState(initialMapCoords); TODO JMB - this causes a hydration error because of mismatch
 
     const {
       data: { locations_in_radius },
-    } = await client.query<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>({
-      query: LOCATIONS_ACTIVITIES_IN_RADIUS,
+    } = await client.query<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>({
+      query: LOCATIONS_IN_RADIUS,
       fetchPolicy: 'no-cache',
       variables: initialMapCoords,
     });

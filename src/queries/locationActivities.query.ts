@@ -76,11 +76,11 @@ export const FRAGMENT_ACTIVITY = gql`
   }
 `;
 
-export const LOCATIONS_ACTIVITIES_IN_RADIUS = gql`
+export const LOCATIONS_IN_RADIUS = gql`
   ${FRAGMENT_LOCATION}
   ${FRAGMENT_ACTIVITY}
 
-  query LocationsActivitiesInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
+  query LocationsInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
     locations_in_radius(args: { location_lat: $latitude, location_long: $longitude, radius: $radius }) {
       ...LocationData
       activities {

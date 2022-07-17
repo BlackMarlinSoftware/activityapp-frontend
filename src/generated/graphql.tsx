@@ -2983,14 +2983,14 @@ export type LocationDataFragment = { __typename?: 'locations', id: string, addre
 
 export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
-export type LocationsActivitiesInRadiusQueryVariables = Exact<{
+export type LocationsInRadiusQueryVariables = Exact<{
   latitude?: InputMaybe<Scalars['numeric']>;
   longitude?: InputMaybe<Scalars['numeric']>;
   radius?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type LocationsActivitiesInRadiusQuery = { __typename?: 'query_root', locations_in_radius: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInRadiusQuery = { __typename?: 'query_root', locations_in_radius: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
 export const LocationDataFragmentDoc = gql`
     fragment LocationData on locations {
@@ -3061,8 +3061,8 @@ export const ActivityDataFragmentDoc = gql`
 ${HostDataFragmentDoc}
 ${CategoryDataFragmentDoc}
 ${MediaDataFragmentDoc}`;
-export const LocationsActivitiesInRadiusDocument = gql`
-    query LocationsActivitiesInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
+export const LocationsInRadiusDocument = gql`
+    query LocationsInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
   locations_in_radius(
     args: {location_lat: $latitude, location_long: $longitude, radius: $radius}
   ) {
@@ -3076,16 +3076,16 @@ export const LocationsActivitiesInRadiusDocument = gql`
 ${ActivityDataFragmentDoc}`;
 
 /**
- * __useLocationsActivitiesInRadiusQuery__
+ * __useLocationsInRadiusQuery__
  *
- * To run a query within a React component, call `useLocationsActivitiesInRadiusQuery` and pass it any options that fit your needs.
- * When your component renders, `useLocationsActivitiesInRadiusQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useLocationsInRadiusQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocationsInRadiusQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useLocationsActivitiesInRadiusQuery({
+ * const { data, loading, error } = useLocationsInRadiusQuery({
  *   variables: {
  *      latitude: // value for 'latitude'
  *      longitude: // value for 'longitude'
@@ -3093,14 +3093,14 @@ ${ActivityDataFragmentDoc}`;
  *   },
  * });
  */
-export function useLocationsActivitiesInRadiusQuery(baseOptions?: Apollo.QueryHookOptions<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>) {
+export function useLocationsInRadiusQuery(baseOptions?: Apollo.QueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>(LocationsActivitiesInRadiusDocument, options);
+        return Apollo.useQuery<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>(LocationsInRadiusDocument, options);
       }
-export function useLocationsActivitiesInRadiusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>) {
+export function useLocationsInRadiusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>(LocationsActivitiesInRadiusDocument, options);
+          return Apollo.useLazyQuery<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>(LocationsInRadiusDocument, options);
         }
-export type LocationsActivitiesInRadiusQueryHookResult = ReturnType<typeof useLocationsActivitiesInRadiusQuery>;
-export type LocationsActivitiesInRadiusLazyQueryHookResult = ReturnType<typeof useLocationsActivitiesInRadiusLazyQuery>;
-export type LocationsActivitiesInRadiusQueryResult = Apollo.QueryResult<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>;
+export type LocationsInRadiusQueryHookResult = ReturnType<typeof useLocationsInRadiusQuery>;
+export type LocationsInRadiusLazyQueryHookResult = ReturnType<typeof useLocationsInRadiusLazyQuery>;
+export type LocationsInRadiusQueryResult = Apollo.QueryResult<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>;
