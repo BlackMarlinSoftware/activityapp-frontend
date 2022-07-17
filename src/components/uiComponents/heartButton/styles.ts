@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, {spacing} from '../../../styles/theme';
+import theme, { spacing } from '../../../styles/theme';
 
 export const Button = styled.button.attrs({ type: 'button' })`
   display: flex;
@@ -8,9 +8,4 @@ export const Button = styled.button.attrs({ type: 'button' })`
   padding: ${spacing['2']};
   border-radius: 100%;
   color: ${theme.colors.supporting.red['7']};
-  
-  svg {
-    width: ${spacing['3']};
-    height: ${spacing['3']};
-  }
 `;
