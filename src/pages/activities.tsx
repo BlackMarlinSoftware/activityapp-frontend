@@ -10,6 +10,7 @@ import { ActivitiesQuery } from '../generated/graphql';
 import { ViewState } from 'react-map-gl';
 import ActivityList from '../components/ActivityList';
 import { Activities } from '../types';
+import { currentMapState, MapCoords } from '../reactiveVars/map';
 
 const PageContainer = styled.div`
   height: 100vh;
@@ -32,18 +33,20 @@ const ActivitiesPage: NextPage<Props> = ({ activities }) => {
   const { latitude, longitude, zoom } = router.query;
 
   if (typeof latitude === 'string' && typeof longitude === 'string' && typeof zoom === 'string') {
-    const initialViewState: Partial<ViewState> = {
+    const initialMapCoords: MapCoords = {
       latitude: Number(latitude),
       longitude: Number(longitude),
       zoom: Number(zoom),
     };
+
+    currentMapState(initialMapCoords);
 
     return (
       <PageContainer>
         <Header />
         <Container>
           <ActivityList activities={activities} />
-          <MapContainer activities={activities} initialViewState={initialViewState} />
+          <MapContainer activities={activities} initialViewState={initialMapCoords} />
         </Container>
       </PageContainer>
     );

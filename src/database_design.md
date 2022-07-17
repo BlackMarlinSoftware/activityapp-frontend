@@ -129,19 +129,19 @@ CREATE FUNCTION locations_in_radius(location_lat numeric, location_long numeric,
 $$ LANGUAGE SQL STABLE;
 ```
 
-Joe plan for location based searching:
-
 Start with queries to find locations within a given radius with nested activities
 
-Global Apollo variables `latitudeQuery`, `longitudeQuery`, `zoomQuery`
+X Global Apollo variables `latitudeQuery`, `longitudeQuery`, `zoomQuery`
 
-These should be set once on load by the component that calls the query, based on the URL as a default.
+X These should be set once on load by the component that calls the query, based on the URL as a default.
 
-These variables should also be what's used for the initial MapBox positioning and Apollo `useQuery` calls post-server-side-render. (Also SSR `client.query`?)
+X These variables should also be what's used for the initial MapBox positioning
 
-Then use the MapBox event listeners for `map.on('zoomend', handleZoomEnd)` and `map.on('moveend', handleMoveEnd)`
+These variables should also be what's used for Apollo `useQuery` calls post-server-side-render. (Also SSR `client.query`?)
 
-These should each have their own handler function, which triggers two actions: Update the global Apollo variables (lat/long or zoom) and update the URL query params for the user to copy/paste if they wish.
+X Then use the MapBox event listeners for `map.on('zoomend', handleZoomEnd)` and `map.on('moveend', handleMoveEnd)`
+
+X These should each have their own handler function, which triggers two actions: Update the global Apollo variables (lat/long or zoom) and update the URL query params for the user to copy/paste if they wish.
 
 When the global variables are updated, a final action is taken: calculate the necessary radius in metres based on the MapBox https://docs.mapbox.com/help/glossary/zoom-level/ reference table, given the current latitude, the current zoom level, and the size of the map window in pixels.
 
