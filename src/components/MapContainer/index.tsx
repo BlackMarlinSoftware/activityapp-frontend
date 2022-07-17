@@ -1,18 +1,18 @@
 import Map, { Marker } from 'react-map-gl';
 import { ViewState } from 'react-map-gl/dist/esm/types/external';
 import ActivityCardMap from '../ActivityCardMap';
-import { currentFocusedActivityId, currentMapState, MapCoords } from '../../reactiveVars/map';
+import { currentFocusedLocationId, currentMapState, MapCoords } from '../../reactiveVars/map';
 import { useReactiveVar } from '@apollo/client';
-import { Activities, Activity } from '../../types';
 import { useRouter } from 'next/router';
+import { LocationsActivitiesInRadiusQuery } from '../../generated/graphql';
 
 interface Props {
-  activities: Activities;
+  locations: LocationsActivitiesInRadiusQuery['locations_in_radius'];
   initialViewState: Partial<ViewState>;
 }
 
-const MapContainer = ({ activities, initialViewState }: Props): JSX.Element => {
-  const focusedActivityId = useReactiveVar(currentFocusedActivityId);
+const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
+  const focusedLocationId = useReactiveVar(currentFocusedLocationId);
   const router = useRouter();
 
   const updateMapQuery = ({ latitude, longitude, zoom }: MapCoords) => {
@@ -37,15 +37,19 @@ const MapContainer = ({ activities, initialViewState }: Props): JSX.Element => {
           mapStyle="mapbox://styles/mapbox/streets-v9"
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
         >
-          {activities.map((activity: Activity) => (
+          {locations.map((location) => (
             <Marker
-              style={{ zIndex: focusedActivityId === activity.id ? 3 : 'unset' }}
-              key={activity.id}
-              latitude={activity.location.lat}
-              longitude={activity.location.long}
+              style={{ zIndex: focusedLocationId === location.id ? 3 : 'unset' }}
+              key={location.id}
+              latitude={location.lat}
+              longitude={location.long}
               anchor="center"
             >
-              <ActivityCardMap key={activity.id} activity={activity} focused={focusedActivityId === activity.id} />
+              <ActivityCardMap
+                key={location.id}
+                activity={location.activities[0]}
+                focused={focusedLocationId === location.id}
+              />
             </Marker>
           ))}
         </Map>

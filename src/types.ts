@@ -1,4 +1,10 @@
-import { ActivitiesQuery } from './generated/graphql';
+import {
+  ActivityDataFragment,
+  CategoryDataFragment,
+  HostDataFragment,
+  LocationDataFragment,
+  MediaDataFragment,
+} from './generated/graphql';
 
 export type CategoryLevel1 = 'Active' | 'Social' | 'Creative' | 'Leisure' | 'Educational' | 'Other';
 
@@ -192,5 +198,8 @@ export type CategoryLevel3 =
 
 export type CategoryName = CategoryLevel1 | CategoryLevel2 | CategoryLevel3;
 
-export type Activity = ActivitiesQuery['activities'][0];
-export type Activities = ActivitiesQuery['activities'];
+export type Location = LocationDataFragment;
+export type Activity = ActivityDataFragment;
+export type Host = HostDataFragment;
+export type Category = CategoryDataFragment;
+export type Media = MediaDataFragment;

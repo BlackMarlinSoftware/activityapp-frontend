@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
-import { Activities } from '../../types';
 import { currentMapState } from '../../reactiveVars/map';
 import { useReactiveVar } from '@apollo/client';
+import { ActivityDataFragment } from '../../generated/graphql';
 
 interface Props {
-  activities: Activities;
+  activities: ActivityDataFragment[];
 }
 
 const ActivityList = ({ activities }: Props): JSX.Element => {

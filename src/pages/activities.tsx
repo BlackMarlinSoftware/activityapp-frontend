@@ -5,9 +5,12 @@ import { LOCATIONS_ACTIVITIES_IN_RADIUS } from '../queries/locationActivities.qu
 import MapContainer from '../components/MapContainer';
 import styled from 'styled-components';
 import { spacing } from '../styles/theme';
-import { LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables } from '../generated/graphql';
+import {
+  ActivityDataFragment,
+  LocationsActivitiesInRadiusQuery,
+  LocationsActivitiesInRadiusQueryVariables,
+} from '../generated/graphql';
 import ActivityList from '../components/ActivityList';
-import { Activities } from '../types';
 import { currentMapState, MapCoords } from '../reactiveVars/map';
 
 const PageContainer = styled.div`
@@ -23,18 +26,19 @@ const Container = styled.div`
 `;
 
 interface Props {
-  initialActivities?: Activities;
+  initialLocations?: LocationsActivitiesInRadiusQuery['locations_in_radius'];
+  initialActivities?: ActivityDataFragment[];
   initialMapCoords?: MapCoords;
 }
 
-const ActivitiesPage: NextPage<Props> = ({ initialActivities, initialMapCoords }) => {
-  if (initialActivities && initialMapCoords) {
+const ActivitiesPage: NextPage<Props> = ({ initialLocations, initialActivities, initialMapCoords }) => {
+  if (initialLocations && initialActivities && initialMapCoords) {
     return (
       <PageContainer>
         <Header />
         <Container>
           <ActivityList activities={initialActivities} />
-          <MapContainer activities={initialActivities} initialViewState={initialMapCoords} />
+          <MapContainer locations={initialLocations} initialViewState={initialMapCoords} />
         </Container>
       </PageContainer>
     );
@@ -62,15 +66,23 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
 
     currentMapState(initialMapCoords);
 
-    const { data } = await client.query<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>({
+    const {
+      data: { locations_in_radius },
+    } = await client.query<LocationsActivitiesInRadiusQuery, LocationsActivitiesInRadiusQueryVariables>({
       query: LOCATIONS_ACTIVITIES_IN_RADIUS,
       fetchPolicy: 'no-cache',
       variables: initialMapCoords,
     });
 
+    const activities: ActivityDataFragment[] = [];
+    locations_in_radius.forEach((location) => {
+      activities.push(...location.activities);
+    });
+
     return {
       props: {
-        initialActivities: data.locations_in_radius,
+        initialLocations: locations_in_radius,
+        initialActivities: activities,
         initialMapCoords: initialMapCoords,
       },
     };

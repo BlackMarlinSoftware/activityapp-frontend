@@ -2973,6 +2973,16 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
+export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null };
+
+export type CategoryDataFragment = { __typename?: 'categories', id: string, name: string, level: number };
+
+export type MediaDataFragment = { __typename?: 'media', id: string, path: string, caption?: string | null };
+
+export type LocationDataFragment = { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null };
+
+export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
+
 export type LocationsActivitiesInRadiusQueryVariables = Exact<{
   latitude?: InputMaybe<Scalars['numeric']>;
   longitude?: InputMaybe<Scalars['numeric']>;
@@ -2980,58 +2990,90 @@ export type LocationsActivitiesInRadiusQueryVariables = Exact<{
 }>;
 
 
-export type LocationsActivitiesInRadiusQuery = { __typename?: 'query_root', locations_in_radius: Array<{ __typename?: 'locations', address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsActivitiesInRadiusQuery = { __typename?: 'query_root', locations_in_radius: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
-
+export const LocationDataFragmentDoc = gql`
+    fragment LocationData on locations {
+  id
+  address
+  postcode
+  lat
+  long
+  name
+  outdoors
+  directions
+}
+    `;
+export const HostDataFragmentDoc = gql`
+    fragment HostData on hosts {
+  id
+  name
+  logo_url
+}
+    `;
+export const CategoryDataFragmentDoc = gql`
+    fragment CategoryData on categories {
+  id
+  name
+  level
+}
+    `;
+export const MediaDataFragmentDoc = gql`
+    fragment MediaData on media {
+  id
+  path
+  caption
+}
+    `;
+export const ActivityDataFragmentDoc = gql`
+    fragment ActivityData on activities {
+  id
+  name
+  description
+  referral_url
+  referral_phone
+  referral_email
+  booking_required
+  group_size_min
+  group_size_max
+  physical_intensity_min
+  physical_intensity_max
+  age_min
+  age_max
+  location {
+    ...LocationData
+  }
+  host {
+    ...HostData
+  }
+  activities_x_categories {
+    category {
+      ...CategoryData
+    }
+  }
+  activities_x_media {
+    media {
+      ...MediaData
+    }
+  }
+}
+    ${LocationDataFragmentDoc}
+${HostDataFragmentDoc}
+${CategoryDataFragmentDoc}
+${MediaDataFragmentDoc}`;
 export const LocationsActivitiesInRadiusDocument = gql`
     query LocationsActivitiesInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
   locations_in_radius(
     args: {location_lat: $latitude, location_long: $longitude, radius: $radius}
   ) {
+    ...LocationData
     activities {
-      id
-      name
-      description
-      referral_url
-      referral_phone
-      referral_email
-      booking_required
-      group_size_min
-      group_size_max
-      physical_intensity_min
-      physical_intensity_max
-      age_min
-      age_max
-      host {
-        id
-        name
-        logo_url
-      }
-      activities_x_categories {
-        category {
-          id
-          name
-          level
-        }
-      }
-      activities_x_media {
-        media {
-          id
-          path
-          caption
-        }
-      }
+      ...ActivityData
     }
-    address
-    postcode
-    lat
-    long
-    name
-    outdoors
-    directions
   }
 }
-    `;
+    ${LocationDataFragmentDoc}
+${ActivityDataFragmentDoc}`;
 
 /**
  * __useLocationsActivitiesInRadiusQuery__
