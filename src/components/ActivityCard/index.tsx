@@ -1,9 +1,10 @@
 import { ActivitiesQuery } from '../../generated/graphql';
 import { ActivityContainer, ActivityDetails, Description, ActivityImage } from './styles';
 import theme from '../../styles/theme';
+import { Activity } from '../../types';
 
 interface Props {
-  activity: ActivitiesQuery['activities'][0];
+  activity: Activity;
 }
 
 const ActivityCard = ({ activity }: Props): JSX.Element => {

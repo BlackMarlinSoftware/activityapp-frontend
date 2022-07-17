@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { ActivitiesQuery } from '../../generated/graphql';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
+import { Activities } from '../../types';
+import { currentMapState } from '../../reactiveVars/map';
+import { useReactiveVar } from '@apollo/client';
 
 interface Props {
-  activities: ActivitiesQuery['activities'];
+  activities: Activities;
 }
 
 const ActivityList = ({ activities }: Props): JSX.Element => {
   const [borderBottom, setBorderBottom] = useState(false);
+  const currentCoordinates = useReactiveVar(currentMapState);
 
   const handleListScroll = (event: React.UIEvent<HTMLDivElement>) => {
     if (event.currentTarget.scrollTop === 0) {
@@ -20,6 +23,9 @@ const ActivityList = ({ activities }: Props): JSX.Element => {
 
   return (
     <Container>
+      <div>longitude: {currentCoordinates.longitude}</div>
+      <div>latitude: {currentCoordinates.latitude}</div>
+      <div>zoom level: {currentCoordinates.zoom}</div>
       <ResultsSummary borderBottom={borderBottom}>
         <h4>{activities?.length} category-name activities</h4>
         <FilterTEMP>Filter</FilterTEMP>
