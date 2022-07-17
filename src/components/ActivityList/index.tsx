@@ -27,7 +27,7 @@ const ActivityList = ({ activities }: Props): JSX.Element => {
       <div>latitude: {currentCoordinates.latitude}</div>
       <div>zoom level: {currentCoordinates.zoom}</div>
       <ResultsSummary borderBottom={borderBottom}>
-        <h4>{activities?.length} category-name activities</h4>
+        <h4>{activities?.length} activities</h4>
         <FilterTEMP>Filter</FilterTEMP>
       </ResultsSummary>
 
