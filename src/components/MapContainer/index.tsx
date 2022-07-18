@@ -5,6 +5,7 @@ import { currentFocusedLocationId, currentMapState, MapCoords } from '../../reac
 import { useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Location } from '../../types';
+import mapboxgl from 'mapbox-gl';
 
 interface Props {
   locations: Location[];
@@ -30,6 +31,11 @@ const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
               latitude: evt.viewState.latitude,
               zoom: evt.viewState.zoom,
             };
+            const viewportCorner = evt.target.getBounds().getNorthEast();
+            const viewportCornerMapbox = new mapboxgl.LngLat(viewportCorner.lng, viewportCorner.lat);
+            const viewportCenterMapbox = new mapboxgl.LngLat(newCoords.longitude, newCoords.latitude);
+            const radius = viewportCenterMapbox.distanceTo(viewportCornerMapbox);
+            console.log(radius);
             currentMapState(newCoords);
             updateMapQuery(newCoords);
           }}

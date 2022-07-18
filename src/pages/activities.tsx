@@ -71,8 +71,6 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
       variables: { latitude: initialMapCoords.latitude, longitude: initialMapCoords.longitude, radius: 2000 },
     });
 
-    console.log(loading);
-
     const activities: ActivityDataFragment[] = [];
     locations_in_radius.forEach((location) => {
       activities.push(...location.activities);
