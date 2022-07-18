@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Header from '../components/Header';
 import client from '../apollo-client';
-import { LOCATIONS_IN_RADIUS } from '../queries/locationActivities.query';
+import { LOCATIONS_IN_RADIUS } from '../queries/locations.query';
 import MapContainer from '../components/MapContainer';
 import styled from 'styled-components';
 import { spacing } from '../styles/theme';
@@ -23,12 +23,13 @@ const Container = styled.div`
 `;
 
 interface Props {
+  loading: boolean;
   initialLocations?: Location[];
   initialActivities?: Activity[];
   initialMapCoords?: MapCoords;
 }
 
-const ActivitiesPage: NextPage<Props> = ({ initialLocations, initialActivities, initialMapCoords }) => {
+const ActivitiesPage: NextPage<Props> = ({ loading, initialLocations, initialActivities, initialMapCoords }) => {
   if (initialLocations && initialActivities && initialMapCoords) {
     return (
       <PageContainer>
@@ -61,15 +62,16 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
       zoom: Number(zoom),
     };
 
-    // currentMapState(initialMapCoords); TODO JMB - this causes a hydration error because of mismatch
-
     const {
       data: { locations_in_radius },
+      loading,
     } = await client.query<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>({
       query: LOCATIONS_IN_RADIUS,
       fetchPolicy: 'no-cache',
-      variables: initialMapCoords,
+      variables: { latitude: initialMapCoords.latitude, longitude: initialMapCoords.longitude, radius: 2000 },
     });
+
+    console.log(loading);
 
     const activities: ActivityDataFragment[] = [];
     locations_in_radius.forEach((location) => {
@@ -78,6 +80,7 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
 
     return {
       props: {
+        loading,
         initialLocations: locations_in_radius,
         initialActivities: activities,
         initialMapCoords: initialMapCoords,
@@ -85,5 +88,5 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
     };
   }
 
-  return { props: {} };
+  return { props: { loading: false } };
 };

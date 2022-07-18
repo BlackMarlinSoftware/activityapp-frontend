@@ -2984,9 +2984,9 @@ export type LocationDataFragment = { __typename?: 'locations', id: string, addre
 export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
 export type LocationsInRadiusQueryVariables = Exact<{
-  latitude?: InputMaybe<Scalars['numeric']>;
-  longitude?: InputMaybe<Scalars['numeric']>;
-  radius?: InputMaybe<Scalars['Int']>;
+  latitude: Scalars['numeric'];
+  longitude: Scalars['numeric'];
+  radius: Scalars['Int'];
 }>;
 
 
@@ -3062,7 +3062,7 @@ ${HostDataFragmentDoc}
 ${CategoryDataFragmentDoc}
 ${MediaDataFragmentDoc}`;
 export const LocationsInRadiusDocument = gql`
-    query LocationsInRadius($latitude: numeric, $longitude: numeric, $radius: Int) {
+    query LocationsInRadius($latitude: numeric!, $longitude: numeric!, $radius: Int!) {
   locations_in_radius(
     args: {location_lat: $latitude, location_long: $longitude, radius: $radius}
   ) {
@@ -3093,7 +3093,7 @@ ${ActivityDataFragmentDoc}`;
  *   },
  * });
  */
-export function useLocationsInRadiusQuery(baseOptions?: Apollo.QueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
+export function useLocationsInRadiusQuery(baseOptions: Apollo.QueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>(LocationsInRadiusDocument, options);
       }
