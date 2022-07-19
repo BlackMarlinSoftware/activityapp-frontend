@@ -21,6 +21,9 @@ const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
       {initialViewState && (
         <Map
           initialViewState={initialViewState}
+          onLoad={() => {
+            // TODO - split updateMapQueryParams just for the viewport bit
+          }}
           onMoveEnd={updateMapQueryParams(router)}
           style={{ width: '100%', height: '100%' }}
           mapStyle="mapbox://styles/mapbox/streets-v9"
