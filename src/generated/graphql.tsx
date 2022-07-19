@@ -2983,14 +2983,15 @@ export type LocationDataFragment = { __typename?: 'locations', id: string, addre
 
 export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
-export type LocationsInRadiusQueryVariables = Exact<{
-  latitude: Scalars['numeric'];
-  longitude: Scalars['numeric'];
-  radius: Scalars['Int'];
+export type LocationsInViewportQueryVariables = Exact<{
+  viewportLatitudeMin: Scalars['numeric'];
+  viewportLatitudeMax: Scalars['numeric'];
+  viewportLongitudeMin: Scalars['numeric'];
+  viewportLongitudeMax: Scalars['numeric'];
 }>;
 
 
-export type LocationsInRadiusQuery = { __typename?: 'query_root', locations_in_radius: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
 export const LocationDataFragmentDoc = gql`
     fragment LocationData on locations {
@@ -3061,10 +3062,10 @@ export const ActivityDataFragmentDoc = gql`
 ${HostDataFragmentDoc}
 ${CategoryDataFragmentDoc}
 ${MediaDataFragmentDoc}`;
-export const LocationsInRadiusDocument = gql`
-    query LocationsInRadius($latitude: numeric!, $longitude: numeric!, $radius: Int!) {
-  locations_in_radius(
-    args: {location_lat: $latitude, location_long: $longitude, radius: $radius}
+export const LocationsInViewportDocument = gql`
+    query LocationsInViewport($viewportLatitudeMin: numeric!, $viewportLatitudeMax: numeric!, $viewportLongitudeMin: numeric!, $viewportLongitudeMax: numeric!) {
+  locations(
+    where: {lat: {_gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax}, long: {_gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax}}
   ) {
     ...LocationData
     activities {
@@ -3076,31 +3077,32 @@ export const LocationsInRadiusDocument = gql`
 ${ActivityDataFragmentDoc}`;
 
 /**
- * __useLocationsInRadiusQuery__
+ * __useLocationsInViewportQuery__
  *
- * To run a query within a React component, call `useLocationsInRadiusQuery` and pass it any options that fit your needs.
- * When your component renders, `useLocationsInRadiusQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useLocationsInViewportQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocationsInViewportQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useLocationsInRadiusQuery({
+ * const { data, loading, error } = useLocationsInViewportQuery({
  *   variables: {
- *      latitude: // value for 'latitude'
- *      longitude: // value for 'longitude'
- *      radius: // value for 'radius'
+ *      viewportLatitudeMin: // value for 'viewportLatitudeMin'
+ *      viewportLatitudeMax: // value for 'viewportLatitudeMax'
+ *      viewportLongitudeMin: // value for 'viewportLongitudeMin'
+ *      viewportLongitudeMax: // value for 'viewportLongitudeMax'
  *   },
  * });
  */
-export function useLocationsInRadiusQuery(baseOptions: Apollo.QueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
+export function useLocationsInViewportQuery(baseOptions: Apollo.QueryHookOptions<LocationsInViewportQuery, LocationsInViewportQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>(LocationsInRadiusDocument, options);
+        return Apollo.useQuery<LocationsInViewportQuery, LocationsInViewportQueryVariables>(LocationsInViewportDocument, options);
       }
-export function useLocationsInRadiusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>) {
+export function useLocationsInViewportLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocationsInViewportQuery, LocationsInViewportQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>(LocationsInRadiusDocument, options);
+          return Apollo.useLazyQuery<LocationsInViewportQuery, LocationsInViewportQueryVariables>(LocationsInViewportDocument, options);
         }
-export type LocationsInRadiusQueryHookResult = ReturnType<typeof useLocationsInRadiusQuery>;
-export type LocationsInRadiusLazyQueryHookResult = ReturnType<typeof useLocationsInRadiusLazyQuery>;
-export type LocationsInRadiusQueryResult = Apollo.QueryResult<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>;
+export type LocationsInViewportQueryHookResult = ReturnType<typeof useLocationsInViewportQuery>;
+export type LocationsInViewportLazyQueryHookResult = ReturnType<typeof useLocationsInViewportLazyQuery>;
+export type LocationsInViewportQueryResult = Apollo.QueryResult<LocationsInViewportQuery, LocationsInViewportQueryVariables>;

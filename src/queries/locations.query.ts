@@ -76,12 +76,22 @@ export const FRAGMENT_ACTIVITY = gql`
   }
 `;
 
-export const LOCATIONS_IN_RADIUS = gql`
+export const LOCATIONS_IN_VIEWPORT = gql`
   ${FRAGMENT_LOCATION}
   ${FRAGMENT_ACTIVITY}
 
-  query LocationsInRadius($latitude: numeric!, $longitude: numeric!, $radius: Int!) {
-    locations_in_radius(args: { location_lat: $latitude, location_long: $longitude, radius: $radius }) {
+  query LocationsInViewport(
+    $viewportLatitudeMin: numeric!
+    $viewportLatitudeMax: numeric!
+    $viewportLongitudeMin: numeric!
+    $viewportLongitudeMax: numeric!
+  ) {
+    locations(
+      where: {
+        lat: { _gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax }
+        long: { _gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax }
+      }
+    ) {
       ...LocationData
       activities {
         ...ActivityData

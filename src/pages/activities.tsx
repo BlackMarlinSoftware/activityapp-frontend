@@ -1,13 +1,17 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Header from '../components/Header';
 import client from '../apollo-client';
-import { LOCATIONS_IN_RADIUS } from '../queries/locations.query';
+import { LOCATIONS_IN_VIEWPORT } from '../queries/locations.query';
 import MapContainer from '../components/MapContainer';
 import styled from 'styled-components';
 import { spacing } from '../styles/theme';
-import { ActivityDataFragment, LocationsInRadiusQuery, LocationsInRadiusQueryVariables } from '../generated/graphql';
+import {
+  ActivityDataFragment,
+  LocationsInViewportQuery,
+  LocationsInViewportQueryVariables,
+} from '../generated/graphql';
 import ActivityList from '../components/ActivityList';
-import { MapCoords } from '../reactiveVars/map';
+import { MapCoords, MapViewportState } from '../reactiveVars/map';
 import { Activity, Location } from '../types';
 
 const PageContainer = styled.div`
@@ -23,68 +27,71 @@ const Container = styled.div`
 `;
 
 interface Props {
-  loading: boolean;
-  initialLocations?: Location[];
-  initialActivities?: Activity[];
-  initialMapCoords?: MapCoords;
+  mapCoords: MapCoords;
+  locations: Location[];
+  activities: Activity[];
 }
 
-const ActivitiesPage: NextPage<Props> = ({ loading, initialLocations, initialActivities, initialMapCoords }) => {
-  if (initialLocations && initialActivities && initialMapCoords) {
-    return (
-      <PageContainer>
-        <Header />
-        <Container>
-          <ActivityList activities={initialActivities} />
-          <MapContainer locations={initialLocations} initialViewState={initialMapCoords} />
-        </Container>
-      </PageContainer>
-    );
-  }
-
-  return (
-    <>
-      <Header />
-      <h2>Invalid search. Try again.</h2>
-    </>
-  );
-};
+const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities }) => (
+  <PageContainer>
+    <Header />
+    <Container>
+      <ActivityList activities={activities} />
+      <MapContainer locations={locations} initialViewState={mapCoords} />
+    </Container>
+  </PageContainer>
+);
 
 export default ActivitiesPage;
 
+const queryParamsToNumberOrZero = (params: Record<string, string | string[] | undefined>): Record<string, number> => {
+  const convertedParams: Record<string, number> = {};
+
+  Object.keys(params).map((key) => {
+    const currentValue = params[key];
+    let newValue = 0;
+    if (typeof currentValue === 'string') {
+      const numericParam = Number(currentValue);
+      if (!isNaN(numericParam)) newValue = numericParam;
+    }
+    convertedParams[key] = newValue;
+  });
+
+  return convertedParams;
+};
+
 export const getServerSideProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
-  const { latitude, longitude, zoom } = context.query;
+  const mapCoords = queryParamsToNumberOrZero({
+    latitude: context.query.latitude,
+    longitude: context.query.longitude,
+    zoom: context.query.zoom,
+  }) as unknown as MapCoords;
 
-  if (typeof latitude === 'string' && typeof longitude === 'string' && typeof zoom === 'string') {
-    const initialMapCoords: MapCoords = {
-      latitude: Number(latitude),
-      longitude: Number(longitude),
-      zoom: Number(zoom),
-    };
+  const mapViewportState = queryParamsToNumberOrZero({
+    viewportLatitudeMin: context.query.viewportLatitudeMin,
+    viewportLatitudeMax: context.query.viewportLatitudeMax,
+    viewportLongitudeMin: context.query.viewportLongitudeMin,
+    viewportLongitudeMax: context.query.viewportLongitudeMax,
+  }) as unknown as MapViewportState;
 
-    const {
-      data: { locations_in_radius },
-      loading,
-    } = await client.query<LocationsInRadiusQuery, LocationsInRadiusQueryVariables>({
-      query: LOCATIONS_IN_RADIUS,
-      fetchPolicy: 'no-cache',
-      variables: { latitude: initialMapCoords.latitude, longitude: initialMapCoords.longitude, radius: 2000 },
-    });
+  const {
+    data: { locations },
+  } = await client.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
+    query: LOCATIONS_IN_VIEWPORT,
+    fetchPolicy: 'no-cache',
+    variables: mapViewportState,
+  });
 
-    const activities: ActivityDataFragment[] = [];
-    locations_in_radius.forEach((location) => {
-      activities.push(...location.activities);
-    });
+  const activities: ActivityDataFragment[] = [];
+  locations.forEach((location) => {
+    activities.push(...location.activities);
+  });
 
-    return {
-      props: {
-        loading,
-        initialLocations: locations_in_radius,
-        initialActivities: activities,
-        initialMapCoords: initialMapCoords,
-      },
-    };
-  }
-
-  return { props: { loading: false } };
+  return {
+    props: {
+      mapCoords,
+      locations,
+      activities,
+    },
+  };
 };

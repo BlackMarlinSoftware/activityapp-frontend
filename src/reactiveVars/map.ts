@@ -1,13 +1,16 @@
-import { ReactiveVar, makeVar } from '@apollo/client';
+import { makeVar } from '@apollo/client';
 
 export interface MapCoords {
   longitude: number;
   latitude: number;
   zoom: number;
 }
-export const currentFocusedLocationId: ReactiveVar<string> = makeVar<string>('');
-export const currentMapState: ReactiveVar<MapCoords> = makeVar<MapCoords>({
-  longitude: 0,
-  latitude: 0,
-  zoom: 0,
-});
+
+export interface MapViewportState {
+  viewportLatitudeMin: number;
+  viewportLatitudeMax: number;
+  viewportLongitudeMin: number;
+  viewportLongitudeMax: number;
+}
+
+export const currentFocusedLocationId = makeVar<string>('');
