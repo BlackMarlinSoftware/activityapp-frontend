@@ -4,7 +4,7 @@ import MapContainer from '../components/MapContainer';
 import ActivityList from '../components/ActivityList';
 import { MapCoords } from '../reactiveVars/map';
 import { Activity, Location } from '../types';
-import { getActivitiesPageServerProps } from '../utils/activitiesServerProps.utils';
+import { getActivitiesPageServerProps } from '../utils/pages/activities.utils';
 import { Container, PageContainer } from '../styles/pages/activities.styles';
 
 export interface Props {

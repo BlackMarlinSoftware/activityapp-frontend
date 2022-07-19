@@ -1,14 +1,14 @@
 import { GetServerSideProps } from 'next';
-import { Props } from '../pages/activities';
-import { MapCoords, MapViewportState } from '../reactiveVars/map';
-import { queryParamsToNumberOrZero } from './query.utils';
-import client from '../apollo-client';
+import { Props } from '../../pages/activities';
+import { MapCoords, MapViewportState } from '../../reactiveVars/map';
+import { queryParamsToNumberOrZero } from '../query.utils';
+import client from '../../apollo-client';
 import {
   ActivityDataFragment,
   LocationsInViewportQuery,
   LocationsInViewportQueryVariables,
-} from '../generated/graphql';
-import { LOCATIONS_IN_VIEWPORT } from '../queries/locations.query';
+} from '../../generated/graphql';
+import { LOCATIONS_IN_VIEWPORT } from '../../queries/locations.query';
 
 export const getActivitiesPageServerProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
   const mapCoords = queryParamsToNumberOrZero({
