@@ -22,24 +22,20 @@ const ActivityList = ({ activities }: Props): JSX.Element => {
     }
   };
 
+  const activitiesLoading = routeLoading?.includes('/activities?');
+
   return (
     <Container>
-      {routeLoading?.includes('/activities?') ? (
-        <LoadingFloat />
-      ) : (
-        <>
-          <ResultsSummary borderBottom={borderBottom}>
-            <h4>{activities?.length} activities</h4>
-            <FilterTEMP>Filter</FilterTEMP>
-          </ResultsSummary>
-
-          <ActivityRows onScroll={handleListScroll}>
-            {activities.map((activity) => (
-              <ActivityCard activity={activity} key={activity.id} />
-            ))}
-          </ActivityRows>
-        </>
-      )}
+      {activitiesLoading && <LoadingFloat />}
+      <ResultsSummary borderBottom={borderBottom}>
+        <h4>{activities?.length} activities</h4>
+        <FilterTEMP>Filter</FilterTEMP>
+      </ResultsSummary>
+      <ActivityRows onScroll={handleListScroll}>
+        {activities.map((activity) => (
+          <ActivityCard activity={activity} key={activity.id} />
+        ))}
+      </ActivityRows>
     </Container>
   );
 };
