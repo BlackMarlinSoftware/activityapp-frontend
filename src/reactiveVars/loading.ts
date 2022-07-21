@@ -1,3 +1,3 @@
 import { makeVar } from '@apollo/client';
 
-export const routeLoadingVar = makeVar<boolean>(false);
+export const routeLoadingVar = makeVar<string | undefined>(undefined);

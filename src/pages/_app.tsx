@@ -9,19 +9,19 @@ function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const handleRouteChangeStart = (url: string) => {
-      console.log(`App is changing to ${url}`);
-      routeLoadingVar(true);
+      routeLoadingVar(url);
     };
-    const handleRouteChangeEnd = (url: string) => {
-      console.log(`Finished`);
-      routeLoadingVar(false);
+    const handleRouteChangeEnd = () => {
+      routeLoadingVar(undefined);
     };
 
     router.events.on('routeChangeStart', handleRouteChangeStart);
     router.events.on('routeChangeComplete', handleRouteChangeEnd);
+    router.events.on('routeChangeError', handleRouteChangeEnd);
     return () => {
       router.events.off('routeChangeStart', handleRouteChangeStart);
       router.events.off('routeChangeComplete', handleRouteChangeEnd);
+      router.events.off('routeChangeError', handleRouteChangeEnd);
     };
   }, [router.events]);
 
