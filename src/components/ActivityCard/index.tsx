@@ -1,4 +1,3 @@
-import { ActivitiesQuery } from '../../generated/graphql';
 import { ActivityContainer, ActivityDetails, Description, ActivityImage } from './styles';
 import theme from '../../styles/theme';
 import { Activity } from '../../types';

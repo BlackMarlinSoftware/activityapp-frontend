@@ -13,27 +13,27 @@ import {
   useClick,
   FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
-import { currentFocusedActivityId } from '../../reactiveVars/map';
+import { currentFocusedLocationId } from '../../reactiveVars/map';
 
 interface Props {
   render: (data: { close: () => void; labelId: string; descriptionId: string }) => React.ReactNode;
   placement?: Placement;
   children: JSX.Element;
-  activityId: string;
+  locationId: string;
   isOpenSetter: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Popover = ({ children, render, placement, isOpenSetter, activityId }: Props) => {
+export const Popover = ({ children, render, placement, isOpenSetter, locationId }: Props) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     isOpenSetter(open);
     if (open) {
-      currentFocusedActivityId(activityId);
+      currentFocusedLocationId(locationId);
     } else {
-      currentFocusedActivityId('');
+      currentFocusedLocationId('');
     }
-  }, [open, isOpenSetter]);
+  }, [open, isOpenSetter, locationId]);
 
   const { x, y, reference, floating, strategy, context } = useFloating({
     open,
@@ -76,7 +76,7 @@ export const Popover = ({ children, render, placement, isOpenSetter, activityId 
               descriptionId,
               close: () => {
                 setOpen(false);
-                currentFocusedActivityId('');
+                currentFocusedLocationId('');
               },
             })}
           </div>

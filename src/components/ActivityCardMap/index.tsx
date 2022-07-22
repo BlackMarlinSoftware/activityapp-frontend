@@ -1,4 +1,3 @@
-import { ActivitiesQuery } from '../../generated/graphql';
 import {
   ActivityContainer,
   PopoverCard,
@@ -37,7 +36,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
       <ActivityContainer>
         <Popover
           placement="top"
-          activityId={activity.id}
+          locationId={activity.location.id}
           isOpenSetter={setIsOpen}
           render={({ close, labelId, descriptionId }) => (
             <PopoverCard>
