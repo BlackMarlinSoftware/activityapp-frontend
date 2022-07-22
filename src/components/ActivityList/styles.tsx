@@ -14,17 +14,11 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
   justify-content: space-between;
   align-items: center;
   z-index: 1;
-  box-shadow: ${({ borderBottom }) => (borderBottom ? `${colors.neutral[10]} 0px 1px 1px;` : 'none')};
+  box-shadow: ${({ borderBottom }) => (borderBottom ? `${colors.neutral[9.5]} 0px 1px 1px;` : 'none')};
 
   h4 {
     margin: 0;
   }
-`;
-
-export const FilterTEMP = styled.h4`
-  padding: ${spacing[1]} ${spacing[4]};
-  border: 1px solid ${colors.neutral[9]};
-  border-radius: ${spacing[2]};
 `;
 
 export const ActivityRows = styled.div`

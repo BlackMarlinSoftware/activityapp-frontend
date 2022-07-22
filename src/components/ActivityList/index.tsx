@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ActivityCard from '../ActivityCard';
-import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
+import { ActivityRows, Container, ResultsSummary } from './styles';
 import { ActivityDataFragment } from '../../generated/graphql';
 import useRouteChange from '../../hooks/useRouteChange';
 import { loadingShimmerActivities } from './utils';

@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
   padding: 0 ${spacing[6]};
   justify-content: center;
   align-items: center;
-  box-shadow: ${colors.neutral[10]} 0px 1px 1px;
+  box-shadow: ${colors.neutral[9.5]} 0px 1px 1px;
   z-index: 1;
 `;
 
