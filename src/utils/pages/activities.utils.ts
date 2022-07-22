@@ -44,6 +44,7 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
       mapCoords,
       locations,
       activities,
+      mapViewportState,
     },
   });
 };
