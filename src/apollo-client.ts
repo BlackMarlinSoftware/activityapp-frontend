@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
-import merge from 'deepmerge';
+import mergeWith from 'lodash/mergeWith';
 import isEqual from 'lodash/isEqual';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
@@ -24,11 +24,10 @@ export const initializeApollo = (initialState: NormalizedCacheObject | null = nu
   if (initialState) {
     const existingCache = _apolloClient.extract();
 
-    const data = merge(initialState, existingCache, {
-      arrayMerge: (destinationArray, sourceArray) => [
-        ...sourceArray,
-        ...destinationArray.filter((d) => sourceArray.every((s) => !isEqual(d, s))),
-      ],
+    const data = mergeWith(initialState, existingCache, (objValue, srcValue) => {
+      if (Array.isArray(objValue)) {
+        return [...srcValue, ...objValue.filter((d) => srcValue.every((s: any) => !isEqual(d, s)))];
+      }
     });
 
     _apolloClient.cache.restore(data);

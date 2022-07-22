@@ -15,8 +15,8 @@ const ActivityCard = ({ activity }: Props): JSX.Element => {
         <ActivityImage
           src={`/images/${activity.id}/${firstImage.path}`}
           alt={firstImage.caption || undefined}
-          layout="responsive"
           objectFit="cover"
+          objectPosition="center"
           width={theme.scale.spacing[12]}
           height={theme.scale.spacing[11]}
         />

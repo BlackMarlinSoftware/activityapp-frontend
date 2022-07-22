@@ -3,7 +3,7 @@ import theme, { spacing } from '../../styles/theme';
 
 export const imageContainerWidth = '300px';
 export const imageContainerHeight = '170px';
-export const cardBorderRadius = '20px';
+export const cardBorderRadius = spacing[3];
 
 export const ActivityContainer = styled.div`
   cursor: pointer;
