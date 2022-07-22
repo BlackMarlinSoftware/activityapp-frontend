@@ -1,8 +1,12 @@
 import { NextRouter } from 'next/router';
-import { ViewStateChangeEvent } from 'react-map-gl';
+import { MapboxEvent, ViewStateChangeEvent } from 'react-map-gl';
 import { MapCoords, MapViewportState } from '../../reactiveVars/map';
 
-export const updateMapQueryParams = (router: NextRouter) => (evt: ViewStateChangeEvent) => {
+export const updateQueryParams = (router: NextRouter) => (params: Record<string, string | number>) => {
+  router.replace({ query: { ...router.query, ...params } });
+};
+
+export const getMapCoordsQueryParams = (evt: ViewStateChangeEvent) => {
   const { longitude, latitude, zoom } = evt.viewState;
 
   const newMapCoords: MapCoords = {
@@ -11,6 +15,10 @@ export const updateMapQueryParams = (router: NextRouter) => (evt: ViewStateChang
     zoom,
   };
 
+  return newMapCoords;
+};
+
+export const getMapViewportQueryParams = (evt: MapboxEvent | ViewStateChangeEvent) => {
   const viewportSWCorner = evt.target.getBounds().getSouthWest();
   const viewportNECorner = evt.target.getBounds().getNorthEast();
 
@@ -21,5 +29,5 @@ export const updateMapQueryParams = (router: NextRouter) => (evt: ViewStateChang
     viewportLongitudeMax: viewportNECorner.lng,
   };
 
-  router.replace({ query: { ...router.query, ...newMapCoords, ...newMapViewportState } });
+  return newMapViewportState;
 };

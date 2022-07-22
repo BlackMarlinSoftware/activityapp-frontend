@@ -95,7 +95,7 @@ const theme = {
       4: '16px',
       5: '24px',
       6: '32px',
-      7: '48',
+      7: '48px',
       8: '64px',
       9: '96px',
       10: '128px',
@@ -107,9 +107,15 @@ const theme = {
       16: '768px',
     },
   },
+  effects: {
+    shadows: {
+      light: `0px 4px 8px 0px hsla(209, 61%, 16%, 0.15)`,
+    },
+  },
 };
 
 export const spacing = theme.scale.spacing;
 export const colors = theme.colors;
+export const shadows = theme.effects.shadows;
 
 export default theme;

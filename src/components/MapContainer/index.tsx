@@ -1,11 +1,14 @@
 import Map, { Marker } from 'react-map-gl';
-import { ViewState, ViewStateChangeEvent } from 'react-map-gl/dist/esm/types/external';
+import { ViewState } from 'react-map-gl/dist/esm/types/external';
 import ActivityCardMap from '../ActivityCardMap';
-import { currentFocusedLocationId, MapCoords, MapViewportState } from '../../reactiveVars/map';
+import { currentFocusedLocationId } from '../../reactiveVars/map';
 import { useReactiveVar } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Location } from '../../types';
-import { updateMapQueryParams } from './utils';
+import { updateQueryParams, getMapCoordsQueryParams, getMapViewportQueryParams } from './utils';
+import { Container } from './styles';
+import LoadingFloat from '../uiComponents/LoadingFloat';
+import useRouteChange from '../../hooks/useRouteChange';
 
 interface Props {
   locations: Location[];
@@ -14,36 +17,45 @@ interface Props {
 
 const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
   const focusedLocationId = useReactiveVar(currentFocusedLocationId);
+  const routeLoading = useRouteChange();
   const router = useRouter();
 
+  const activitiesLoading = routeLoading?.includes('/activities?');
+
   return (
-    <>
-      {initialViewState && (
-        <Map
-          initialViewState={initialViewState}
-          onMoveEnd={updateMapQueryParams(router)}
-          style={{ width: '100%', height: '100%' }}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
-          mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
-        >
-          {locations.map((location) => (
-            <Marker
-              style={{ zIndex: focusedLocationId === location.id ? 3 : 'unset' }}
+    <Container>
+      {activitiesLoading && <LoadingFloat />}
+      <Map
+        initialViewState={initialViewState}
+        onLoad={(evt) => {
+          const newMapViewportQueryParams = { ...getMapViewportQueryParams(evt) };
+          updateQueryParams(router)(newMapViewportQueryParams);
+        }}
+        onMoveEnd={(evt) => {
+          const newMapQueryParams = { ...getMapCoordsQueryParams(evt), ...getMapViewportQueryParams(evt) };
+          updateQueryParams(router)(newMapQueryParams);
+        }}
+        style={{ width: '100%', height: '100%' }}
+        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
+      >
+        {locations.map((location) => (
+          <Marker
+            style={{ zIndex: focusedLocationId === location.id ? 3 : 'unset' }}
+            key={location.id}
+            latitude={location.lat}
+            longitude={location.long}
+            anchor="center"
+          >
+            <ActivityCardMap
               key={location.id}
-              latitude={location.lat}
-              longitude={location.long}
-              anchor="center"
-            >
-              <ActivityCardMap
-                key={location.id}
-                activity={location.activities[0]}
-                focused={focusedLocationId === location.id}
-              />
-            </Marker>
-          ))}
-        </Map>
-      )}
-    </>
+              activity={location.activities[0]}
+              focused={focusedLocationId === location.id}
+            />
+          </Marker>
+        ))}
+      </Map>
+    </Container>
   );
 };
 
