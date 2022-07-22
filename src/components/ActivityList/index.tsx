@@ -2,9 +2,8 @@ import { useState } from 'react';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, FilterTEMP, ResultsSummary } from './styles';
 import { ActivityDataFragment } from '../../generated/graphql';
-import { useReactiveVar } from '@apollo/client';
-import { routeLoadingVar } from '../../reactiveVars/loading';
 import LoadingFloat from '../uiComponents/LoadingFloat';
+import useRouteChange from '../../hooks/useRouteChange';
 
 interface Props {
   activities: ActivityDataFragment[];
@@ -12,7 +11,7 @@ interface Props {
 
 const ActivityList = ({ activities }: Props): JSX.Element => {
   const [borderBottom, setBorderBottom] = useState(false);
-  const routeLoading = useReactiveVar(routeLoadingVar);
+  const routeLoading = useRouteChange();
 
   const handleListScroll = (event: React.UIEvent<HTMLDivElement>) => {
     if (event.currentTarget.scrollTop === 0) {

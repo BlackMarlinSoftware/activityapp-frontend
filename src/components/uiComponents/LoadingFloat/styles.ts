@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, spacing } from '../../../styles/theme';
+import { colors, shadows, spacing } from '../../../styles/theme';
 
 export const FloatingContainer = styled.div`
   position: absolute;
@@ -11,6 +11,7 @@ export const FloatingContainer = styled.div`
 
 export const Pill = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: ${shadows.light};
   display: flex;
   justify-content: center;
   align-items: center;

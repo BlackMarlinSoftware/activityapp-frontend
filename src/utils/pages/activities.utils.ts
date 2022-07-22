@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import { Props } from '../../pages/activities';
 import { MapCoords, MapViewportState } from '../../reactiveVars/map';
 import { queryParamsToNumberOrZero } from '../query.utils';
-import client from '../../apollo-client';
+import { addApolloState, initializeApollo } from '../../apollo-client';
 import {
   ActivityDataFragment,
   LocationsInViewportQuery,
@@ -11,6 +11,8 @@ import {
 import { LOCATIONS_IN_VIEWPORT } from '../../queries/locations.query';
 
 export const getActivitiesPageServerProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
+  const apolloClient = initializeApollo();
+
   const mapCoords = queryParamsToNumberOrZero({
     latitude: context.query.latitude,
     longitude: context.query.longitude,
@@ -26,7 +28,7 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
 
   const {
     data: { locations },
-  } = await client.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
+  } = await apolloClient.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
     query: LOCATIONS_IN_VIEWPORT,
     fetchPolicy: 'no-cache',
     variables: mapViewportState,
@@ -37,11 +39,11 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
     activities.push(...location.activities);
   });
 
-  return {
+  return addApolloState(apolloClient, {
     props: {
       mapCoords,
       locations,
       activities,
     },
-  };
+  });
 };

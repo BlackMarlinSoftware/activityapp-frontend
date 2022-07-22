@@ -7,8 +7,8 @@ import { useRouter } from 'next/router';
 import { Location } from '../../types';
 import { updateQueryParams, getMapCoordsQueryParams, getMapViewportQueryParams } from './utils';
 import { Container } from './styles';
-import { routeLoadingVar } from '../../reactiveVars/loading';
 import LoadingFloat from '../uiComponents/LoadingFloat';
+import useRouteChange from '../../hooks/useRouteChange';
 
 interface Props {
   locations: Location[];
@@ -17,7 +17,7 @@ interface Props {
 
 const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
   const focusedLocationId = useReactiveVar(currentFocusedLocationId);
-  const routeLoading = useReactiveVar(routeLoadingVar);
+  const routeLoading = useRouteChange();
   const router = useRouter();
 
   const activitiesLoading = routeLoading?.includes('/activities?');
