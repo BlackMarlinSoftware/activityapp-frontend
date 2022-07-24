@@ -5,7 +5,14 @@ import ActivityList from '../components/ActivityList';
 import { MapCoords, MapViewportState } from '../reactiveVars/map';
 import { Activity, Location } from '../types';
 import { getActivitiesPageServerProps } from '../utils/pages/activities.utils';
-import { Container, PageContainer } from '../styles/pages/activities.styles';
+import {
+  MainContentContainer,
+  PageContainer,
+  ListMapSwitcherButton,
+  ListResponsiveWrapper,
+  MapResponsiveWrapper,
+} from '../styles/pages/activities.styles';
+import React from 'react';
 
 export interface Props {
   mapCoords: MapCoords;
@@ -14,15 +21,30 @@ export interface Props {
   mapViewportState: MapViewportState;
 }
 
-const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => (
-  <PageContainer>
-    <Header />
-    <Container>
-      <ActivityList activities={activities} mapViewportState={mapViewportState} />
-      <MapContainer locations={locations} initialViewState={mapCoords} />
-    </Container>
-  </PageContainer>
-);
+const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => {
+  const [isMapViewToggled, setIsMapViewToggled] = React.useState(true);
+
+  return (
+    <PageContainer>
+      <Header />
+      <MainContentContainer>
+        <ListResponsiveWrapper mapView={isMapViewToggled}>
+          <ActivityList activities={activities} mapViewportState={mapViewportState} />
+        </ListResponsiveWrapper>
+        <MapResponsiveWrapper mapView={isMapViewToggled}>
+          <MapContainer locations={locations} initialViewState={mapCoords} />
+        </MapResponsiveWrapper>
+        <ListMapSwitcherButton
+          onClick={() => {
+            setIsMapViewToggled((prev) => !prev);
+          }}
+        >
+          Hello
+        </ListMapSwitcherButton>
+      </MainContentContainer>
+    </PageContainer>
+  );
+};
 
 export default ActivitiesPage;
 
