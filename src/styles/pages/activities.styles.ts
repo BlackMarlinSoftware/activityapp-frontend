@@ -45,9 +45,10 @@ export const ListMapSwitcherButton = styled.button`
   height: ${spacing[7]};
   width: ${spacing[11]};
   border-radius: 30px;
-  border: 2px solid ${theme.colors.neutral[1]};
+  border: 2px solid ${theme.colors.supporting.grey[1]};
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
+  color: ${theme.colors.supporting.grey[1]};
 
   > div {
     display: flex;
