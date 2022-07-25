@@ -13,6 +13,8 @@ import {
   MapResponsiveWrapper,
 } from '../styles/pages/activities.styles';
 import React from 'react';
+import Map from '../components/Icon/genericIcons/Map';
+import List from '../components/Icon/genericIcons/List';
 
 export interface Props {
   mapCoords: MapCoords;
@@ -39,7 +41,10 @@ const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, map
             setIsMapViewToggled((prev) => !prev);
           }}
         >
-          {isMapViewToggled ? 'Show List' : 'Show Map'}
+          <div>
+            <span>{isMapViewToggled ? 'Show List' : 'Show Map'}</span>
+            <span>{isMapViewToggled ? <List /> : <Map />}</span>
+          </div>
         </ListMapSwitcherButton>
       </MainContentContainer>
     </PageContainer>

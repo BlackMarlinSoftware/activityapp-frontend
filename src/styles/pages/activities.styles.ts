@@ -42,11 +42,22 @@ export const ListMapSwitcherButton = styled.button`
   left: 50%;
   transform: translateX(-50%);
 
-  height: ${spacing[6]};
-  width: ${spacing[10]};
+  height: ${spacing[7]};
+  width: ${spacing[11]};
   border-radius: 30px;
-  border: 2px solid ${theme.colors.neutral[9]};
-  background-color: ${theme.colors.supporting.grey[2]};
-  border: none;
-  color: ${theme.colors.supporting.grey[10]};
+  border: 2px solid ${theme.colors.neutral[1]};
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  span {
+    margin: 0 ${spacing[2]};
+  }
 `;
