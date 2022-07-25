@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   box-shadow: ${colors.neutral[9.5]} 0px 1px 1px;
   z-index: 1;
+  height: ${spacing[9]};
 `;
 
 export const Menu = styled.div`
