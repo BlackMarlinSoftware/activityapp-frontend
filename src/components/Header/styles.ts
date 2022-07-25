@@ -6,6 +6,8 @@ export const HeaderHeight = `${spacing[9]}`;
 export const HeaderContainer = styled.div`
   position: sticky;
   top: 0;
+  width: 100vw;
+  box-sizing: border-box;
   height: ${HeaderHeight};
   background-color: ${colors.supporting.grey[10]};
   display: grid;

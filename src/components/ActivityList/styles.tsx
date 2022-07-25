@@ -19,8 +19,9 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
 `;
 
 export const ActivityRows = styled.div`
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 0 ${theme.scale.spacing[6]};
-  //overflow-y: scroll;
 `;

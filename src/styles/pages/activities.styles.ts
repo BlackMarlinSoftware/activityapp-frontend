@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { spacing } from '../theme';
+import theme, { spacing } from '../theme';
 import { device } from '../devices';
 
 export const PageContainer = styled.div`
+  overflow: auto;
   height: 100vh;
   display: grid;
   grid-auto-flow: row;
@@ -19,14 +20,14 @@ export const MainContentContainer = styled.div`
 `;
 
 export const ListResponsiveWrapper = styled.div<{ mapView: boolean }>`
-  display: none;
+  display: ${(props) => (props.mapView ? 'none' : 'flex')};
   @media ${device.laptop} {
     display: flex;
   }
 `;
 
 export const MapResponsiveWrapper = styled.div<{ mapView: boolean }>`
-  display: none;
+  display: ${(props) => (props.mapView ? 'flex' : 'none')};
   @media ${device.laptop} {
     display: flex;
   }
@@ -37,5 +38,15 @@ export const ListMapSwitcherButton = styled.button`
     display: none;
   }
   position: fixed;
-  bottom: 0;
+  bottom: ${spacing[3]};
+  left: 50%;
+  transform: translateX(-50%);
+
+  height: ${spacing[6]};
+  width: ${spacing[10]};
+  border-radius: 30px;
+  border: 2px solid ${theme.colors.neutral[9]};
+  background-color: ${theme.colors.supporting.grey[2]};
+  border: none;
+  color: ${theme.colors.supporting.grey[10]};
 `;

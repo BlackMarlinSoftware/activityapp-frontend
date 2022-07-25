@@ -39,7 +39,7 @@ const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, map
             setIsMapViewToggled((prev) => !prev);
           }}
         >
-          Hello
+          {isMapViewToggled ? 'Show List' : 'Show Map'}
         </ListMapSwitcherButton>
       </MainContentContainer>
     </PageContainer>

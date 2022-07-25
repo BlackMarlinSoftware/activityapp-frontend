@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const ActivityContainer = styled.div`
   display: grid;
-  grid-template-columns: ${spacing[12]} 1fr;
+  grid-template-columns: ${spacing[10]} 1fr;
   grid-gap: ${spacing[4]};
   margin-bottom: ${spacing[6]};
 `;
