@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { spacing } from '../theme';
+import theme, { shadows, spacing } from '../theme';
 import { device } from '../devices';
 
 export const PageContainer = styled.div`
@@ -45,8 +45,9 @@ export const ListMapSwitcherButton = styled.button`
   height: ${spacing[7]};
   width: ${spacing[11]};
   border-radius: 30px;
-  border: 2px solid ${theme.colors.supporting.grey[1]};
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 0;
+  box-shadow: ${shadows.light};
   backdrop-filter: blur(8px);
   color: ${theme.colors.supporting.grey[1]};
 
