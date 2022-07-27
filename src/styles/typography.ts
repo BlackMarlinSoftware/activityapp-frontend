@@ -23,7 +23,7 @@ export default css`
   h1,
   .h1 {
     font-family: Inter, sans-serif;
-    font-size: 4.25rem;
+    font-size: 4rem;
     line-height: 4.5rem;
     margin-top: 1.5rem;
     margin-bottom: 3rem;
@@ -31,7 +31,7 @@ export default css`
   h2,
   .h2 {
     font-family: Inter, sans-serif;
-    font-size: 2.625rem;
+    font-size: 2rem;
     line-height: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -39,7 +39,7 @@ export default css`
   h3,
   .h3 {
     font-family: Inter, sans-serif;
-    font-size: 1.625rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 0rem;

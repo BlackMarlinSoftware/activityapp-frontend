@@ -1,4 +1,4 @@
-import withSvgColour from '../withSvgColour';
+import withSvgProps from '../withSvgProps';
 
 const Icon = (): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 12 12">
@@ -8,4 +8,4 @@ const Icon = (): JSX.Element => (
   </svg>
 );
 
-export default withSvgColour(Icon);
+export default withSvgProps(Icon);

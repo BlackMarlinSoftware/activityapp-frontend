@@ -43,6 +43,12 @@ export const CTA = styled.div`
   grid-area: cta;
 `;
 
+export const TitleAndIcon = styled.div`
+  display: flex;
+  align-items: center;
+  grid-gap: ${spacing[3]};
+`;
+
 export const ActivityImage = styled(Image)`
   border-radius: ${spacing[3]};
 `;

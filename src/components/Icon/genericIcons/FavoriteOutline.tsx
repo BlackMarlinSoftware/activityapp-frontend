@@ -1,4 +1,4 @@
-import withSvgColour from '../withSvgColour';
+import withSvgProps from '../withSvgProps';
 
 const Icon = (): JSX.Element => (
   <svg
@@ -21,4 +21,4 @@ const Icon = (): JSX.Element => (
   </svg>
 );
 
-export default withSvgColour(Icon);
+export default withSvgProps(Icon);

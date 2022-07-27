@@ -19,7 +19,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import X from '../Icon/genericIcons/X';
-import { Activity } from '../../types';
+import { Activity, CategoryName } from '../../types';
 
 interface Props {
   activity: Activity;
@@ -78,7 +78,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
           )}
         >
           <Pin open={isOpen || focused}>
-            <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
+            <Icon category={categoryName as CategoryName} colour={isOpen ? 'white' : 'black'} />
           </Pin>
         </Popover>
       </ActivityContainer>

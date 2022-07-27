@@ -1,7 +1,5 @@
-import withSvgColour from '../withSvgColour';
-
 const Icon = (): JSX.Element => (
-  <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <g fill="currentColor">
       <rect data-color="color-2" x="5" y="7" width="6" height="2"></rect>
       <path d="M16,7h-1V3c0-0.5522461-0.4477539-1-1-1h-1c-0.5522461,0-1,0.4477539-1,1v10c0,0.5522461,0.4477539,1,1,1h1 c0.5522461,0,1-0.4477539,1-1V9h1V7z"></path>
@@ -10,4 +8,4 @@ const Icon = (): JSX.Element => (
   </svg>
 );
 
-export default withSvgColour(Icon);
+export default Icon;
