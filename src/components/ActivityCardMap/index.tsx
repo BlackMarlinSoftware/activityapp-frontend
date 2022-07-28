@@ -7,8 +7,6 @@ import {
   imageContainerHeight,
   cardBorderRadius,
   DetailsContainer,
-  ActivityTitle,
-  ActivityDescription,
   ActivityOperator,
   FavoriteContainer,
   CloseContainer,
@@ -62,17 +60,8 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
                 ) : null}
               </ImageContainer>
               <DetailsContainer>
-                <ActivityTitle>
-                  <p>{activity.name}</p>
-                </ActivityTitle>
-                <ActivityDescription>
-                  <p>{activity.description}</p>
-                </ActivityDescription>
-                <ActivityOperator>
-                  <p>
-                    Operated by: <span>{activity.host.name}</span>
-                  </p>
-                </ActivityOperator>
+                <h5>{activity.name}</h5>
+                <h6>Yoga class run by {activity.host.name}</h6>
               </DetailsContainer>
             </PopoverCard>
           )}

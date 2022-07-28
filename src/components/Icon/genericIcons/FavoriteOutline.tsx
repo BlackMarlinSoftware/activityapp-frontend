@@ -1,5 +1,3 @@
-import withSvgProps from '../withSvgProps';
-
 const Icon = (): JSX.Element => (
   <svg
     viewBox="0 0 32 32"
@@ -21,4 +19,4 @@ const Icon = (): JSX.Element => (
   </svg>
 );
 
-export default withSvgProps(Icon);
+export default Icon;

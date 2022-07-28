@@ -24,7 +24,7 @@ const ActivityCard = ({ activity }: Props): JSX.Element => {
 
       <ActivityDetails>
         <h4>{activity.name}</h4>
-        <h5>{activity.location.name}, 0.3 km away</h5>
+        <h6>{activity.location.name}, 0.3 km away</h6>
         <Description>{activity.description}</Description>
       </ActivityDetails>
     </ActivityContainer>

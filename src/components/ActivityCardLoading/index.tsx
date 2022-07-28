@@ -6,7 +6,7 @@ const ActivityCardLoading = (): JSX.Element => (
 
     <ActivityDetails>
       <h4> </h4>
-      <h5> </h5>
+      <h6> </h6>
       <Description></Description>
     </ActivityDetails>
   </ActivityContainer>

@@ -13,8 +13,6 @@ export const PopoverCard = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: ${cardBorderRadius};
-  width: 300px;
-  height: 250px;
   background-color: white;
   margin-bottom: ${spacing[3]};
 `;
@@ -22,27 +20,14 @@ export const PopoverCard = styled.div`
 export const ImageContainer = styled.div`
   width: ${imageContainerWidth};
   height: ${imageContainerHeight};
-  max-height: 150px;
 `;
 
 export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${spacing[3]};
-  margin-top: ${spacing[4]};
-  h5,
-  h6,
-  p {
-    margin: 0;
-  }
 `;
 
-export const ActivityTitle = styled.div`
-  p {
-    font-weight: 700;
-    margin-bottom: 0px;
-  }
-`;
 export const ActivityDescription = styled.div`
   p {
     font-weight: normal;
@@ -54,23 +39,11 @@ export const ActivityDescription = styled.div`
   }
 `;
 
-export const ActivityOperator = styled.div`
-  p {
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: ${theme.colors.supporting.grey[5]};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  span {
-    font-weight: normal;
-    font-size: 0.75rem;
-    color: ${theme.colors.supporting.grey[5]};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+export const ActivityOperator = styled.small`
+  color: ${theme.colors.supporting.grey[5]};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const Pin = styled.div<{ open: boolean }>`

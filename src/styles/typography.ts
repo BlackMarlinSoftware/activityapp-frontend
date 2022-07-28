@@ -14,9 +14,15 @@ export default css`
     line-height: 1.5rem;
     margin: auto;
   }
-  p {
+  small {
     font-size: 0.875rem;
     line-height: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
@@ -56,20 +62,20 @@ export default css`
   h5,
   .h5 {
     font-family: Inter, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+  }
+  h6,
+  .h6 {
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin-top: 1.25rem;
     margin-bottom: 0rem;
     color: ${theme.colors.neutral[6]};
-  }
-  h6,
-  .h6 {
-    font-family: Inter, sans-serif;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0rem;
   }
   h1,
   h2,
@@ -109,7 +115,6 @@ export default css`
   i,
   strong,
   em,
-  small,
   code {
     font-family: Inter, sans-serif;
     line-height: 0;
