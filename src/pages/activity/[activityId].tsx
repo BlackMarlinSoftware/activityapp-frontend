@@ -14,7 +14,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
   return (
     <>
-      <Header />
+      <Header widthConstrained={true} />
       <Container>
         <Main>
           <Title>
@@ -51,14 +51,16 @@ const ActivityPage: NextPage<Props> = ({}) => {
               mollit anim id est laborum. READ MORE
             </p>
 
-            <h3>{"Where you'll be"}</h3>
+            <h3>Getting there</h3>
             <p>MAP PLACEHOLDER</p>
+
+            <h3>About the host</h3>
+            <p>HOST DETAILS PLACEHOLDER</p>
 
             <h3>Activities like this PLACEHOLDER</h3>
           </Details>
           <CTA>
             <p>Book now</p>
-            <p>About the host</p>
             <p>Report this listing</p>
           </CTA>
         </Main>

@@ -16,7 +16,7 @@ export interface Props {
 
 const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => (
   <PageContainer>
-    <Header />
+    <Header widthConstrained={false} />
     <Container>
       <ActivityList activities={activities} mapViewportState={mapViewportState} />
       <MapContainer locations={locations} initialViewState={mapCoords} />
