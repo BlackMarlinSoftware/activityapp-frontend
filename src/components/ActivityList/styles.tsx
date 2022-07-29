@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme, { spacing, colors } from '../../styles/theme';
+import { device } from '../../styles/devices';
 
 export const Container = styled.div`
   display: flex;
@@ -23,5 +24,12 @@ export const ActivityRows = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 0 ${theme.scale.spacing[6]};
+  @media ${device.mobileXL} {
+    flex-direction: row;
+  }
+  @media ${device.laptop} {
+    flex-direction: column;
+  }
 `;
