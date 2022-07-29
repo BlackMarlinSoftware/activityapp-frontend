@@ -34,7 +34,7 @@ export const MapResponsiveWrapper = styled.div<{ mapView: boolean }>`
 `;
 
 export const ListMapSwitcherButton = styled.button`
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     display: none;
   }
   position: fixed;

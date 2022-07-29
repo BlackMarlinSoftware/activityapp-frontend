@@ -4,28 +4,30 @@ import { Activity } from '../../types';
 
 interface Props {
   activity: Activity;
+  loading?: boolean | undefined;
 }
 
-const ActivityCard = ({ activity }: Props): JSX.Element => {
+const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
   const firstImage = activity.activities_x_media[0].media;
 
   return (
     <ActivityContainer>
       <div>
         <ActivityImage
-          src={`/images/${activity.id}/${firstImage.path}`}
+          src={loading ? '/TransparentPlaceholder.png' : `/images/${activity.id}/${firstImage.path}`}
           alt={firstImage.caption || undefined}
           objectFit="cover"
           objectPosition="center"
+          layout="responsive"
           width={theme.scale.spacing[12]}
           height={theme.scale.spacing[11]}
         />
       </div>
 
-      <ActivityDetails>
+      <ActivityDetails $loading={!!loading}>
         <h4>{activity.name}</h4>
         <h5>{activity.location.name}, 0.3 km away</h5>
-        <Description>{activity.description}</Description>
+        <Description $loading={!!loading}>{activity.description}</Description>
       </ActivityDetails>
     </ActivityContainer>
   );
