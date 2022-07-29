@@ -22,33 +22,33 @@ export const ActivityContainer = styled.div`
   }
 `;
 
-export const ActivityDetails = styled.div<{ loading: boolean | undefined }>`
+export const ActivityDetails = styled.div<{ $loading: boolean }>`
   padding: ${spacing[2]} 0;
 
   h4 {
     margin-top: 0;
-    color: ${(props) => (props.loading ? 'transparent' : 'initial')};
+    color: ${(props) => (props.$loading ? 'transparent' : 'initial')};
   }
 
   h5 {
     margin-top: ${spacing[1]};
-    color: ${(props) => (props.loading ? 'transparent' : theme.colors.neutral[6])};
+    color: ${(props) => (props.$loading ? 'transparent' : theme.colors.neutral[6])};
   }
 
   * {
-    height: ${(props) => (props.loading ? spacing[4] : 'auto')};
-    border-radius: ${(props) => (props.loading ? spacing[1] : 0)};
-    ${(props) => (props.loading ? ShimmerBackground : '')};
+    height: ${(props) => (props.$loading ? spacing[4] : 'auto')};
+    border-radius: ${(props) => (props.$loading ? spacing[1] : 0)};
+    ${(props) => (props.$loading ? ShimmerBackground : '')};
   }
 `;
 
-export const Description = styled.p<{ loading: boolean | undefined }>`
+export const Description = styled.p<{ $loading: boolean }>`
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  color: ${(props) => (props.loading ? 'transparent' : 'initial')};
-  ${(props) => (props.loading ? ShimmerBackground : '')};
+  color: ${(props) => (props.$loading ? 'transparent' : 'initial')};
+  ${(props) => (props.$loading ? ShimmerBackground : '')};
 
   @media ${device.mobileXL} {
     -webkit-line-clamp: 4;

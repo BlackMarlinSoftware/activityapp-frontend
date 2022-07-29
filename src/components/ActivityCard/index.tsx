@@ -4,7 +4,7 @@ import { Activity } from '../../types';
 
 interface Props {
   activity: Activity;
-  loading?: boolean;
+  loading?: boolean | undefined;
 }
 
 const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
@@ -24,10 +24,10 @@ const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
         />
       </div>
 
-      <ActivityDetails loading={loading}>
+      <ActivityDetails $loading={!!loading}>
         <h4>{activity.name}</h4>
         <h5>{activity.location.name}, 0.3 km away</h5>
-        <Description loading={loading}>{activity.description}</Description>
+        <Description $loading={!!loading}>{activity.description}</Description>
       </ActivityDetails>
     </ActivityContainer>
   );
