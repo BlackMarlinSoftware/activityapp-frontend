@@ -16,7 +16,6 @@ import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
-import X from '../Icon/genericIcons/X';
 import { Activity, CategoryName } from '../../types';
 
 interface Props {
@@ -44,7 +43,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
                 </FavoriteContainer>
 
                 <CloseContainer onClick={close}>
-                  <X colour="hsl(0,0%,90%)" />
+                  <Icon icon="X" colour="hsl(0,0%,90%)" width="12px" height="12px" />
                 </CloseContainer>
 
                 {activity.activities_x_media.length > 0 ? (
@@ -67,7 +66,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
           )}
         >
           <Pin open={isOpen || focused}>
-            <Icon category={categoryName as CategoryName} colour={isOpen ? 'white' : 'black'} />
+            <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
           </Pin>
         </Popover>
       </ActivityContainer>

@@ -32,7 +32,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
         <Main>
           <Title>
             <TitleAndIcon>
-              <Icon category="Kitesurfing" width="24px" height="24px" />
+              <Icon icon="Kitesurfing" width="24px" height="24px" />
               <h2>Kitesurfing taster day</h2>
             </TitleAndIcon>
             <h4>Hill Head Beach, Southampton . Share . Save</h4>

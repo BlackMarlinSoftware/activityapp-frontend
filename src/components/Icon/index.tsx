@@ -1,5 +1,6 @@
-import { CategoryLevel1, CategoryLevel2, CategoryLevel3, CategoryName } from '../../types';
+import { CategoryLevel1, CategoryLevel2, CategoryLevel3 } from '../../types';
 
+import withSvgProps from './withSvgProps';
 import NoIcon from './activityIcons/NoIcon';
 import Cycling from './activityIcons/Cycling';
 import Active from './activityIcons/Lightning';
@@ -70,7 +71,7 @@ import TheaterMask from './activityIcons/TheaterMask';
 import Cinema from './activityIcons/Cinema';
 import PawPrint from './activityIcons/PawPrint';
 import Baby from './activityIcons/Baby';
-import withSvgProps from './withSvgProps';
+import X from './genericIcons/X';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -275,26 +276,31 @@ const categoryLevel3Icons: CategoryLevel3Icons = {
   Softplay: Baby,
 };
 
+const genericIcons: Record<string, React.FC> = {
+  X: X,
+};
+
 const iconMap: Record<string, React.FC> = {
   ...categoryLevel1Icons,
   ...categoryLevel2Icons,
   ...categoryLevel3Icons,
+  ...genericIcons,
 };
 
 interface Props {
-  category: CategoryName;
+  icon: string;
   colour?: string;
   width?: string;
   height?: string;
 }
 
-const Icon = ({ category, colour, width, height }: Props) => {
-  const matchingIcon = Object.keys(iconMap).find((iconKey) => iconKey === category);
+const Icon = ({ icon, colour, width = '16px', height = '16px' }: Props) => {
+  const matchingIcon = Object.keys(iconMap).find((iconKey) => iconKey === icon);
   if (matchingIcon) {
     const IconComponent = withSvgProps(iconMap[matchingIcon]);
     return <IconComponent colour={colour} width={width} height={height} />;
   }
-  return <NoIcon colour={colour} />;
+  return <div style={{ width, height }}></div>;
 };
 
 export default Icon;
