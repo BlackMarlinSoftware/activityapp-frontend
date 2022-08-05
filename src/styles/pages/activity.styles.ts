@@ -69,6 +69,9 @@ export const DetailsSection = styled.div`
   padding-bottom: ${spacing[5]};
   margin-bottom: ${spacing[5]};
   border-bottom: 1px solid ${colors.neutral[9.5]};
+  display: flex;
+  flex-direction: column;
+  grid-gap: ${spacing[5]};
 `;
 
 export const SummaryContainer = styled.div`
@@ -87,4 +90,15 @@ export const SummaryContainer = styled.div`
   p {
     grid-area: details;
   }
+`;
+
+export const SummaryItem = styled.div`
+  display: flex;
+  grid-gap: ${spacing[4]};
+  align-items: center;
+`;
+
+export const SummaryAndCaption = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

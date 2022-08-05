@@ -16,6 +16,8 @@ import {
   HostLogoImage,
   SummaryContainer,
   HostLogoContainer,
+  SummaryItem,
+  SummaryAndCaption,
 } from '../../styles/pages/activity.styles';
 import { spacing } from '../../styles/theme';
 
@@ -66,10 +68,83 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </DetailsSection>
 
             <DetailsSection>
-              <p>Outdoors</p>
-              <p>Skill level: Beginner/Intermediate</p>
-              <p>Physical intensity: Medium (INFO)</p>
-              <p>Women aged 14 and up (INFO - LGBTQ+ friendly = guidelines)</p>
+              <SummaryItem>
+                <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Indoors</h5>
+                  <h6>This activity is mostly or entirely indoors</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="TreeColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Outdoors</h5>
+                  <h6>This activity is mostly or entirely outdoors</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="IncreasingBarsColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Beginner to intermediate</h5>
+                  <h6>Suitable for people starting out or improving</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>High physical intensity</h5>
+                  <h6>Suitable for people with a good level of fitness</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Medium physical intensity</h5>
+                  <h6>Suitable for people with a basic level of fitness</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Choice of physical intensity</h5>
+                  <h6>Suitable for any level of fitness</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Low physical intensity</h5>
+                  <h6>Suitable for any level of fitness</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Ages 14 and up</h5>
+                  <h6>Unsuitable for young children</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Ages 5 to 7</h5>
+                  <h6>Suitable for children</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Ages 5 to 15</h5>
+                  <h6>Suitable for children and teenagers</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
+              <SummaryItem>
+                <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
+                <SummaryAndCaption>
+                  <h5>Ages 5 to 25</h5>
+                  <h6>Suitable for a range of ages</h6>
+                </SummaryAndCaption>
+              </SummaryItem>
             </DetailsSection>
 
             <DetailsSection>

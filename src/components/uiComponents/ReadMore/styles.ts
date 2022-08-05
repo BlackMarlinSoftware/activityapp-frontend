@@ -15,6 +15,6 @@ export const ClampParagraph = styled.p<{ expanded: boolean; lines: number }>`
 `;
 
 export const ToggleExpanded = styled.div`
-  text-decoration: underline;
+  font-weight: 600;
   cursor: pointer;
 `;

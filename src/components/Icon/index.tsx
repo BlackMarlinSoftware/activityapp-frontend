@@ -72,6 +72,24 @@ import Cinema from './activityIcons/Cinema';
 import PawPrint from './activityIcons/PawPrint';
 import Baby from './activityIcons/Baby';
 import X from './genericIcons/X';
+import Heart from './genericIcons/Heart';
+import Favorite from './genericIcons/Favorite';
+import FavoriteOutline from './genericIcons/FavoriteOutline';
+import Bars from './genericIcons/Bars';
+import Home24 from './genericIcons/Home24';
+import IncreasingBars24 from './genericIcons/IncreasingBars24';
+import Lightning24 from './genericIcons/Lightning24';
+import Tree24 from './genericIcons/Tree24';
+import TreeColour from './genericIcons/TreeColour';
+import LightningColour from './genericIcons/LightningColour';
+import HomeColour from './genericIcons/HomeColour';
+import IncreasingBarsColour from './genericIcons/IncreasingBarsColour';
+import PersonColour from './genericIcons/PersonColour';
+import ChildColour from './genericIcons/ChildColour';
+import PodiumColour from './genericIcons/PodiumColour';
+import SpeedoColour from './genericIcons/SpeedoColour';
+import ThermometerColour from './genericIcons/ThermometerColour';
+import SofaColour from './genericIcons/SofaColour';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -278,6 +296,24 @@ const categoryLevel3Icons: CategoryLevel3Icons = {
 
 const genericIcons: Record<string, React.FC> = {
   X: X,
+  Heart: Heart,
+  Favorite: Favorite,
+  FavoriteOutline: FavoriteOutline,
+  Bars: Bars,
+  Home24: Home24,
+  IncreasingBars24: IncreasingBars24,
+  Lightning24: Lightning24,
+  Tree24: Tree24,
+  TreeColour: TreeColour,
+  LightningColour: LightningColour,
+  HomeColour: HomeColour,
+  IncreasingBarsColour: IncreasingBarsColour,
+  PodiumColour: PodiumColour,
+  PersonColour: PersonColour,
+  ChildColour: ChildColour,
+  SpeedoColour: SpeedoColour,
+  ThermometerColour: ThermometerColour,
+  SofaColour: SofaColour,
 };
 
 const iconMap: Record<string, React.FC> = {
