@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ActivityImage } from '../../components/ActivityCard/styles';
 import Header from '../../components/Header';
@@ -16,8 +17,10 @@ import {
   HostLogoImage,
   SummaryContainer,
   HostLogoContainer,
-  SummaryItem,
-  SummaryAndCaption,
+  KeyInfoItem,
+  InfoAndCaption,
+  KeyInformation,
+  BookNowContainer,
 } from '../../styles/pages/activity.styles';
 import { spacing } from '../../styles/theme';
 
@@ -68,86 +71,96 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </DetailsSection>
 
             <DetailsSection>
-              <SummaryItem>
-                <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Indoors</h5>
-                  <h6>This activity is mostly or entirely indoors</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="TreeColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Outdoors</h5>
-                  <h6>This activity is mostly or entirely outdoors</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="IncreasingBarsColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Beginner to intermediate</h5>
-                  <h6>Suitable for people starting out or improving</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>High physical intensity</h5>
-                  <h6>Suitable for people with a good level of fitness</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Medium physical intensity</h5>
-                  <h6>Suitable for people with a basic level of fitness</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Choice of physical intensity</h5>
-                  <h6>Suitable for any level of fitness</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Low physical intensity</h5>
-                  <h6>Suitable for any level of fitness</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Ages 14 and up</h5>
-                  <h6>Unsuitable for young children</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Ages 5 to 7</h5>
-                  <h6>Suitable for children</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Ages 5 to 15</h5>
-                  <h6>Suitable for children and teenagers</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
-              <SummaryItem>
-                <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                <SummaryAndCaption>
-                  <h5>Ages 5 to 25</h5>
-                  <h6>Suitable for a range of ages</h6>
-                </SummaryAndCaption>
-              </SummaryItem>
+              <KeyInformation>
+                <KeyInfoItem>
+                  <Icon icon="TreeColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Outdoors</h5>
+                    <h6>This activity is mostly or entirely outdoors</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                <KeyInfoItem>
+                  <Icon icon="IncreasingBarsColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Beginner to intermediate</h5>
+                    <h6>Suitable for people starting out or improving</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                <KeyInfoItem>
+                  <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Medium physical intensity</h5>
+                    <h6>Suitable for people with an average level of fitness</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                <KeyInfoItem>
+                  <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Ages 14 and up</h5>
+                    <h6>Unsuitable for young children</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                <KeyInfoItem>
+                  <Icon icon="MedalColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Highly qualified host</h5>
+                    <h6>This host is a verified expert</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                {/* <KeyInfoItem>
+                  <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Indoors</h5>
+                    <h6>This activity is mostly or entirely indoors</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>High physical intensity</h5>
+                    <h6>Suitable for people with a good level of fitness</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Choice of physical intensity</h5>
+                    <h6>Suitable for any level of fitness</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="LightningColourOutline" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Low physical intensity</h5>
+                    <h6>Suitable for any level of fitness</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Ages 5 to 7</h5>
+                    <h6>Suitable for children</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Ages 5 to 15</h5>
+                    <h6>Suitable for children and teenagers</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+                {/* <KeyInfoItem>
+                  <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
+                  <InfoAndCaption>
+                    <h5>Ages 5 to 25</h5>
+                    <h6>Suitable for a range of ages</h6>
+                  </InfoAndCaption>
+                </KeyInfoItem> */}
+              </KeyInformation>
             </DetailsSection>
 
             <DetailsSection>
+              <h3>About this activity</h3>
               <ReadMore
                 lines={4}
                 text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -160,20 +173,33 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
             <DetailsSection>
               <h3>Getting there</h3>
+              <ReadMore
+                lines={4}
+                text={`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
+                the arches.`}
+              />
               <p>MAP PLACEHOLDER</p>
             </DetailsSection>
 
             <DetailsSection>
               <h3>About the host</h3>
-              <p>HOST DETAILS PLACEHOLDER</p>
+              <ReadMore
+                lines={4}
+                text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
+                water. Some more information here and etc.`}
+              />
             </DetailsSection>
 
             <h3>Activities like this</h3>
             <p>OTHER ACTIVITIES PLACEHOLDER</p>
           </Details>
           <CTA>
-            <p>Book now</p>
-            <p>Report this listing</p>
+            <BookNowContainer>
+              <p>Book now</p>
+            </BookNowContainer>
+            <Link passHref href="/report">
+              <h6>Report this listing</h6>
+            </Link>
           </CTA>
         </Main>
       </Container>

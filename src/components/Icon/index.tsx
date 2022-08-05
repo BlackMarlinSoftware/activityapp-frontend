@@ -82,6 +82,7 @@ import Lightning24 from './genericIcons/Lightning24';
 import Tree24 from './genericIcons/Tree24';
 import TreeColour from './genericIcons/TreeColour';
 import LightningColour from './genericIcons/LightningColour';
+import LightningColourOutline from './genericIcons/LightningColourOutline';
 import HomeColour from './genericIcons/HomeColour';
 import IncreasingBarsColour from './genericIcons/IncreasingBarsColour';
 import PersonColour from './genericIcons/PersonColour';
@@ -90,6 +91,7 @@ import PodiumColour from './genericIcons/PodiumColour';
 import SpeedoColour from './genericIcons/SpeedoColour';
 import ThermometerColour from './genericIcons/ThermometerColour';
 import SofaColour from './genericIcons/SofaColour';
+import MedalColour from './genericIcons/MedalColour';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -306,6 +308,7 @@ const genericIcons: Record<string, React.FC> = {
   Tree24: Tree24,
   TreeColour: TreeColour,
   LightningColour: LightningColour,
+  LightningColourOutline: LightningColourOutline,
   HomeColour: HomeColour,
   IncreasingBarsColour: IncreasingBarsColour,
   PodiumColour: PodiumColour,
@@ -314,6 +317,7 @@ const genericIcons: Record<string, React.FC> = {
   SpeedoColour: SpeedoColour,
   ThermometerColour: ThermometerColour,
   SofaColour: SofaColour,
+  MedalColour: MedalColour,
 };
 
 const iconMap: Record<string, React.FC> = {

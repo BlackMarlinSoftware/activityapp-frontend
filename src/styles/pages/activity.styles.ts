@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { colors, spacing } from '../theme';
+import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
   display: flex;
@@ -42,7 +42,10 @@ export const Details = styled.div`
 
 export const CTA = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   grid-area: cta;
+  grid-gap: ${spacing[6]};
 `;
 
 export const TitleAndIcon = styled.div`
@@ -69,6 +72,9 @@ export const DetailsSection = styled.div`
   padding-bottom: ${spacing[5]};
   margin-bottom: ${spacing[5]};
   border-bottom: 1px solid ${colors.neutral[9.5]};
+`;
+
+export const KeyInformation = styled.div`
   display: flex;
   flex-direction: column;
   grid-gap: ${spacing[5]};
@@ -92,13 +98,24 @@ export const SummaryContainer = styled.div`
   }
 `;
 
-export const SummaryItem = styled.div`
+export const KeyInfoItem = styled.div`
   display: flex;
   grid-gap: ${spacing[4]};
   align-items: center;
 `;
 
-export const SummaryAndCaption = styled.div`
+export const InfoAndCaption = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const BookNowContainer = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: ${spacing[3]};
+  padding: ${spacing[6]};
+  box-shadow: ${shadows.even};
 `;
