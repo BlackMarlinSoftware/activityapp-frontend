@@ -77,6 +77,7 @@ import Favorite from './genericIcons/Favorite';
 import FavoriteOutline from './genericIcons/FavoriteOutline';
 import Bars from './genericIcons/Bars';
 import Star from './genericIcons/Star';
+import Share from './genericIcons/Share';
 import Home24 from './genericIcons/Home24';
 import IncreasingBars24 from './genericIcons/IncreasingBars24';
 import Lightning24 from './genericIcons/Lightning24';
@@ -304,6 +305,7 @@ const genericIcons: Record<string, React.FC> = {
   FavoriteOutline: FavoriteOutline,
   Bars: Bars,
   Star: Star,
+  Share: Share,
   Home24: Home24,
   IncreasingBars24: IncreasingBars24,
   Lightning24: Lightning24,

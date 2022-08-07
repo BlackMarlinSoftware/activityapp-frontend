@@ -54,6 +54,12 @@ export const TitleAndIcon = styled.div`
   grid-gap: ${spacing[3]};
 `;
 
+export const LocationAndActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 export const ActivityImage = styled(Image)`
   border-radius: ${spacing[3]};
 `;
@@ -98,7 +104,7 @@ export const SummaryContainer = styled.div`
   }
 `;
 
-export const ReviewsSummary = styled.div`
+export const IconAndText = styled.div`
   display: flex;
   grid-gap: ${spacing[2]};
   align-items: center;

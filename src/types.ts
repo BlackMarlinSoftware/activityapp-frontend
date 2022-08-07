@@ -2,6 +2,7 @@ import {
   ActivityDataFragment,
   CategoryDataFragment,
   HostDataFragment,
+  LocationDataFragment,
   LocationsInViewportQuery,
   MediaDataFragment,
 } from './generated/graphql';
@@ -198,6 +199,7 @@ export type CategoryLevel3 =
 
 export type CategoryName = CategoryLevel1 | CategoryLevel2 | CategoryLevel3;
 
+export type LocationRaw = LocationDataFragment;
 export type Location = LocationsInViewportQuery['locations'][0];
 export type Activity = ActivityDataFragment;
 export type Host = HostDataFragment;

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { ActivityImage } from '../../components/ActivityCard/styles';
 import Header from '../../components/Header';
 import Icon from '../../components/Icon';
+import MiniMap from '../../components/MiniMap';
 import ReadMore from '../../components/uiComponents/ReadMore';
 import { LinkText } from '../../styles/GlobalStyles';
 import {
@@ -23,7 +24,8 @@ import {
   KeyInformation,
   BookNowContainer,
   CTAButton,
-  ReviewsSummary,
+  IconAndText,
+  LocationAndActions,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 
@@ -43,7 +45,15 @@ const ActivityPage: NextPage<Props> = ({}) => {
               <Icon icon="Kitesurfing" width="24px" height="24px" />
               <h2>Kitesurfing taster day</h2>
             </TitleAndIcon>
-            <h4>Hill Head Beach, Southampton . Share . Save</h4>
+            <LocationAndActions>
+              <h4>Hill Head Beach, Southampton</h4>
+              <LinkText>
+                <IconAndText>
+                  <Icon icon="Share" />
+                  <h4>Share</h4>
+                </IconAndText>
+              </LinkText>
+            </LocationAndActions>
           </Title>
           <Media>
             <ActivityImage
@@ -59,10 +69,10 @@ const ActivityPage: NextPage<Props> = ({}) => {
             <DetailsSection>
               <SummaryContainer>
                 <h3>Class run by Fareham Watersports</h3>
-                <ReviewsSummary>
+                <IconAndText>
                   <Icon icon="Star" colour={colors.primary[6]} />
-                  <p>New</p>
-                </ReviewsSummary>
+                  <h4>New</h4>
+                </IconAndText>
                 <HostLogoContainer>
                   <HostLogoImage
                     src={`/images/demo/kitesurfing.jpeg`}
@@ -179,12 +189,14 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
             <DetailsSection>
               <h3>Getting there</h3>
-              <ReadMore
-                lines={4}
-                text={`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
+              <p>
+                {`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
                 the arches.`}
+              </p>
+              <MiniMap
+                location={{ id: 'todo', long: -1.2521447, lat: 50.8192844, name: 'todo', outdoors: true }}
+                initialViewState={{ longitude: -1.2521447, latitude: 50.8192844, zoom: 11 }}
               />
-              <p>MAP PLACEHOLDER</p>
             </DetailsSection>
 
             <DetailsSection>
