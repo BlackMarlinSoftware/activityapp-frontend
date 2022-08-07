@@ -5,6 +5,7 @@ import { ActivityImage } from '../../components/ActivityCard/styles';
 import Header from '../../components/Header';
 import Icon from '../../components/Icon';
 import ReadMore from '../../components/uiComponents/ReadMore';
+import { LinkText } from '../../styles/GlobalStyles';
 import {
   CTA,
   Details,
@@ -21,8 +22,10 @@ import {
   InfoAndCaption,
   KeyInformation,
   BookNowContainer,
+  CTAButton,
+  ReviewsSummary,
 } from '../../styles/pages/activity.styles';
-import { spacing } from '../../styles/theme';
+import { colors, spacing } from '../../styles/theme';
 
 export interface Props {}
 
@@ -56,7 +59,10 @@ const ActivityPage: NextPage<Props> = ({}) => {
             <DetailsSection>
               <SummaryContainer>
                 <h3>Class run by Fareham Watersports</h3>
-                <p>*4.95 . 64 reviews</p>
+                <ReviewsSummary>
+                  <Icon icon="Star" colour={colors.primary[6]} />
+                  <p>New</p>
+                </ReviewsSummary>
                 <HostLogoContainer>
                   <HostLogoImage
                     src={`/images/demo/kitesurfing.jpeg`}
@@ -195,10 +201,16 @@ const ActivityPage: NextPage<Props> = ({}) => {
           </Details>
           <CTA>
             <BookNowContainer>
-              <p>Book now</p>
+              <h3>Join this class</h3>
+              <h6>
+                {`'Book now' will take you to the host website where you can find times, booking information and more.`}
+              </h6>
+              <CTAButton>Book now</CTAButton>
             </BookNowContainer>
             <Link passHref href="/report">
-              <h6>Report this listing</h6>
+              <LinkText>
+                <h6>Report this listing</h6>
+              </LinkText>
             </Link>
           </CTA>
         </Main>

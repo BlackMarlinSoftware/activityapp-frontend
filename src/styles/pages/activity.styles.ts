@@ -98,6 +98,12 @@ export const SummaryContainer = styled.div`
   }
 `;
 
+export const ReviewsSummary = styled.div`
+  display: flex;
+  grid-gap: ${spacing[2]};
+  align-items: center;
+`;
+
 export const KeyInfoItem = styled.div`
   display: flex;
   grid-gap: ${spacing[4]};
@@ -116,6 +122,48 @@ export const BookNowContainer = styled.div`
   align-items: center;
   flex-direction: column;
   border-radius: ${spacing[3]};
+  border: 1px solid ${colors.neutral[9]};
   padding: ${spacing[6]};
   box-shadow: ${shadows.even};
+  grid-gap: ${spacing[4]};
+  text-align: center;
+`;
+
+export const CTAButton = styled.button`
+  padding: ${spacing[4]};
+  width: 100%;
+  border: none;
+  border-radius: ${spacing[2]};
+  color: ${colors.supporting.grey[10]};
+  font-weight: 600;
+  font-size: ${spacing[4]};
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: none;
+
+  &::after,
+  ::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    background: radial-gradient(circle at center, ${colors.primary[7]} 0%, ${colors.primary[5]} 100%);
+  }
+
+  &::after {
+    background: linear-gradient(90deg, ${colors.primary[7]}, ${colors.primary[5]});
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  &:hover::after {
+    opacity: 0;
+  }
 `;
