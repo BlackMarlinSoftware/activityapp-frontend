@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import { HeaderHeight } from '../../components/Header/styles';
+import { device } from '../devices';
 import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding: ${spacing[6]} ${spacing[4]};
+  padding: ${spacing[6]};
 `;
 
 export const Main = styled.div`
@@ -47,14 +48,25 @@ export const CTA = styled.div`
 
 export const TitleAndIcon = styled.div`
   display: flex;
-  align-items: center;
   grid-gap: ${spacing[3]};
+  flex-direction: column;
+
+  @media ${device.mobileXL} {
+    align-items: center;
+    flex-direction: row;
+  }
 `;
 
 export const LocationAndActions = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 100%;
+  flex-direction: column;
+  row-gap: ${spacing[3]};
+
+  @media ${device.mobileXL} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const ActivityImage = styled(Image)`

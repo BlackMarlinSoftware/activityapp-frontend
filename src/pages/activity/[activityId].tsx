@@ -6,6 +6,8 @@ import Header from '../../components/Header';
 import Icon from '../../components/Icon';
 import MiniMap from '../../components/MiniMap';
 import ReadMore from '../../components/uiComponents/ReadMore';
+import useWindowSize from '../../hooks/useWindowSize';
+import { deviceWidth } from '../../styles/devices';
 import { LinkText } from '../../styles/GlobalStyles';
 import {
   CTA,
@@ -38,6 +40,7 @@ export interface Props {}
 
 const ActivityPage: NextPage<Props> = ({}) => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+  const { windowWidth } = useWindowSize();
 
   const share = () => {
     const currentUrl = window.location.href;
@@ -75,6 +78,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
               )}
             </LocationAndActions>
           </Title>
+
           <Media>
             <ActivityImage
               src={`/images/demo/kitesurfing.jpeg`}
@@ -82,9 +86,10 @@ const ActivityPage: NextPage<Props> = ({}) => {
               objectFit="cover"
               objectPosition="center"
               width={spacing[18]}
-              height={spacing[14]}
+              height={spacing[windowWidth && windowWidth < deviceWidth.mobileXL ? 15 : 14]}
             />
           </Media>
+
           <Details>
             <DetailsSection>
               <SummaryContainer>
@@ -105,7 +110,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
                 </HostLogoContainer>
               </SummaryContainer>
             </DetailsSection>
-
+            {/* 
             <DetailsSection>
               <KeyInformation>
                 <KeyInfoItem>
@@ -143,55 +148,55 @@ const ActivityPage: NextPage<Props> = ({}) => {
                     <h6>This host is a verified expert</h6>
                   </InfoAndCaption>
                 </KeyInfoItem>
-                {/* <KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Indoors</h5>
                     <h6>This activity is mostly or entirely indoors</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>High physical intensity</h5>
                     <h6>Suitable for people with a good level of fitness</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Choice of physical intensity</h5>
                     <h6>Suitable for any level of fitness</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="LightningColourOutline" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Low physical intensity</h5>
                     <h6>Suitable for any level of fitness</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Ages 5 to 7</h5>
                     <h6>Suitable for children</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Ages 5 to 15</h5>
                     <h6>Suitable for children and teenagers</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
-                {/* <KeyInfoItem>
+                </KeyInfoItem>
+                <KeyInfoItem>
                   <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Ages 5 to 25</h5>
                     <h6>Suitable for a range of ages</h6>
                   </InfoAndCaption>
-                </KeyInfoItem> */}
+                </KeyInfoItem>
               </KeyInformation>
             </DetailsSection>
 
@@ -279,10 +284,10 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </DetailsSection>
 
             <h3>Activities like this</h3>
-            <p>OTHER ACTIVITIES PLACEHOLDER</p>
+            <p>OTHER ACTIVITIES PLACEHOLDER</p> */}
           </Details>
 
-          <CTA>
+          {/* <CTA>
             <StickyCTA>
               <BookNowContainer>
                 <h3>Join this class</h3>
@@ -297,7 +302,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
                 </LinkText>
               </Link>
             </StickyCTA>
-          </CTA>
+          </CTA> */}
         </Main>
       </Container>
     </>
