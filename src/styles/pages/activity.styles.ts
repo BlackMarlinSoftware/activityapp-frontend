@@ -173,3 +173,33 @@ export const CTAButton = styled.button`
     opacity: 0;
   }
 `;
+
+export const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: ${spacing[4]} 0;
+
+  * {
+    margin: 0;
+  }
+`;
+
+export const GettingThereSection = styled.div`
+  margin-top: ${spacing[4]};
+  margin-bottom: ${spacing[6]};
+`;
+
+export const HostHeadline = styled.div`
+  display: flex;
+  column-gap: ${spacing[4]};
+  align-items: center;
+  margin: ${spacing[5]} 0;
+`;
+
+export const HostCertifications = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: ${spacing[4]};
+  margin: ${spacing[6]} 0;
+  margin-left: -${spacing[1]};
+`;

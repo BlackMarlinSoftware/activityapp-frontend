@@ -26,6 +26,10 @@ import {
   CTAButton,
   IconAndText,
   LocationAndActions,
+  Address,
+  GettingThereSection,
+  HostHeadline,
+  HostCertifications,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 
@@ -179,20 +183,35 @@ const ActivityPage: NextPage<Props> = ({}) => {
               <h3>About this activity</h3>
               <ReadMore
                 lines={4}
-                text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.`}
+                text={`This is your introduction to the fastest growing sport of the 21st century. Your first day course provides all the fundamentals of kite flying. We will take you through launching and landing, pre-flight checks, water relaunching, water safety packdown and body dragging through the shallow water pools at Hill Head. At the end of your one day kitesurfing lesson you will no doubt be eager to come back for a second day (Day 2) where we introduce the kiteboard.
+                
+                The day one course is a great intro into the sport. We run this course as a group so you will have up to two people with one instructor. The initial intro will be on land flying a trainer kite where we will brief you on safety, talk about wind/weather and explain what we will be doing during your course. The gear used on this course will be the latest and most high end beginner equipment on the market. We take pride in the fact that we use the best gear so we aim to teach you all of the basics carefully, not only for you to learn the correct way but so we don't damage any of our lovely new gear.`}
               />
             </DetailsSection>
 
             <DetailsSection>
-              <h3>Getting there</h3>
-              <p>
-                {`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
+              <h3>Getting to Hill Head Beach, Southampton</h3>
+
+              <GettingThereSection>
+                <h4>Address</h4>
+
+                <Address>
+                  <p>12 Eastleigh Road</p>
+                  <p>Meon Shore</p>
+                  <p>Southampton</p>
+                  <p>SO34 2ND</p>
+                </Address>
+              </GettingThereSection>
+
+              <GettingThereSection>
+                <h4>Directions</h4>
+
+                <p>
+                  {`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
                 the arches.`}
-              </p>
+                </p>
+              </GettingThereSection>
+
               <MiniMap
                 location={{ id: 'todo', long: -1.2521447, lat: 50.8192844, name: 'todo', outdoors: true }}
                 initialViewState={{ longitude: -1.2521447, latitude: 50.8192844, zoom: 11 }}
@@ -201,6 +220,40 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
             <DetailsSection>
               <h3>About the host</h3>
+
+              <HostHeadline>
+                <HostLogoContainer>
+                  <HostLogoImage
+                    src={`/images/demo/kitesurfing.jpeg`}
+                    alt={'TODO' || undefined}
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={spacing[8]}
+                    height={spacing[8]}
+                  />
+                </HostLogoContainer>
+
+                <div>
+                  <h4>Fareham Watersports</h4>
+                  <h6>25 activities</h6>
+                </div>
+              </HostHeadline>
+
+              <HostCertifications>
+                <KeyInfoItem>
+                  <Icon icon="MedalColour" width={spacing[5]} height={spacing[5]} />
+                  <InfoAndCaption>
+                    <h5>Water Sports Association Accredited</h5>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+                <KeyInfoItem>
+                  <Icon icon="MedalColour" width={spacing[5]} height={spacing[5]} />
+                  <InfoAndCaption>
+                    <h5>RYIA Certified</h5>
+                  </InfoAndCaption>
+                </KeyInfoItem>
+              </HostCertifications>
+
               <ReadMore
                 lines={4}
                 text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
