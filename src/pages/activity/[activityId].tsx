@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { ActivityImage } from '../../components/ActivityCard/styles';
 import Header from '../../components/Header';
 import Icon from '../../components/Icon';
@@ -37,8 +37,19 @@ import { colors, spacing } from '../../styles/theme';
 export interface Props {}
 
 const ActivityPage: NextPage<Props> = ({}) => {
-  const router = useRouter();
-  const { activityId } = router.query;
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
+
+  const share = () => {
+    const currentUrl = window.location.href;
+
+    if (navigator.share) {
+      navigator.share({ url: currentUrl });
+    } else {
+      navigator.clipboard.writeText(currentUrl).then(() => {
+        setCopiedToClipboard(true);
+      });
+    }
+  };
 
   return (
     <>
@@ -52,12 +63,16 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </TitleAndIcon>
             <LocationAndActions>
               <h4>Hill Head Beach, Southampton</h4>
-              <LinkText>
-                <IconAndText>
-                  <Icon icon="Share" />
-                  <h4>Share</h4>
-                </IconAndText>
-              </LinkText>
+              {copiedToClipboard ? (
+                <h4>Link copied to clipboard!</h4>
+              ) : (
+                <LinkText onClick={share}>
+                  <IconAndText>
+                    <Icon icon="Share" />
+                    <h4>Share</h4>
+                  </IconAndText>
+                </LinkText>
+              )}
             </LocationAndActions>
           </Title>
           <Media>
