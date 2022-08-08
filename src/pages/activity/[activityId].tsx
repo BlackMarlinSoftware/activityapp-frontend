@@ -43,7 +43,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
     const currentUrl = window.location.href;
 
     if (navigator.share) {
-      navigator.share({ url: currentUrl, title: 'Kitesurfing taster day in Southampton' });
+      navigator.share({ url: currentUrl, text: 'Kitesurfing taster day in Southampton' });
     } else {
       navigator.clipboard.writeText(currentUrl).then(() => {
         setCopiedToClipboard(true);
