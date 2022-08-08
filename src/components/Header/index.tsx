@@ -1,13 +1,19 @@
-import { HeaderContainer, Menu, Shortcuts } from './styles';
+import { HeaderContainer, HeaderContent, Menu, Shortcuts } from './styles';
 import HeartButton from '../uiComponents/heartButton';
 
-const Header = (): JSX.Element => (
+interface Props {
+  widthConstrained: boolean;
+}
+
+const Header = ({ widthConstrained }: Props): JSX.Element => (
   <HeaderContainer>
-    <h2>Logo</h2>
-    <Menu>Categories list TODO</Menu>
-    <Shortcuts>
-      <HeartButton />
-    </Shortcuts>
+    <HeaderContent widthConstrained={widthConstrained}>
+      <h2>Logo</h2>
+      <Menu>Categories list TODO</Menu>
+      <Shortcuts>
+        <HeartButton />
+      </Shortcuts>
+    </HeaderContent>
   </HeaderContainer>
 );
 

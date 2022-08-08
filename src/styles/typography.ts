@@ -14,16 +14,22 @@ export default css`
     line-height: 1.5rem;
     margin: auto;
   }
-  p {
+  small {
     font-size: 0.875rem;
     line-height: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
   h1,
   .h1 {
     font-family: Inter, sans-serif;
-    font-size: 4.25rem;
+    font-size: 4rem;
     line-height: 4.5rem;
     margin-top: 1.5rem;
     margin-bottom: 3rem;
@@ -31,7 +37,7 @@ export default css`
   h2,
   .h2 {
     font-family: Inter, sans-serif;
-    font-size: 2.625rem;
+    font-size: 2rem;
     line-height: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -39,7 +45,7 @@ export default css`
   h3,
   .h3 {
     font-family: Inter, sans-serif;
-    font-size: 1.625rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 0rem;
@@ -56,6 +62,14 @@ export default css`
   h5,
   .h5 {
     font-family: Inter, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+  }
+  h6,
+  .h6 {
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -63,13 +77,14 @@ export default css`
     margin-bottom: 0rem;
     color: ${theme.colors.neutral[6]};
   }
-  h6,
-  .h6 {
-    font-family: Inter, sans-serif;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+    margin: 0;
   }
   ul,
   ol,
@@ -100,7 +115,6 @@ export default css`
   i,
   strong,
   em,
-  small,
   code {
     font-family: Inter, sans-serif;
     line-height: 0;

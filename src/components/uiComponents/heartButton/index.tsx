@@ -1,8 +1,12 @@
-import {Button} from './styles';
-import Heart from '../../Icon/genericIcons/Heart';
+import { Button } from './styles';
+import Icon from '../../Icon';
 
 const HeartButton = (): JSX.Element => {
-  return <Button><Heart /></Button>;
+  return (
+    <Button>
+      <Icon icon="Heart" />
+    </Button>
+  );
 };
 
 export default HeartButton;

@@ -106,11 +106,15 @@ const theme = {
       14: '512px',
       15: '640px',
       16: '768px',
+      17: '896px',
+      18: '1024px',
+      19: '1280px',
     },
   },
   effects: {
     shadows: {
       light: `0px 4px 8px 0px hsla(209, 61%, 16%, 0.15)`,
+      even: `0px 0px 16px 0px hsla(209, 61%, 16%, 0.15)`,
     },
   },
 };

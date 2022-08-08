@@ -7,8 +7,6 @@ import {
   imageContainerHeight,
   cardBorderRadius,
   DetailsContainer,
-  ActivityTitle,
-  ActivityDescription,
   ActivityOperator,
   FavoriteContainer,
   CloseContainer,
@@ -18,8 +16,7 @@ import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
-import X from '../Icon/genericIcons/X';
-import { Activity } from '../../types';
+import { Activity, CategoryName } from '../../types';
 
 interface Props {
   activity: Activity;
@@ -46,7 +43,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
                 </FavoriteContainer>
 
                 <CloseContainer onClick={close}>
-                  <X colour="hsl(0,0%,90%)" />
+                  <Icon icon="X" colour="hsl(0,0%,90%)" width="12px" height="12px" />
                 </CloseContainer>
 
                 {activity.activities_x_media.length > 0 ? (
@@ -62,17 +59,8 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
                 ) : null}
               </ImageContainer>
               <DetailsContainer>
-                <ActivityTitle>
-                  <p>{activity.name}</p>
-                </ActivityTitle>
-                <ActivityDescription>
-                  <p>{activity.description}</p>
-                </ActivityDescription>
-                <ActivityOperator>
-                  <p>
-                    Operated by: <span>{activity.host.name}</span>
-                  </p>
-                </ActivityOperator>
+                <h5>{activity.name}</h5>
+                <h6>Yoga class run by {activity.host.name}</h6>
               </DetailsContainer>
             </PopoverCard>
           )}

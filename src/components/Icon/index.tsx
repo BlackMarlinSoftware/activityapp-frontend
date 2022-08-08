@@ -1,5 +1,6 @@
 import { CategoryLevel1, CategoryLevel2, CategoryLevel3 } from '../../types';
 
+import withSvgProps from './withSvgProps';
 import NoIcon from './activityIcons/NoIcon';
 import Cycling from './activityIcons/Cycling';
 import Active from './activityIcons/Lightning';
@@ -70,7 +71,31 @@ import TheaterMask from './activityIcons/TheaterMask';
 import Cinema from './activityIcons/Cinema';
 import PawPrint from './activityIcons/PawPrint';
 import Baby from './activityIcons/Baby';
-import withSvgColour from './withSvgColour';
+import X from './genericIcons/X';
+import Heart from './genericIcons/Heart';
+import Favorite from './genericIcons/Favorite';
+import FavoriteOutline from './genericIcons/FavoriteOutline';
+import Bars from './genericIcons/Bars';
+import Star from './genericIcons/Star';
+import List from './genericIcons/List';
+import UIMap from './genericIcons/Map';
+import Share from './genericIcons/Share';
+import Home24 from './genericIcons/Home24';
+import IncreasingBars24 from './genericIcons/IncreasingBars24';
+import Lightning24 from './genericIcons/Lightning24';
+import Tree24 from './genericIcons/Tree24';
+import TreeColour from './genericIcons/TreeColour';
+import LightningColour from './genericIcons/LightningColour';
+import LightningColourOutline from './genericIcons/LightningColourOutline';
+import HomeColour from './genericIcons/HomeColour';
+import IncreasingBarsColour from './genericIcons/IncreasingBarsColour';
+import PersonColour from './genericIcons/PersonColour';
+import ChildColour from './genericIcons/ChildColour';
+import PodiumColour from './genericIcons/PodiumColour';
+import SpeedoColour from './genericIcons/SpeedoColour';
+import ThermometerColour from './genericIcons/ThermometerColour';
+import SofaColour from './genericIcons/SofaColour';
+import MedalColour from './genericIcons/MedalColour';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -275,24 +300,55 @@ const categoryLevel3Icons: CategoryLevel3Icons = {
   Softplay: Baby,
 };
 
+const genericIcons: Record<string, React.FC> = {
+  X: X,
+  Heart: Heart,
+  Favorite: Favorite,
+  FavoriteOutline: FavoriteOutline,
+  Bars: Bars,
+  Star: Star,
+  Share: Share,
+  Home24: Home24,
+  IncreasingBars24: IncreasingBars24,
+  Lightning24: Lightning24,
+  Tree24: Tree24,
+  TreeColour: TreeColour,
+  LightningColour: LightningColour,
+  LightningColourOutline: LightningColourOutline,
+  HomeColour: HomeColour,
+  IncreasingBarsColour: IncreasingBarsColour,
+  PodiumColour: PodiumColour,
+  PersonColour: PersonColour,
+  ChildColour: ChildColour,
+  SpeedoColour: SpeedoColour,
+  ThermometerColour: ThermometerColour,
+  SofaColour: SofaColour,
+  MedalColour: MedalColour,
+  List: List,
+  UIMap: UIMap,
+};
+
 const iconMap: Record<string, React.FC> = {
   ...categoryLevel1Icons,
   ...categoryLevel2Icons,
   ...categoryLevel3Icons,
+  ...genericIcons,
 };
 
 interface Props {
   icon: string;
-  colour: string;
+  colour?: string;
+  width?: string;
+  height?: string;
 }
 
-const Icon = ({ icon, colour }: Props) => {
+const Icon = ({ icon, colour, width = '16px', height = '16px' }: Props) => {
   const matchingIcon = Object.keys(iconMap).find((iconKey) => iconKey === icon);
   if (matchingIcon) {
-    const IconComponent = withSvgColour(iconMap[matchingIcon]);
-    return <IconComponent colour={colour} />;
+    const IconComponent = withSvgProps(iconMap[matchingIcon]);
+    return <IconComponent colour={colour} width={width} height={height} />;
   }
-  return <NoIcon colour={colour} />;
+  return <div style={{ width, height }}></div>;
 };
 
 export default Icon;
