@@ -206,7 +206,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </DetailsSection>
 
             <DetailsSection>
-              <h3>Getting to Hill Head Beach, Southampton</h3>
+              <h3>Getting to Hill Head Beach</h3>
 
               <GettingThereSection>
                 <h4>Address</h4>
