@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing, colors } from '../../styles/theme';
 
-export const HeaderHeight = `${spacing[9]}`;
+export const HeaderHeight = `${spacing[8]}`;
 
 export const HeaderContainer = styled.div`
   position: sticky;

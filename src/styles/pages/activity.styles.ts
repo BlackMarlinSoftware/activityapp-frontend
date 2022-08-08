@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { HeaderHeight } from '../../components/Header/styles';
 import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
@@ -41,11 +42,7 @@ export const Details = styled.div`
 `;
 
 export const CTA = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   grid-area: cta;
-  grid-gap: ${spacing[6]};
 `;
 
 export const TitleAndIcon = styled.div`
@@ -119,6 +116,15 @@ export const KeyInfoItem = styled.div`
 export const InfoAndCaption = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const StickyCTA = styled.div`
+  position: sticky;
+  top: calc(${HeaderHeight} + ${spacing[6]});
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: ${spacing[6]};
 `;
 
 export const BookNowContainer = styled.div`

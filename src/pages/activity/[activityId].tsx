@@ -30,6 +30,7 @@ import {
   GettingThereSection,
   HostHeadline,
   HostCertifications,
+  StickyCTA,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 
@@ -265,19 +266,22 @@ const ActivityPage: NextPage<Props> = ({}) => {
             <h3>Activities like this</h3>
             <p>OTHER ACTIVITIES PLACEHOLDER</p>
           </Details>
+
           <CTA>
-            <BookNowContainer>
-              <h3>Join this class</h3>
-              <h6>
-                {`'Book now' will take you to the host website where you can find times, booking information and more.`}
-              </h6>
-              <CTAButton>Book now</CTAButton>
-            </BookNowContainer>
-            <Link passHref href="/report">
-              <LinkText>
-                <h6>Report this listing</h6>
-              </LinkText>
-            </Link>
+            <StickyCTA>
+              <BookNowContainer>
+                <h3>Join this class</h3>
+                <h6>
+                  {`'Book now' will take you to the host website where you can find times, booking information and more.`}
+                </h6>
+                <CTAButton>Book now</CTAButton>
+              </BookNowContainer>
+              <Link passHref href="/report">
+                <LinkText>
+                  <h6>Report this listing</h6>
+                </LinkText>
+              </Link>
+            </StickyCTA>
           </CTA>
         </Main>
       </Container>
