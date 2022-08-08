@@ -206,10 +206,11 @@ const ActivityPage: NextPage<Props> = ({}) => {
               <GettingThereSection>
                 <h4>Directions</h4>
 
-                <p>
-                  {`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
+                <ReadMore
+                  lines={4}
+                  text={`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
                 the arches.`}
-                </p>
+                />
               </GettingThereSection>
 
               <MiniMap

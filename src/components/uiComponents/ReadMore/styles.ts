@@ -5,6 +5,8 @@ export const ClampParagraph = styled.p<{ expanded: boolean; lines: number }>`
   display: -webkit-box;
   -webkit-line-clamp: ${({ lines }) => lines};
   -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
   ${({ expanded }) =>
     expanded
       ? `
