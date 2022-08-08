@@ -6,21 +6,39 @@ import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  padding: ${spacing[6]};
+  flex-direction: column;
+  align-items: center;
+  padding: ${spacing[6]} ${spacing[4]};
+
+  @media ${device.mobileXL} {
+    padding: ${spacing[6]};
+  }
 `;
 
 export const Main = styled.div`
   display: grid;
   grid-template-areas:
-    'title title'
-    'media media'
-    'details cta';
-  grid-template-columns: 2fr 1fr;
+    'title'
+    'media'
+    'details';
+  grid-template-columns: 1fr;
   row-gap: ${spacing[6]};
-  column-gap: ${spacing[9]};
   width: 100%;
   max-width: ${spacing[18]};
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr ${spacing[12]};
+    column-gap: ${spacing[7]};
+    grid-template-areas:
+      'title title'
+      'media media'
+      'details cta';
+  }
+
+  @media ${device.laptop} {
+    column-gap: ${spacing[9]};
+    grid-template-columns: 2fr 1fr;
+  }
 `;
 
 export const Title = styled.div`
@@ -42,8 +60,31 @@ export const Details = styled.div`
   grid-area: details;
 `;
 
-export const CTA = styled.div`
+export const CTATablet = styled.div`
   grid-area: cta;
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+  }
+`;
+
+export const CTAMobile = styled.div`
+  display: grid;
+  position: sticky;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  background-color: hsla(0, 0%, 100%, 0.7);
+  backdrop-filter: blur(${spacing[2]});
+  grid-template-columns: 1fr ${spacing[10]};
+  align-items: center;
+  padding: ${spacing[4]};
+  box-shadow: ${shadows.even};
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 export const TitleAndIcon = styled.div`
@@ -101,7 +142,7 @@ export const SummaryContainer = styled.div`
     'title logo'
     'details logo';
   grid-template-columns: 1fr auto;
-  column-gap: ${spacing[4]};
+  grid-gap: ${spacing[4]};
 
   h3 {
     grid-area: title;
@@ -147,10 +188,14 @@ export const BookNowContainer = styled.div`
   flex-direction: column;
   border-radius: ${spacing[3]};
   border: 1px solid ${colors.neutral[9]};
-  padding: ${spacing[6]};
+  padding: ${spacing[5]};
   box-shadow: ${shadows.even};
   grid-gap: ${spacing[4]};
   text-align: center;
+
+  @media ${device.laptop} {
+    padding: ${spacing[6]};
+  }
 `;
 
 export const CTAButton = styled.button`

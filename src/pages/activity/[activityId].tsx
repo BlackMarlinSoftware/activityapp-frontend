@@ -10,7 +10,8 @@ import useWindowSize from '../../hooks/useWindowSize';
 import { deviceWidth } from '../../styles/devices';
 import { LinkText } from '../../styles/GlobalStyles';
 import {
-  CTA,
+  CTATablet,
+  CTAMobile,
   Details,
   Main,
   Media,
@@ -110,7 +111,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
                 </HostLogoContainer>
               </SummaryContainer>
             </DetailsSection>
-            {/* 
+
             <DetailsSection>
               <KeyInformation>
                 <KeyInfoItem>
@@ -148,7 +149,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
                     <h6>This host is a verified expert</h6>
                   </InfoAndCaption>
                 </KeyInfoItem>
-                <KeyInfoItem>
+                {/* <KeyInfoItem>
                   <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
                   <InfoAndCaption>
                     <h5>Indoors</h5>
@@ -196,7 +197,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
                     <h5>Ages 5 to 25</h5>
                     <h6>Suitable for a range of ages</h6>
                   </InfoAndCaption>
-                </KeyInfoItem>
+                </KeyInfoItem>*/}
               </KeyInformation>
             </DetailsSection>
 
@@ -284,10 +285,10 @@ const ActivityPage: NextPage<Props> = ({}) => {
             </DetailsSection>
 
             <h3>Activities like this</h3>
-            <p>OTHER ACTIVITIES PLACEHOLDER</p> */}
+            <p>OTHER ACTIVITIES PLACEHOLDER</p>
           </Details>
 
-          {/* <CTA>
+          <CTATablet>
             <StickyCTA>
               <BookNowContainer>
                 <h3>Join this class</h3>
@@ -302,8 +303,15 @@ const ActivityPage: NextPage<Props> = ({}) => {
                 </LinkText>
               </Link>
             </StickyCTA>
-          </CTA> */}
+          </CTATablet>
         </Main>
+
+        <CTAMobile>
+          <div>
+            <h4>Join this class</h4>
+          </div>
+          <CTAButton>Book now</CTAButton>
+        </CTAMobile>
       </Container>
     </>
   );
