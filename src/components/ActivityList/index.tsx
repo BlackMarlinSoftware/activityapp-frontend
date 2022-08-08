@@ -3,7 +3,6 @@ import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, ResultsSummary } from './styles';
 import { ActivityDataFragment } from '../../generated/graphql';
 import useRouteChange from '../../hooks/useRouteChange';
-import { loadingShimmerActivities } from './utils';
 import { MapViewportState } from '../../reactiveVars/map';
 
 interface Props {
@@ -30,9 +29,9 @@ const ActivityList = ({ activities, mapViewportState }: Props): JSX.Element => {
         <h4>{activities?.length} activities</h4>
       </ResultsSummary>
       <ActivityRows onScroll={handleListScroll}>
-        {activitiesLoading
-          ? loadingShimmerActivities(activities.length)
-          : activities.map((activity) => <ActivityCard activity={activity} key={activity.id} />)}
+        {activities.map((activity) => (
+          <ActivityCard activity={activity} key={activity.id} loading={activitiesLoading} />
+        ))}
       </ActivityRows>
     </Container>
   );

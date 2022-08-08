@@ -1,11 +1,6 @@
 import Map, { Marker } from 'react-map-gl';
 import { ViewState } from 'react-map-gl/dist/esm/types/external';
-import ActivityCardMap from '../ActivityCardMap';
-import { currentFocusedLocationId } from '../../reactiveVars/map';
-import { useReactiveVar } from '@apollo/client';
-import { useRouter } from 'next/router';
-import { Location, LocationRaw } from '../../types';
-import { updateQueryParams, getMapCoordsQueryParams, getMapViewportQueryParams } from './utils';
+import { LocationRaw } from '../../types';
 import { Container } from './styles';
 
 interface Props {

@@ -77,6 +77,8 @@ import Favorite from './genericIcons/Favorite';
 import FavoriteOutline from './genericIcons/FavoriteOutline';
 import Bars from './genericIcons/Bars';
 import Star from './genericIcons/Star';
+import List from './genericIcons/List';
+import UIMap from './genericIcons/Map';
 import Share from './genericIcons/Share';
 import Home24 from './genericIcons/Home24';
 import IncreasingBars24 from './genericIcons/IncreasingBars24';
@@ -322,6 +324,8 @@ const genericIcons: Record<string, React.FC> = {
   ThermometerColour: ThermometerColour,
   SofaColour: SofaColour,
   MedalColour: MedalColour,
+  List: List,
+  UIMap: UIMap,
 };
 
 const iconMap: Record<string, React.FC> = {
