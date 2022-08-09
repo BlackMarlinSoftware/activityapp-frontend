@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: ${spacing[6]} ${spacing[4]};
+  padding-bottom: 0;
 
   @media ${device.mobileXL} {
     padding: ${spacing[6]};
@@ -16,56 +17,48 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  display: grid;
-  grid-template-areas:
-    'title'
-    'media'
-    'details';
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   row-gap: ${spacing[6]};
   width: 100%;
   max-width: ${spacing[18]};
-
-  @media ${device.tablet} {
-    grid-template-columns: 1fr ${spacing[12]};
-    column-gap: ${spacing[7]};
-    grid-template-areas:
-      'title title'
-      'media media'
-      'details cta';
-  }
-
-  @media ${device.laptop} {
-    column-gap: ${spacing[9]};
-    grid-template-columns: 2fr 1fr;
-  }
 `;
 
 export const Title = styled.div`
   display: flex;
   flex-direction: column;
-  grid-area: title;
   grid-gap: ${spacing[2]};
 `;
 
 export const Media = styled.div`
   display: flex;
-  grid-area: media;
   margin-bottom: ${spacing[4]};
 `;
 
+export const DetailsAndCTA = styled.div`
+  width: 100%; // necessary to keep MapBox auto-resizing
+  display: flex;
+  flex-direction: row;
+  column-gap: ${spacing[7]};
+
+  @media ${device.laptop} {
+    column-gap: ${spacing[9]};
+  }
+`;
+
 export const Details = styled.div`
+  min-width: 0px;
+  width: 100%; // necessary to keep MapBox auto-resizing
   display: flex;
   flex-direction: column;
-  grid-area: details;
 `;
 
 export const CTATablet = styled.div`
-  grid-area: cta;
   display: none;
 
   @media ${device.tablet} {
     display: block;
+    width: ${spacing[14]};
   }
 `;
 
