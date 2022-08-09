@@ -12,7 +12,6 @@ const MapContainer = ({ location, initialViewState }: Props): JSX.Element => (
   <Container>
     <Map
       initialViewState={initialViewState}
-      style={{ width: '100%', height: '100%' }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
     >

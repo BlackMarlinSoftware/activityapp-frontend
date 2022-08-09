@@ -79,8 +79,12 @@ export const CTAMobile = styled.div`
   backdrop-filter: blur(${spacing[2]});
   grid-template-columns: 1fr ${spacing[10]};
   align-items: center;
-  padding: ${spacing[4]};
   box-shadow: ${shadows.even};
+  padding: ${spacing[4]};
+
+  @media ${device.mobileXL} {
+    padding: ${spacing[4]} ${spacing[6]};
+  }
 
   @media ${device.tablet} {
     display: none;
