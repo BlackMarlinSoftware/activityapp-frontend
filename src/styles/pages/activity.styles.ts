@@ -217,6 +217,7 @@ export const CTAButton = styled.button`
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: ${spacing[2]};
   }
 
   &::before {

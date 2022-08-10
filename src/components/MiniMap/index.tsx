@@ -2,6 +2,7 @@ import Map, { Marker } from 'react-map-gl';
 import { ViewState } from 'react-map-gl/dist/esm/types/external';
 import { LocationRaw } from '../../types';
 import { Container } from './styles';
+import { spacing } from '../../styles/theme';
 
 interface Props {
   location: LocationRaw;
@@ -11,6 +12,7 @@ interface Props {
 const MapContainer = ({ location, initialViewState }: Props): JSX.Element => (
   <Container>
     <Map
+      style={{ borderRadius: spacing[3] }}
       initialViewState={initialViewState}
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
