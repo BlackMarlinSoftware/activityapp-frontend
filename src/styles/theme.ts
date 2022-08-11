@@ -115,6 +115,7 @@ const theme = {
     shadows: {
       light: `0px 4px 8px 0px hsla(209, 61%, 16%, 0.15)`,
       even: `0px 0px 16px 0px hsla(209, 61%, 16%, 0.15)`,
+      divider: `0px 1px 1px hsl(211, 35%, 93%)`,
     },
   },
 };

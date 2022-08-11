@@ -1,23 +1,25 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import { HeaderHeight } from '../../components/Header/styles';
+import { device } from '../devices';
 import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: ${spacing[6]} ${spacing[4]};
+  padding-bottom: 0;
+
+  @media ${device.mobileXL} {
+    padding: ${spacing[6]};
+  }
 `;
 
 export const Main = styled.div`
-  display: grid;
-  grid-template-areas:
-    'title title'
-    'media media'
-    'details cta';
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
   row-gap: ${spacing[6]};
-  column-gap: ${spacing[9]};
   width: 100%;
   max-width: ${spacing[18]};
 `;
@@ -25,36 +27,78 @@ export const Main = styled.div`
 export const Title = styled.div`
   display: flex;
   flex-direction: column;
-  grid-area: title;
   grid-gap: ${spacing[2]};
 `;
 
 export const Media = styled.div`
   display: flex;
-  grid-area: media;
   margin-bottom: ${spacing[4]};
 `;
 
+export const DetailsAndCTA = styled.div`
+  width: 100%; // necessary to keep MapBox auto-resizing
+  display: flex;
+  flex-direction: row;
+  column-gap: ${spacing[7]};
+
+  @media ${device.laptop} {
+    column-gap: ${spacing[9]};
+  }
+`;
+
 export const Details = styled.div`
+  min-width: 0px;
+  width: 100%; // necessary to keep MapBox auto-resizing
   display: flex;
   flex-direction: column;
-  grid-area: details;
 `;
 
-export const CTA = styled.div`
-  grid-area: cta;
+export const CTATablet = styled.div`
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+    width: ${spacing[14]};
+  }
 `;
 
-export const TitleAndIcon = styled.div`
-  display: flex;
+export const CTAMobile = styled.div`
+  display: grid;
+  position: sticky;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  background-color: hsla(0, 0%, 100%, 0.7);
+  backdrop-filter: blur(${spacing[2]});
+  grid-template-columns: 1fr ${spacing[10]};
   align-items: center;
-  grid-gap: ${spacing[3]};
+  box-shadow: ${shadows.even};
+  padding: ${spacing[4]};
+
+  @media ${device.mobileXL} {
+    padding: ${spacing[4]} ${spacing[6]};
+  }
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+export const TitleIcon = styled.div`
+  display: inline-block;
+  margin-right: ${spacing[3]};
 `;
 
 export const LocationAndActions = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 100%;
+  flex-direction: column;
+  row-gap: ${spacing[3]};
+
+  @media ${device.mobileXL} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const ActivityImage = styled(Image)`
@@ -89,7 +133,7 @@ export const SummaryContainer = styled.div`
     'title logo'
     'details logo';
   grid-template-columns: 1fr auto;
-  column-gap: ${spacing[4]};
+  grid-gap: ${spacing[4]};
 
   h3 {
     grid-area: title;
@@ -135,10 +179,14 @@ export const BookNowContainer = styled.div`
   flex-direction: column;
   border-radius: ${spacing[3]};
   border: 1px solid ${colors.neutral[9]};
-  padding: ${spacing[6]};
+  padding: ${spacing[5]};
   box-shadow: ${shadows.even};
   grid-gap: ${spacing[4]};
   text-align: center;
+
+  @media ${device.laptop} {
+    padding: ${spacing[6]};
+  }
 `;
 
 export const CTAButton = styled.button`
@@ -163,6 +211,7 @@ export const CTAButton = styled.button`
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: ${spacing[2]};
   }
 
   &::before {

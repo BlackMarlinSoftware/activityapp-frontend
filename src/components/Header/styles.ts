@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { spacing, colors } from '../../styles/theme';
+import { device } from '../../styles/devices';
+import { spacing, colors, shadows } from '../../styles/theme';
 
 export const HeaderHeight = `${spacing[8]}`;
 
@@ -11,18 +12,22 @@ export const HeaderContainer = styled.div`
   width: 100vw;
   height: ${HeaderHeight};
   background-color: ${colors.supporting.grey[10]};
-  box-shadow: ${colors.neutral[9.5]} 0px 1px 1px;
+  box-shadow: ${shadows.divider};
 `;
 
 export const HeaderContent = styled.div<{ widthConstrained: boolean }>`
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   margin: auto;
-  padding: 0 ${spacing[6]};
   justify-content: center;
   align-items: center;
   height: ${HeaderHeight};
   max-width: ${({ widthConstrained }) => (widthConstrained ? spacing[18] : 'initial')};
+  padding: 0 ${spacing[4]};
+
+  @media ${device.mobileXL} {
+    padding: 0 ${spacing[6]};
+  }
 `;
 
 export const Menu = styled.div`

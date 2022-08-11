@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { spacing, colors } from '../../styles/theme';
+import theme, { spacing, colors, shadows } from '../../styles/theme';
 import { device } from '../../styles/devices';
 
 export const Container = styled.div`
@@ -12,7 +12,7 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: ${({ borderBottom }) => (borderBottom ? `${colors.neutral[9.5]} 0px 1px 1px;` : 'none')};
+  box-shadow: ${({ borderBottom }) => (borderBottom ? shadows.divider : 'none')};
 
   h4 {
     margin: 0;

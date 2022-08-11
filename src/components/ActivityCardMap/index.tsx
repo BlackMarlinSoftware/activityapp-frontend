@@ -60,7 +60,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
               </ImageContainer>
               <DetailsContainer>
                 <h5>{activity.name}</h5>
-                <h6>Yoga class run by {activity.host.name}</h6>
+                <h6>Class run by {activity.host.name}</h6>
               </DetailsContainer>
             </PopoverCard>
           )}
