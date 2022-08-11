@@ -17,7 +17,7 @@ import {
   Media,
   Title,
   Container,
-  TitleAndIcon,
+  TitleIcon,
   DetailsSection,
   HostLogoImage,
   SummaryContainer,
@@ -62,10 +62,13 @@ const ActivityPage: NextPage<Props> = ({}) => {
       <Container>
         <Main>
           <Title>
-            <TitleAndIcon>
-              <Icon icon="Kitesurfing" width="24px" height="24px" />
-              <h2>Kitesurfing taster day</h2>
-            </TitleAndIcon>
+            <h2>
+              <TitleIcon>
+                <Icon icon="Kitesurfing" width="24px" height="24px" />
+              </TitleIcon>
+              <span>Kitesurfing taster day</span>
+            </h2>
+
             <LocationAndActions>
               <h4>Hill Head Beach, Southampton</h4>
               {copiedToClipboard ? (
@@ -89,6 +92,7 @@ const ActivityPage: NextPage<Props> = ({}) => {
               objectPosition="center"
               width={spacing[18]}
               height={spacing[windowWidth && windowWidth < deviceWidth.mobileXL ? 15 : 14]}
+              priority
             />
           </Media>
 

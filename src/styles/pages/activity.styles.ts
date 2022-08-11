@@ -84,15 +84,9 @@ export const CTAMobile = styled.div`
   }
 `;
 
-export const TitleAndIcon = styled.div`
-  display: flex;
-  grid-gap: ${spacing[3]};
-  flex-direction: column;
-
-  @media ${device.mobileXL} {
-    align-items: center;
-    flex-direction: row;
-  }
+export const TitleIcon = styled.div`
+  display: inline-block;
+  margin-right: ${spacing[3]};
 `;
 
 export const LocationAndActions = styled.div`
