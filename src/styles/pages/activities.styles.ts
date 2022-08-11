@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
   height: 100vh;
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: ${spacing[9]} calc(100vh - ${spacing[9]});
+  grid-template-rows: ${spacing[8]} calc(100vh - ${spacing[8]});
 `;
 
 export const MainContentContainer = styled.div`
