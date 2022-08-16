@@ -11,6 +11,7 @@ export const ActivityContainer = styled.div`
   margin-bottom: ${spacing[6]};
   padding: ${spacing[2]};
   box-sizing: border-box;
+  cursor: pointer;
 
   @media ${device.mobileXL} {
     width: 50%;

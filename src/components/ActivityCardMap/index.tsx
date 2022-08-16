@@ -16,6 +16,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import { ActivityListing } from '../../types';
+import Link from 'next/link';
 
 interface Props {
   activity: ActivityListing;
@@ -28,20 +29,25 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <ActivityContainer>
-        <Popover
-          placement="top"
-          locationId={activity.location.id}
-          isOpenSetter={setIsOpen}
-          render={({ close, labelId, descriptionId }) => (
+    <ActivityContainer>
+      <Popover
+        placement="top"
+        locationId={activity.location.id}
+        isOpenSetter={setIsOpen}
+        render={({ close, labelId, descriptionId }) => (
+          <Link href={`/activity/${activity.id}`} passHref>
             <PopoverCard>
               <ImageContainer>
                 <FavoriteContainer>
                   <FavoriteOutline />
                 </FavoriteContainer>
 
-                <CloseContainer onClick={close}>
+                <CloseContainer
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    close();
+                  }}
+                >
                   <Icon icon="X" colour="hsl(0,0%,90%)" width="12px" height="12px" />
                 </CloseContainer>
 
@@ -62,14 +68,14 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
                 <h6>Class run by {activity.host.name}</h6>
               </DetailsContainer>
             </PopoverCard>
-          )}
-        >
-          <Pin open={isOpen || focused}>
-            <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
-          </Pin>
-        </Popover>
-      </ActivityContainer>
-    </>
+          </Link>
+        )}
+      >
+        <Pin open={isOpen || focused}>
+          <Icon icon={categoryName} colour={isOpen ? 'white' : 'black'} />
+        </Pin>
+      </Popover>
+    </ActivityContainer>
   );
 };
 
