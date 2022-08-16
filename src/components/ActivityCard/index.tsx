@@ -1,9 +1,9 @@
 import { ActivityContainer, ActivityDetails, Description, ActivityImage } from './styles';
 import theme from '../../styles/theme';
-import { Activity } from '../../types';
+import { ActivityListing } from '../../types';
 
 interface Props {
-  activity: Activity;
+  activity: ActivityListing;
   loading?: boolean | undefined;
 }
 

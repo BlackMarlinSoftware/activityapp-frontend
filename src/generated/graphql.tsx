@@ -582,6 +582,14 @@ export enum Activities_Update_Column {
   ReferralUrl = 'referral_url'
 }
 
+export type Activities_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Activities_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Activities_Set_Input>;
+  where: Activities_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Activities_Var_Pop_Fields = {
   __typename?: 'activities_var_pop_fields';
@@ -795,6 +803,12 @@ export enum Activities_X_Categories_Update_Column {
   CategoryId = 'category_id'
 }
 
+export type Activities_X_Categories_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Activities_X_Categories_Set_Input>;
+  where: Activities_X_Categories_Bool_Exp;
+};
+
 /** columns and relationships of "activities_x_media" */
 export type Activities_X_Media = {
   __typename?: 'activities_x_media';
@@ -944,6 +958,12 @@ export enum Activities_X_Media_Update_Column {
   /** column name */
   MediaId = 'media_id'
 }
+
+export type Activities_X_Media_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Activities_X_Media_Set_Input>;
+  where: Activities_X_Media_Bool_Exp;
+};
 
 /** columns and relationships of "categories" */
 export type Categories = {
@@ -1202,6 +1222,14 @@ export enum Categories_Update_Column {
   Name = 'name'
 }
 
+export type Categories_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Categories_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Categories_Set_Input>;
+  where: Categories_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Categories_Var_Pop_Fields = {
   __typename?: 'categories_var_pop_fields';
@@ -1370,6 +1398,12 @@ export enum Categories_X_Parent_Categories_Update_Column {
   ParentCategoryId = 'parent_category_id'
 }
 
+export type Categories_X_Parent_Categories_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Categories_X_Parent_Categories_Set_Input>;
+  where: Categories_X_Parent_Categories_Bool_Exp;
+};
+
 /** columns and relationships of "hosts" */
 export type Hosts = {
   __typename?: 'hosts';
@@ -1527,6 +1561,12 @@ export enum Hosts_Update_Column {
   /** column name */
   Name = 'name'
 }
+
+export type Hosts_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Hosts_Set_Input>;
+  where: Hosts_Bool_Exp;
+};
 
 /** columns and relationships of "locations" */
 export type Locations = {
@@ -1794,6 +1834,14 @@ export enum Locations_Update_Column {
   Postcode = 'postcode'
 }
 
+export type Locations_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Locations_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Locations_Set_Input>;
+  where: Locations_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Locations_Var_Pop_Fields = {
   __typename?: 'locations_var_pop_fields';
@@ -1975,6 +2023,12 @@ export enum Media_Update_Column {
   Path = 'path'
 }
 
+export type Media_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Media_Set_Input>;
+  where: Media_Bool_Exp;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -2046,34 +2100,50 @@ export type Mutation_Root = {
   update_activities?: Maybe<Activities_Mutation_Response>;
   /** update single row of the table: "activities" */
   update_activities_by_pk?: Maybe<Activities>;
+  /** update multiples rows of table: "activities" */
+  update_activities_many?: Maybe<Array<Maybe<Activities_Mutation_Response>>>;
   /** update data of the table: "activities_x_categories" */
   update_activities_x_categories?: Maybe<Activities_X_Categories_Mutation_Response>;
   /** update single row of the table: "activities_x_categories" */
   update_activities_x_categories_by_pk?: Maybe<Activities_X_Categories>;
+  /** update multiples rows of table: "activities_x_categories" */
+  update_activities_x_categories_many?: Maybe<Array<Maybe<Activities_X_Categories_Mutation_Response>>>;
   /** update data of the table: "activities_x_media" */
   update_activities_x_media?: Maybe<Activities_X_Media_Mutation_Response>;
   /** update single row of the table: "activities_x_media" */
   update_activities_x_media_by_pk?: Maybe<Activities_X_Media>;
+  /** update multiples rows of table: "activities_x_media" */
+  update_activities_x_media_many?: Maybe<Array<Maybe<Activities_X_Media_Mutation_Response>>>;
   /** update data of the table: "categories" */
   update_categories?: Maybe<Categories_Mutation_Response>;
   /** update single row of the table: "categories" */
   update_categories_by_pk?: Maybe<Categories>;
+  /** update multiples rows of table: "categories" */
+  update_categories_many?: Maybe<Array<Maybe<Categories_Mutation_Response>>>;
   /** update data of the table: "categories_x_parent_categories" */
   update_categories_x_parent_categories?: Maybe<Categories_X_Parent_Categories_Mutation_Response>;
   /** update single row of the table: "categories_x_parent_categories" */
   update_categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
+  /** update multiples rows of table: "categories_x_parent_categories" */
+  update_categories_x_parent_categories_many?: Maybe<Array<Maybe<Categories_X_Parent_Categories_Mutation_Response>>>;
   /** update data of the table: "hosts" */
   update_hosts?: Maybe<Hosts_Mutation_Response>;
   /** update single row of the table: "hosts" */
   update_hosts_by_pk?: Maybe<Hosts>;
+  /** update multiples rows of table: "hosts" */
+  update_hosts_many?: Maybe<Array<Maybe<Hosts_Mutation_Response>>>;
   /** update data of the table: "locations" */
   update_locations?: Maybe<Locations_Mutation_Response>;
   /** update single row of the table: "locations" */
   update_locations_by_pk?: Maybe<Locations>;
+  /** update multiples rows of table: "locations" */
+  update_locations_many?: Maybe<Array<Maybe<Locations_Mutation_Response>>>;
   /** update data of the table: "media" */
   update_media?: Maybe<Media_Mutation_Response>;
   /** update single row of the table: "media" */
   update_media_by_pk?: Maybe<Media>;
+  /** update multiples rows of table: "media" */
+  update_media_many?: Maybe<Array<Maybe<Media_Mutation_Response>>>;
 };
 
 
@@ -2305,6 +2375,12 @@ export type Mutation_RootUpdate_Activities_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Activities_ManyArgs = {
+  updates: Array<Activities_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Activities_X_CategoriesArgs = {
   _set?: InputMaybe<Activities_X_Categories_Set_Input>;
   where: Activities_X_Categories_Bool_Exp;
@@ -2319,6 +2395,12 @@ export type Mutation_RootUpdate_Activities_X_Categories_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Activities_X_Categories_ManyArgs = {
+  updates: Array<Activities_X_Categories_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Activities_X_MediaArgs = {
   _set?: InputMaybe<Activities_X_Media_Set_Input>;
   where: Activities_X_Media_Bool_Exp;
@@ -2329,6 +2411,12 @@ export type Mutation_RootUpdate_Activities_X_MediaArgs = {
 export type Mutation_RootUpdate_Activities_X_Media_By_PkArgs = {
   _set?: InputMaybe<Activities_X_Media_Set_Input>;
   pk_columns: Activities_X_Media_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Activities_X_Media_ManyArgs = {
+  updates: Array<Activities_X_Media_Updates>;
 };
 
 
@@ -2349,6 +2437,12 @@ export type Mutation_RootUpdate_Categories_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Categories_ManyArgs = {
+  updates: Array<Categories_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Categories_X_Parent_CategoriesArgs = {
   _set?: InputMaybe<Categories_X_Parent_Categories_Set_Input>;
   where: Categories_X_Parent_Categories_Bool_Exp;
@@ -2363,6 +2457,12 @@ export type Mutation_RootUpdate_Categories_X_Parent_Categories_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Categories_X_Parent_Categories_ManyArgs = {
+  updates: Array<Categories_X_Parent_Categories_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_HostsArgs = {
   _set?: InputMaybe<Hosts_Set_Input>;
   where: Hosts_Bool_Exp;
@@ -2373,6 +2473,12 @@ export type Mutation_RootUpdate_HostsArgs = {
 export type Mutation_RootUpdate_Hosts_By_PkArgs = {
   _set?: InputMaybe<Hosts_Set_Input>;
   pk_columns: Hosts_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Hosts_ManyArgs = {
+  updates: Array<Hosts_Updates>;
 };
 
 
@@ -2393,6 +2499,12 @@ export type Mutation_RootUpdate_Locations_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Locations_ManyArgs = {
+  updates: Array<Locations_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_MediaArgs = {
   _set?: InputMaybe<Media_Set_Input>;
   where: Media_Bool_Exp;
@@ -2403,6 +2515,12 @@ export type Mutation_RootUpdate_MediaArgs = {
 export type Mutation_RootUpdate_Media_By_PkArgs = {
   _set?: InputMaybe<Media_Set_Input>;
   pk_columns: Media_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Media_ManyArgs = {
+  updates: Array<Media_Updates>;
 };
 
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -2973,6 +3091,13 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
+export type ActivityDetailsQueryVariables = Exact<{
+  activityId: Scalars['uuid'];
+}>;
+
+
+export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
+
 export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null };
 
 export type CategoryDataFragment = { __typename?: 'categories', id: string, name: string, level: number };
@@ -2981,7 +3106,9 @@ export type MediaDataFragment = { __typename?: 'media', id: string, path: string
 
 export type LocationDataFragment = { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null };
 
-export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
+export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null };
+
+export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
 export type LocationsInViewportQueryVariables = Exact<{
   viewportLatitudeMin: Scalars['numeric'];
@@ -2993,6 +3120,23 @@ export type LocationsInViewportQueryVariables = Exact<{
 
 export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
+export const ActivityDataFragmentDoc = gql`
+    fragment ActivityData on activities {
+  id
+  name
+  description
+  referral_url
+  referral_phone
+  referral_email
+  booking_required
+  group_size_min
+  group_size_max
+  physical_intensity_min
+  physical_intensity_max
+  age_min
+  age_max
+}
+    `;
 export const LocationDataFragmentDoc = gql`
     fragment LocationData on locations {
   id
@@ -3026,21 +3170,9 @@ export const MediaDataFragmentDoc = gql`
   caption
 }
     `;
-export const ActivityDataFragmentDoc = gql`
-    fragment ActivityData on activities {
-  id
-  name
-  description
-  referral_url
-  referral_phone
-  referral_email
-  booking_required
-  group_size_min
-  group_size_max
-  physical_intensity_min
-  physical_intensity_max
-  age_min
-  age_max
+export const ActivityListingFragmentDoc = gql`
+    fragment ActivityListing on activities {
+  ...ActivityData
   location {
     ...LocationData
   }
@@ -3058,10 +3190,71 @@ export const ActivityDataFragmentDoc = gql`
     }
   }
 }
-    ${LocationDataFragmentDoc}
+    ${ActivityDataFragmentDoc}
+${LocationDataFragmentDoc}
 ${HostDataFragmentDoc}
 ${CategoryDataFragmentDoc}
 ${MediaDataFragmentDoc}`;
+export const ActivityDetailsDocument = gql`
+    query ActivityDetails($activityId: uuid!) {
+  activities_by_pk(id: $activityId) {
+    ...ActivityData
+    location {
+      ...LocationData
+    }
+    host {
+      ...HostData
+      activities_aggregate {
+        aggregate {
+          count
+        }
+      }
+    }
+    activities_x_categories {
+      category {
+        ...CategoryData
+      }
+    }
+    activities_x_media {
+      media {
+        ...MediaData
+      }
+    }
+  }
+}
+    ${ActivityDataFragmentDoc}
+${LocationDataFragmentDoc}
+${HostDataFragmentDoc}
+${CategoryDataFragmentDoc}
+${MediaDataFragmentDoc}`;
+
+/**
+ * __useActivityDetailsQuery__
+ *
+ * To run a query within a React component, call `useActivityDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActivityDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActivityDetailsQuery({
+ *   variables: {
+ *      activityId: // value for 'activityId'
+ *   },
+ * });
+ */
+export function useActivityDetailsQuery(baseOptions: Apollo.QueryHookOptions<ActivityDetailsQuery, ActivityDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ActivityDetailsQuery, ActivityDetailsQueryVariables>(ActivityDetailsDocument, options);
+      }
+export function useActivityDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ActivityDetailsQuery, ActivityDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ActivityDetailsQuery, ActivityDetailsQueryVariables>(ActivityDetailsDocument, options);
+        }
+export type ActivityDetailsQueryHookResult = ReturnType<typeof useActivityDetailsQuery>;
+export type ActivityDetailsLazyQueryHookResult = ReturnType<typeof useActivityDetailsLazyQuery>;
+export type ActivityDetailsQueryResult = Apollo.QueryResult<ActivityDetailsQuery, ActivityDetailsQueryVariables>;
 export const LocationsInViewportDocument = gql`
     query LocationsInViewport($viewportLatitudeMin: numeric!, $viewportLatitudeMax: numeric!, $viewportLongitudeMin: numeric!, $viewportLongitudeMax: numeric!) {
   locations(
@@ -3069,12 +3262,12 @@ export const LocationsInViewportDocument = gql`
   ) {
     ...LocationData
     activities {
-      ...ActivityData
+      ...ActivityListing
     }
   }
 }
     ${LocationDataFragmentDoc}
-${ActivityDataFragmentDoc}`;
+${ActivityListingFragmentDoc}`;
 
 /**
  * __useLocationsInViewportQuery__

@@ -1,62 +1,21 @@
 import { gql } from '@apollo/client';
+import {
+  FRAGMENT_CATEGORY,
+  FRAGMENT_HOST,
+  FRAGMENT_LOCATION,
+  FRAGMENT_MEDIA,
+  FRAGMENT_ACTIVITY,
+} from './fragments.query';
 
-export const FRAGMENT_HOST = gql`
-  fragment HostData on hosts {
-    id
-    name
-    logo_url
-  }
-`;
-
-export const FRAGMENT_CATEGORY = gql`
-  fragment CategoryData on categories {
-    id
-    name
-    level
-  }
-`;
-
-export const FRAGMENT_MEDIA = gql`
-  fragment MediaData on media {
-    id
-    path
-    caption
-  }
-`;
-
-export const FRAGMENT_LOCATION = gql`
-  fragment LocationData on locations {
-    id
-    address
-    postcode
-    lat
-    long
-    name
-    outdoors
-    directions
-  }
-`;
-
-export const FRAGMENT_ACTIVITY = gql`
+export const FRAGMENT_ACTIVITY_LISTING = gql`
   ${FRAGMENT_LOCATION}
   ${FRAGMENT_HOST}
   ${FRAGMENT_CATEGORY}
   ${FRAGMENT_MEDIA}
+  ${FRAGMENT_ACTIVITY}
 
-  fragment ActivityData on activities {
-    id
-    name
-    description
-    referral_url
-    referral_phone
-    referral_email
-    booking_required
-    group_size_min
-    group_size_max
-    physical_intensity_min
-    physical_intensity_max
-    age_min
-    age_max
+  fragment ActivityListing on activities {
+    ...ActivityData
     location {
       ...LocationData
     }
@@ -78,7 +37,7 @@ export const FRAGMENT_ACTIVITY = gql`
 
 export const LOCATIONS_IN_VIEWPORT = gql`
   ${FRAGMENT_LOCATION}
-  ${FRAGMENT_ACTIVITY}
+  ${FRAGMENT_ACTIVITY_LISTING}
 
   query LocationsInViewport(
     $viewportLatitudeMin: numeric!
@@ -94,7 +53,7 @@ export const LOCATIONS_IN_VIEWPORT = gql`
     ) {
       ...LocationData
       activities {
-        ...ActivityData
+        ...ActivityListing
       }
     }
   }

@@ -336,7 +336,7 @@ const iconMap: Record<string, React.FC> = {
 };
 
 interface Props {
-  icon: string;
+  icon?: string;
   colour?: string;
   width?: string;
   height?: string;

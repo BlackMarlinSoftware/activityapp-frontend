@@ -16,10 +16,10 @@ import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
-import { Activity, CategoryName } from '../../types';
+import { ActivityListing } from '../../types';
 
 interface Props {
-  activity: Activity;
+  activity: ActivityListing;
   focused: boolean;
 }
 
