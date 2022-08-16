@@ -7,7 +7,6 @@ import {
   imageContainerHeight,
   cardBorderRadius,
   DetailsContainer,
-  ActivityOperator,
   FavoriteContainer,
   CloseContainer,
 } from './styles';
