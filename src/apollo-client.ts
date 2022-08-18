@@ -11,9 +11,6 @@ const createApolloClient = () => {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     uri: 'https://jmg-activities.hasura.app/v1/graphql',
-    headers: {
-      'x-hasura-admin-secret': process.env.NEXT_PUBLIC_DELETE_ME_TEMP_HASURA_ADMIN_KEY || '',
-    },
     cache: new InMemoryCache(),
   });
 };
