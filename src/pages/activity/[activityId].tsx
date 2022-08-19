@@ -131,8 +131,8 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                   </IconAndText>
                   <HostLogoContainer>
                     <HostLogoImage
-                      src={`/images/demo/kitesurfing.jpeg`}
-                      alt={'TODO' || undefined}
+                      src={`/images/hosts/${activity.host.id}.jpg`}
+                      alt={`${activity.host.name} logo`}
                       objectFit="cover"
                       objectPosition="center"
                       width={spacing[8]}
@@ -228,32 +228,31 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                 />
               </DetailsSection>
 
-              <DetailsSection>
-                <h3>About the host</h3>
+              <h3>About the host</h3>
 
-                <HostHeadline>
-                  <HostLogoContainer>
-                    <HostLogoImage
-                      src={`/images/demo/kitesurfing.jpeg`}
-                      alt={'TODO' || undefined}
-                      objectFit="cover"
-                      objectPosition="center"
-                      width={spacing[8]}
-                      height={spacing[8]}
-                    />
-                  </HostLogoContainer>
+              <HostHeadline>
+                <HostLogoContainer>
+                  <HostLogoImage
+                    src={`/images/hosts/${activity.host.id}.jpg`}
+                    alt={`${activity.host.name} logo`}
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={spacing[8]}
+                    height={spacing[8]}
+                  />
+                </HostLogoContainer>
 
-                  <div>
-                    <h4>{activity.host.name}</h4>
-                    {hostActivityCount && (
-                      <h6>
-                        {hostActivityCount} {hostActivityCount === 1 ? 'activity' : 'activities'}
-                      </h6>
-                    )}
-                  </div>
-                </HostHeadline>
+                <div>
+                  <h4>{activity.host.name}</h4>
+                  {hostActivityCount && (
+                    <h6>
+                      {hostActivityCount} {hostActivityCount === 1 ? 'activity' : 'activities'}
+                    </h6>
+                  )}
+                </div>
+              </HostHeadline>
 
-                {/* <HostCertifications>
+              {/* <HostCertifications>
                   <KeyInfoItem>
                     <Icon icon="MedalColour" width={spacing[5]} height={spacing[5]} />
                     <InfoAndCaption>
@@ -268,15 +267,14 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                   </KeyInfoItem>
                 </HostCertifications> */}
 
-                <ReadMore
-                  lines={4}
-                  text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
+              <ReadMore
+                lines={4}
+                text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
                 water. Some more information here and etc.`}
-                />
-              </DetailsSection>
+              />
 
-              <h3>Activities like this</h3>
-              <p>OTHER ACTIVITIES PLACEHOLDER</p>
+              {/* <h3>Activities like this</h3>
+              <p>OTHER ACTIVITIES PLACEHOLDER</p> */}
             </Details>
 
             <CTATablet>
