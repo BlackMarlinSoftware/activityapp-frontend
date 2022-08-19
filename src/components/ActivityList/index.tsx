@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import ActivityCard from '../ActivityCard';
 import { ActivityRows, Container, ResultsSummary } from './styles';
-import { ActivityDataFragment } from '../../generated/graphql';
+import { ActivityListingFragment } from '../../generated/graphql';
 import useRouteChange from '../../hooks/useRouteChange';
 import { MapViewportState } from '../../reactiveVars/map';
 
 interface Props {
-  activities: ActivityDataFragment[];
+  activities: ActivityListingFragment[];
   mapViewportState: MapViewportState;
 }
 
