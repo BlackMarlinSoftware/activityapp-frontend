@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import {
   ActivityDataFragment,
   ActivityDetailsQuery,
@@ -208,3 +209,9 @@ export type ActivityListing = ActivityListingFragment;
 export type Host = HostDataFragment;
 export type Category = CategoryDataFragment;
 export type Media = MediaDataFragment;
+
+export interface ActivityKeyPoint {
+  name: string;
+  description: string;
+  icon: string;
+}

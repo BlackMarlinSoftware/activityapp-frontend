@@ -32,13 +32,17 @@ import {
   Address,
   GettingThereSection,
   HostHeadline,
-  HostCertifications,
   StickyCTA,
   DetailsAndCTA,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
-import { getActivityPageServerProps } from '../../utils/pages/activity.utils';
+import {
+  experienceLevelsMap,
+  getActivityPageServerProps,
+  getAgeRangeInfo,
+  intensityLevelsMap,
+} from '../../utils/pages/activity.utils';
 
 export interface Props {
   activity: Activity;
@@ -60,6 +64,9 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
 
   const firstImage = activity.activities_x_media[0].media;
   const hostActivityCount = activity.host.activities_aggregate.aggregate?.count;
+  const experienceLevel = activity.experience_level ? experienceLevelsMap[activity.experience_level] : undefined;
+  const intensityLevel = activity.intensity_level ? intensityLevelsMap[activity.intensity_level] : undefined;
+  const ageRange = getAgeRangeInfo(activity.age_min, activity.age_max);
 
   const share = () => {
     const currentUrl = window.location.href;
@@ -154,77 +161,42 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                       </InfoAndCaption>
                     </KeyInfoItem>
                   )}
+
+                  {experienceLevel && (
+                    <KeyInfoItem>
+                      <Icon icon={experienceLevel.icon} width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>{experienceLevel.name}</h5>
+                        <h6>{experienceLevel.description}</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  )}
+
+                  {intensityLevel && (
+                    <KeyInfoItem>
+                      <Icon icon={intensityLevel.icon} width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>{intensityLevel.name}</h5>
+                        <h6>{intensityLevel.description}</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  )}
+
                   <KeyInfoItem>
-                    <Icon icon="IncreasingBarsColour" width={spacing[6]} height={spacing[6]} />
+                    <Icon icon={ageRange.icon} width={spacing[6]} height={spacing[6]} />
                     <InfoAndCaption>
-                      <h5>Beginner to intermediate</h5>
-                      <h6>Suitable for people starting out or improving</h6>
+                      <h5>{ageRange.name}</h5>
+                      <h6>{ageRange.description}</h6>
                     </InfoAndCaption>
                   </KeyInfoItem>
-                  <KeyInfoItem>
-                    <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                    <InfoAndCaption>
-                      <h5>Medium physical intensity</h5>
-                      <h6>Suitable for people with an average level of fitness</h6>
-                    </InfoAndCaption>
-                  </KeyInfoItem>
-                  <KeyInfoItem>
-                    <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                    <InfoAndCaption>
-                      <h5>Ages 14 and up</h5>
-                      <h6>Unsuitable for young children</h6>
-                    </InfoAndCaption>
-                  </KeyInfoItem>
-                  <KeyInfoItem>
+
+                  {/* <KeyInfoItem>
                     <Icon icon="MedalColour" width={spacing[6]} height={spacing[6]} />
                     <InfoAndCaption>
                       <h5>Highly qualified host</h5>
                       <h6>This host is a verified expert</h6>
                     </InfoAndCaption>
-                  </KeyInfoItem>
-                  {/* 
-                <KeyInfoItem>
-                  <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>High physical intensity</h5>
-                    <h6>Suitable for people with a good level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Choice of physical intensity</h5>
-                    <h6>Suitable for any level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="LightningColourOutline" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Low physical intensity</h5>
-                    <h6>Suitable for any level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 7</h5>
-                    <h6>Suitable for children</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 15</h5>
-                    <h6>Suitable for children and teenagers</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 25</h5>
-                    <h6>Suitable for a range of ages</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>*/}
+                  </KeyInfoItem> */}
                 </KeyInformation>
               </DetailsSection>
 
