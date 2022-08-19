@@ -48,8 +48,8 @@ export const FRAGMENT_ACTIVITY = gql`
     booking_required
     group_size_min
     group_size_max
-    physical_intensity_min
-    physical_intensity_max
+    intensity_level
+    experience_level
     age_min
     age_max
   }

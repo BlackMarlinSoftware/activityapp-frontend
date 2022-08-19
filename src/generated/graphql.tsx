@@ -91,18 +91,18 @@ export type Activities = {
   age_min?: Maybe<Scalars['Int']>;
   booking_required: Scalars['Boolean'];
   description: Scalars['String'];
+  experience_level?: Maybe<Experience_Levels_Enum>;
   group_size_max?: Maybe<Scalars['Int']>;
   group_size_min?: Maybe<Scalars['Int']>;
   /** An object relationship */
   host: Hosts;
   host_id: Scalars['uuid'];
   id: Scalars['uuid'];
+  intensity_level?: Maybe<Intensity_Levels_Enum>;
   /** An object relationship */
   location: Locations;
   location_id: Scalars['uuid'];
   name: Scalars['String'];
-  physical_intensity_max?: Maybe<Scalars['Int']>;
-  physical_intensity_min?: Maybe<Scalars['Int']>;
   referral_email?: Maybe<Scalars['String']>;
   referral_phone?: Maybe<Scalars['String']>;
   referral_url?: Maybe<Scalars['String']>;
@@ -207,8 +207,6 @@ export type Activities_Avg_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "activities" */
@@ -217,8 +215,6 @@ export type Activities_Avg_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "activities". All fields are combined with a logical 'AND'. */
@@ -232,16 +228,16 @@ export type Activities_Bool_Exp = {
   age_min?: InputMaybe<Int_Comparison_Exp>;
   booking_required?: InputMaybe<Boolean_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
+  experience_level?: InputMaybe<Experience_Levels_Enum_Comparison_Exp>;
   group_size_max?: InputMaybe<Int_Comparison_Exp>;
   group_size_min?: InputMaybe<Int_Comparison_Exp>;
   host?: InputMaybe<Hosts_Bool_Exp>;
   host_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  intensity_level?: InputMaybe<Intensity_Levels_Enum_Comparison_Exp>;
   location?: InputMaybe<Locations_Bool_Exp>;
   location_id?: InputMaybe<Uuid_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
-  physical_intensity_max?: InputMaybe<Int_Comparison_Exp>;
-  physical_intensity_min?: InputMaybe<Int_Comparison_Exp>;
   referral_email?: InputMaybe<String_Comparison_Exp>;
   referral_phone?: InputMaybe<String_Comparison_Exp>;
   referral_url?: InputMaybe<String_Comparison_Exp>;
@@ -259,8 +255,6 @@ export type Activities_Inc_Input = {
   age_min?: InputMaybe<Scalars['Int']>;
   group_size_max?: InputMaybe<Scalars['Int']>;
   group_size_min?: InputMaybe<Scalars['Int']>;
-  physical_intensity_max?: InputMaybe<Scalars['Int']>;
-  physical_intensity_min?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "activities" */
@@ -271,16 +265,16 @@ export type Activities_Insert_Input = {
   age_min?: InputMaybe<Scalars['Int']>;
   booking_required?: InputMaybe<Scalars['Boolean']>;
   description?: InputMaybe<Scalars['String']>;
+  experience_level?: InputMaybe<Experience_Levels_Enum>;
   group_size_max?: InputMaybe<Scalars['Int']>;
   group_size_min?: InputMaybe<Scalars['Int']>;
   host?: InputMaybe<Hosts_Obj_Rel_Insert_Input>;
   host_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
+  intensity_level?: InputMaybe<Intensity_Levels_Enum>;
   location?: InputMaybe<Locations_Obj_Rel_Insert_Input>;
   location_id?: InputMaybe<Scalars['uuid']>;
   name?: InputMaybe<Scalars['String']>;
-  physical_intensity_max?: InputMaybe<Scalars['Int']>;
-  physical_intensity_min?: InputMaybe<Scalars['Int']>;
   referral_email?: InputMaybe<Scalars['String']>;
   referral_phone?: InputMaybe<Scalars['String']>;
   referral_url?: InputMaybe<Scalars['String']>;
@@ -298,8 +292,6 @@ export type Activities_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   location_id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
-  physical_intensity_max?: Maybe<Scalars['Int']>;
-  physical_intensity_min?: Maybe<Scalars['Int']>;
   referral_email?: Maybe<Scalars['String']>;
   referral_phone?: Maybe<Scalars['String']>;
   referral_url?: Maybe<Scalars['String']>;
@@ -316,8 +308,6 @@ export type Activities_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   location_id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
   referral_email?: InputMaybe<Order_By>;
   referral_phone?: InputMaybe<Order_By>;
   referral_url?: InputMaybe<Order_By>;
@@ -335,8 +325,6 @@ export type Activities_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   location_id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
-  physical_intensity_max?: Maybe<Scalars['Int']>;
-  physical_intensity_min?: Maybe<Scalars['Int']>;
   referral_email?: Maybe<Scalars['String']>;
   referral_phone?: Maybe<Scalars['String']>;
   referral_url?: Maybe<Scalars['String']>;
@@ -353,8 +341,6 @@ export type Activities_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   location_id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
   referral_email?: InputMaybe<Order_By>;
   referral_phone?: InputMaybe<Order_By>;
   referral_url?: InputMaybe<Order_By>;
@@ -391,16 +377,16 @@ export type Activities_Order_By = {
   age_min?: InputMaybe<Order_By>;
   booking_required?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
+  experience_level?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
   host?: InputMaybe<Hosts_Order_By>;
   host_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  intensity_level?: InputMaybe<Order_By>;
   location?: InputMaybe<Locations_Order_By>;
   location_id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
   referral_email?: InputMaybe<Order_By>;
   referral_phone?: InputMaybe<Order_By>;
   referral_url?: InputMaybe<Order_By>;
@@ -422,6 +408,8 @@ export enum Activities_Select_Column {
   /** column name */
   Description = 'description',
   /** column name */
+  ExperienceLevel = 'experience_level',
+  /** column name */
   GroupSizeMax = 'group_size_max',
   /** column name */
   GroupSizeMin = 'group_size_min',
@@ -430,13 +418,11 @@ export enum Activities_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  IntensityLevel = 'intensity_level',
+  /** column name */
   LocationId = 'location_id',
   /** column name */
   Name = 'name',
-  /** column name */
-  PhysicalIntensityMax = 'physical_intensity_max',
-  /** column name */
-  PhysicalIntensityMin = 'physical_intensity_min',
   /** column name */
   ReferralEmail = 'referral_email',
   /** column name */
@@ -451,14 +437,14 @@ export type Activities_Set_Input = {
   age_min?: InputMaybe<Scalars['Int']>;
   booking_required?: InputMaybe<Scalars['Boolean']>;
   description?: InputMaybe<Scalars['String']>;
+  experience_level?: InputMaybe<Experience_Levels_Enum>;
   group_size_max?: InputMaybe<Scalars['Int']>;
   group_size_min?: InputMaybe<Scalars['Int']>;
   host_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
+  intensity_level?: InputMaybe<Intensity_Levels_Enum>;
   location_id?: InputMaybe<Scalars['uuid']>;
   name?: InputMaybe<Scalars['String']>;
-  physical_intensity_max?: InputMaybe<Scalars['Int']>;
-  physical_intensity_min?: InputMaybe<Scalars['Int']>;
   referral_email?: InputMaybe<Scalars['String']>;
   referral_phone?: InputMaybe<Scalars['String']>;
   referral_url?: InputMaybe<Scalars['String']>;
@@ -471,8 +457,6 @@ export type Activities_Stddev_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "activities" */
@@ -481,8 +465,6 @@ export type Activities_Stddev_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -492,8 +474,6 @@ export type Activities_Stddev_Pop_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "activities" */
@@ -502,8 +482,6 @@ export type Activities_Stddev_Pop_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -513,8 +491,6 @@ export type Activities_Stddev_Samp_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "activities" */
@@ -523,8 +499,6 @@ export type Activities_Stddev_Samp_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -534,8 +508,6 @@ export type Activities_Sum_Fields = {
   age_min?: Maybe<Scalars['Int']>;
   group_size_max?: Maybe<Scalars['Int']>;
   group_size_min?: Maybe<Scalars['Int']>;
-  physical_intensity_max?: Maybe<Scalars['Int']>;
-  physical_intensity_min?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "activities" */
@@ -544,8 +516,6 @@ export type Activities_Sum_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "activities" */
@@ -559,6 +529,8 @@ export enum Activities_Update_Column {
   /** column name */
   Description = 'description',
   /** column name */
+  ExperienceLevel = 'experience_level',
+  /** column name */
   GroupSizeMax = 'group_size_max',
   /** column name */
   GroupSizeMin = 'group_size_min',
@@ -567,13 +539,11 @@ export enum Activities_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  IntensityLevel = 'intensity_level',
+  /** column name */
   LocationId = 'location_id',
   /** column name */
   Name = 'name',
-  /** column name */
-  PhysicalIntensityMax = 'physical_intensity_max',
-  /** column name */
-  PhysicalIntensityMin = 'physical_intensity_min',
   /** column name */
   ReferralEmail = 'referral_email',
   /** column name */
@@ -597,8 +567,6 @@ export type Activities_Var_Pop_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "activities" */
@@ -607,8 +575,6 @@ export type Activities_Var_Pop_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -618,8 +584,6 @@ export type Activities_Var_Samp_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "activities" */
@@ -628,8 +592,6 @@ export type Activities_Var_Samp_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -639,8 +601,6 @@ export type Activities_Variance_Fields = {
   age_min?: Maybe<Scalars['Float']>;
   group_size_max?: Maybe<Scalars['Float']>;
   group_size_min?: Maybe<Scalars['Float']>;
-  physical_intensity_max?: Maybe<Scalars['Float']>;
-  physical_intensity_min?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "activities" */
@@ -649,8 +609,6 @@ export type Activities_Variance_Order_By = {
   age_min?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
-  physical_intensity_max?: InputMaybe<Order_By>;
-  physical_intensity_min?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "activities_x_categories" */
@@ -1404,6 +1362,132 @@ export type Categories_X_Parent_Categories_Updates = {
   where: Categories_X_Parent_Categories_Bool_Exp;
 };
 
+/** columns and relationships of "experience_levels" */
+export type Experience_Levels = {
+  __typename?: 'experience_levels';
+  experience_level: Scalars['String'];
+};
+
+/** aggregated selection of "experience_levels" */
+export type Experience_Levels_Aggregate = {
+  __typename?: 'experience_levels_aggregate';
+  aggregate?: Maybe<Experience_Levels_Aggregate_Fields>;
+  nodes: Array<Experience_Levels>;
+};
+
+/** aggregate fields of "experience_levels" */
+export type Experience_Levels_Aggregate_Fields = {
+  __typename?: 'experience_levels_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Experience_Levels_Max_Fields>;
+  min?: Maybe<Experience_Levels_Min_Fields>;
+};
+
+
+/** aggregate fields of "experience_levels" */
+export type Experience_Levels_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Experience_Levels_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "experience_levels". All fields are combined with a logical 'AND'. */
+export type Experience_Levels_Bool_Exp = {
+  _and?: InputMaybe<Array<Experience_Levels_Bool_Exp>>;
+  _not?: InputMaybe<Experience_Levels_Bool_Exp>;
+  _or?: InputMaybe<Array<Experience_Levels_Bool_Exp>>;
+  experience_level?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "experience_levels" */
+export enum Experience_Levels_Constraint {
+  /** unique or primary key constraint on columns "experience_level" */
+  ExperienceLevelsPkey = 'experience_levels_pkey'
+}
+
+export enum Experience_Levels_Enum {
+  Advanced = 'ADVANCED',
+  Any = 'ANY',
+  Beginner = 'BEGINNER',
+  BeginnerToIntermediate = 'BEGINNER_TO_INTERMEDIATE',
+  Intermediate = 'INTERMEDIATE',
+  IntermediateToAdvanced = 'INTERMEDIATE_TO_ADVANCED'
+}
+
+/** Boolean expression to compare columns of type "experience_levels_enum". All fields are combined with logical 'AND'. */
+export type Experience_Levels_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Experience_Levels_Enum>;
+  _in?: InputMaybe<Array<Experience_Levels_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Experience_Levels_Enum>;
+  _nin?: InputMaybe<Array<Experience_Levels_Enum>>;
+};
+
+/** input type for inserting data into table "experience_levels" */
+export type Experience_Levels_Insert_Input = {
+  experience_level?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Experience_Levels_Max_Fields = {
+  __typename?: 'experience_levels_max_fields';
+  experience_level?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Experience_Levels_Min_Fields = {
+  __typename?: 'experience_levels_min_fields';
+  experience_level?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "experience_levels" */
+export type Experience_Levels_Mutation_Response = {
+  __typename?: 'experience_levels_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Experience_Levels>;
+};
+
+/** on_conflict condition type for table "experience_levels" */
+export type Experience_Levels_On_Conflict = {
+  constraint: Experience_Levels_Constraint;
+  update_columns?: Array<Experience_Levels_Update_Column>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "experience_levels". */
+export type Experience_Levels_Order_By = {
+  experience_level?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: experience_levels */
+export type Experience_Levels_Pk_Columns_Input = {
+  experience_level: Scalars['String'];
+};
+
+/** select columns of table "experience_levels" */
+export enum Experience_Levels_Select_Column {
+  /** column name */
+  ExperienceLevel = 'experience_level'
+}
+
+/** input type for updating data in table "experience_levels" */
+export type Experience_Levels_Set_Input = {
+  experience_level?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "experience_levels" */
+export enum Experience_Levels_Update_Column {
+  /** column name */
+  ExperienceLevel = 'experience_level'
+}
+
+export type Experience_Levels_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Experience_Levels_Set_Input>;
+  where: Experience_Levels_Bool_Exp;
+};
+
 /** columns and relationships of "hosts" */
 export type Hosts = {
   __typename?: 'hosts';
@@ -1566,6 +1650,130 @@ export type Hosts_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Hosts_Set_Input>;
   where: Hosts_Bool_Exp;
+};
+
+/** columns and relationships of "intensity_levels" */
+export type Intensity_Levels = {
+  __typename?: 'intensity_levels';
+  intensity_level: Scalars['String'];
+};
+
+/** aggregated selection of "intensity_levels" */
+export type Intensity_Levels_Aggregate = {
+  __typename?: 'intensity_levels_aggregate';
+  aggregate?: Maybe<Intensity_Levels_Aggregate_Fields>;
+  nodes: Array<Intensity_Levels>;
+};
+
+/** aggregate fields of "intensity_levels" */
+export type Intensity_Levels_Aggregate_Fields = {
+  __typename?: 'intensity_levels_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Intensity_Levels_Max_Fields>;
+  min?: Maybe<Intensity_Levels_Min_Fields>;
+};
+
+
+/** aggregate fields of "intensity_levels" */
+export type Intensity_Levels_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "intensity_levels". All fields are combined with a logical 'AND'. */
+export type Intensity_Levels_Bool_Exp = {
+  _and?: InputMaybe<Array<Intensity_Levels_Bool_Exp>>;
+  _not?: InputMaybe<Intensity_Levels_Bool_Exp>;
+  _or?: InputMaybe<Array<Intensity_Levels_Bool_Exp>>;
+  intensity_level?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "intensity_levels" */
+export enum Intensity_Levels_Constraint {
+  /** unique or primary key constraint on columns "intensity_level" */
+  IntensityLevelsPkey = 'intensity_levels_pkey'
+}
+
+export enum Intensity_Levels_Enum {
+  Any = 'ANY',
+  High = 'HIGH',
+  Low = 'LOW',
+  Medium = 'MEDIUM'
+}
+
+/** Boolean expression to compare columns of type "intensity_levels_enum". All fields are combined with logical 'AND'. */
+export type Intensity_Levels_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Intensity_Levels_Enum>;
+  _in?: InputMaybe<Array<Intensity_Levels_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Intensity_Levels_Enum>;
+  _nin?: InputMaybe<Array<Intensity_Levels_Enum>>;
+};
+
+/** input type for inserting data into table "intensity_levels" */
+export type Intensity_Levels_Insert_Input = {
+  intensity_level?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Intensity_Levels_Max_Fields = {
+  __typename?: 'intensity_levels_max_fields';
+  intensity_level?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Intensity_Levels_Min_Fields = {
+  __typename?: 'intensity_levels_min_fields';
+  intensity_level?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "intensity_levels" */
+export type Intensity_Levels_Mutation_Response = {
+  __typename?: 'intensity_levels_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Intensity_Levels>;
+};
+
+/** on_conflict condition type for table "intensity_levels" */
+export type Intensity_Levels_On_Conflict = {
+  constraint: Intensity_Levels_Constraint;
+  update_columns?: Array<Intensity_Levels_Update_Column>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "intensity_levels". */
+export type Intensity_Levels_Order_By = {
+  intensity_level?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: intensity_levels */
+export type Intensity_Levels_Pk_Columns_Input = {
+  intensity_level: Scalars['String'];
+};
+
+/** select columns of table "intensity_levels" */
+export enum Intensity_Levels_Select_Column {
+  /** column name */
+  IntensityLevel = 'intensity_level'
+}
+
+/** input type for updating data in table "intensity_levels" */
+export type Intensity_Levels_Set_Input = {
+  intensity_level?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "intensity_levels" */
+export enum Intensity_Levels_Update_Column {
+  /** column name */
+  IntensityLevel = 'intensity_level'
+}
+
+export type Intensity_Levels_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Intensity_Levels_Set_Input>;
+  where: Intensity_Levels_Bool_Exp;
 };
 
 /** columns and relationships of "locations" */
@@ -2052,10 +2260,18 @@ export type Mutation_Root = {
   delete_categories_x_parent_categories?: Maybe<Categories_X_Parent_Categories_Mutation_Response>;
   /** delete single row from the table: "categories_x_parent_categories" */
   delete_categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
+  /** delete data from the table: "experience_levels" */
+  delete_experience_levels?: Maybe<Experience_Levels_Mutation_Response>;
+  /** delete single row from the table: "experience_levels" */
+  delete_experience_levels_by_pk?: Maybe<Experience_Levels>;
   /** delete data from the table: "hosts" */
   delete_hosts?: Maybe<Hosts_Mutation_Response>;
   /** delete single row from the table: "hosts" */
   delete_hosts_by_pk?: Maybe<Hosts>;
+  /** delete data from the table: "intensity_levels" */
+  delete_intensity_levels?: Maybe<Intensity_Levels_Mutation_Response>;
+  /** delete single row from the table: "intensity_levels" */
+  delete_intensity_levels_by_pk?: Maybe<Intensity_Levels>;
   /** delete data from the table: "locations" */
   delete_locations?: Maybe<Locations_Mutation_Response>;
   /** delete single row from the table: "locations" */
@@ -2064,6 +2280,10 @@ export type Mutation_Root = {
   delete_media?: Maybe<Media_Mutation_Response>;
   /** delete single row from the table: "media" */
   delete_media_by_pk?: Maybe<Media>;
+  /** delete data from the table: "privileged_example__delete_me" */
+  delete_privileged_example__delete_me?: Maybe<Privileged_Example__Delete_Me_Mutation_Response>;
+  /** delete single row from the table: "privileged_example__delete_me" */
+  delete_privileged_example__delete_me_by_pk?: Maybe<Privileged_Example__Delete_Me>;
   /** insert data into the table: "activities" */
   insert_activities?: Maybe<Activities_Mutation_Response>;
   /** insert a single row into the table: "activities" */
@@ -2084,10 +2304,18 @@ export type Mutation_Root = {
   insert_categories_x_parent_categories?: Maybe<Categories_X_Parent_Categories_Mutation_Response>;
   /** insert a single row into the table: "categories_x_parent_categories" */
   insert_categories_x_parent_categories_one?: Maybe<Categories_X_Parent_Categories>;
+  /** insert data into the table: "experience_levels" */
+  insert_experience_levels?: Maybe<Experience_Levels_Mutation_Response>;
+  /** insert a single row into the table: "experience_levels" */
+  insert_experience_levels_one?: Maybe<Experience_Levels>;
   /** insert data into the table: "hosts" */
   insert_hosts?: Maybe<Hosts_Mutation_Response>;
   /** insert a single row into the table: "hosts" */
   insert_hosts_one?: Maybe<Hosts>;
+  /** insert data into the table: "intensity_levels" */
+  insert_intensity_levels?: Maybe<Intensity_Levels_Mutation_Response>;
+  /** insert a single row into the table: "intensity_levels" */
+  insert_intensity_levels_one?: Maybe<Intensity_Levels>;
   /** insert data into the table: "locations" */
   insert_locations?: Maybe<Locations_Mutation_Response>;
   /** insert a single row into the table: "locations" */
@@ -2096,6 +2324,10 @@ export type Mutation_Root = {
   insert_media?: Maybe<Media_Mutation_Response>;
   /** insert a single row into the table: "media" */
   insert_media_one?: Maybe<Media>;
+  /** insert data into the table: "privileged_example__delete_me" */
+  insert_privileged_example__delete_me?: Maybe<Privileged_Example__Delete_Me_Mutation_Response>;
+  /** insert a single row into the table: "privileged_example__delete_me" */
+  insert_privileged_example__delete_me_one?: Maybe<Privileged_Example__Delete_Me>;
   /** update data of the table: "activities" */
   update_activities?: Maybe<Activities_Mutation_Response>;
   /** update single row of the table: "activities" */
@@ -2126,12 +2358,24 @@ export type Mutation_Root = {
   update_categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
   /** update multiples rows of table: "categories_x_parent_categories" */
   update_categories_x_parent_categories_many?: Maybe<Array<Maybe<Categories_X_Parent_Categories_Mutation_Response>>>;
+  /** update data of the table: "experience_levels" */
+  update_experience_levels?: Maybe<Experience_Levels_Mutation_Response>;
+  /** update single row of the table: "experience_levels" */
+  update_experience_levels_by_pk?: Maybe<Experience_Levels>;
+  /** update multiples rows of table: "experience_levels" */
+  update_experience_levels_many?: Maybe<Array<Maybe<Experience_Levels_Mutation_Response>>>;
   /** update data of the table: "hosts" */
   update_hosts?: Maybe<Hosts_Mutation_Response>;
   /** update single row of the table: "hosts" */
   update_hosts_by_pk?: Maybe<Hosts>;
   /** update multiples rows of table: "hosts" */
   update_hosts_many?: Maybe<Array<Maybe<Hosts_Mutation_Response>>>;
+  /** update data of the table: "intensity_levels" */
+  update_intensity_levels?: Maybe<Intensity_Levels_Mutation_Response>;
+  /** update single row of the table: "intensity_levels" */
+  update_intensity_levels_by_pk?: Maybe<Intensity_Levels>;
+  /** update multiples rows of table: "intensity_levels" */
+  update_intensity_levels_many?: Maybe<Array<Maybe<Intensity_Levels_Mutation_Response>>>;
   /** update data of the table: "locations" */
   update_locations?: Maybe<Locations_Mutation_Response>;
   /** update single row of the table: "locations" */
@@ -2144,6 +2388,12 @@ export type Mutation_Root = {
   update_media_by_pk?: Maybe<Media>;
   /** update multiples rows of table: "media" */
   update_media_many?: Maybe<Array<Maybe<Media_Mutation_Response>>>;
+  /** update data of the table: "privileged_example__delete_me" */
+  update_privileged_example__delete_me?: Maybe<Privileged_Example__Delete_Me_Mutation_Response>;
+  /** update single row of the table: "privileged_example__delete_me" */
+  update_privileged_example__delete_me_by_pk?: Maybe<Privileged_Example__Delete_Me>;
+  /** update multiples rows of table: "privileged_example__delete_me" */
+  update_privileged_example__delete_me_many?: Maybe<Array<Maybe<Privileged_Example__Delete_Me_Mutation_Response>>>;
 };
 
 
@@ -2211,6 +2461,18 @@ export type Mutation_RootDelete_Categories_X_Parent_Categories_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Experience_LevelsArgs = {
+  where: Experience_Levels_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Experience_Levels_By_PkArgs = {
+  experience_level: Scalars['String'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_HostsArgs = {
   where: Hosts_Bool_Exp;
 };
@@ -2219,6 +2481,18 @@ export type Mutation_RootDelete_HostsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Hosts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Intensity_LevelsArgs = {
+  where: Intensity_Levels_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Intensity_Levels_By_PkArgs = {
+  intensity_level: Scalars['String'];
 };
 
 
@@ -2243,6 +2517,18 @@ export type Mutation_RootDelete_MediaArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Media_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Privileged_Example__Delete_MeArgs = {
+  where: Privileged_Example__Delete_Me_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Privileged_Example__Delete_Me_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -2317,6 +2603,20 @@ export type Mutation_RootInsert_Categories_X_Parent_Categories_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Experience_LevelsArgs = {
+  objects: Array<Experience_Levels_Insert_Input>;
+  on_conflict?: InputMaybe<Experience_Levels_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Experience_Levels_OneArgs = {
+  object: Experience_Levels_Insert_Input;
+  on_conflict?: InputMaybe<Experience_Levels_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_HostsArgs = {
   objects: Array<Hosts_Insert_Input>;
   on_conflict?: InputMaybe<Hosts_On_Conflict>;
@@ -2327,6 +2627,20 @@ export type Mutation_RootInsert_HostsArgs = {
 export type Mutation_RootInsert_Hosts_OneArgs = {
   object: Hosts_Insert_Input;
   on_conflict?: InputMaybe<Hosts_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Intensity_LevelsArgs = {
+  objects: Array<Intensity_Levels_Insert_Input>;
+  on_conflict?: InputMaybe<Intensity_Levels_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Intensity_Levels_OneArgs = {
+  object: Intensity_Levels_Insert_Input;
+  on_conflict?: InputMaybe<Intensity_Levels_On_Conflict>;
 };
 
 
@@ -2355,6 +2669,20 @@ export type Mutation_RootInsert_MediaArgs = {
 export type Mutation_RootInsert_Media_OneArgs = {
   object: Media_Insert_Input;
   on_conflict?: InputMaybe<Media_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Privileged_Example__Delete_MeArgs = {
+  objects: Array<Privileged_Example__Delete_Me_Insert_Input>;
+  on_conflict?: InputMaybe<Privileged_Example__Delete_Me_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Privileged_Example__Delete_Me_OneArgs = {
+  object: Privileged_Example__Delete_Me_Insert_Input;
+  on_conflict?: InputMaybe<Privileged_Example__Delete_Me_On_Conflict>;
 };
 
 
@@ -2463,6 +2791,26 @@ export type Mutation_RootUpdate_Categories_X_Parent_Categories_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Experience_LevelsArgs = {
+  _set?: InputMaybe<Experience_Levels_Set_Input>;
+  where: Experience_Levels_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Experience_Levels_By_PkArgs = {
+  _set?: InputMaybe<Experience_Levels_Set_Input>;
+  pk_columns: Experience_Levels_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Experience_Levels_ManyArgs = {
+  updates: Array<Experience_Levels_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_HostsArgs = {
   _set?: InputMaybe<Hosts_Set_Input>;
   where: Hosts_Bool_Exp;
@@ -2479,6 +2827,26 @@ export type Mutation_RootUpdate_Hosts_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Hosts_ManyArgs = {
   updates: Array<Hosts_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Intensity_LevelsArgs = {
+  _set?: InputMaybe<Intensity_Levels_Set_Input>;
+  where: Intensity_Levels_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Intensity_Levels_By_PkArgs = {
+  _set?: InputMaybe<Intensity_Levels_Set_Input>;
+  pk_columns: Intensity_Levels_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Intensity_Levels_ManyArgs = {
+  updates: Array<Intensity_Levels_Updates>;
 };
 
 
@@ -2523,6 +2891,28 @@ export type Mutation_RootUpdate_Media_ManyArgs = {
   updates: Array<Media_Updates>;
 };
 
+
+/** mutation root */
+export type Mutation_RootUpdate_Privileged_Example__Delete_MeArgs = {
+  _inc?: InputMaybe<Privileged_Example__Delete_Me_Inc_Input>;
+  _set?: InputMaybe<Privileged_Example__Delete_Me_Set_Input>;
+  where: Privileged_Example__Delete_Me_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Privileged_Example__Delete_Me_By_PkArgs = {
+  _inc?: InputMaybe<Privileged_Example__Delete_Me_Inc_Input>;
+  _set?: InputMaybe<Privileged_Example__Delete_Me_Set_Input>;
+  pk_columns: Privileged_Example__Delete_Me_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Privileged_Example__Delete_Me_ManyArgs = {
+  updates: Array<Privileged_Example__Delete_Me_Updates>;
+};
+
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
 export type Numeric_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['numeric']>;
@@ -2551,6 +2941,188 @@ export enum Order_By {
   /** in descending order, nulls last */
   DescNullsLast = 'desc_nulls_last'
 }
+
+/** Just to demonstrate the new permissions and JWT system, this table needs admin perms */
+export type Privileged_Example__Delete_Me = {
+  __typename?: 'privileged_example__delete_me';
+  id: Scalars['Int'];
+  thing: Scalars['String'];
+};
+
+/** aggregated selection of "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Aggregate = {
+  __typename?: 'privileged_example__delete_me_aggregate';
+  aggregate?: Maybe<Privileged_Example__Delete_Me_Aggregate_Fields>;
+  nodes: Array<Privileged_Example__Delete_Me>;
+};
+
+/** aggregate fields of "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Aggregate_Fields = {
+  __typename?: 'privileged_example__delete_me_aggregate_fields';
+  avg?: Maybe<Privileged_Example__Delete_Me_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Privileged_Example__Delete_Me_Max_Fields>;
+  min?: Maybe<Privileged_Example__Delete_Me_Min_Fields>;
+  stddev?: Maybe<Privileged_Example__Delete_Me_Stddev_Fields>;
+  stddev_pop?: Maybe<Privileged_Example__Delete_Me_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Privileged_Example__Delete_Me_Stddev_Samp_Fields>;
+  sum?: Maybe<Privileged_Example__Delete_Me_Sum_Fields>;
+  var_pop?: Maybe<Privileged_Example__Delete_Me_Var_Pop_Fields>;
+  var_samp?: Maybe<Privileged_Example__Delete_Me_Var_Samp_Fields>;
+  variance?: Maybe<Privileged_Example__Delete_Me_Variance_Fields>;
+};
+
+
+/** aggregate fields of "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Privileged_Example__Delete_Me_Avg_Fields = {
+  __typename?: 'privileged_example__delete_me_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "privileged_example__delete_me". All fields are combined with a logical 'AND'. */
+export type Privileged_Example__Delete_Me_Bool_Exp = {
+  _and?: InputMaybe<Array<Privileged_Example__Delete_Me_Bool_Exp>>;
+  _not?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+  _or?: InputMaybe<Array<Privileged_Example__Delete_Me_Bool_Exp>>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  thing?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "privileged_example__delete_me" */
+export enum Privileged_Example__Delete_Me_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  PrivilegedExampleDeleteMePkey = 'privileged_example__delete_me_pkey'
+}
+
+/** input type for incrementing numeric columns in table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Inc_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Insert_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+  thing?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Privileged_Example__Delete_Me_Max_Fields = {
+  __typename?: 'privileged_example__delete_me_max_fields';
+  id?: Maybe<Scalars['Int']>;
+  thing?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Privileged_Example__Delete_Me_Min_Fields = {
+  __typename?: 'privileged_example__delete_me_min_fields';
+  id?: Maybe<Scalars['Int']>;
+  thing?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Mutation_Response = {
+  __typename?: 'privileged_example__delete_me_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Privileged_Example__Delete_Me>;
+};
+
+/** on_conflict condition type for table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_On_Conflict = {
+  constraint: Privileged_Example__Delete_Me_Constraint;
+  update_columns?: Array<Privileged_Example__Delete_Me_Update_Column>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "privileged_example__delete_me". */
+export type Privileged_Example__Delete_Me_Order_By = {
+  id?: InputMaybe<Order_By>;
+  thing?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: privileged_example__delete_me */
+export type Privileged_Example__Delete_Me_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "privileged_example__delete_me" */
+export enum Privileged_Example__Delete_Me_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Thing = 'thing'
+}
+
+/** input type for updating data in table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Set_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+  thing?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Privileged_Example__Delete_Me_Stddev_Fields = {
+  __typename?: 'privileged_example__delete_me_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Privileged_Example__Delete_Me_Stddev_Pop_Fields = {
+  __typename?: 'privileged_example__delete_me_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Privileged_Example__Delete_Me_Stddev_Samp_Fields = {
+  __typename?: 'privileged_example__delete_me_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Privileged_Example__Delete_Me_Sum_Fields = {
+  __typename?: 'privileged_example__delete_me_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "privileged_example__delete_me" */
+export enum Privileged_Example__Delete_Me_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Thing = 'thing'
+}
+
+export type Privileged_Example__Delete_Me_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Privileged_Example__Delete_Me_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Privileged_Example__Delete_Me_Set_Input>;
+  where: Privileged_Example__Delete_Me_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Privileged_Example__Delete_Me_Var_Pop_Fields = {
+  __typename?: 'privileged_example__delete_me_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Privileged_Example__Delete_Me_Var_Samp_Fields = {
+  __typename?: 'privileged_example__delete_me_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Privileged_Example__Delete_Me_Variance_Fields = {
+  __typename?: 'privileged_example__delete_me_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+};
 
 export type Query_Root = {
   __typename?: 'query_root';
@@ -2584,12 +3156,24 @@ export type Query_Root = {
   categories_x_parent_categories_aggregate: Categories_X_Parent_Categories_Aggregate;
   /** fetch data from the table: "categories_x_parent_categories" using primary key columns */
   categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
+  /** fetch data from the table: "experience_levels" */
+  experience_levels: Array<Experience_Levels>;
+  /** fetch aggregated fields from the table: "experience_levels" */
+  experience_levels_aggregate: Experience_Levels_Aggregate;
+  /** fetch data from the table: "experience_levels" using primary key columns */
+  experience_levels_by_pk?: Maybe<Experience_Levels>;
   /** fetch data from the table: "hosts" */
   hosts: Array<Hosts>;
   /** fetch aggregated fields from the table: "hosts" */
   hosts_aggregate: Hosts_Aggregate;
   /** fetch data from the table: "hosts" using primary key columns */
   hosts_by_pk?: Maybe<Hosts>;
+  /** fetch data from the table: "intensity_levels" */
+  intensity_levels: Array<Intensity_Levels>;
+  /** fetch aggregated fields from the table: "intensity_levels" */
+  intensity_levels_aggregate: Intensity_Levels_Aggregate;
+  /** fetch data from the table: "intensity_levels" using primary key columns */
+  intensity_levels_by_pk?: Maybe<Intensity_Levels>;
   /** fetch data from the table: "locations" */
   locations: Array<Locations>;
   /** fetch aggregated fields from the table: "locations" */
@@ -2606,6 +3190,12 @@ export type Query_Root = {
   media_aggregate: Media_Aggregate;
   /** fetch data from the table: "media" using primary key columns */
   media_by_pk?: Maybe<Media>;
+  /** fetch data from the table: "privileged_example__delete_me" */
+  privileged_example__delete_me: Array<Privileged_Example__Delete_Me>;
+  /** fetch aggregated fields from the table: "privileged_example__delete_me" */
+  privileged_example__delete_me_aggregate: Privileged_Example__Delete_Me_Aggregate;
+  /** fetch data from the table: "privileged_example__delete_me" using primary key columns */
+  privileged_example__delete_me_by_pk?: Maybe<Privileged_Example__Delete_Me>;
 };
 
 
@@ -2727,6 +3317,29 @@ export type Query_RootCategories_X_Parent_Categories_By_PkArgs = {
 };
 
 
+export type Query_RootExperience_LevelsArgs = {
+  distinct_on?: InputMaybe<Array<Experience_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Experience_Levels_Order_By>>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
+};
+
+
+export type Query_RootExperience_Levels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Experience_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Experience_Levels_Order_By>>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
+};
+
+
+export type Query_RootExperience_Levels_By_PkArgs = {
+  experience_level: Scalars['String'];
+};
+
+
 export type Query_RootHostsArgs = {
   distinct_on?: InputMaybe<Array<Hosts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2747,6 +3360,29 @@ export type Query_RootHosts_AggregateArgs = {
 
 export type Query_RootHosts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+export type Query_RootIntensity_LevelsArgs = {
+  distinct_on?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Intensity_Levels_Order_By>>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
+};
+
+
+export type Query_RootIntensity_Levels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Intensity_Levels_Order_By>>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
+};
+
+
+export type Query_RootIntensity_Levels_By_PkArgs = {
+  intensity_level: Scalars['String'];
 };
 
 
@@ -2815,6 +3451,29 @@ export type Query_RootMedia_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+
+export type Query_RootPrivileged_Example__Delete_MeArgs = {
+  distinct_on?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Privileged_Example__Delete_Me_Order_By>>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+};
+
+
+export type Query_RootPrivileged_Example__Delete_Me_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Privileged_Example__Delete_Me_Order_By>>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+};
+
+
+export type Query_RootPrivileged_Example__Delete_Me_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
 export type Subscription_Root = {
   __typename?: 'subscription_root';
   /** An array relationship */
@@ -2847,12 +3506,24 @@ export type Subscription_Root = {
   categories_x_parent_categories_aggregate: Categories_X_Parent_Categories_Aggregate;
   /** fetch data from the table: "categories_x_parent_categories" using primary key columns */
   categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
+  /** fetch data from the table: "experience_levels" */
+  experience_levels: Array<Experience_Levels>;
+  /** fetch aggregated fields from the table: "experience_levels" */
+  experience_levels_aggregate: Experience_Levels_Aggregate;
+  /** fetch data from the table: "experience_levels" using primary key columns */
+  experience_levels_by_pk?: Maybe<Experience_Levels>;
   /** fetch data from the table: "hosts" */
   hosts: Array<Hosts>;
   /** fetch aggregated fields from the table: "hosts" */
   hosts_aggregate: Hosts_Aggregate;
   /** fetch data from the table: "hosts" using primary key columns */
   hosts_by_pk?: Maybe<Hosts>;
+  /** fetch data from the table: "intensity_levels" */
+  intensity_levels: Array<Intensity_Levels>;
+  /** fetch aggregated fields from the table: "intensity_levels" */
+  intensity_levels_aggregate: Intensity_Levels_Aggregate;
+  /** fetch data from the table: "intensity_levels" using primary key columns */
+  intensity_levels_by_pk?: Maybe<Intensity_Levels>;
   /** fetch data from the table: "locations" */
   locations: Array<Locations>;
   /** fetch aggregated fields from the table: "locations" */
@@ -2869,6 +3540,12 @@ export type Subscription_Root = {
   media_aggregate: Media_Aggregate;
   /** fetch data from the table: "media" using primary key columns */
   media_by_pk?: Maybe<Media>;
+  /** fetch data from the table: "privileged_example__delete_me" */
+  privileged_example__delete_me: Array<Privileged_Example__Delete_Me>;
+  /** fetch aggregated fields from the table: "privileged_example__delete_me" */
+  privileged_example__delete_me_aggregate: Privileged_Example__Delete_Me_Aggregate;
+  /** fetch data from the table: "privileged_example__delete_me" using primary key columns */
+  privileged_example__delete_me_by_pk?: Maybe<Privileged_Example__Delete_Me>;
 };
 
 
@@ -2990,6 +3667,29 @@ export type Subscription_RootCategories_X_Parent_Categories_By_PkArgs = {
 };
 
 
+export type Subscription_RootExperience_LevelsArgs = {
+  distinct_on?: InputMaybe<Array<Experience_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Experience_Levels_Order_By>>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
+};
+
+
+export type Subscription_RootExperience_Levels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Experience_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Experience_Levels_Order_By>>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
+};
+
+
+export type Subscription_RootExperience_Levels_By_PkArgs = {
+  experience_level: Scalars['String'];
+};
+
+
 export type Subscription_RootHostsArgs = {
   distinct_on?: InputMaybe<Array<Hosts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3010,6 +3710,29 @@ export type Subscription_RootHosts_AggregateArgs = {
 
 export type Subscription_RootHosts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootIntensity_LevelsArgs = {
+  distinct_on?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Intensity_Levels_Order_By>>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
+};
+
+
+export type Subscription_RootIntensity_Levels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Intensity_Levels_Order_By>>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
+};
+
+
+export type Subscription_RootIntensity_Levels_By_PkArgs = {
+  intensity_level: Scalars['String'];
 };
 
 
@@ -3078,6 +3801,29 @@ export type Subscription_RootMedia_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+
+export type Subscription_RootPrivileged_Example__Delete_MeArgs = {
+  distinct_on?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Privileged_Example__Delete_Me_Order_By>>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+};
+
+
+export type Subscription_RootPrivileged_Example__Delete_Me_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Privileged_Example__Delete_Me_Order_By>>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
+};
+
+
+export type Subscription_RootPrivileged_Example__Delete_Me_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['uuid']>;
@@ -3096,7 +3842,7 @@ export type ActivityDetailsQueryVariables = Exact<{
 }>;
 
 
-export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
+export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
 
 export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null };
 
@@ -3106,9 +3852,9 @@ export type MediaDataFragment = { __typename?: 'media', id: string, path: string
 
 export type LocationDataFragment = { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null };
 
-export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null };
+export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null };
 
-export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
+export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
 export type LocationsInViewportQueryVariables = Exact<{
   viewportLatitudeMin: Scalars['numeric'];
@@ -3118,7 +3864,7 @@ export type LocationsInViewportQueryVariables = Exact<{
 }>;
 
 
-export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, physical_intensity_min?: number | null, physical_intensity_max?: number | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
 export const ActivityDataFragmentDoc = gql`
     fragment ActivityData on activities {
@@ -3131,8 +3877,8 @@ export const ActivityDataFragmentDoc = gql`
   booking_required
   group_size_min
   group_size_max
-  physical_intensity_min
-  physical_intensity_max
+  intensity_level
+  experience_level
   age_min
   age_max
 }
