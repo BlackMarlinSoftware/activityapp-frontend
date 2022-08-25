@@ -4,7 +4,7 @@ import { MapCoords, MapViewportState } from '../../reactiveVars/map';
 import { queryParamsToNumberOrZero } from '../query.utils';
 import { addApolloState, initializeApollo } from '../../apollo-client';
 import {
-  ActivityDataFragment,
+  ActivityListingFragment,
   LocationsInViewportQuery,
   LocationsInViewportQueryVariables,
 } from '../../generated/graphql';
@@ -34,17 +34,19 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
     variables: mapViewportState,
   });
 
-  const activities: ActivityDataFragment[] = [];
+  const activities: ActivityListingFragment[] = [];
   locations.forEach((location) => {
     activities.push(...location.activities);
   });
 
+  const props: Props = {
+    mapCoords,
+    locations,
+    activities,
+    mapViewportState,
+  };
+
   return addApolloState(apolloClient, {
-    props: {
-      mapCoords,
-      locations,
-      activities,
-      mapViewportState,
-    },
+    props,
   });
 };

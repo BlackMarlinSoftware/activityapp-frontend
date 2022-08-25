@@ -18,8 +18,8 @@
 - `referral_email` _string_
 - `booking_required` _boolean_
 - `max_group_size` _number_
-- `physical_intensity_min` _number_
-- `physical_intensity_max` _number_
+- `intensity_level` _enum_
+- `experience_level` _enum_
 - `age_min` _number_
 - `age_max` _number_
 - `host_id` _foreign key_

@@ -32,23 +32,47 @@ import {
   Address,
   GettingThereSection,
   HostHeadline,
-  HostCertifications,
   StickyCTA,
   DetailsAndCTA,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
+import { Activity } from '../../types';
+import {
+  experienceLevelsMap,
+  getActivityPageServerProps,
+  getAgeRangeInfo,
+  intensityLevelsMap,
+} from '../../utils/pages/activity.utils';
 
-export interface Props {}
+export interface Props {
+  activity: Activity;
+  error?: string;
+}
 
-const ActivityPage: NextPage<Props> = ({}) => {
+const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const { windowWidth } = useWindowSize();
+
+  if (!activity) {
+    return (
+      <div>
+        <h2>An error occurred.</h2>
+        <h3>{error}</h3>
+      </div>
+    );
+  }
+
+  const firstImage = activity.activities_x_media[0].media;
+  const hostActivityCount = activity.host.activities_aggregate.aggregate?.count;
+  const experienceLevel = activity.experience_level ? experienceLevelsMap[activity.experience_level] : undefined;
+  const intensityLevel = activity.intensity_level ? intensityLevelsMap[activity.intensity_level] : undefined;
+  const ageRange = getAgeRangeInfo(activity.age_min, activity.age_max);
 
   const share = () => {
     const currentUrl = window.location.href;
 
     if (navigator.share) {
-      navigator.share({ url: currentUrl, text: 'Kitesurfing taster day in Southampton' });
+      navigator.share({ url: currentUrl, text: `${activity.name}, ${activity.location.name}` });
     } else {
       navigator.clipboard.writeText(currentUrl).then(() => {
         setCopiedToClipboard(true);
@@ -64,13 +88,13 @@ const ActivityPage: NextPage<Props> = ({}) => {
           <Title>
             <h2>
               <TitleIcon>
-                <Icon icon="Kitesurfing" width="24px" height="24px" />
+                <Icon icon={activity.activities_x_categories[0].category.name} width="24px" height="24px" />
               </TitleIcon>
-              <span>Kitesurfing taster day</span>
+              <span>{activity.name}</span>
             </h2>
 
             <LocationAndActions>
-              <h4>Hill Head Beach, Southampton</h4>
+              <h4>{activity.location.name}</h4>
               {copiedToClipboard ? (
                 <h4>Link copied to clipboard!</h4>
               ) : (
@@ -86,8 +110,8 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
           <Media>
             <ActivityImage
-              src={`/images/demo/kitesurfing.jpeg`}
-              alt={'TODO' || undefined}
+              src={`/images/${activity.id}/${firstImage.path}`}
+              alt={firstImage.caption || undefined}
               objectFit="cover"
               objectPosition="center"
               width={spacing[18]}
@@ -100,15 +124,15 @@ const ActivityPage: NextPage<Props> = ({}) => {
             <Details>
               <DetailsSection>
                 <SummaryContainer>
-                  <h3>Class run by Fareham Watersports</h3>
+                  <h3>Class run by {activity.host.name}</h3>
                   <IconAndText>
                     <Icon icon="Star" colour={colors.primary[6]} />
                     <h4>New</h4>
                   </IconAndText>
                   <HostLogoContainer>
                     <HostLogoImage
-                      src={`/images/demo/kitesurfing.jpeg`}
-                      alt={'TODO' || undefined}
+                      src={`/images/hosts/${activity.host.id}.jpg`}
+                      alt={`${activity.host.name} logo`}
                       objectFit="cover"
                       objectPosition="center"
                       width={spacing[8]}
@@ -120,155 +144,115 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
               <DetailsSection>
                 <KeyInformation>
+                  {activity.location.outdoors ? (
+                    <KeyInfoItem>
+                      <Icon icon="TreeColour" width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>Outdoors</h5>
+                        <h6>This activity is mostly or entirely outdoors</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  ) : (
+                    <KeyInfoItem>
+                      <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>Indoors</h5>
+                        <h6>This activity is mostly or entirely indoors</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  )}
+
+                  {experienceLevel && (
+                    <KeyInfoItem>
+                      <Icon icon={experienceLevel.icon} width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>{experienceLevel.name}</h5>
+                        <h6>{experienceLevel.description}</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  )}
+
+                  {intensityLevel && (
+                    <KeyInfoItem>
+                      <Icon icon={intensityLevel.icon} width={spacing[6]} height={spacing[6]} />
+                      <InfoAndCaption>
+                        <h5>{intensityLevel.name}</h5>
+                        <h6>{intensityLevel.description}</h6>
+                      </InfoAndCaption>
+                    </KeyInfoItem>
+                  )}
+
                   <KeyInfoItem>
-                    <Icon icon="TreeColour" width={spacing[6]} height={spacing[6]} />
+                    <Icon icon={ageRange.icon} width={spacing[6]} height={spacing[6]} />
                     <InfoAndCaption>
-                      <h5>Outdoors</h5>
-                      <h6>This activity is mostly or entirely outdoors</h6>
+                      <h5>{ageRange.name}</h5>
+                      <h6>{ageRange.description}</h6>
                     </InfoAndCaption>
                   </KeyInfoItem>
-                  <KeyInfoItem>
-                    <Icon icon="IncreasingBarsColour" width={spacing[6]} height={spacing[6]} />
-                    <InfoAndCaption>
-                      <h5>Beginner to intermediate</h5>
-                      <h6>Suitable for people starting out or improving</h6>
-                    </InfoAndCaption>
-                  </KeyInfoItem>
-                  <KeyInfoItem>
-                    <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                    <InfoAndCaption>
-                      <h5>Medium physical intensity</h5>
-                      <h6>Suitable for people with an average level of fitness</h6>
-                    </InfoAndCaption>
-                  </KeyInfoItem>
-                  <KeyInfoItem>
-                    <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                    <InfoAndCaption>
-                      <h5>Ages 14 and up</h5>
-                      <h6>Unsuitable for young children</h6>
-                    </InfoAndCaption>
-                  </KeyInfoItem>
-                  <KeyInfoItem>
+
+                  {/* <KeyInfoItem>
                     <Icon icon="MedalColour" width={spacing[6]} height={spacing[6]} />
                     <InfoAndCaption>
                       <h5>Highly qualified host</h5>
                       <h6>This host is a verified expert</h6>
                     </InfoAndCaption>
-                  </KeyInfoItem>
-                  {/* <KeyInfoItem>
-                  <Icon icon="HomeColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Indoors</h5>
-                    <h6>This activity is mostly or entirely indoors</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="ThermometerColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>High physical intensity</h5>
-                    <h6>Suitable for people with a good level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="LightningColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Choice of physical intensity</h5>
-                    <h6>Suitable for any level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="LightningColourOutline" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Low physical intensity</h5>
-                    <h6>Suitable for any level of fitness</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 7</h5>
-                    <h6>Suitable for children</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="ChildColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 15</h5>
-                    <h6>Suitable for children and teenagers</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>
-                <KeyInfoItem>
-                  <Icon icon="PersonColour" width={spacing[6]} height={spacing[6]} />
-                  <InfoAndCaption>
-                    <h5>Ages 5 to 25</h5>
-                    <h6>Suitable for a range of ages</h6>
-                  </InfoAndCaption>
-                </KeyInfoItem>*/}
+                  </KeyInfoItem> */}
                 </KeyInformation>
               </DetailsSection>
 
               <DetailsSection>
                 <h3>About this activity</h3>
-                <ReadMore
-                  lines={4}
-                  text={`This is your introduction to the fastest growing sport of the 21st century. Your first day course provides all the fundamentals of kite flying. We will take you through launching and landing, pre-flight checks, water relaunching, water safety packdown and body dragging through the shallow water pools at Hill Head. At the end of your one day kitesurfing lesson you will no doubt be eager to come back for a second day (Day 2) where we introduce the kiteboard.
-                
-                The day one course is a great intro into the sport. We run this course as a group so you will have up to two people with one instructor. The initial intro will be on land flying a trainer kite where we will brief you on safety, talk about wind/weather and explain what we will be doing during your course. The gear used on this course will be the latest and most high end beginner equipment on the market. We take pride in the fact that we use the best gear so we aim to teach you all of the basics carefully, not only for you to learn the correct way but so we don't damage any of our lovely new gear.`}
-                />
+                <ReadMore lines={4} text={activity.description} />
               </DetailsSection>
 
               <DetailsSection>
-                <h3>Getting to Hill Head Beach</h3>
+                <h3>Getting to {activity.location.name}</h3>
 
-                <GettingThereSection>
-                  <h4>Address</h4>
+                {activity.location.address && (
+                  <GettingThereSection>
+                    <h4>Address</h4>
+                    <Address>{activity.location.address}</Address>
+                  </GettingThereSection>
+                )}
 
-                  <Address>
-                    <p>12 Eastleigh Road</p>
-                    <p>Meon Shore</p>
-                    <p>Southampton</p>
-                    <p>SO34 2ND</p>
-                  </Address>
-                </GettingThereSection>
-
-                <GettingThereSection>
-                  <h4>Directions</h4>
-
-                  <ReadMore
-                    lines={4}
-                    text={`Head towards the beach via the usual entrance, then turn left when you see the large sand dune. Meet by
-                the arches.`}
-                  />
-                </GettingThereSection>
+                {activity.location.directions && (
+                  <GettingThereSection>
+                    <h4>Directions</h4>
+                    <ReadMore lines={4} text={activity.location.directions} />
+                  </GettingThereSection>
+                )}
 
                 <MiniMap
-                  location={{ id: 'todo', long: -1.2521447, lat: 50.8192844, name: 'todo', outdoors: true }}
-                  initialViewState={{ longitude: -1.2521447, latitude: 50.8192844, zoom: 11 }}
+                  location={activity.location}
+                  initialViewState={{ longitude: activity.location.long, latitude: activity.location.lat, zoom: 11 }}
                 />
               </DetailsSection>
 
-              <DetailsSection>
-                <h3>About the host</h3>
+              <h3>About the host</h3>
 
-                <HostHeadline>
-                  <HostLogoContainer>
-                    <HostLogoImage
-                      src={`/images/demo/kitesurfing.jpeg`}
-                      alt={'TODO' || undefined}
-                      objectFit="cover"
-                      objectPosition="center"
-                      width={spacing[8]}
-                      height={spacing[8]}
-                    />
-                  </HostLogoContainer>
+              <HostHeadline>
+                <HostLogoContainer>
+                  <HostLogoImage
+                    src={`/images/hosts/${activity.host.id}.jpg`}
+                    alt={`${activity.host.name} logo`}
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={spacing[8]}
+                    height={spacing[8]}
+                  />
+                </HostLogoContainer>
 
-                  <div>
-                    <h4>Fareham Watersports</h4>
-                    <h6>25 activities</h6>
-                  </div>
-                </HostHeadline>
+                <div>
+                  <h4>{activity.host.name}</h4>
+                  {hostActivityCount && (
+                    <h6>
+                      {hostActivityCount} {hostActivityCount === 1 ? 'activity' : 'activities'}
+                    </h6>
+                  )}
+                </div>
+              </HostHeadline>
 
-                <HostCertifications>
+              {/* <HostCertifications>
                   <KeyInfoItem>
                     <Icon icon="MedalColour" width={spacing[5]} height={spacing[5]} />
                     <InfoAndCaption>
@@ -281,17 +265,16 @@ const ActivityPage: NextPage<Props> = ({}) => {
                       <h5>RYIA Certified</h5>
                     </InfoAndCaption>
                   </KeyInfoItem>
-                </HostCertifications>
+                </HostCertifications> */}
 
-                <ReadMore
-                  lines={4}
-                  text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
+              <ReadMore
+                lines={4}
+                text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
                 water. Some more information here and etc.`}
-                />
-              </DetailsSection>
+              />
 
-              <h3>Activities like this</h3>
-              <p>OTHER ACTIVITIES PLACEHOLDER</p>
+              {/* <h3>Activities like this</h3>
+              <p>OTHER ACTIVITIES PLACEHOLDER</p> */}
             </Details>
 
             <CTATablet>
@@ -326,4 +309,4 @@ const ActivityPage: NextPage<Props> = ({}) => {
 
 export default ActivityPage;
 
-// export const getServerSideProps = getActivityPageServerProps;
+export const getServerSideProps = getActivityPageServerProps;

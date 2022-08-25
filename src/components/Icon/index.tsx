@@ -88,7 +88,9 @@ import TreeColour from './genericIcons/TreeColour';
 import LightningColour from './genericIcons/LightningColour';
 import LightningColourOutline from './genericIcons/LightningColourOutline';
 import HomeColour from './genericIcons/HomeColour';
-import IncreasingBarsColour from './genericIcons/IncreasingBarsColour';
+import IncreasingBars1 from './genericIcons/IncreasingBars1';
+import IncreasingBars2 from './genericIcons/IncreasingBars2';
+import IncreasingBars3 from './genericIcons/IncreasingBars3';
 import PersonColour from './genericIcons/PersonColour';
 import ChildColour from './genericIcons/ChildColour';
 import PodiumColour from './genericIcons/PodiumColour';
@@ -316,7 +318,9 @@ const genericIcons: Record<string, React.FC> = {
   LightningColour: LightningColour,
   LightningColourOutline: LightningColourOutline,
   HomeColour: HomeColour,
-  IncreasingBarsColour: IncreasingBarsColour,
+  IncreasingBars1: IncreasingBars1,
+  IncreasingBars2: IncreasingBars2,
+  IncreasingBars3: IncreasingBars3,
   PodiumColour: PodiumColour,
   PersonColour: PersonColour,
   ChildColour: ChildColour,
@@ -336,7 +340,7 @@ const iconMap: Record<string, React.FC> = {
 };
 
 interface Props {
-  icon: string;
+  icon?: string;
   colour?: string;
   width?: string;
   height?: string;
