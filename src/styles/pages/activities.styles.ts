@@ -29,10 +29,12 @@ export const ListResponsiveWrapper = styled.div<{ mapView: boolean }>`
 `;
 
 export const MapResponsiveWrapper = styled.div<{ mapView: boolean }>`
-  ${(props) => (props.mapView ? 'position: relative; opacity: 1;' : 'position: absolute; opacity: 0;')}
+  ${(props) => (props.mapView ? '' : 'position: absolute; opacity: 0; z-index: -1000; left: -999px;')}
   @media ${device.laptop} {
-    position: relative;
+    position: static;
     opacity: 1;
+    z-index: initial;
+    left: initial;
   }
 `;
 
