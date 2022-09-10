@@ -26,27 +26,43 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
     viewportLongitudeMax: context.query.viewportLongitudeMax,
   }) as unknown as MapViewportState;
 
-  const {
-    data: { locations },
-  } = await apolloClient.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
-    query: LOCATIONS_IN_VIEWPORT,
-    fetchPolicy: 'no-cache',
-    variables: mapViewportState,
-  });
+  try {
+    const {
+      data: { locations },
+    } = await apolloClient.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
+      query: LOCATIONS_IN_VIEWPORT,
+      fetchPolicy: 'no-cache',
+      variables: mapViewportState,
+    });
 
-  const activities: ActivityListingFragment[] = [];
-  locations.forEach((location) => {
-    activities.push(...location.activities);
-  });
+    const activities: ActivityListingFragment[] = [];
+    locations.forEach((location) => {
+      activities.push(...location.activities);
+    });
 
-  const props: Props = {
-    mapCoords,
-    locations,
-    activities,
-    mapViewportState,
-  };
+    const props: Props = {
+      mapCoords,
+      locations,
+      activities,
+      mapViewportState,
+    };
 
-  return addApolloState(apolloClient, {
-    props,
-  });
+    return addApolloState(apolloClient, {
+      props,
+    });
+  } catch (err) {
+    console.error(err);
+
+    const props: Props = {
+      mapCoords,
+      locations: [],
+      activities: [],
+      mapViewportState,
+      error: 'Could not fetch activities',
+    };
+
+    return addApolloState(apolloClient, {
+      props,
+    });
+  }
 };
