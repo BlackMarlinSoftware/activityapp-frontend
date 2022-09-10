@@ -501,6 +501,33 @@ export type Activities_Stddev_Samp_Order_By = {
   group_size_min?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "activities" */
+export type Activities_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Activities_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Activities_Stream_Cursor_Value_Input = {
+  age_max?: InputMaybe<Scalars['Int']>;
+  age_min?: InputMaybe<Scalars['Int']>;
+  booking_required?: InputMaybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  experience_level?: InputMaybe<Experience_Levels_Enum>;
+  group_size_max?: InputMaybe<Scalars['Int']>;
+  group_size_min?: InputMaybe<Scalars['Int']>;
+  host_id?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  intensity_level?: InputMaybe<Intensity_Levels_Enum>;
+  location_id?: InputMaybe<Scalars['uuid']>;
+  name?: InputMaybe<Scalars['String']>;
+  referral_email?: InputMaybe<Scalars['String']>;
+  referral_phone?: InputMaybe<Scalars['String']>;
+  referral_url?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Activities_Sum_Fields = {
   __typename?: 'activities_sum_fields';
@@ -753,6 +780,20 @@ export type Activities_X_Categories_Set_Input = {
   category_id?: InputMaybe<Scalars['uuid']>;
 };
 
+/** Streaming cursor of the table "activities_x_categories" */
+export type Activities_X_Categories_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Activities_X_Categories_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Activities_X_Categories_Stream_Cursor_Value_Input = {
+  activity_id?: InputMaybe<Scalars['uuid']>;
+  category_id?: InputMaybe<Scalars['uuid']>;
+};
+
 /** update columns of table "activities_x_categories" */
 export enum Activities_X_Categories_Update_Column {
   /** column name */
@@ -905,6 +946,20 @@ export enum Activities_X_Media_Select_Column {
 
 /** input type for updating data in table "activities_x_media" */
 export type Activities_X_Media_Set_Input = {
+  activity_id?: InputMaybe<Scalars['uuid']>;
+  media_id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** Streaming cursor of the table "activities_x_media" */
+export type Activities_X_Media_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Activities_X_Media_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Activities_X_Media_Stream_Cursor_Value_Input = {
   activity_id?: InputMaybe<Scalars['uuid']>;
   media_id?: InputMaybe<Scalars['uuid']>;
 };
@@ -1164,6 +1219,21 @@ export type Categories_Stddev_Samp_Fields = {
   level?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "categories" */
+export type Categories_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Categories_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Categories_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['uuid']>;
+  level?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Categories_Sum_Fields = {
   __typename?: 'categories_sum_fields';
@@ -1348,6 +1418,20 @@ export type Categories_X_Parent_Categories_Set_Input = {
   parent_category_id?: InputMaybe<Scalars['uuid']>;
 };
 
+/** Streaming cursor of the table "categories_x_parent_categories" */
+export type Categories_X_Parent_Categories_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Categories_X_Parent_Categories_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Categories_X_Parent_Categories_Stream_Cursor_Value_Input = {
+  category_id?: InputMaybe<Scalars['uuid']>;
+  parent_category_id?: InputMaybe<Scalars['uuid']>;
+};
+
 /** update columns of table "categories_x_parent_categories" */
 export enum Categories_X_Parent_Categories_Update_Column {
   /** column name */
@@ -1361,6 +1445,14 @@ export type Categories_X_Parent_Categories_Updates = {
   _set?: InputMaybe<Categories_X_Parent_Categories_Set_Input>;
   where: Categories_X_Parent_Categories_Bool_Exp;
 };
+
+/** ordering argument of a cursor */
+export enum Cursor_Ordering {
+  /** ascending ordering of the cursor */
+  Asc = 'ASC',
+  /** descending ordering of the cursor */
+  Desc = 'DESC'
+}
 
 /** columns and relationships of "experience_levels" */
 export type Experience_Levels = {
@@ -1473,6 +1565,19 @@ export enum Experience_Levels_Select_Column {
 
 /** input type for updating data in table "experience_levels" */
 export type Experience_Levels_Set_Input = {
+  experience_level?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "experience_levels" */
+export type Experience_Levels_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Experience_Levels_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Experience_Levels_Stream_Cursor_Value_Input = {
   experience_level?: InputMaybe<Scalars['String']>;
 };
 
@@ -1636,6 +1741,21 @@ export type Hosts_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "hosts" */
+export type Hosts_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Hosts_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Hosts_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['uuid']>;
+  logo_url?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "hosts" */
 export enum Hosts_Update_Column {
   /** column name */
@@ -1761,6 +1881,19 @@ export enum Intensity_Levels_Select_Column {
 
 /** input type for updating data in table "intensity_levels" */
 export type Intensity_Levels_Set_Input = {
+  intensity_level?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "intensity_levels" */
+export type Intensity_Levels_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Intensity_Levels_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Intensity_Levels_Stream_Cursor_Value_Input = {
   intensity_level?: InputMaybe<Scalars['String']>;
 };
 
@@ -2015,6 +2148,26 @@ export type Locations_Stddev_Samp_Fields = {
   long?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "locations" */
+export type Locations_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Locations_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Locations_Stream_Cursor_Value_Input = {
+  address?: InputMaybe<Scalars['String']>;
+  directions?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  lat?: InputMaybe<Scalars['numeric']>;
+  long?: InputMaybe<Scalars['numeric']>;
+  name?: InputMaybe<Scalars['String']>;
+  outdoors?: InputMaybe<Scalars['Boolean']>;
+  postcode?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Locations_Sum_Fields = {
   __typename?: 'locations_sum_fields';
@@ -2216,6 +2369,21 @@ export enum Media_Select_Column {
 
 /** input type for updating data in table "media" */
 export type Media_Set_Input = {
+  caption?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  path?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "media" */
+export type Media_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Media_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Media_Stream_Cursor_Value_Input = {
   caption?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   path?: InputMaybe<Scalars['String']>;
@@ -3084,6 +3252,20 @@ export type Privileged_Example__Delete_Me_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "privileged_example__delete_me" */
+export type Privileged_Example__Delete_Me_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Privileged_Example__Delete_Me_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Privileged_Example__Delete_Me_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['Int']>;
+  thing?: InputMaybe<Scalars['String']>;
+};
+
 /** aggregate sum on columns */
 export type Privileged_Example__Delete_Me_Sum_Fields = {
   __typename?: 'privileged_example__delete_me_sum_fields';
@@ -3482,48 +3664,64 @@ export type Subscription_Root = {
   activities_aggregate: Activities_Aggregate;
   /** fetch data from the table: "activities" using primary key columns */
   activities_by_pk?: Maybe<Activities>;
+  /** fetch data from the table in a streaming manner : "activities" */
+  activities_stream: Array<Activities>;
   /** An array relationship */
   activities_x_categories: Array<Activities_X_Categories>;
   /** An aggregate relationship */
   activities_x_categories_aggregate: Activities_X_Categories_Aggregate;
   /** fetch data from the table: "activities_x_categories" using primary key columns */
   activities_x_categories_by_pk?: Maybe<Activities_X_Categories>;
+  /** fetch data from the table in a streaming manner : "activities_x_categories" */
+  activities_x_categories_stream: Array<Activities_X_Categories>;
   /** An array relationship */
   activities_x_media: Array<Activities_X_Media>;
   /** An aggregate relationship */
   activities_x_media_aggregate: Activities_X_Media_Aggregate;
   /** fetch data from the table: "activities_x_media" using primary key columns */
   activities_x_media_by_pk?: Maybe<Activities_X_Media>;
+  /** fetch data from the table in a streaming manner : "activities_x_media" */
+  activities_x_media_stream: Array<Activities_X_Media>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
+  /** fetch data from the table in a streaming manner : "categories" */
+  categories_stream: Array<Categories>;
   /** An array relationship */
   categories_x_parent_categories: Array<Categories_X_Parent_Categories>;
   /** An aggregate relationship */
   categories_x_parent_categories_aggregate: Categories_X_Parent_Categories_Aggregate;
   /** fetch data from the table: "categories_x_parent_categories" using primary key columns */
   categories_x_parent_categories_by_pk?: Maybe<Categories_X_Parent_Categories>;
+  /** fetch data from the table in a streaming manner : "categories_x_parent_categories" */
+  categories_x_parent_categories_stream: Array<Categories_X_Parent_Categories>;
   /** fetch data from the table: "experience_levels" */
   experience_levels: Array<Experience_Levels>;
   /** fetch aggregated fields from the table: "experience_levels" */
   experience_levels_aggregate: Experience_Levels_Aggregate;
   /** fetch data from the table: "experience_levels" using primary key columns */
   experience_levels_by_pk?: Maybe<Experience_Levels>;
+  /** fetch data from the table in a streaming manner : "experience_levels" */
+  experience_levels_stream: Array<Experience_Levels>;
   /** fetch data from the table: "hosts" */
   hosts: Array<Hosts>;
   /** fetch aggregated fields from the table: "hosts" */
   hosts_aggregate: Hosts_Aggregate;
   /** fetch data from the table: "hosts" using primary key columns */
   hosts_by_pk?: Maybe<Hosts>;
+  /** fetch data from the table in a streaming manner : "hosts" */
+  hosts_stream: Array<Hosts>;
   /** fetch data from the table: "intensity_levels" */
   intensity_levels: Array<Intensity_Levels>;
   /** fetch aggregated fields from the table: "intensity_levels" */
   intensity_levels_aggregate: Intensity_Levels_Aggregate;
   /** fetch data from the table: "intensity_levels" using primary key columns */
   intensity_levels_by_pk?: Maybe<Intensity_Levels>;
+  /** fetch data from the table in a streaming manner : "intensity_levels" */
+  intensity_levels_stream: Array<Intensity_Levels>;
   /** fetch data from the table: "locations" */
   locations: Array<Locations>;
   /** fetch aggregated fields from the table: "locations" */
@@ -3534,18 +3732,24 @@ export type Subscription_Root = {
   locations_in_radius: Array<Locations>;
   /** execute function "locations_in_radius" and query aggregates on result of table type "locations" */
   locations_in_radius_aggregate: Locations_Aggregate;
+  /** fetch data from the table in a streaming manner : "locations" */
+  locations_stream: Array<Locations>;
   /** fetch data from the table: "media" */
   media: Array<Media>;
   /** fetch aggregated fields from the table: "media" */
   media_aggregate: Media_Aggregate;
   /** fetch data from the table: "media" using primary key columns */
   media_by_pk?: Maybe<Media>;
+  /** fetch data from the table in a streaming manner : "media" */
+  media_stream: Array<Media>;
   /** fetch data from the table: "privileged_example__delete_me" */
   privileged_example__delete_me: Array<Privileged_Example__Delete_Me>;
   /** fetch aggregated fields from the table: "privileged_example__delete_me" */
   privileged_example__delete_me_aggregate: Privileged_Example__Delete_Me_Aggregate;
   /** fetch data from the table: "privileged_example__delete_me" using primary key columns */
   privileged_example__delete_me_by_pk?: Maybe<Privileged_Example__Delete_Me>;
+  /** fetch data from the table in a streaming manner : "privileged_example__delete_me" */
+  privileged_example__delete_me_stream: Array<Privileged_Example__Delete_Me>;
 };
 
 
@@ -3569,6 +3773,13 @@ export type Subscription_RootActivities_AggregateArgs = {
 
 export type Subscription_RootActivities_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootActivities_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Activities_Stream_Cursor_Input>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
 };
 
 
@@ -3596,6 +3807,13 @@ export type Subscription_RootActivities_X_Categories_By_PkArgs = {
 };
 
 
+export type Subscription_RootActivities_X_Categories_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Activities_X_Categories_Stream_Cursor_Input>>;
+  where?: InputMaybe<Activities_X_Categories_Bool_Exp>;
+};
+
+
 export type Subscription_RootActivities_X_MediaArgs = {
   distinct_on?: InputMaybe<Array<Activities_X_Media_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3620,6 +3838,13 @@ export type Subscription_RootActivities_X_Media_By_PkArgs = {
 };
 
 
+export type Subscription_RootActivities_X_Media_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Activities_X_Media_Stream_Cursor_Input>>;
+  where?: InputMaybe<Activities_X_Media_Bool_Exp>;
+};
+
+
 export type Subscription_RootCategoriesArgs = {
   distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3640,6 +3865,13 @@ export type Subscription_RootCategories_AggregateArgs = {
 
 export type Subscription_RootCategories_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootCategories_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Categories_Stream_Cursor_Input>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 
@@ -3667,6 +3899,13 @@ export type Subscription_RootCategories_X_Parent_Categories_By_PkArgs = {
 };
 
 
+export type Subscription_RootCategories_X_Parent_Categories_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Categories_X_Parent_Categories_Stream_Cursor_Input>>;
+  where?: InputMaybe<Categories_X_Parent_Categories_Bool_Exp>;
+};
+
+
 export type Subscription_RootExperience_LevelsArgs = {
   distinct_on?: InputMaybe<Array<Experience_Levels_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3687,6 +3926,13 @@ export type Subscription_RootExperience_Levels_AggregateArgs = {
 
 export type Subscription_RootExperience_Levels_By_PkArgs = {
   experience_level: Scalars['String'];
+};
+
+
+export type Subscription_RootExperience_Levels_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Experience_Levels_Stream_Cursor_Input>>;
+  where?: InputMaybe<Experience_Levels_Bool_Exp>;
 };
 
 
@@ -3713,6 +3959,13 @@ export type Subscription_RootHosts_By_PkArgs = {
 };
 
 
+export type Subscription_RootHosts_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Hosts_Stream_Cursor_Input>>;
+  where?: InputMaybe<Hosts_Bool_Exp>;
+};
+
+
 export type Subscription_RootIntensity_LevelsArgs = {
   distinct_on?: InputMaybe<Array<Intensity_Levels_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3733,6 +3986,13 @@ export type Subscription_RootIntensity_Levels_AggregateArgs = {
 
 export type Subscription_RootIntensity_Levels_By_PkArgs = {
   intensity_level: Scalars['String'];
+};
+
+
+export type Subscription_RootIntensity_Levels_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Intensity_Levels_Stream_Cursor_Input>>;
+  where?: InputMaybe<Intensity_Levels_Bool_Exp>;
 };
 
 
@@ -3779,6 +4039,13 @@ export type Subscription_RootLocations_In_Radius_AggregateArgs = {
 };
 
 
+export type Subscription_RootLocations_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Locations_Stream_Cursor_Input>>;
+  where?: InputMaybe<Locations_Bool_Exp>;
+};
+
+
 export type Subscription_RootMediaArgs = {
   distinct_on?: InputMaybe<Array<Media_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3802,6 +4069,13 @@ export type Subscription_RootMedia_By_PkArgs = {
 };
 
 
+export type Subscription_RootMedia_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Media_Stream_Cursor_Input>>;
+  where?: InputMaybe<Media_Bool_Exp>;
+};
+
+
 export type Subscription_RootPrivileged_Example__Delete_MeArgs = {
   distinct_on?: InputMaybe<Array<Privileged_Example__Delete_Me_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3822,6 +4096,13 @@ export type Subscription_RootPrivileged_Example__Delete_Me_AggregateArgs = {
 
 export type Subscription_RootPrivileged_Example__Delete_Me_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+export type Subscription_RootPrivileged_Example__Delete_Me_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Privileged_Example__Delete_Me_Stream_Cursor_Input>>;
+  where?: InputMaybe<Privileged_Example__Delete_Me_Bool_Exp>;
 };
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */

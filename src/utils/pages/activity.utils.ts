@@ -30,6 +30,8 @@ export const getActivityPageServerProps: GetServerSideProps = async (context): P
       props,
     });
   } catch (err) {
+    console.error(err);
+
     const props: Props = {
       activity: null,
       error: 'Could not fetch activity details',

@@ -20,6 +20,7 @@ export interface Props {
   locations: Location[];
   activities: ActivityListing[];
   mapViewportState: MapViewportState;
+  error?: string;
 }
 
 const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => {
