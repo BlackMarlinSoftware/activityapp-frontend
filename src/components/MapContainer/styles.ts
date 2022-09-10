@@ -3,10 +3,6 @@ import { device } from '../../styles/devices';
 import { listWidth } from '../../styles/pages/activities.styles';
 import { HeaderHeight } from '../Header/styles';
 
-export const Container = styled.div`
-  width: 100%;
-`;
-
 export const StickyContainer = styled.div`
   position: sticky;
   top: ${HeaderHeight};
