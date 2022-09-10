@@ -33,10 +33,11 @@ const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
             updateQueryParams(router)(newMapViewportQueryParams);
           }}
           onMoveEnd={(evt) => {
-            const newMapQueryParams = { ...getMapCoordsQueryParams(evt), ...getMapViewportQueryParams(evt) };
-            updateQueryParams(router)(newMapQueryParams);
+            if (evt.originalEvent?.type !== 'resize') {
+              const newMapQueryParams = { ...getMapCoordsQueryParams(evt), ...getMapViewportQueryParams(evt) };
+              updateQueryParams(router)(newMapQueryParams);
+            }
           }}
-          style={{ width: '100%', height: '100%' }}
           mapStyle="mapbox://styles/mapbox/streets-v9"
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
         >

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { spacing, colors, shadows } from '../../styles/theme';
+import { spacing, shadows } from '../../styles/theme';
 import { device } from '../../styles/devices';
 
 export const Container = styled.div`
