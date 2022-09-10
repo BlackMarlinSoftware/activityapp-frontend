@@ -27,13 +27,13 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
 export const ActivityRows = styled.div`
   width: 100%;
   display: grid;
-  grid-auto-flow: row;
   grid-gap: ${spacing[6]};
+  grid-template-columns: 1fr;
 
   @media ${device.mobileXL} {
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
   }
   @media ${device.laptop} {
-    grid-auto-flow: row;
+    grid-template-columns: 1fr;
   }
 `;

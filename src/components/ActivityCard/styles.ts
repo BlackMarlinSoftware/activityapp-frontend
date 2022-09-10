@@ -10,6 +10,7 @@ export const ActivityContainer = styled.div`
   grid-gap: ${spacing[4]};
   box-sizing: border-box;
   cursor: pointer;
+  margin-bottom: auto;
 
   @media ${device.laptop} {
     grid-template-columns: ${spacing[12]} 1fr;
