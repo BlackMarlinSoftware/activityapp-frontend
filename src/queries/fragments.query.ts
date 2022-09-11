@@ -41,6 +41,7 @@ export const FRAGMENT_ACTIVITY = gql`
   fragment ActivityData on activities {
     id
     name
+    type
     description
     referral_url
     referral_phone

@@ -87,10 +87,14 @@ export type Activities = {
   activities_x_media: Array<Activities_X_Media>;
   /** An aggregate relationship */
   activities_x_media_aggregate: Activities_X_Media_Aggregate;
+  /** An object relationship */
+  activity_type: Activity_Types;
   age_max?: Maybe<Scalars['Int']>;
   age_min?: Maybe<Scalars['Int']>;
   booking_required: Scalars['Boolean'];
   description: Scalars['String'];
+  /** An object relationship */
+  experienceLevelByExperienceLevel?: Maybe<Experience_Levels>;
   experience_level?: Maybe<Experience_Levels_Enum>;
   group_size_max?: Maybe<Scalars['Int']>;
   group_size_min?: Maybe<Scalars['Int']>;
@@ -98,6 +102,8 @@ export type Activities = {
   host: Hosts;
   host_id: Scalars['uuid'];
   id: Scalars['uuid'];
+  /** An object relationship */
+  intensityLevelByIntensityLevel?: Maybe<Intensity_Levels>;
   intensity_level?: Maybe<Intensity_Levels_Enum>;
   /** An object relationship */
   location: Locations;
@@ -106,6 +112,7 @@ export type Activities = {
   referral_email?: Maybe<Scalars['String']>;
   referral_phone?: Maybe<Scalars['String']>;
   referral_url?: Maybe<Scalars['String']>;
+  type: Activity_Types_Enum;
 };
 
 
@@ -224,16 +231,19 @@ export type Activities_Bool_Exp = {
   _or?: InputMaybe<Array<Activities_Bool_Exp>>;
   activities_x_categories?: InputMaybe<Activities_X_Categories_Bool_Exp>;
   activities_x_media?: InputMaybe<Activities_X_Media_Bool_Exp>;
+  activity_type?: InputMaybe<Activity_Types_Bool_Exp>;
   age_max?: InputMaybe<Int_Comparison_Exp>;
   age_min?: InputMaybe<Int_Comparison_Exp>;
   booking_required?: InputMaybe<Boolean_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
+  experienceLevelByExperienceLevel?: InputMaybe<Experience_Levels_Bool_Exp>;
   experience_level?: InputMaybe<Experience_Levels_Enum_Comparison_Exp>;
   group_size_max?: InputMaybe<Int_Comparison_Exp>;
   group_size_min?: InputMaybe<Int_Comparison_Exp>;
   host?: InputMaybe<Hosts_Bool_Exp>;
   host_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  intensityLevelByIntensityLevel?: InputMaybe<Intensity_Levels_Bool_Exp>;
   intensity_level?: InputMaybe<Intensity_Levels_Enum_Comparison_Exp>;
   location?: InputMaybe<Locations_Bool_Exp>;
   location_id?: InputMaybe<Uuid_Comparison_Exp>;
@@ -241,6 +251,7 @@ export type Activities_Bool_Exp = {
   referral_email?: InputMaybe<String_Comparison_Exp>;
   referral_phone?: InputMaybe<String_Comparison_Exp>;
   referral_url?: InputMaybe<String_Comparison_Exp>;
+  type?: InputMaybe<Activity_Types_Enum_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "activities" */
@@ -261,16 +272,19 @@ export type Activities_Inc_Input = {
 export type Activities_Insert_Input = {
   activities_x_categories?: InputMaybe<Activities_X_Categories_Arr_Rel_Insert_Input>;
   activities_x_media?: InputMaybe<Activities_X_Media_Arr_Rel_Insert_Input>;
+  activity_type?: InputMaybe<Activity_Types_Obj_Rel_Insert_Input>;
   age_max?: InputMaybe<Scalars['Int']>;
   age_min?: InputMaybe<Scalars['Int']>;
   booking_required?: InputMaybe<Scalars['Boolean']>;
   description?: InputMaybe<Scalars['String']>;
+  experienceLevelByExperienceLevel?: InputMaybe<Experience_Levels_Obj_Rel_Insert_Input>;
   experience_level?: InputMaybe<Experience_Levels_Enum>;
   group_size_max?: InputMaybe<Scalars['Int']>;
   group_size_min?: InputMaybe<Scalars['Int']>;
   host?: InputMaybe<Hosts_Obj_Rel_Insert_Input>;
   host_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
+  intensityLevelByIntensityLevel?: InputMaybe<Intensity_Levels_Obj_Rel_Insert_Input>;
   intensity_level?: InputMaybe<Intensity_Levels_Enum>;
   location?: InputMaybe<Locations_Obj_Rel_Insert_Input>;
   location_id?: InputMaybe<Scalars['uuid']>;
@@ -278,6 +292,7 @@ export type Activities_Insert_Input = {
   referral_email?: InputMaybe<Scalars['String']>;
   referral_phone?: InputMaybe<Scalars['String']>;
   referral_url?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Activity_Types_Enum>;
 };
 
 /** aggregate max on columns */
@@ -373,16 +388,19 @@ export type Activities_On_Conflict = {
 export type Activities_Order_By = {
   activities_x_categories_aggregate?: InputMaybe<Activities_X_Categories_Aggregate_Order_By>;
   activities_x_media_aggregate?: InputMaybe<Activities_X_Media_Aggregate_Order_By>;
+  activity_type?: InputMaybe<Activity_Types_Order_By>;
   age_max?: InputMaybe<Order_By>;
   age_min?: InputMaybe<Order_By>;
   booking_required?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
+  experienceLevelByExperienceLevel?: InputMaybe<Experience_Levels_Order_By>;
   experience_level?: InputMaybe<Order_By>;
   group_size_max?: InputMaybe<Order_By>;
   group_size_min?: InputMaybe<Order_By>;
   host?: InputMaybe<Hosts_Order_By>;
   host_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  intensityLevelByIntensityLevel?: InputMaybe<Intensity_Levels_Order_By>;
   intensity_level?: InputMaybe<Order_By>;
   location?: InputMaybe<Locations_Order_By>;
   location_id?: InputMaybe<Order_By>;
@@ -390,6 +408,7 @@ export type Activities_Order_By = {
   referral_email?: InputMaybe<Order_By>;
   referral_phone?: InputMaybe<Order_By>;
   referral_url?: InputMaybe<Order_By>;
+  type?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: activities */
@@ -428,7 +447,9 @@ export enum Activities_Select_Column {
   /** column name */
   ReferralPhone = 'referral_phone',
   /** column name */
-  ReferralUrl = 'referral_url'
+  ReferralUrl = 'referral_url',
+  /** column name */
+  Type = 'type'
 }
 
 /** input type for updating data in table "activities" */
@@ -448,6 +469,7 @@ export type Activities_Set_Input = {
   referral_email?: InputMaybe<Scalars['String']>;
   referral_phone?: InputMaybe<Scalars['String']>;
   referral_url?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Activity_Types_Enum>;
 };
 
 /** aggregate stddev on columns */
@@ -526,6 +548,7 @@ export type Activities_Stream_Cursor_Value_Input = {
   referral_email?: InputMaybe<Scalars['String']>;
   referral_phone?: InputMaybe<Scalars['String']>;
   referral_url?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Activity_Types_Enum>;
 };
 
 /** aggregate sum on columns */
@@ -576,7 +599,9 @@ export enum Activities_Update_Column {
   /** column name */
   ReferralPhone = 'referral_phone',
   /** column name */
-  ReferralUrl = 'referral_url'
+  ReferralUrl = 'referral_url',
+  /** column name */
+  Type = 'type'
 }
 
 export type Activities_Updates = {
@@ -976,6 +1001,176 @@ export type Activities_X_Media_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Activities_X_Media_Set_Input>;
   where: Activities_X_Media_Bool_Exp;
+};
+
+/** columns and relationships of "activity_types" */
+export type Activity_Types = {
+  __typename?: 'activity_types';
+  /** An array relationship */
+  activities: Array<Activities>;
+  /** An aggregate relationship */
+  activities_aggregate: Activities_Aggregate;
+  activity_type: Scalars['String'];
+};
+
+
+/** columns and relationships of "activity_types" */
+export type Activity_TypesActivitiesArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
+};
+
+
+/** columns and relationships of "activity_types" */
+export type Activity_TypesActivities_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
+};
+
+/** aggregated selection of "activity_types" */
+export type Activity_Types_Aggregate = {
+  __typename?: 'activity_types_aggregate';
+  aggregate?: Maybe<Activity_Types_Aggregate_Fields>;
+  nodes: Array<Activity_Types>;
+};
+
+/** aggregate fields of "activity_types" */
+export type Activity_Types_Aggregate_Fields = {
+  __typename?: 'activity_types_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Activity_Types_Max_Fields>;
+  min?: Maybe<Activity_Types_Min_Fields>;
+};
+
+
+/** aggregate fields of "activity_types" */
+export type Activity_Types_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Activity_Types_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "activity_types". All fields are combined with a logical 'AND'. */
+export type Activity_Types_Bool_Exp = {
+  _and?: InputMaybe<Array<Activity_Types_Bool_Exp>>;
+  _not?: InputMaybe<Activity_Types_Bool_Exp>;
+  _or?: InputMaybe<Array<Activity_Types_Bool_Exp>>;
+  activities?: InputMaybe<Activities_Bool_Exp>;
+  activity_type?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "activity_types" */
+export enum Activity_Types_Constraint {
+  /** unique or primary key constraint on columns "activity_type" */
+  ActivityTypesPkey = 'activity_types_pkey'
+}
+
+export enum Activity_Types_Enum {
+  Class = 'CLASS',
+  Other = 'OTHER',
+  PrivateClass = 'PRIVATE_CLASS'
+}
+
+/** Boolean expression to compare columns of type "activity_types_enum". All fields are combined with logical 'AND'. */
+export type Activity_Types_Enum_Comparison_Exp = {
+  _eq?: InputMaybe<Activity_Types_Enum>;
+  _in?: InputMaybe<Array<Activity_Types_Enum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Activity_Types_Enum>;
+  _nin?: InputMaybe<Array<Activity_Types_Enum>>;
+};
+
+/** input type for inserting data into table "activity_types" */
+export type Activity_Types_Insert_Input = {
+  activities?: InputMaybe<Activities_Arr_Rel_Insert_Input>;
+  activity_type?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Activity_Types_Max_Fields = {
+  __typename?: 'activity_types_max_fields';
+  activity_type?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Activity_Types_Min_Fields = {
+  __typename?: 'activity_types_min_fields';
+  activity_type?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "activity_types" */
+export type Activity_Types_Mutation_Response = {
+  __typename?: 'activity_types_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Activity_Types>;
+};
+
+/** input type for inserting object relation for remote table "activity_types" */
+export type Activity_Types_Obj_Rel_Insert_Input = {
+  data: Activity_Types_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Activity_Types_On_Conflict>;
+};
+
+/** on_conflict condition type for table "activity_types" */
+export type Activity_Types_On_Conflict = {
+  constraint: Activity_Types_Constraint;
+  update_columns?: Array<Activity_Types_Update_Column>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "activity_types". */
+export type Activity_Types_Order_By = {
+  activities_aggregate?: InputMaybe<Activities_Aggregate_Order_By>;
+  activity_type?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: activity_types */
+export type Activity_Types_Pk_Columns_Input = {
+  activity_type: Scalars['String'];
+};
+
+/** select columns of table "activity_types" */
+export enum Activity_Types_Select_Column {
+  /** column name */
+  ActivityType = 'activity_type'
+}
+
+/** input type for updating data in table "activity_types" */
+export type Activity_Types_Set_Input = {
+  activity_type?: InputMaybe<Scalars['String']>;
+};
+
+/** Streaming cursor of the table "activity_types" */
+export type Activity_Types_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Activity_Types_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Activity_Types_Stream_Cursor_Value_Input = {
+  activity_type?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "activity_types" */
+export enum Activity_Types_Update_Column {
+  /** column name */
+  ActivityType = 'activity_type'
+}
+
+export type Activity_Types_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Activity_Types_Set_Input>;
+  where: Activity_Types_Bool_Exp;
 };
 
 /** columns and relationships of "categories" */
@@ -1457,7 +1652,31 @@ export enum Cursor_Ordering {
 /** columns and relationships of "experience_levels" */
 export type Experience_Levels = {
   __typename?: 'experience_levels';
+  /** An array relationship */
+  activities: Array<Activities>;
+  /** An aggregate relationship */
+  activities_aggregate: Activities_Aggregate;
   experience_level: Scalars['String'];
+};
+
+
+/** columns and relationships of "experience_levels" */
+export type Experience_LevelsActivitiesArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
+};
+
+
+/** columns and relationships of "experience_levels" */
+export type Experience_LevelsActivities_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
 };
 
 /** aggregated selection of "experience_levels" */
@@ -1487,6 +1706,7 @@ export type Experience_Levels_Bool_Exp = {
   _and?: InputMaybe<Array<Experience_Levels_Bool_Exp>>;
   _not?: InputMaybe<Experience_Levels_Bool_Exp>;
   _or?: InputMaybe<Array<Experience_Levels_Bool_Exp>>;
+  activities?: InputMaybe<Activities_Bool_Exp>;
   experience_level?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -1516,6 +1736,7 @@ export type Experience_Levels_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "experience_levels" */
 export type Experience_Levels_Insert_Input = {
+  activities?: InputMaybe<Activities_Arr_Rel_Insert_Input>;
   experience_level?: InputMaybe<Scalars['String']>;
 };
 
@@ -1540,6 +1761,13 @@ export type Experience_Levels_Mutation_Response = {
   returning: Array<Experience_Levels>;
 };
 
+/** input type for inserting object relation for remote table "experience_levels" */
+export type Experience_Levels_Obj_Rel_Insert_Input = {
+  data: Experience_Levels_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Experience_Levels_On_Conflict>;
+};
+
 /** on_conflict condition type for table "experience_levels" */
 export type Experience_Levels_On_Conflict = {
   constraint: Experience_Levels_Constraint;
@@ -1549,6 +1777,7 @@ export type Experience_Levels_On_Conflict = {
 
 /** Ordering options when selecting data from "experience_levels". */
 export type Experience_Levels_Order_By = {
+  activities_aggregate?: InputMaybe<Activities_Aggregate_Order_By>;
   experience_level?: InputMaybe<Order_By>;
 };
 
@@ -1775,7 +2004,31 @@ export type Hosts_Updates = {
 /** columns and relationships of "intensity_levels" */
 export type Intensity_Levels = {
   __typename?: 'intensity_levels';
+  /** An array relationship */
+  activities: Array<Activities>;
+  /** An aggregate relationship */
+  activities_aggregate: Activities_Aggregate;
   intensity_level: Scalars['String'];
+};
+
+
+/** columns and relationships of "intensity_levels" */
+export type Intensity_LevelsActivitiesArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
+};
+
+
+/** columns and relationships of "intensity_levels" */
+export type Intensity_LevelsActivities_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Activities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activities_Order_By>>;
+  where?: InputMaybe<Activities_Bool_Exp>;
 };
 
 /** aggregated selection of "intensity_levels" */
@@ -1805,6 +2058,7 @@ export type Intensity_Levels_Bool_Exp = {
   _and?: InputMaybe<Array<Intensity_Levels_Bool_Exp>>;
   _not?: InputMaybe<Intensity_Levels_Bool_Exp>;
   _or?: InputMaybe<Array<Intensity_Levels_Bool_Exp>>;
+  activities?: InputMaybe<Activities_Bool_Exp>;
   intensity_level?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -1832,6 +2086,7 @@ export type Intensity_Levels_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "intensity_levels" */
 export type Intensity_Levels_Insert_Input = {
+  activities?: InputMaybe<Activities_Arr_Rel_Insert_Input>;
   intensity_level?: InputMaybe<Scalars['String']>;
 };
 
@@ -1856,6 +2111,13 @@ export type Intensity_Levels_Mutation_Response = {
   returning: Array<Intensity_Levels>;
 };
 
+/** input type for inserting object relation for remote table "intensity_levels" */
+export type Intensity_Levels_Obj_Rel_Insert_Input = {
+  data: Intensity_Levels_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Intensity_Levels_On_Conflict>;
+};
+
 /** on_conflict condition type for table "intensity_levels" */
 export type Intensity_Levels_On_Conflict = {
   constraint: Intensity_Levels_Constraint;
@@ -1865,6 +2127,7 @@ export type Intensity_Levels_On_Conflict = {
 
 /** Ordering options when selecting data from "intensity_levels". */
 export type Intensity_Levels_Order_By = {
+  activities_aggregate?: InputMaybe<Activities_Aggregate_Order_By>;
   intensity_level?: InputMaybe<Order_By>;
 };
 
@@ -2420,6 +2683,10 @@ export type Mutation_Root = {
   delete_activities_x_media?: Maybe<Activities_X_Media_Mutation_Response>;
   /** delete single row from the table: "activities_x_media" */
   delete_activities_x_media_by_pk?: Maybe<Activities_X_Media>;
+  /** delete data from the table: "activity_types" */
+  delete_activity_types?: Maybe<Activity_Types_Mutation_Response>;
+  /** delete single row from the table: "activity_types" */
+  delete_activity_types_by_pk?: Maybe<Activity_Types>;
   /** delete data from the table: "categories" */
   delete_categories?: Maybe<Categories_Mutation_Response>;
   /** delete single row from the table: "categories" */
@@ -2464,6 +2731,10 @@ export type Mutation_Root = {
   insert_activities_x_media?: Maybe<Activities_X_Media_Mutation_Response>;
   /** insert a single row into the table: "activities_x_media" */
   insert_activities_x_media_one?: Maybe<Activities_X_Media>;
+  /** insert data into the table: "activity_types" */
+  insert_activity_types?: Maybe<Activity_Types_Mutation_Response>;
+  /** insert a single row into the table: "activity_types" */
+  insert_activity_types_one?: Maybe<Activity_Types>;
   /** insert data into the table: "categories" */
   insert_categories?: Maybe<Categories_Mutation_Response>;
   /** insert a single row into the table: "categories" */
@@ -2514,6 +2785,12 @@ export type Mutation_Root = {
   update_activities_x_media_by_pk?: Maybe<Activities_X_Media>;
   /** update multiples rows of table: "activities_x_media" */
   update_activities_x_media_many?: Maybe<Array<Maybe<Activities_X_Media_Mutation_Response>>>;
+  /** update data of the table: "activity_types" */
+  update_activity_types?: Maybe<Activity_Types_Mutation_Response>;
+  /** update single row of the table: "activity_types" */
+  update_activity_types_by_pk?: Maybe<Activity_Types>;
+  /** update multiples rows of table: "activity_types" */
+  update_activity_types_many?: Maybe<Array<Maybe<Activity_Types_Mutation_Response>>>;
   /** update data of the table: "categories" */
   update_categories?: Maybe<Categories_Mutation_Response>;
   /** update single row of the table: "categories" */
@@ -2600,6 +2877,18 @@ export type Mutation_RootDelete_Activities_X_MediaArgs = {
 export type Mutation_RootDelete_Activities_X_Media_By_PkArgs = {
   activity_id: Scalars['uuid'];
   media_id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Activity_TypesArgs = {
+  where: Activity_Types_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Activity_Types_By_PkArgs = {
+  activity_type: Scalars['String'];
 };
 
 
@@ -2739,6 +3028,20 @@ export type Mutation_RootInsert_Activities_X_MediaArgs = {
 export type Mutation_RootInsert_Activities_X_Media_OneArgs = {
   object: Activities_X_Media_Insert_Input;
   on_conflict?: InputMaybe<Activities_X_Media_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Activity_TypesArgs = {
+  objects: Array<Activity_Types_Insert_Input>;
+  on_conflict?: InputMaybe<Activity_Types_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Activity_Types_OneArgs = {
+  object: Activity_Types_Insert_Input;
+  on_conflict?: InputMaybe<Activity_Types_On_Conflict>;
 };
 
 
@@ -2913,6 +3216,26 @@ export type Mutation_RootUpdate_Activities_X_Media_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Activities_X_Media_ManyArgs = {
   updates: Array<Activities_X_Media_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Activity_TypesArgs = {
+  _set?: InputMaybe<Activity_Types_Set_Input>;
+  where: Activity_Types_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Activity_Types_By_PkArgs = {
+  _set?: InputMaybe<Activity_Types_Set_Input>;
+  pk_columns: Activity_Types_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Activity_Types_ManyArgs = {
+  updates: Array<Activity_Types_Updates>;
 };
 
 
@@ -3326,6 +3649,12 @@ export type Query_Root = {
   activities_x_media_aggregate: Activities_X_Media_Aggregate;
   /** fetch data from the table: "activities_x_media" using primary key columns */
   activities_x_media_by_pk?: Maybe<Activities_X_Media>;
+  /** fetch data from the table: "activity_types" */
+  activity_types: Array<Activity_Types>;
+  /** fetch aggregated fields from the table: "activity_types" */
+  activity_types_aggregate: Activity_Types_Aggregate;
+  /** fetch data from the table: "activity_types" using primary key columns */
+  activity_types_by_pk?: Maybe<Activity_Types>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
@@ -3449,6 +3778,29 @@ export type Query_RootActivities_X_Media_AggregateArgs = {
 export type Query_RootActivities_X_Media_By_PkArgs = {
   activity_id: Scalars['uuid'];
   media_id: Scalars['uuid'];
+};
+
+
+export type Query_RootActivity_TypesArgs = {
+  distinct_on?: InputMaybe<Array<Activity_Types_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activity_Types_Order_By>>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
+};
+
+
+export type Query_RootActivity_Types_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Activity_Types_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activity_Types_Order_By>>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
+};
+
+
+export type Query_RootActivity_Types_By_PkArgs = {
+  activity_type: Scalars['String'];
 };
 
 
@@ -3682,6 +4034,14 @@ export type Subscription_Root = {
   activities_x_media_by_pk?: Maybe<Activities_X_Media>;
   /** fetch data from the table in a streaming manner : "activities_x_media" */
   activities_x_media_stream: Array<Activities_X_Media>;
+  /** fetch data from the table: "activity_types" */
+  activity_types: Array<Activity_Types>;
+  /** fetch aggregated fields from the table: "activity_types" */
+  activity_types_aggregate: Activity_Types_Aggregate;
+  /** fetch data from the table: "activity_types" using primary key columns */
+  activity_types_by_pk?: Maybe<Activity_Types>;
+  /** fetch data from the table in a streaming manner : "activity_types" */
+  activity_types_stream: Array<Activity_Types>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
@@ -3842,6 +4202,36 @@ export type Subscription_RootActivities_X_Media_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Activities_X_Media_Stream_Cursor_Input>>;
   where?: InputMaybe<Activities_X_Media_Bool_Exp>;
+};
+
+
+export type Subscription_RootActivity_TypesArgs = {
+  distinct_on?: InputMaybe<Array<Activity_Types_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activity_Types_Order_By>>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
+};
+
+
+export type Subscription_RootActivity_Types_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Activity_Types_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Activity_Types_Order_By>>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
+};
+
+
+export type Subscription_RootActivity_Types_By_PkArgs = {
+  activity_type: Scalars['String'];
+};
+
+
+export type Subscription_RootActivity_Types_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Activity_Types_Stream_Cursor_Input>>;
+  where?: InputMaybe<Activity_Types_Bool_Exp>;
 };
 
 
@@ -4123,7 +4513,7 @@ export type ActivityDetailsQueryVariables = Exact<{
 }>;
 
 
-export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
+export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
 
 export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null };
 
@@ -4133,9 +4523,9 @@ export type MediaDataFragment = { __typename?: 'media', id: string, path: string
 
 export type LocationDataFragment = { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null };
 
-export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null };
+export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null };
 
-export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
+export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
 export type LocationsInViewportQueryVariables = Exact<{
   viewportLatitudeMin: Scalars['numeric'];
@@ -4145,12 +4535,13 @@ export type LocationsInViewportQueryVariables = Exact<{
 }>;
 
 
-export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
 export const ActivityDataFragmentDoc = gql`
     fragment ActivityData on activities {
   id
   name
+  type
   description
   referral_url
   referral_phone
