@@ -5,6 +5,7 @@ export const FRAGMENT_HOST = gql`
     id
     name
     logo_url
+    description
   }
 `;
 

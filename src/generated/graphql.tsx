@@ -1829,6 +1829,7 @@ export type Hosts = {
   activities: Array<Activities>;
   /** An aggregate relationship */
   activities_aggregate: Activities_Aggregate;
+  description?: Maybe<Scalars['String']>;
   id: Scalars['uuid'];
   logo_url?: Maybe<Scalars['String']>;
   name: Scalars['String'];
@@ -1882,6 +1883,7 @@ export type Hosts_Bool_Exp = {
   _not?: InputMaybe<Hosts_Bool_Exp>;
   _or?: InputMaybe<Array<Hosts_Bool_Exp>>;
   activities?: InputMaybe<Activities_Bool_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   logo_url?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
@@ -1896,6 +1898,7 @@ export enum Hosts_Constraint {
 /** input type for inserting data into table "hosts" */
 export type Hosts_Insert_Input = {
   activities?: InputMaybe<Activities_Arr_Rel_Insert_Input>;
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   logo_url?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1904,6 +1907,7 @@ export type Hosts_Insert_Input = {
 /** aggregate max on columns */
 export type Hosts_Max_Fields = {
   __typename?: 'hosts_max_fields';
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   logo_url?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -1912,6 +1916,7 @@ export type Hosts_Max_Fields = {
 /** aggregate min on columns */
 export type Hosts_Min_Fields = {
   __typename?: 'hosts_min_fields';
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['uuid']>;
   logo_url?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -1943,6 +1948,7 @@ export type Hosts_On_Conflict = {
 /** Ordering options when selecting data from "hosts". */
 export type Hosts_Order_By = {
   activities_aggregate?: InputMaybe<Activities_Aggregate_Order_By>;
+  description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   logo_url?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
@@ -1956,6 +1962,8 @@ export type Hosts_Pk_Columns_Input = {
 /** select columns of table "hosts" */
 export enum Hosts_Select_Column {
   /** column name */
+  Description = 'description',
+  /** column name */
   Id = 'id',
   /** column name */
   LogoUrl = 'logo_url',
@@ -1965,6 +1973,7 @@ export enum Hosts_Select_Column {
 
 /** input type for updating data in table "hosts" */
 export type Hosts_Set_Input = {
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   logo_url?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1980,6 +1989,7 @@ export type Hosts_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Hosts_Stream_Cursor_Value_Input = {
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   logo_url?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1987,6 +1997,8 @@ export type Hosts_Stream_Cursor_Value_Input = {
 
 /** update columns of table "hosts" */
 export enum Hosts_Update_Column {
+  /** column name */
+  Description = 'description',
   /** column name */
   Id = 'id',
   /** column name */
@@ -4513,9 +4525,9 @@ export type ActivityDetailsQueryVariables = Exact<{
 }>;
 
 
-export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
+export type ActivityDetailsQuery = { __typename?: 'query_root', activities_by_pk?: { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> } | null };
 
-export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null };
+export type HostDataFragment = { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null };
 
 export type CategoryDataFragment = { __typename?: 'categories', id: string, name: string, level: number };
 
@@ -4525,7 +4537,7 @@ export type LocationDataFragment = { __typename?: 'locations', id: string, addre
 
 export type ActivityDataFragment = { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null };
 
-export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
+export type ActivityListingFragment = { __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> };
 
 export type LocationsInViewportQueryVariables = Exact<{
   viewportLatitudeMin: Scalars['numeric'];
@@ -4535,7 +4547,7 @@ export type LocationsInViewportQueryVariables = Exact<{
 }>;
 
 
-export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
 
 export const ActivityDataFragmentDoc = gql`
     fragment ActivityData on activities {
@@ -4572,6 +4584,7 @@ export const HostDataFragmentDoc = gql`
   id
   name
   logo_url
+  description
 }
     `;
 export const CategoryDataFragmentDoc = gql`

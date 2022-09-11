@@ -215,7 +215,10 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                 {activity.location.address && (
                   <GettingThereSection>
                     <h4>Address</h4>
-                    <Address>{activity.location.address}</Address>
+                    <Address>
+                      <p>{activity.location.address}</p>
+                      <p>{activity.location.postcode}</p>
+                    </Address>
                   </GettingThereSection>
                 )}
 
@@ -271,11 +274,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                   </KeyInfoItem>
                 </HostCertifications> */}
 
-              <ReadMore
-                lines={4}
-                text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
-                water. Some more information here and etc.`}
-              />
+              {activity.host.description && <ReadMore lines={4} text={activity.host.description} />}
 
               {/* <h3>Activities like this</h3>
               <p>OTHER ACTIVITIES PLACEHOLDER</p> */}
