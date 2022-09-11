@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Icon from '../../components/Icon';
 import MiniMap from '../../components/MiniMap';
 import ReadMore from '../../components/uiComponents/ReadMore';
+import useBackUrl from '../../hooks/useBackUrl';
 import useWindowSize from '../../hooks/useWindowSize';
 import { deviceWidth } from '../../styles/devices';
 import { LinkText } from '../../styles/GlobalStyles';
@@ -53,6 +54,7 @@ export interface Props {
 const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const { windowWidth } = useWindowSize();
+  const backUrl = useBackUrl();
 
   if (!activity) {
     return (
@@ -86,6 +88,11 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
     <>
       <Header widthConstrained={true} />
       <Container>
+        {backUrl && (
+          <Link href={backUrl} passHref>
+            Back
+          </Link>
+        )}
         <Main>
           <Title>
             <h2>
