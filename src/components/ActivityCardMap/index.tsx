@@ -17,6 +17,7 @@ import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
+import { activityTypeLabelMap } from '../../utils/activity.utils';
 
 interface Props {
   activity: ActivityListing;
@@ -27,6 +28,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
   const categoryName = activity.activities_x_categories[0].category.name;
 
   const [isOpen, setIsOpen] = useState(false);
+  const activityTypeLabel = activityTypeLabelMap[activity.type];
 
   return (
     <ActivityContainer>
@@ -65,7 +67,9 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
               </ImageContainer>
               <DetailsContainer>
                 <h5>{activity.name}</h5>
-                <h6>Class run by {activity.host.name}</h6>
+                <h6>
+                  {activityTypeLabel} run by {activity.host.name}
+                </h6>
               </DetailsContainer>
             </PopoverCard>
           </Link>

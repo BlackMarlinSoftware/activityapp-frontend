@@ -5,6 +5,7 @@ export const FRAGMENT_HOST = gql`
     id
     name
     logo_url
+    description
   }
 `;
 
@@ -41,6 +42,7 @@ export const FRAGMENT_ACTIVITY = gql`
   fragment ActivityData on activities {
     id
     name
+    type
     description
     referral_url
     referral_phone

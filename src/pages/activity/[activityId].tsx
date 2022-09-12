@@ -37,6 +37,7 @@ import {
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
+import { activityTypeLabelMap } from '../../utils/activity.utils';
 import {
   experienceLevelsMap,
   getActivityPageServerProps,
@@ -67,6 +68,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const experienceLevel = activity.experience_level ? experienceLevelsMap[activity.experience_level] : undefined;
   const intensityLevel = activity.intensity_level ? intensityLevelsMap[activity.intensity_level] : undefined;
   const ageRange = getAgeRangeInfo(activity.age_min, activity.age_max);
+  const activityTypeLabel = activityTypeLabelMap[activity.type];
 
   const share = () => {
     const currentUrl = window.location.href;
@@ -124,7 +126,9 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
             <Details>
               <DetailsSection>
                 <SummaryContainer>
-                  <h3>Class run by {activity.host.name}</h3>
+                  <h3>
+                    {activityTypeLabel} run by {activity.host.name}
+                  </h3>
                   <IconAndText>
                     <Icon icon="Star" colour={colors.primary[6]} />
                     <h4>New</h4>
@@ -211,7 +215,10 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                 {activity.location.address && (
                   <GettingThereSection>
                     <h4>Address</h4>
-                    <Address>{activity.location.address}</Address>
+                    <Address>
+                      <p>{activity.location.address}</p>
+                      <p>{activity.location.postcode}</p>
+                    </Address>
                   </GettingThereSection>
                 )}
 
@@ -267,11 +274,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                   </KeyInfoItem>
                 </HostCertifications> */}
 
-              <ReadMore
-                lines={4}
-                text={`Fareham Watersports was founded in 1999 on the principle that anyone should be able to have fun on the
-                water. Some more information here and etc.`}
-              />
+              {activity.host.description && <ReadMore lines={4} text={activity.host.description} />}
 
               {/* <h3>Activities like this</h3>
               <p>OTHER ACTIVITIES PLACEHOLDER</p> */}

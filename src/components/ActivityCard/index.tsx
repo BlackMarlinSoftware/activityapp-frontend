@@ -2,6 +2,7 @@ import { ActivityContainer, ActivityDetails, Description, ActivityImage } from '
 import theme from '../../styles/theme';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
+import { activityTypeLabelMap } from '../../utils/activity.utils';
 
 interface Props {
   activity: ActivityListing;
@@ -10,6 +11,7 @@ interface Props {
 
 const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
   const firstImage = activity.activities_x_media[0].media;
+  const activityTypeLabel = activityTypeLabelMap[activity.type];
 
   return (
     <Link href={`/activity/${activity.id}`} passHref>
@@ -28,7 +30,9 @@ const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
 
         <ActivityDetails $loading={!!loading}>
           <h4>{activity.name}</h4>
-          <h5>{activity.location.name}, 0.3 km away</h5>
+          <h5>
+            {activityTypeLabel} run by {activity.host.name}
+          </h5>
           <Description $loading={!!loading}>{activity.description}</Description>
         </ActivityDetails>
       </ActivityContainer>

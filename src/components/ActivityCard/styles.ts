@@ -8,18 +8,12 @@ export const ActivityContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: ${spacing[4]};
-  margin-bottom: ${spacing[6]};
-  padding: ${spacing[2]};
   box-sizing: border-box;
   cursor: pointer;
+  margin-bottom: auto;
 
-  @media ${device.mobileXL} {
-    width: 50%;
-  }
   @media ${device.laptop} {
     grid-template-columns: ${spacing[12]} 1fr;
-    width: 100%;
-    padding: 0;
   }
 `;
 

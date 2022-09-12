@@ -1,14 +1,19 @@
 import styled from 'styled-components';
-import theme, { spacing, colors, shadows } from '../../styles/theme';
+import { spacing, shadows } from '../../styles/theme';
 import { device } from '../../styles/devices';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: ${spacing[6]} ${spacing[4]};
+
+  @media ${device.mobileXL} {
+    padding: ${spacing[6]};
+  }
 `;
 
 export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
-  padding: ${spacing[6]};
+  margin-bottom: ${spacing[6]};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,16 +25,15 @@ export const ResultsSummary = styled.div<{ borderBottom: boolean }>`
 `;
 
 export const ActivityRows = styled.div`
-  box-sizing: border-box;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 0 ${theme.scale.spacing[6]};
+  display: grid;
+  grid-gap: ${spacing[6]};
+  grid-template-columns: 1fr;
+
   @media ${device.mobileXL} {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
   }
   @media ${device.laptop} {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 `;

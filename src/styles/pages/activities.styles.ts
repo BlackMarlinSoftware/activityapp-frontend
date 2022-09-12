@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import theme, { shadows, spacing } from '../theme';
 import { device } from '../devices';
 
+export const listWidth = spacing[15];
+
 export const PageContainer = styled.div`
   overflow: auto;
   height: 100vh;
@@ -15,7 +17,7 @@ export const MainContentContainer = styled.div`
   grid-template-columns: 1fr;
 
   @media ${device.laptop} {
-    grid-template-columns: ${spacing[15]} 1fr;
+    grid-template-columns: ${listWidth} 1fr;
   }
 `;
 
@@ -27,9 +29,12 @@ export const ListResponsiveWrapper = styled.div<{ mapView: boolean }>`
 `;
 
 export const MapResponsiveWrapper = styled.div<{ mapView: boolean }>`
-  display: ${(props) => (props.mapView ? 'flex' : 'none')};
+  ${(props) => (props.mapView ? '' : 'position: absolute; opacity: 0; z-index: -1000; left: -999px;')}
   @media ${device.laptop} {
-    display: flex;
+    position: static;
+    opacity: 1;
+    z-index: initial;
+    left: initial;
   }
 `;
 

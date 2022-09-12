@@ -1,0 +1,442 @@
+{
+  "resource_version": 61,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "activities",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "experienceLevelByExperienceLevel",
+                "using": {
+                  "foreign_key_constraint_on": "experience_level"
+                }
+              },
+              {
+                "name": "host",
+                "using": {
+                  "foreign_key_constraint_on": "host_id"
+                }
+              },
+              {
+                "name": "intensityLevelByIntensityLevel",
+                "using": {
+                  "foreign_key_constraint_on": "intensity_level"
+                }
+              },
+              {
+                "name": "location",
+                "using": {
+                  "foreign_key_constraint_on": "location_id"
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "activities_x_categories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "activity_id",
+                    "table": {
+                      "name": "activities_x_categories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "activities_x_media",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "activity_id",
+                    "table": {
+                      "name": "activities_x_media",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "age_max",
+                    "age_min",
+                    "booking_required",
+                    "description",
+                    "experience_level",
+                    "group_size_max",
+                    "group_size_min",
+                    "host_id",
+                    "id",
+                    "intensity_level",
+                    "location_id",
+                    "name",
+                    "referral_email",
+                    "referral_phone",
+                    "referral_url"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "activities_x_categories",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "activity",
+                "using": {
+                  "foreign_key_constraint_on": "activity_id"
+                }
+              },
+              {
+                "name": "category",
+                "using": {
+                  "foreign_key_constraint_on": "category_id"
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "activity_id",
+                    "category_id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "activities_x_media",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "activity",
+                "using": {
+                  "foreign_key_constraint_on": "activity_id"
+                }
+              },
+              {
+                "name": "media",
+                "using": {
+                  "foreign_key_constraint_on": "media_id"
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "activity_id",
+                    "media_id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "categories",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "activities_x_categories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "category_id",
+                    "table": {
+                      "name": "activities_x_categories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "categoriesXParentCategoriesByParentCategoryId",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "parent_category_id",
+                    "table": {
+                      "name": "categories_x_parent_categories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "categories_x_parent_categories",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "category_id",
+                    "table": {
+                      "name": "categories_x_parent_categories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "id",
+                    "name",
+                    "level"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "categories_x_parent_categories",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "category",
+                "using": {
+                  "foreign_key_constraint_on": "category_id"
+                }
+              },
+              {
+                "name": "categoryByParentCategoryId",
+                "using": {
+                  "foreign_key_constraint_on": "parent_category_id"
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "category_id",
+                    "parent_category_id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "experience_levels",
+              "schema": "public"
+            },
+            "is_enum": true,
+            "array_relationships": [
+              {
+                "name": "activities",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "experience_level",
+                    "table": {
+                      "name": "activities",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "experience_level"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "hosts",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "activities",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "host_id",
+                    "table": {
+                      "name": "activities",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "logo_url",
+                    "name",
+                    "id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "intensity_levels",
+              "schema": "public"
+            },
+            "is_enum": true,
+            "array_relationships": [
+              {
+                "name": "activities",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "intensity_level",
+                    "table": {
+                      "name": "activities",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "intensity_level"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "locations",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "activities",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "location_id",
+                    "table": {
+                      "name": "activities",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "outdoors",
+                    "lat",
+                    "long",
+                    "address",
+                    "directions",
+                    "name",
+                    "postcode",
+                    "id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "media",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "activities_x_media",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "media_id",
+                    "table": {
+                      "name": "activities_x_media",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "caption",
+                    "path",
+                    "id"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "privileged_example__delete_me",
+              "schema": "public"
+            }
+          }
+        ],
+        "functions": [
+          {
+            "function": {
+              "name": "locations_in_radius",
+              "schema": "public"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "PG_DATABASE_URL1"
+            },
+            "isolation_level": "read-committed",
+            "use_prepared_statements": false
+          }
+        }
+      }
+    ]
+  }
+}
