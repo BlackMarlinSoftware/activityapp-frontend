@@ -2,7 +2,7 @@ import { ActivityContainer, ActivityDetails, Description, ActivityImage } from '
 import theme from '../../styles/theme';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
-import { activityTypeLabelMap } from '../../utils/activity.utils';
+import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
 
 interface Props {
   activity: ActivityListing;
@@ -11,7 +11,7 @@ interface Props {
 
 const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
   const firstImage = activity.activities_x_media[0].media;
-  const activityTypeLabel = activityTypeLabelMap[activity.type];
+  const activityTypeLabel = capitalFirstLetter(activityTypeLabelMap[activity.type]);
 
   return (
     <Link href={`/activity/${activity.id}`} passHref>
