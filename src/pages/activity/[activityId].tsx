@@ -71,6 +71,8 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const intensityLevel = activity.intensity_level ? intensityLevelsMap[activity.intensity_level] : undefined;
   const ageRange = getAgeRangeInfo(activity.age_min, activity.age_max);
   const activityTypeLabel = activityTypeLabelMap[activity.type];
+  const mediaHeight = windowWidth && windowWidth < deviceWidth.mobileXL ? spacing[15] : spacing[14];
+  const titleIconSize = windowWidth && windowWidth < deviceWidth.mobileXL ? '20px' : spacing[5];
 
   const share = () => {
     const currentUrl = window.location.href;
@@ -93,11 +95,16 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
             Back
           </Link>
         )}
+
         <Main>
           <Title>
             <h2>
               <TitleIcon>
-                <Icon icon={activity.activities_x_categories[0].category.name} width="24px" height="24px" />
+                <Icon
+                  icon={activity.activities_x_categories[0].category.name}
+                  width={titleIconSize}
+                  height={titleIconSize}
+                />
               </TitleIcon>
               <span>{activity.name}</span>
             </h2>
@@ -127,7 +134,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
               objectFit="cover"
               objectPosition="center"
               width={spacing[18]}
-              height={spacing[windowWidth && windowWidth < deviceWidth.mobileXL ? 15 : 14]}
+              height={mediaHeight}
               priority
             />
           </Media>

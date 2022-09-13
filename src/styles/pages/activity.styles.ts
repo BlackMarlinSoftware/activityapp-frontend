@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${spacing[6]} ${spacing[4]};
+  padding: ${spacing[4]};
   padding-bottom: 0;
 
   @media ${device.mobileXL} {
@@ -32,7 +32,13 @@ export const Title = styled.div`
 
 export const Media = styled.div`
   display: flex;
-  margin-bottom: ${spacing[4]};
+  width: 100vw;
+  align-self: center;
+
+  @media ${device.mobileXL} {
+    width: initial;
+    margin-bottom: ${spacing[4]};
+  }
 `;
 
 export const DetailsAndCTA = styled.div`
@@ -87,7 +93,11 @@ export const CTAMobile = styled.div`
 
 export const TitleIcon = styled.div`
   display: inline-block;
-  margin-right: ${spacing[3]};
+  margin-right: ${spacing[2]};
+
+  @media ${device.mobileXL} {
+    margin-right: ${spacing[3]};
+  }
 `;
 
 export const LocationAndActions = styled.div`
