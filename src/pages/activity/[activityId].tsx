@@ -1,12 +1,10 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ActivityImage } from '../../components/ActivityCard/styles';
 import Header from '../../components/Header';
 import Icon from '../../components/Icon';
 import MiniMap from '../../components/MiniMap';
 import ReadMore from '../../components/uiComponents/ReadMore';
-import useBackUrl from '../../hooks/useBackUrl';
 import useWindowSize from '../../hooks/useWindowSize';
 import { deviceWidth } from '../../styles/devices';
 import { LinkText } from '../../styles/GlobalStyles';
@@ -35,7 +33,7 @@ import {
   HostHeadline,
   StickyCTA,
   DetailsAndCTA,
-  BackBar,
+  ActivityImage,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
@@ -55,7 +53,6 @@ export interface Props {
 const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const { windowWidth } = useWindowSize();
-  const backUrl = useBackUrl();
 
   if (!activity) {
     return (
@@ -93,16 +90,6 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
       <Container>
         <Main>
           <Title>
-            <BackBar>
-              {backUrl && (
-                <div>
-                  <Link href={backUrl} passHref>
-                    <Icon icon="LeftArrow" />
-                  </Link>
-                </div>
-              )}
-            </BackBar>
-
             <h2>
               <TitleIcon>
                 <Icon
@@ -120,7 +107,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
                 <h4>{activity.location.name}</h4>
               </IconAndText>
               {copiedToClipboard ? (
-                <h4>Link copied to clipboard!</h4>
+                <h4>Copied link</h4>
               ) : (
                 <LinkText onClick={share}>
                   <IconAndText>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { HeaderHeight } from '../../components/Header/styles';
 import { device } from '../devices';
+import { ShimmerBackground } from '../loading';
 import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
@@ -108,7 +109,11 @@ export const LocationAndActions = styled.div`
 `;
 
 export const ActivityImage = styled(Image)`
-  border-radius: ${spacing[3]};
+  ${ShimmerBackground}
+
+  @media ${device.mobileXL} {
+    border-radius: ${spacing[3]};
+  }
 `;
 
 export const HostLogoContainer = styled.div`

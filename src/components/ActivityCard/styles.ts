@@ -52,8 +52,5 @@ export const Description = styled.p<{ $loading: boolean }>`
 
 export const ActivityImage = styled(Image)`
   ${ShimmerBackground}
-
-  @media ${device.mobileXL} {
-    border-radius: ${spacing[3]};
-  }
+  border-radius: ${spacing[3]};
 `;

@@ -7,17 +7,18 @@ import {
   imageContainerHeight,
   cardBorderRadius,
   DetailsContainer,
-  FavoriteContainer,
+  // FavoriteContainer,
   CloseContainer,
 } from './styles';
 import Icon from '../Icon';
 import { Popover } from './Popover';
 import Image from 'next/image';
 import { useState } from 'react';
-import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
+// import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
 import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
+import useBase64Url from '../../hooks/useBase64Url';
 
 interface Props {
   activity: ActivityListing;
@@ -28,6 +29,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
   const categoryName = activity.activities_x_categories[0].category.name;
 
   const [isOpen, setIsOpen] = useState(false);
+  const currentUrlBase64 = useBase64Url();
   const activityTypeLabel = activityTypeLabelMap[activity.type];
 
   return (
@@ -37,12 +39,12 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
         locationId={activity.location.id}
         isOpenSetter={setIsOpen}
         render={({ close, labelId, descriptionId }) => (
-          <Link href={`/activity/${activity.id}`} passHref>
+          <Link href={`/activity/${activity.id}?backUrl=${currentUrlBase64}`} passHref>
             <PopoverCard>
               <ImageContainer>
-                <FavoriteContainer>
+                {/* <FavoriteContainer>
                   <FavoriteOutline />
-                </FavoriteContainer>
+                </FavoriteContainer> */}
 
                 <CloseContainer
                   onClick={(event) => {

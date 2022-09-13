@@ -3,7 +3,11 @@ import { useRouter } from 'next/router';
 const useBackUrl = (): string | undefined => {
   const router = useRouter();
   if (typeof router.query.backUrl === 'string') {
-    return atob(router.query.backUrl);
+    try {
+      return `/${atob(router.query.backUrl)}`;
+    } catch (err) {
+      return '/';
+    }
   }
 
   return undefined;

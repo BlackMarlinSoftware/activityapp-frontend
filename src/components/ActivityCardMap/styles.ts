@@ -66,15 +66,15 @@ export const Pin = styled.div<{ open: boolean }>`
 
 export const FavoriteContainer = styled.div`
   position: absolute;
-  top: 11px;
-  right: 14px;
+  top: ${spacing[2]};
+  right: ${spacing[2]};
   z-index: 1;
 `;
 
 export const CloseContainer = styled.div`
   position: absolute;
-  top: 8px;
-  left: 14px;
+  top: ${spacing[2]};
+  left: ${spacing[2]};
   z-index: 1;
   display: flex;
   justify-content: center;
