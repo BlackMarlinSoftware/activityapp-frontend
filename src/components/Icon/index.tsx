@@ -337,7 +337,6 @@ const genericIcons: Record<string, React.FC> = {
   Pin: Pin,
   Directions: Directions,
   SendMessage: SendMessage,
-  SendMessage: SendMessage,
   LeftArrow: LeftArrow,
 };
 
