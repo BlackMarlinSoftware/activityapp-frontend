@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${spacing[4]};
+  padding: ${spacing[6]} ${spacing[4]};
   padding-bottom: 0;
 
   @media ${device.mobileXL} {
@@ -263,4 +263,9 @@ export const HostCertifications = styled.div`
   grid-gap: ${spacing[4]};
   margin: ${spacing[6]} 0;
   margin-left: -${spacing[1]};
+`;
+
+export const BackBar = styled.div`
+  display: flex;
+  width: 100%;
 `;

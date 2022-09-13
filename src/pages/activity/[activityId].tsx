@@ -35,6 +35,7 @@ import {
   HostHeadline,
   StickyCTA,
   DetailsAndCTA,
+  BackBar,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
@@ -90,14 +91,18 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
     <>
       <Header widthConstrained={true} />
       <Container>
-        {backUrl && (
-          <Link href={backUrl} passHref>
-            Back
-          </Link>
-        )}
-
         <Main>
           <Title>
+            <BackBar>
+              {backUrl && (
+                <div>
+                  <Link href={backUrl} passHref>
+                    <Icon icon="LeftArrow" />
+                  </Link>
+                </div>
+              )}
+            </BackBar>
+
             <h2>
               <TitleIcon>
                 <Icon
