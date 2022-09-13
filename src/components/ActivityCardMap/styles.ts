@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { spacing } from '../../styles/theme';
+import theme, { shadows, spacing } from '../../styles/theme';
 
 export const imageContainerWidth = '300px';
 export const imageContainerHeight = '170px';
@@ -55,7 +55,7 @@ export const Pin = styled.div<{ open: boolean }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 3px 6px 11px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: ${shadows.dark};
 
   :hover {
     height: 35px;

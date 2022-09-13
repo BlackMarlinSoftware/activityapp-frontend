@@ -14,7 +14,7 @@ const MapContainer = ({ location, initialViewState }: Props): JSX.Element => (
     <Map
       style={{ borderRadius: spacing[3] }}
       initialViewState={initialViewState}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
     >
       <Marker latitude={location.lat} longitude={location.long} anchor="center" />

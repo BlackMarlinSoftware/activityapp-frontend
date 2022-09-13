@@ -44,4 +44,5 @@ export const BackButtonContainer = styled.div`
   padding: ${spacing[2]};
   margin-left: -${spacing[1]};
   width: fit-content;
+  cursor: pointer;
 `;
