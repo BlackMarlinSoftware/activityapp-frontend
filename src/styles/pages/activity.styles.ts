@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${spacing[6]} ${spacing[4]};
+  padding: ${spacing[5]} ${spacing[4]};
   padding-bottom: 0;
 
   @media ${device.mobileXL} {
@@ -108,12 +108,28 @@ export const LocationAndActions = styled.div`
   justify-content: space-between;
 `;
 
-export const ActivityImage = styled(Image)`
-  ${ShimmerBackground}
+export const MobileOnly = styled.div`
+  display: flex;
 
   @media ${device.mobileXL} {
-    border-radius: ${spacing[3]};
+    display: none;
   }
+`;
+
+export const DesktopOnly = styled.div`
+  display: none;
+
+  @media ${device.mobileXL} {
+    display: initial;
+  }
+`;
+
+export const ActivityImage = styled(Image)`
+  ${ShimmerBackground}
+`;
+
+export const ActivityImageDesktop = styled(ActivityImage)`
+  border-radius: ${spacing[3]};
 `;
 
 export const HostLogoContainer = styled.div`
@@ -130,6 +146,16 @@ export const DetailsSection = styled.div`
   padding-bottom: ${spacing[5]};
   margin-bottom: ${spacing[5]};
   border-bottom: 1px solid ${colors.neutral[9.5]};
+`;
+
+export const DetailsSectionMobile = styled.div`
+  padding-bottom: ${spacing[5]};
+  border-bottom: 1px solid ${colors.neutral[9.5]};
+
+  @media ${device.mobileXL} {
+    padding: 0;
+    border-bottom: none;
+  }
 `;
 
 export const KeyInformation = styled.div`

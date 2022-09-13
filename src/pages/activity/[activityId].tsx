@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
+import { ImageProps } from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import Header from '../../components/Header';
 import Icon from '../../components/Icon';
 import MiniMap from '../../components/MiniMap';
 import ReadMore from '../../components/uiComponents/ReadMore';
 import useWindowSize from '../../hooks/useWindowSize';
-import { deviceWidth } from '../../styles/devices';
+import { deviceWidth, deviceWidthPx } from '../../styles/devices';
 import { LinkText } from '../../styles/GlobalStyles';
 import {
   CTATablet,
@@ -34,6 +34,10 @@ import {
   StickyCTA,
   DetailsAndCTA,
   ActivityImage,
+  ActivityImageDesktop,
+  MobileOnly,
+  DesktopOnly,
+  DetailsSectionMobile,
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
@@ -51,7 +55,6 @@ export interface Props {
 }
 
 const ActivityPage: NextPage<Props> = ({ activity, error }) => {
-  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const { windowWidth } = useWindowSize();
 
   if (!activity) {
@@ -69,67 +72,50 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
   const intensityLevel = activity.intensity_level ? intensityLevelsMap[activity.intensity_level] : undefined;
   const ageRange = getAgeRangeInfo(activity.age_min, activity.age_max);
   const activityTypeLabel = activityTypeLabelMap[activity.type];
-  const mediaHeight = windowWidth && windowWidth < deviceWidth.mobileXL ? spacing[15] : spacing[14];
   const titleIconSize = windowWidth && windowWidth < deviceWidth.mobileXL ? '20px' : spacing[5];
-
-  const share = () => {
-    const currentUrl = window.location.href;
-
-    if (navigator.share) {
-      navigator.share({ url: currentUrl, text: `${activity.name}, ${activity.location.name}` });
-    } else {
-      navigator.clipboard.writeText(currentUrl).then(() => {
-        setCopiedToClipboard(true);
-      });
-    }
+  const activityImageProps: ImageProps = {
+    src: `/images/${activity.id}/${firstImage.path}`,
+    alt: firstImage.caption || undefined,
+    objectFit: 'cover',
+    objectPosition: 'center',
+    priority: true,
   };
 
   return (
     <>
       <Header widthConstrained={true} />
+      <MobileOnly>
+        <ActivityImage {...activityImageProps} width={deviceWidthPx.mobileXL} height={spacing[13]} />
+      </MobileOnly>
       <Container>
         <Main>
-          <Title>
-            <h2>
-              <TitleIcon>
-                <Icon
-                  icon={activity.activities_x_categories[0].category.name}
-                  width={titleIconSize}
-                  height={titleIconSize}
-                />
-              </TitleIcon>
-              <span>{activity.name}</span>
-            </h2>
+          <DetailsSectionMobile>
+            <Title>
+              <h2>
+                <TitleIcon>
+                  <Icon
+                    icon={activity.activities_x_categories[0].category.name}
+                    width={titleIconSize}
+                    height={titleIconSize}
+                  />
+                </TitleIcon>
+                <span>{activity.name}</span>
+              </h2>
 
-            <LocationAndActions>
-              <IconAndText>
-                <Icon icon="Pin" />
-                <h4>{activity.location.name}</h4>
-              </IconAndText>
-              {copiedToClipboard ? (
-                <h4>Copied link</h4>
-              ) : (
-                <LinkText onClick={share}>
-                  <IconAndText>
-                    <Icon icon="Share" />
-                    <h4>Share</h4>
-                  </IconAndText>
-                </LinkText>
-              )}
-            </LocationAndActions>
-          </Title>
+              <LocationAndActions>
+                <IconAndText>
+                  <Icon icon="Pin" />
+                  <h4>{activity.location.name}</h4>
+                </IconAndText>
+              </LocationAndActions>
+            </Title>
+          </DetailsSectionMobile>
 
-          <Media>
-            <ActivityImage
-              src={`/images/${activity.id}/${firstImage.path}`}
-              alt={firstImage.caption || undefined}
-              objectFit="cover"
-              objectPosition="center"
-              width={spacing[18]}
-              height={mediaHeight}
-              priority
-            />
-          </Media>
+          <DesktopOnly>
+            <Media>
+              <ActivityImageDesktop {...activityImageProps} width={spacing[18]} height={spacing[14]} />
+            </Media>
+          </DesktopOnly>
 
           <DetailsAndCTA>
             <Details>

@@ -4,7 +4,7 @@ const useBackUrl = (): string | undefined => {
   const router = useRouter();
   if (typeof router.query.backUrl === 'string') {
     try {
-      return `/${atob(router.query.backUrl)}`;
+      return atob(router.query.backUrl);
     } catch (err) {
       return '/';
     }

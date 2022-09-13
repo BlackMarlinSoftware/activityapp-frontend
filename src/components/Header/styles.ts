@@ -46,3 +46,8 @@ export const BackButtonContainer = styled.div`
   width: fit-content;
   cursor: pointer;
 `;
+
+export const ShareButtonContainer = styled.div`
+  padding: ${spacing[2]};
+  cursor: pointer;
+`;
