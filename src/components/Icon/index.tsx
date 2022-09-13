@@ -98,6 +98,9 @@ import SpeedoColour from './genericIcons/SpeedoColour';
 import ThermometerColour from './genericIcons/ThermometerColour';
 import SofaColour from './genericIcons/SofaColour';
 import MedalColour from './genericIcons/MedalColour';
+import Pin from './genericIcons/Pin';
+import Directions from './genericIcons/Directions';
+import SendMessage from './genericIcons/SendMessage';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -330,6 +333,9 @@ const genericIcons: Record<string, React.FC> = {
   MedalColour: MedalColour,
   List: List,
   UIMap: UIMap,
+  Pin: Pin,
+  Directions: Directions,
+  SendMessage: SendMessage,
 };
 
 const iconMap: Record<string, React.FC> = {

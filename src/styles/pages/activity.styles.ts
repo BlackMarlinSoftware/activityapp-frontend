@@ -51,6 +51,7 @@ export const Details = styled.div`
   width: 100%; // necessary to keep MapBox auto-resizing
   display: flex;
   flex-direction: column;
+  margin-bottom: ${spacing[6]};
 `;
 
 export const CTATablet = styled.div`
@@ -92,13 +93,8 @@ export const TitleIcon = styled.div`
 export const LocationAndActions = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
-  row-gap: ${spacing[3]};
-
-  @media ${device.mobileXL} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const ActivityImage = styled(Image)`

@@ -22,7 +22,7 @@ export const ActivityDetails = styled.div<{ $loading: boolean }>`
 
   h4 {
     margin-top: 0;
-    color: ${(props) => (props.$loading ? 'transparent' : 'initial')};
+    ${(props) => (props.$loading ? 'color: transparent;' : '')}
   }
 
   h5 {
@@ -42,7 +42,7 @@ export const Description = styled.p<{ $loading: boolean }>`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  color: ${(props) => (props.$loading ? 'transparent' : 'initial')};
+  ${(props) => (props.$loading ? 'color: transparent;' : '')}
   ${(props) => (props.$loading ? ShimmerBackground : '')};
 
   @media ${device.mobileXL} {

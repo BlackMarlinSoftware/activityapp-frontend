@@ -17,7 +17,7 @@ import { useState } from 'react';
 import FavoriteOutline from '../Icon/genericIcons/FavoriteOutline';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
-import { activityTypeLabelMap } from '../../utils/activity.utils';
+import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
 
 interface Props {
   activity: ActivityListing;
@@ -68,7 +68,7 @@ const ActivityCardMap = ({ activity, focused }: Props): JSX.Element => {
               <DetailsContainer>
                 <h5>{activity.name}</h5>
                 <h6>
-                  {activityTypeLabel} run by {activity.host.name}
+                  {capitalFirstLetter(activityTypeLabel)} run by {activity.host.name}
                 </h6>
               </DetailsContainer>
             </PopoverCard>

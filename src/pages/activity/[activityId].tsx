@@ -37,7 +37,7 @@ import {
 } from '../../styles/pages/activity.styles';
 import { colors, spacing } from '../../styles/theme';
 import { Activity } from '../../types';
-import { activityTypeLabelMap } from '../../utils/activity.utils';
+import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
 import {
   experienceLevelsMap,
   getActivityPageServerProps,
@@ -96,7 +96,10 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
             </h2>
 
             <LocationAndActions>
-              <h4>{activity.location.name}</h4>
+              <IconAndText>
+                <Icon icon="Pin" />
+                <h4>{activity.location.name}</h4>
+              </IconAndText>
               {copiedToClipboard ? (
                 <h4>Link copied to clipboard!</h4>
               ) : (
@@ -127,7 +130,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
               <DetailsSection>
                 <SummaryContainer>
                   <h3>
-                    {activityTypeLabel} run by {activity.host.name}
+                    <span>{capitalFirstLetter(activityTypeLabel)}</span> run by {activity.host.name}
                   </h3>
                   <IconAndText>
                     <Icon icon="Star" colour={colors.primary[6]} />
@@ -205,17 +208,21 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
               </DetailsSection>
 
               <DetailsSection>
-                <h3>About this activity</h3>
+                <h3>About this {activityTypeLabel}</h3>
                 <ReadMore lines={4} text={activity.description} />
               </DetailsSection>
 
               <DetailsSection>
-                <h3>Getting to {activity.location.name}</h3>
+                <h3>Getting there</h3>
 
                 {activity.location.address && (
                   <GettingThereSection>
-                    <h4>Address</h4>
+                    <IconAndText>
+                      <Icon icon="Pin" />
+                      <h4>Address</h4>
+                    </IconAndText>
                     <Address>
+                      <p>{activity.location.name}</p>
                       <p>{activity.location.address}</p>
                       <p>{activity.location.postcode}</p>
                     </Address>
@@ -224,7 +231,10 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
 
                 {activity.location.directions && (
                   <GettingThereSection>
-                    <h4>Directions</h4>
+                    <IconAndText>
+                      <Icon icon="Directions" />
+                      <h4>Directions</h4>
+                    </IconAndText>
                     <ReadMore lines={4} text={activity.location.directions} />
                   </GettingThereSection>
                 )}
@@ -283,7 +293,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
             <CTATablet>
               <StickyCTA>
                 <BookNowContainer>
-                  <h3>Join this class</h3>
+                  <h3>Join this {activityTypeLabel}</h3>
                   <h6>
                     {`'Book now' will take you to the host website where you can find times, booking information and more.`}
                   </h6>
@@ -301,7 +311,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
 
         <CTAMobile>
           <div>
-            <h4>Join this class</h4>
+            <h4>Join this {activityTypeLabel}</h4>
           </div>
           <CTAButton>Book now</CTAButton>
         </CTAMobile>

@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import NextLink from 'next/link';
 import normalizeCSS from './normalize-css';
 import inter from './inter';
 import typography from './typography';
@@ -11,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   ${typography};
 
   body {
-    color: ${colors.supporting.grey[2]};
+    color: ${colors.neutral[1]};
   }
   
   // General global things:

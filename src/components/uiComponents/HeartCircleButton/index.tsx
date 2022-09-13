@@ -1,7 +1,7 @@
 import { Button } from './styles';
 import Icon from '../../Icon';
 
-const HeartButton = (): JSX.Element => {
+const HeartCircleButton = (): JSX.Element => {
   return (
     <Button>
       <Icon icon="Heart" />
@@ -9,4 +9,4 @@ const HeartButton = (): JSX.Element => {
   );
 };
 
-export default HeartButton;
+export default HeartCircleButton;

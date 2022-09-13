@@ -1,5 +1,7 @@
+import Icon from '../Icon';
+import ContactButton from '../uiComponents/ContactButton';
 import { HeaderContainer, HeaderContent, Menu, Shortcuts } from './styles';
-import HeartButton from '../uiComponents/heartButton';
+// import HeartCircleButton from '../uiComponents/HeartCircleButton';
 
 interface Props {
   widthConstrained: boolean;
@@ -11,7 +13,8 @@ const Header = ({ widthConstrained }: Props): JSX.Element => (
       <h2>Logo</h2>
       <Menu>Categories list TODO</Menu>
       <Shortcuts>
-        <HeartButton />
+        <ContactButton />
+        {/* <HeartCircleButton /> */}
       </Shortcuts>
     </HeaderContent>
   </HeaderContainer>
