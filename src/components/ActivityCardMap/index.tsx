@@ -9,6 +9,8 @@ import {
   DetailsContainer,
   // FavoriteContainer,
   CloseContainer,
+  PopoverContainer,
+  MultiActivitySwitcher,
 } from './styles';
 import Icon from '../Icon';
 import { Popover } from './Popover';
@@ -88,22 +90,29 @@ const ActivityCardMap = ({ activities, focused, locationId }: Props): JSX.Elemen
         locationId={locationId}
         isOpenSetter={setIsOpen}
         render={({ close }) => (
-          <div>
+          <PopoverContainer>
             <ActivityPopover close={close} activity={activities[selectedActivityIndex]} />
             {activities.length > 1 && (
-              <div>
-                <h4 onClick={() => setSelectedActivityIndex((current) => current - 1)}>Previous</h4>
-                <h4 onClick={() => setSelectedActivityIndex((current) => current + 1)}>Next</h4>
-              </div>
+              <MultiActivitySwitcher>
+                {selectedActivityIndex > 0 && (
+                  <h4 onClick={() => setSelectedActivityIndex((current) => current - 1)}>{'<'}</h4>
+                )}
+                <h4>
+                  {selectedActivityIndex + 1} / {activities.length}
+                </h4>
+                {selectedActivityIndex < activities.length - 1 && (
+                  <h4 onClick={() => setSelectedActivityIndex((current) => current + 1)}>{'>'}</h4>
+                )}
+              </MultiActivitySwitcher>
             )}
-          </div>
+          </PopoverContainer>
         )}
       >
         <Pin open={isOpen || focused}>
           {activities.length === 1 ? (
             <Icon icon={firstActivityCategoryName} colour={isOpen ? 'white' : 'black'} />
           ) : (
-            <h4>{activities.length}</h4>
+            <h4 style={{ color: isOpen ? 'white' : 'black' }}>{activities.length}</h4>
           )}
         </Pin>
       </Popover>
