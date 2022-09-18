@@ -9,12 +9,18 @@ export const ActivityContainer = styled.div`
   cursor: pointer;
 `;
 
+export const PopoverContainer = styled.div`
+  margin-top: ${spacing[2]};
+  margin-bottom: ${spacing[3]};
+`;
+
 export const PopoverCard = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: ${cardBorderRadius};
   background-color: white;
-  margin-bottom: ${spacing[3]};
+  box-shadow: ${shadows.light};
 `;
 
 export const ImageContainer = styled.div`
