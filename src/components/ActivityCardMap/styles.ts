@@ -18,6 +18,7 @@ export const PopoverCard = styled.div`
   flex-direction: column;
   border-radius: ${cardBorderRadius};
   background-color: white;
+  box-shadow: ${shadows.light};
 `;
 
 export const ImageContainer = styled.div`
@@ -86,14 +87,4 @@ export const CloseContainer = styled.div`
   border-radius: 100%;
   width: 30px;
   height: 30px;
-`;
-
-export const MultiActivitySwitcher = styled.div`
-  display: flex;
-  grid-gap: ${spacing[2]};
-  justify-content: center;
-  width: 100%;
-  border-radius: ${spacing[2]};
-  padding: ${spacing[1]};
-  box-sizing: border-box;
 `;

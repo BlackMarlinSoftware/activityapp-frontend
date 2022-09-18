@@ -10,7 +10,6 @@ import {
   // FavoriteContainer,
   CloseContainer,
   PopoverContainer,
-  MultiActivitySwitcher,
 } from './styles';
 import Icon from '../Icon';
 import { Popover } from './Popover';
@@ -21,6 +20,7 @@ import { ActivityListing } from '../../types';
 import Link from 'next/link';
 import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
 import useBase64Url from '../../hooks/useBase64Url';
+import NextPrevious from '../uiComponents/NextPrevious';
 
 interface PopoverProps {
   activity: ActivityListing;
@@ -91,20 +91,15 @@ const ActivityCardMap = ({ activities, focused, locationId }: Props): JSX.Elemen
         isOpenSetter={setIsOpen}
         render={({ close }) => (
           <PopoverContainer>
-            <ActivityPopover close={close} activity={activities[selectedActivityIndex]} />
             {activities.length > 1 && (
-              <MultiActivitySwitcher>
-                {selectedActivityIndex > 0 && (
-                  <h4 onClick={() => setSelectedActivityIndex((current) => current - 1)}>{'<'}</h4>
-                )}
-                <h4>
-                  {selectedActivityIndex + 1} / {activities.length}
-                </h4>
-                {selectedActivityIndex < activities.length - 1 && (
-                  <h4 onClick={() => setSelectedActivityIndex((current) => current + 1)}>{'>'}</h4>
-                )}
-              </MultiActivitySwitcher>
+              <NextPrevious
+                position={selectedActivityIndex + 1}
+                total={activities.length}
+                onNext={() => setSelectedActivityIndex((current) => current + 1)}
+                onPrevious={() => setSelectedActivityIndex((current) => current - 1)}
+              ></NextPrevious>
             )}
+            <ActivityPopover close={close} activity={activities[selectedActivityIndex]} />
           </PopoverContainer>
         )}
       >

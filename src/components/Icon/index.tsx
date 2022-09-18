@@ -102,6 +102,8 @@ import Pin from './genericIcons/Pin';
 import Directions from './genericIcons/Directions';
 import SendMessage from './genericIcons/SendMessage';
 import LeftArrow from './genericIcons/LeftArrow';
+import LeftArrowSmall from './genericIcons/LeftArrowSmall';
+import RightArrowSmall from './genericIcons/RightArrowSmall';
 
 type CategoryLevel1Icons = Record<CategoryLevel1, React.FC>;
 type CategoryLevel2Icons = Record<CategoryLevel2, React.FC>;
@@ -338,6 +340,8 @@ const genericIcons: Record<string, React.FC> = {
   Directions: Directions,
   SendMessage: SendMessage,
   LeftArrow: LeftArrow,
+  LeftArrowSmall: LeftArrowSmall,
+  RightArrowSmall: RightArrowSmall,
 };
 
 const iconMap: Record<string, React.FC> = {
