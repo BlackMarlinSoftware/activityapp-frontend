@@ -9,7 +9,7 @@ interface Props {
   initialViewState: Partial<ViewState>;
 }
 
-const MapContainer = ({ location, initialViewState }: Props): JSX.Element => (
+const MiniMap = ({ location, initialViewState }: Props): JSX.Element => (
   <Container>
     <Map
       style={{ borderRadius: spacing[3] }}
@@ -22,4 +22,4 @@ const MapContainer = ({ location, initialViewState }: Props): JSX.Element => (
   </Container>
 );
 
-export default MapContainer;
+export default MiniMap;

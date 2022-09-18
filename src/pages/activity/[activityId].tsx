@@ -233,7 +233,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
 
                 <MiniMap
                   location={activity.location}
-                  initialViewState={{ longitude: activity.location.long, latitude: activity.location.lat, zoom: 11 }}
+                  initialViewState={{ longitude: activity.location.long, latitude: activity.location.lat, zoom: 13 }}
                 />
               </DetailsSection>
 
