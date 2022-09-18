@@ -4,15 +4,24 @@ import { spacing, colors, shadows } from '../../styles/theme';
 
 export const HeaderHeight = `${spacing[8]}`;
 
-export const HeaderContainer = styled.div`
-  position: sticky;
+interface HeaderElementProps {
+  transparentMode: boolean;
+}
+
+export const HeaderContainer = styled.div<HeaderElementProps>`
+  position: ${({ transparentMode }) => (transparentMode ? 'absolute' : 'sticky')};
   top: 0;
   z-index: 1;
   box-sizing: border-box;
   width: 100vw;
   height: ${HeaderHeight};
-  background-color: ${colors.supporting.grey[10]};
-  box-shadow: ${shadows.divider};
+  box-shadow: ${({ transparentMode }) => (transparentMode ? 'none' : shadows.divider)};
+  background-color: ${({ transparentMode }) => (transparentMode ? 'transparent' : colors.supporting.grey[10])};
+
+  @media ${device.mobileXL} {
+    position: sticky;
+    background-color: ${colors.supporting.grey[10]};
+  }
 `;
 
 export const HeaderContent = styled.div<{ widthConstrained: boolean }>`
@@ -40,14 +49,30 @@ export const Shortcuts = styled.div`
   align-items: center;
 `;
 
-export const BackButtonContainer = styled.div`
+const ButtonContainer = styled.div<HeaderElementProps>`
   padding: ${spacing[2]};
-  margin-left: -${spacing[1]};
-  width: fit-content;
+  border-radius: ${spacing[10]};
   cursor: pointer;
+  background-color: ${({ transparentMode }) => (transparentMode ? 'rgba(255, 255, 255, 0.8)' : 'none')};
+  backdrop-filter: ${({ transparentMode }) => (transparentMode ? `blur(${spacing[1]})` : 'none')};
+
+  @media ${device.mobileXL} {
+    background-color: none;
+    backdrop-filter: none;
+  }
 `;
 
-export const ShareButtonContainer = styled.div`
-  padding: ${spacing[2]};
-  cursor: pointer;
+export const BackButtonContainer = styled(ButtonContainer)`
+  margin-left: -${spacing[1]};
+  width: fit-content;
+`;
+
+export const ShareButtonContainer = styled(ButtonContainer)``;
+
+export const LogoContainer = styled.div<HeaderElementProps>`
+  opacity: ${({ transparentMode }) => (transparentMode ? 0 : 1)};
+
+  @media ${device.mobileXL} {
+    opacity: 1;
+  }
 `;

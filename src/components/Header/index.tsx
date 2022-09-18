@@ -2,16 +2,26 @@ import Link from 'next/link';
 import { useState } from 'react';
 import useBackUrl from '../../hooks/useBackUrl';
 import Icon from '../Icon';
-import { BackButtonContainer, HeaderContainer, HeaderContent, Menu, ShareButtonContainer, Shortcuts } from './styles';
+import {
+  BackButtonContainer,
+  HeaderContainer,
+  HeaderContent,
+  LogoContainer,
+  Menu,
+  ShareButtonContainer,
+  Shortcuts,
+} from './styles';
 // import HeartCircleButton from '../uiComponents/HeartCircleButton';
 
 interface Props {
   widthConstrained: boolean;
+  transparentVariant?: boolean;
 }
 
-const Header = ({ widthConstrained }: Props): JSX.Element => {
+const Header = ({ widthConstrained, transparentVariant }: Props): JSX.Element => {
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const backUrl = useBackUrl();
+  const transparentMode = transparentVariant && backUrl ? true : false;
 
   const share = () => {
     const currentUrl = window.location.href;
@@ -26,25 +36,23 @@ const Header = ({ widthConstrained }: Props): JSX.Element => {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer transparentMode={transparentMode}>
       <HeaderContent widthConstrained={widthConstrained}>
         {backUrl && (
           <Link href={backUrl} passHref>
-            <BackButtonContainer>
+            <BackButtonContainer transparentMode={transparentMode}>
               <Icon icon="LeftArrow" />
             </BackButtonContainer>
           </Link>
         )}
-        <h2>Logo</h2>
+        <LogoContainer transparentMode={transparentMode}>
+          <h2>Logo</h2>
+        </LogoContainer>
         {!backUrl && <Menu>Categories</Menu>}
         <Shortcuts>
-          {copiedToClipboard ? (
-            <h4>Copied link</h4>
-          ) : (
-            <ShareButtonContainer onClick={share}>
-              <Icon icon="Share" />
-            </ShareButtonContainer>
-          )}
+          <ShareButtonContainer onClick={share} transparentMode={transparentMode}>
+            {copiedToClipboard ? <h4>Copied link</h4> : <Icon icon="Share" />}
+          </ShareButtonContainer>
           {/* <HeartCircleButton /> */}
         </Shortcuts>
       </HeaderContent>

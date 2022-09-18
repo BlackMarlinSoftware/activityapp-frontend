@@ -83,7 +83,7 @@ const ActivityPage: NextPage<Props> = ({ activity, error }) => {
 
   return (
     <>
-      <Header widthConstrained={true} />
+      <Header widthConstrained={true} transparentVariant={true} />
       <MobileOnly>
         <ActivityImage {...activityImageProps} width={deviceWidthPx.mobileXL} height={spacing[13]} />
       </MobileOnly>
