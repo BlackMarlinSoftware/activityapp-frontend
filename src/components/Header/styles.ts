@@ -19,6 +19,7 @@ export const HeaderContainer = styled.div<HeaderElementProps>`
   background-color: ${({ transparentMode }) => (transparentMode ? 'transparent' : colors.supporting.grey[10])};
 
   @media ${device.mobileXL} {
+    box-shadow: ${shadows.divider};
     position: sticky;
     background-color: ${colors.supporting.grey[10]};
   }
