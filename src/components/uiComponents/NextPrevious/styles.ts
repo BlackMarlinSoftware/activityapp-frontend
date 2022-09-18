@@ -28,5 +28,5 @@ export const End = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${spacing[2]} ${spacing[3]};
+  padding: ${spacing[3]} ${spacing[4]};
 `;
