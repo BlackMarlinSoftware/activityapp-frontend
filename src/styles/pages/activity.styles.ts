@@ -2,13 +2,14 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { HeaderHeight } from '../../components/Header/styles';
 import { device } from '../devices';
+import { ShimmerBackground } from '../loading';
 import { colors, shadows, spacing } from '../theme';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${spacing[6]} ${spacing[4]};
+  padding: ${spacing[5]} ${spacing[4]};
   padding-bottom: 0;
 
   @media ${device.mobileXL} {
@@ -32,7 +33,13 @@ export const Title = styled.div`
 
 export const Media = styled.div`
   display: flex;
-  margin-bottom: ${spacing[4]};
+  width: 100vw;
+  align-self: center;
+
+  @media ${device.mobileXL} {
+    width: initial;
+    margin-bottom: ${spacing[4]};
+  }
 `;
 
 export const DetailsAndCTA = styled.div`
@@ -87,7 +94,11 @@ export const CTAMobile = styled.div`
 
 export const TitleIcon = styled.div`
   display: inline-block;
-  margin-right: ${spacing[3]};
+  margin-right: ${spacing[2]};
+
+  @media ${device.mobileXL} {
+    margin-right: ${spacing[3]};
+  }
 `;
 
 export const LocationAndActions = styled.div`
@@ -97,7 +108,27 @@ export const LocationAndActions = styled.div`
   justify-content: space-between;
 `;
 
+export const MobileOnly = styled.div`
+  display: flex;
+
+  @media ${device.mobileXL} {
+    display: none;
+  }
+`;
+
+export const DesktopOnly = styled.div`
+  display: none;
+
+  @media ${device.mobileXL} {
+    display: initial;
+  }
+`;
+
 export const ActivityImage = styled(Image)`
+  ${ShimmerBackground}
+`;
+
+export const ActivityImageDesktop = styled(ActivityImage)`
   border-radius: ${spacing[3]};
 `;
 
@@ -115,6 +146,16 @@ export const DetailsSection = styled.div`
   padding-bottom: ${spacing[5]};
   margin-bottom: ${spacing[5]};
   border-bottom: 1px solid ${colors.neutral[9.5]};
+`;
+
+export const DetailsSectionMobile = styled.div`
+  padding-bottom: ${spacing[5]};
+  border-bottom: 1px solid ${colors.neutral[9.5]};
+
+  @media ${device.mobileXL} {
+    padding: 0;
+    border-bottom: none;
+  }
 `;
 
 export const KeyInformation = styled.div`
@@ -253,4 +294,9 @@ export const HostCertifications = styled.div`
   grid-gap: ${spacing[4]};
   margin: ${spacing[6]} 0;
   margin-left: -${spacing[1]};
+`;
+
+export const BackBar = styled.div`
+  display: flex;
+  width: 100%;
 `;

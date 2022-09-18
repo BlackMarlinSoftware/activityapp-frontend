@@ -37,7 +37,7 @@ const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
             updateQueryParams(router)(newMapQueryParams);
           }
         }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY}
       >
         {locations.map((location) => (

@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { device } from './devices';
 import theme from './theme';
 
 export default css`
@@ -29,26 +30,46 @@ export default css`
   h1,
   .h1 {
     font-family: Inter, sans-serif;
-    font-size: 4rem;
-    line-height: 4.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 3rem;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+
+    @media ${device.mobileXL} {
+      font-size: 4rem;
+      line-height: 4.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
   }
   h2,
   .h2 {
     font-family: Inter, sans-serif;
-    font-size: 2rem;
-    line-height: 3rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    @media ${device.mobileXL} {
+      font-size: 2rem;
+      line-height: 3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
   }
   h3,
   .h3 {
     font-family: Inter, sans-serif;
-    font-size: 1.5rem;
-    line-height: 3rem;
-    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    margin-top: 1.25rem;
     margin-bottom: 0rem;
+
+    @media ${device.mobileXL} {
+      font-size: 1.5rem;
+      line-height: 3rem;
+      margin-top: 1.5rem;
+    }
   }
   h4,
   .h4 {

@@ -24,7 +24,7 @@ export interface Props {
 }
 
 const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => {
-  const [isMapViewToggled, setIsMapViewToggled] = React.useState(true);
+  const [isMapViewToggled, setIsMapViewToggled] = React.useState(false);
 
   return (
     <PageContainer>
@@ -42,7 +42,7 @@ const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, map
           }}
         >
           <div>
-            <span>{isMapViewToggled ? 'Show List' : 'Show Map'}</span>
+            <span>{isMapViewToggled ? 'Show list' : 'Show map'}</span>
             <span>{isMapViewToggled ? <Icon icon="List" /> : <Icon icon="UIMap" />}</span>
           </div>
         </ListMapSwitcherButton>

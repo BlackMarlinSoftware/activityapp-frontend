@@ -39,3 +39,15 @@ export const Shortcuts = styled.div`
   justify-content: flex-end;
   align-items: center;
 `;
+
+export const BackButtonContainer = styled.div`
+  padding: ${spacing[2]};
+  margin-left: -${spacing[1]};
+  width: fit-content;
+  cursor: pointer;
+`;
+
+export const ShareButtonContainer = styled.div`
+  padding: ${spacing[2]};
+  cursor: pointer;
+`;

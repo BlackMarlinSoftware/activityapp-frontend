@@ -3,6 +3,7 @@ import theme from '../../styles/theme';
 import { ActivityListing } from '../../types';
 import Link from 'next/link';
 import { activityTypeLabelMap, capitalFirstLetter } from '../../utils/activity.utils';
+import useBase64Url from '../../hooks/useBase64Url';
 
 interface Props {
   activity: ActivityListing;
@@ -12,9 +13,10 @@ interface Props {
 const ActivityCard = ({ activity, loading }: Props): JSX.Element => {
   const firstImage = activity.activities_x_media[0].media;
   const activityTypeLabel = capitalFirstLetter(activityTypeLabelMap[activity.type]);
+  const currentUrlBase64 = useBase64Url();
 
   return (
-    <Link href={`/activity/${activity.id}`} passHref>
+    <Link href={`/activity/${activity.id}?backUrl=${currentUrlBase64}`} passHref>
       <ActivityContainer>
         <div>
           <ActivityImage

@@ -51,6 +51,6 @@ export const Description = styled.p<{ $loading: boolean }>`
 `;
 
 export const ActivityImage = styled(Image)`
-  border-radius: ${spacing[3]};
   ${ShimmerBackground}
+  border-radius: ${spacing[3]};
 `;

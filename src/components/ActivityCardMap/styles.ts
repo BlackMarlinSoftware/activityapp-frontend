@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme, { spacing } from '../../styles/theme';
+import theme, { shadows, spacing } from '../../styles/theme';
 
 export const imageContainerWidth = '300px';
 export const imageContainerHeight = '170px';
@@ -55,7 +55,7 @@ export const Pin = styled.div<{ open: boolean }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 3px 6px 11px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: ${shadows.dark};
 
   :hover {
     height: 35px;
@@ -66,15 +66,15 @@ export const Pin = styled.div<{ open: boolean }>`
 
 export const FavoriteContainer = styled.div`
   position: absolute;
-  top: 11px;
-  right: 14px;
+  top: ${spacing[2]};
+  right: ${spacing[2]};
   z-index: 1;
 `;
 
 export const CloseContainer = styled.div`
   position: absolute;
-  top: 8px;
-  left: 14px;
+  top: ${spacing[2]};
+  left: ${spacing[2]};
   z-index: 1;
   display: flex;
   justify-content: center;
