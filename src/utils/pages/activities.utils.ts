@@ -10,7 +10,7 @@ import {
 } from '../../generated/graphql';
 import { LOCATIONS_IN_VIEWPORT } from '../../queries/locations.query';
 
-export const paginationSize = 2;
+export const paginationSize = 20;
 
 export const getActivitiesPageServerProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
   const apolloClient = initializeApollo();
