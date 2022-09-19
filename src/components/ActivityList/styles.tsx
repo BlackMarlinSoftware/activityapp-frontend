@@ -37,3 +37,8 @@ export const ActivityRows = styled.div`
     grid-template-columns: 1fr;
   }
 `;
+
+export const PageSwitcher = styled.div`
+  padding-top: ${spacing[3]};
+  margin-top: auto;
+`;

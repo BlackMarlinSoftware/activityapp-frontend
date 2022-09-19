@@ -12,6 +12,7 @@ export const Pill = styled.div`
   background-color: white;
   border-radius: ${spacing[10]};
   box-shadow: ${shadows.light};
+  overflow: hidden;
 `;
 
 export const Middle = styled.div`
@@ -29,4 +30,9 @@ export const End = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${spacing[3]} ${spacing[4]};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.neutral[10]};
+  }
 `;

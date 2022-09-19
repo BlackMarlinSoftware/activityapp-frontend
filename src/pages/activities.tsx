@@ -4,7 +4,7 @@ import MapContainer from '../components/MapContainer';
 import ActivityList from '../components/ActivityList';
 import { MapCoords, MapViewportState } from '../reactiveVars/map';
 import { ActivityListing, Location } from '../types';
-import { getActivitiesPageServerProps } from '../utils/pages/activities.utils';
+import { getActivitiesPageServerProps, paginationSize } from '../utils/pages/activities.utils';
 import {
   MainContentContainer,
   PageContainer,
@@ -21,7 +21,7 @@ export interface Props {
   activities: ActivityListing[];
   mapViewportState: MapViewportState;
   error?: string;
-  totalActivities?: number;
+  totalActivities: number;
   page: number;
 }
 
@@ -40,7 +40,13 @@ const ActivitiesPage: NextPage<Props> = ({
       <Header widthConstrained={false} />
       <MainContentContainer>
         <ListResponsiveWrapper mapView={isMapViewToggled}>
-          <ActivityList activities={activities} totalActivities={totalActivities} mapViewportState={mapViewportState} />
+          <ActivityList
+            activities={activities}
+            totalActivities={totalActivities}
+            mapViewportState={mapViewportState}
+            currentPage={page}
+            maxPage={Math.ceil(totalActivities / paginationSize)}
+          />
         </ListResponsiveWrapper>
         <MapResponsiveWrapper mapView={isMapViewToggled}>
           <MapContainer locations={locations} initialViewState={mapCoords} />

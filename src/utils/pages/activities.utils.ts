@@ -10,7 +10,7 @@ import {
 } from '../../generated/graphql';
 import { LOCATIONS_IN_VIEWPORT } from '../../queries/locations.query';
 
-const paginationSize = 2;
+export const paginationSize = 2;
 
 export const getActivitiesPageServerProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
   const apolloClient = initializeApollo();
@@ -45,7 +45,7 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
       activities.push(...location.activities);
     });
 
-    const totalActivities = activities_aggregate.aggregate?.count;
+    const totalActivities = activities_aggregate.aggregate?.count || 0;
 
     const props: Props = {
       mapCoords,
@@ -68,6 +68,7 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
       activities: [],
       mapViewportState,
       error: 'Could not fetch activities',
+      totalActivities: 0,
       page: 1,
     };
 
