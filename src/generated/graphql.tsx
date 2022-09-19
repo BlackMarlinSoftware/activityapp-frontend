@@ -4544,10 +4544,12 @@ export type LocationsInViewportQueryVariables = Exact<{
   viewportLatitudeMax: Scalars['numeric'];
   viewportLongitudeMin: Scalars['numeric'];
   viewportLongitudeMax: Scalars['numeric'];
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
 }>;
 
 
-export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }> };
+export type LocationsInViewportQuery = { __typename?: 'query_root', locations: Array<{ __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null, activities: Array<{ __typename?: 'activities', id: string, name: string, type: Activity_Types_Enum, description: string, referral_url?: string | null, referral_phone?: string | null, referral_email?: string | null, booking_required: boolean, group_size_min?: number | null, group_size_max?: number | null, intensity_level?: Intensity_Levels_Enum | null, experience_level?: Experience_Levels_Enum | null, age_min?: number | null, age_max?: number | null, location: { __typename?: 'locations', id: string, address?: string | null, postcode?: string | null, lat: number, long: number, name: string, outdoors: boolean, directions?: string | null }, host: { __typename?: 'hosts', id: string, name: string, logo_url?: string | null, description?: string | null }, activities_x_categories: Array<{ __typename?: 'activities_x_categories', category: { __typename?: 'categories', id: string, name: string, level: number } }>, activities_x_media: Array<{ __typename?: 'activities_x_media', media: { __typename?: 'media', id: string, path: string, caption?: string | null } }> }> }>, activities_aggregate: { __typename?: 'activities_aggregate', aggregate?: { __typename?: 'activities_aggregate_fields', count: number } | null } };
 
 export const ActivityDataFragmentDoc = gql`
     fragment ActivityData on activities {
@@ -4687,13 +4689,22 @@ export type ActivityDetailsQueryHookResult = ReturnType<typeof useActivityDetail
 export type ActivityDetailsLazyQueryHookResult = ReturnType<typeof useActivityDetailsLazyQuery>;
 export type ActivityDetailsQueryResult = Apollo.QueryResult<ActivityDetailsQuery, ActivityDetailsQueryVariables>;
 export const LocationsInViewportDocument = gql`
-    query LocationsInViewport($viewportLatitudeMin: numeric!, $viewportLatitudeMax: numeric!, $viewportLongitudeMin: numeric!, $viewportLongitudeMax: numeric!) {
+    query LocationsInViewport($viewportLatitudeMin: numeric!, $viewportLatitudeMax: numeric!, $viewportLongitudeMin: numeric!, $viewportLongitudeMax: numeric!, $offset: Int!, $limit: Int!) {
   locations(
+    offset: $offset
+    limit: $limit
     where: {lat: {_gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax}, long: {_gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax}}
   ) {
     ...LocationData
     activities {
       ...ActivityListing
+    }
+  }
+  activities_aggregate(
+    where: {location: {lat: {_gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax}, long: {_gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax}}}
+  ) {
+    aggregate {
+      count
     }
   }
 }
@@ -4716,6 +4727,8 @@ ${ActivityListingFragmentDoc}`;
  *      viewportLatitudeMax: // value for 'viewportLatitudeMax'
  *      viewportLongitudeMin: // value for 'viewportLongitudeMin'
  *      viewportLongitudeMax: // value for 'viewportLongitudeMax'
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
  *   },
  * });
  */

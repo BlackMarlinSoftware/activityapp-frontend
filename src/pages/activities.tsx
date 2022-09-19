@@ -18,12 +18,13 @@ import Icon from '../components/Icon';
 export interface Props {
   mapCoords: MapCoords;
   locations: Location[];
+  totalActivities?: number;
   activities: ActivityListing[];
   mapViewportState: MapViewportState;
   error?: string;
 }
 
-const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, mapViewportState }) => {
+const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, totalActivities, activities, mapViewportState }) => {
   const [isMapViewToggled, setIsMapViewToggled] = React.useState(false);
 
   return (
@@ -31,7 +32,7 @@ const ActivitiesPage: NextPage<Props> = ({ mapCoords, locations, activities, map
       <Header widthConstrained={false} />
       <MainContentContainer>
         <ListResponsiveWrapper mapView={isMapViewToggled}>
-          <ActivityList activities={activities} mapViewportState={mapViewportState} />
+          <ActivityList activities={activities} totalActivities={totalActivities} mapViewportState={mapViewportState} />
         </ListResponsiveWrapper>
         <MapResponsiveWrapper mapView={isMapViewToggled}>
           <MapContainer locations={locations} initialViewState={mapCoords} />

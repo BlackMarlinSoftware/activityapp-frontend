@@ -7,10 +7,11 @@ import { MapViewportState } from '../../reactiveVars/map';
 
 interface Props {
   activities: ActivityListingFragment[];
+  totalActivities?: number;
   mapViewportState: MapViewportState;
 }
 
-const ActivityList = ({ activities, mapViewportState }: Props): JSX.Element => {
+const ActivityList = ({ activities, totalActivities, mapViewportState }: Props): JSX.Element => {
   const [borderBottom, setBorderBottom] = useState(false);
   const routeLoading = useRouteChange();
   const activitiesLoading = !mapViewportState.viewportLatitudeMin || routeLoading?.includes('/activities?');
@@ -26,7 +27,7 @@ const ActivityList = ({ activities, mapViewportState }: Props): JSX.Element => {
   return (
     <Container>
       <ResultsSummary borderBottom={borderBottom}>
-        <h4>{activities?.length} activities</h4>
+        <h4>{totalActivities} activities</h4>
       </ResultsSummary>
       <ActivityRows onScroll={handleListScroll}>
         {activities.map((activity) => (

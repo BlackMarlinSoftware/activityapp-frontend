@@ -28,11 +28,11 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
 
   try {
     const {
-      data: { locations },
+      data: { locations, activities_aggregate },
     } = await apolloClient.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
       query: LOCATIONS_IN_VIEWPORT,
       fetchPolicy: 'no-cache',
-      variables: mapViewportState,
+      variables: { ...mapViewportState, offset: 0, limit: 2 },
     });
 
     const activities: ActivityListingFragment[] = [];
@@ -40,9 +40,12 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
       activities.push(...location.activities);
     });
 
+    const totalActivities = activities_aggregate.aggregate?.count;
+
     const props: Props = {
       mapCoords,
       locations,
+      totalActivities,
       activities,
       mapViewportState,
     };

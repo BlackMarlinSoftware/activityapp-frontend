@@ -44,8 +44,12 @@ export const LOCATIONS_IN_VIEWPORT = gql`
     $viewportLatitudeMax: numeric!
     $viewportLongitudeMin: numeric!
     $viewportLongitudeMax: numeric!
+    $offset: Int!
+    $limit: Int!
   ) {
     locations(
+      offset: $offset
+      limit: $limit
       where: {
         lat: { _gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax }
         long: { _gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax }
@@ -54,6 +58,18 @@ export const LOCATIONS_IN_VIEWPORT = gql`
       ...LocationData
       activities {
         ...ActivityListing
+      }
+    }
+    activities_aggregate(
+      where: {
+        location: {
+          lat: { _gte: $viewportLatitudeMin, _lte: $viewportLatitudeMax }
+          long: { _gte: $viewportLongitudeMin, _lte: $viewportLongitudeMax }
+        }
+      }
+    ) {
+      aggregate {
+        count
       }
     }
   }
