@@ -50,7 +50,8 @@ const MapContainer = ({ locations, initialViewState }: Props): JSX.Element => {
           >
             <ActivityCardMap
               key={location.id}
-              activity={location.activities[0]}
+              locationId={location.id}
+              activities={location.activities}
               focused={focusedLocationId === location.id}
             />
           </Marker>
