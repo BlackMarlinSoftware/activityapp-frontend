@@ -10,6 +10,8 @@ import {
 } from '../../generated/graphql';
 import { LOCATIONS_IN_VIEWPORT } from '../../queries/locations.query';
 
+const paginationSize = 2;
+
 export const getActivitiesPageServerProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
   const apolloClient = initializeApollo();
 
@@ -26,13 +28,16 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
     viewportLongitudeMax: context.query.viewportLongitudeMax,
   }) as unknown as MapViewportState;
 
+  const { page } = queryParamsToNumberOrZero({ page: context.query.page });
+  const offset = page < 1 ? 0 : (page - 1) * paginationSize;
+
   try {
     const {
       data: { locations, activities_aggregate },
     } = await apolloClient.query<LocationsInViewportQuery, LocationsInViewportQueryVariables>({
       query: LOCATIONS_IN_VIEWPORT,
       fetchPolicy: 'no-cache',
-      variables: { ...mapViewportState, offset: 0, limit: 2 },
+      variables: { ...mapViewportState, offset, limit: paginationSize },
     });
 
     const activities: ActivityListingFragment[] = [];
@@ -45,9 +50,10 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
     const props: Props = {
       mapCoords,
       locations,
-      totalActivities,
       activities,
       mapViewportState,
+      totalActivities,
+      page,
     };
 
     return addApolloState(apolloClient, {
@@ -62,6 +68,7 @@ export const getActivitiesPageServerProps: GetServerSideProps = async (context):
       activities: [],
       mapViewportState,
       error: 'Could not fetch activities',
+      page: 1,
     };
 
     return addApolloState(apolloClient, {
